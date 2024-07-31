@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Tag from "../components/Tag.astro";
+
+import { formatDate } from "../scripts/utils";
+
+const { frontmatter } = Astro.props;
+const { title, tags, stack, amountOfWork, duration, publishDate } = frontmatter;
+---
+
+<BaseLayout title=`${title} - SRK Creates`>
+  <!-- <div id="preloader" class="absolute inset-0 z-50 w-100 h-dvh bg-dark-blue">
+  </div> -->
+  <!-- Scroll Progress Indicator -->
+  <div
+    class="fixed inset-0 z-50 w-full h-0.5 mb-2 origin-left bg-dark-pink"
+    id="scroll-progress"
+  >
+  </div>
+  <!-- Hero Section -->
+  <section id="hero" class="col-span-full grid grid-cols-subgrid mt-24 mb-8">
+    <h1 class="col-span-full mb-8 text-4xl font-semibold splt">{title}</h1>
+    <ul class="col-span-full grid grid-cols-subgrid gap-10 mb-10" id="stats">
+      {
+        [
+          ["Инструменты", `${stack}`],
+          ["Объем работы", `${amountOfWork}`],
+          ["Сроки выполнения", `${duration}`],
+          ["Дата публикации", `${formatDate(publishDate)}`],
+        ].map(([heading, content]) => (
+          <li class="col-span-2">
+            <h2 class="mb-1 text-lg font-bold">{heading}</h2>
+            <p class="leading-normal max-w-64">{content}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <ul
+      class="col-span-full flex flex-wrap gap-3 p-0 m-0 mb-4 text-base lowercase list-none"
+      id="tags"
+    >
+      {tags.map((tag) => <Tag content={tag} />)}
+    </ul>
+  </section>
+  <!-- Markdown Section -->
+  <section
+    id="content"
+    class="col-span-full flex flex-col items-center prose prose-pink text-lg md:max-w-none prose-img:rounded-md prose-img:first-of-type:mt-0 prose-img:mb-0 prose-headings:[width:min(100%,_42rem)] prose-headings:pt-4 prose-p:mb-3"
+  >
+    <slot />
+  </section>
+</BaseLayout>
+
+<script src="../scripts/animateProjectPage.js"></script>

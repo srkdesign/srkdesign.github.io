@@ -1,0 +1,179 @@
+---
+/* Astro Imports */
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+/* Component Imports */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import EvenColumns from "../components/EvenColumns.astro";
+import AboutCard from "../components/AboutCard.astro";
+import StatsCounter from "../components/StatsCounter.astro";
+import ServicesCard from "../components/ServicesCard.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+/*import CourseCard from "../components/CourseCard.astro";*/
+import Button from "../components/Button.astro";
+
+/* Image Imports */
+import logoOutline from "../assets/logo/logo-outline.svg";
+import logoGradient from "../assets/logo/logo-gradient-min.svg";
+import orderImage from "../assets/order.jpg";
+
+/* Content Collection */
+const projectEntries = (await getCollection("project")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+const articleEntries = (await getCollection("article")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<BaseLayout title="srkdesign.dev">
+  <div id="preloader" class="absolute inset-0 z-50 w-100 h-dvh bg-dark-blue">
+  </div>
+  <!-- Hero Section -->
+  <section
+    id="hero"
+    class="col-span-full grid items-center mt-32 mb-36 font-serif group place-items-center"
+  >
+    <picture
+      id="logo"
+      class="relative w-full h-auto max-w-[960px] col-start-1 row-start-1 ml-10"
+    >
+      <Image
+        src={logoOutline}
+        alt=""
+        class="absolute"
+        data-logo-outline
+        format="webp"
+        quality="mid"
+        loading="eager"
+        decoding="async"
+      />
+      <Image
+        src={logoGradient}
+        alt="Логотип с обводкой текста и градиентом"
+        data-logo-full
+        format="webp"
+        quality="mid"
+        loading="eager"
+        decoding="async"
+      />
+    </picture>
+    <h1
+      class="z-10 max-w-[100%] col-start-1 row-start-1 mb-2 tracking-wide whitespace-nowrap lowercase splt text-4xl-res sm:max-w-none"
+      data-hero-title
+    >
+      Дизайнер и программист
+    </h1>
+  </section>
+  <!-- Projects (Works) Section -->
+  <section id="projects" class="col-span-full mb-48 scroll-mt-56">
+    <div class="swiper">
+      <ul class="swiper-wrapper">
+        {projectEntries.map((projectEntry) => <ProjectCard {projectEntry} />)}
+      </ul>
+    </div>
+    <div class="swiper-pagination"></div>
+  </section>
+  <!-- About Section -->
+  <EvenColumns id="about">
+    <AboutCard
+      slot="left-col"
+      heading="Как Фрилансер"
+      paragraph="Помогаю малому и среднему бизнесу лучше донести свои идеи до клиентов и улучшить результаты, оптимизируя проекты с учетом удобства использования."
+    />
+    <ul slot="left-col" class="flex flex-row gap-10">
+      <StatsCounter data="60" description="выполненных проектов" />
+      <StatsCounter data="38" description="положительных отзывов" />
+    </ul>
+    <AboutCard
+      slot="right-col"
+      heading="Как Дизайнер"
+      paragraph="Создаю стильные и минималистичные дизайны для сайтов и интерфейсов. Забочусь не только о красивом внешнем виде, но и о том, чтобы сайт был удобным и легко реализуемым."
+    />
+    <AboutCard
+      slot="right-col"
+      heading="Как Разработчик"
+      paragraph="Забочусь о правильности кода и удобстве просмотра сайта на разных устройствах. Пишу HTML-код так, чтобы его было легко читать и поддерживать, используя методику BEM."
+    />
+  </EvenColumns>
+  <!-- Articles Section -->
+  <section
+    id="articles"
+    class="col-span-full grid grid-cols-subgrid mt-32 mb-52 scroll-mt-56 grid-rows-1 *:row-start-1"
+  >
+    <h2 class="col-start-1 pt-[41px] text-2xl font-semibold">Статьи</h2>
+    <ul
+      class="col-span-full grid grid-cols-subgrid hover:text-dark-pink transition duration-800 ease-custom"
+    >
+      {articleEntries.map((articleEntry) => <ArticleCard {articleEntry} />)}
+    </ul>
+  </section>
+  <!-- Services Section -->
+  <!-- <EvenColumns id="order">
+    <h2
+      slot="left-col"
+      class="mb-4 font-serif text-4xl leading-none tracking-wide text-pretty"
+    >
+      Хотите создать сайт?
+    </h2>
+    <p
+      slot="left-col"
+      class="flex mb-6 prose prose-pink grow text-lg font-medium leading-relaxed"
+    >
+      Узнайте тарифы, просмотрите реальные работы и отзывы. Напишите о том, что
+      хотите видеть в Вашем новом проекте.
+    </p>
+    <ul slot="left-col" class="mb-2 divide-y divide-dark-pink">
+      <ServicesCard
+        title="Дизайн"
+        services={["Адаптивный дизайн", "Прототип", "Анимации"]}
+      />
+      <ServicesCard
+        title="Разработка"
+        services={[
+          "Верстка страницы",
+          "Исправление верстки",
+          "Кастомизация WooCommerce",
+          "Верстка WordPress",
+        ]}
+      />
+    </ul>
+    <!-- Order Button -->
+  <!-- <Button
+      slot="left-col"
+      link="https://kwork.ru/user/sstudios?ref=2034962"
+      text="Узнать подробнее"
+    /> -->
+  <!-- Order Image -->
+  <!-- <Image
+      slot="right-col"
+      src={orderImage}
+      alt=""
+      format="webp"
+      quality="mid"
+      loading="lazy"
+      decoding="async"
+      class="md:aspect-[3/4] h-full object-cover object-left rounded-md"
+      data-img
+    />
+  </EvenColumns> -->
+</BaseLayout>
+
+<style>
+  .swiper-pagination {
+    --swiper-pagination-color: #f97b7f;
+    --swiper-pagination-bullet-inactive-color: var(--swiper-pagination-color);
+    --swiper-pagination-bullet-inactive-opacity: 0.3;
+    --swiper-pagination-bullet-width: 16px;
+    --swiper-pagination-bullet-height: 1px;
+    @apply static pt-6;
+  }
+</style>
+
+<script src="../scripts/animateHomePage.js"></script>
+<!-- <script src="../scripts/highlightNavLink.js"></script> -->
+<script src="../scripts/animateCounter.js"></script>
+<script src="../scripts/projectSlider.js"></script>
+<script src="../scripts/scrollProgress.js"></script>

@@ -1,0 +1,21 @@
+---
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props as Props;
+---
+
+<section
+  id={id}
+  class="col-span-full grid grid-cols-subgrid xl:*:pr-5 scroll-mt-56"
+>
+  <div
+    class="xl:col-start-3 col-span-3 flex flex-col md:basis-1/2 md:mb-0 mb-8"
+  >
+    <slot name="left-col" class="w-full" />
+  </div>
+  <div class="col-span-3 flex flex-col md:basis-1/2">
+    <slot name="right-col" />
+  </div>
+</section>

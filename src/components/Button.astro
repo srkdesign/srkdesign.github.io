@@ -1,0 +1,20 @@
+---
+interface Props {
+  link: string;
+  text: string;
+}
+
+const { link, text } = Astro.props as Props;
+---
+
+<a
+  href={link}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group relative overflow-clip rounded-3xl w-fit self-center lg:self-start px-6 py-2 text-large uppercase font-semibold z-50
+      before:content-[''] before:absolute before:inset-0 before:bg-dark-blue before:[clip-path:circle(0%_at_50%_50%)] before:-z-10 before:transition-[clip-path] before:duration-300 before:ease-custom before:mix-blend-hue
+      hover:before:[clip-path:circle(70%_at_50%_50%)] before:rounded-3xl
+      after:content-[''] after:absolute after:inset-0 after:bg-pink after:-z-20 after:rounded-3xl"
+>
+  <span class="text-dark-blue">{text}</span>
+</a>

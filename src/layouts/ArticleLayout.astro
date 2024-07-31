@@ -1,0 +1,38 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Tag from "../components/Tag.astro";
+
+import { formatDate } from "../scripts/utils";
+
+const { frontmatter } = Astro.props;
+const { title, description, tags, publishDate } = frontmatter;
+---
+
+<BaseLayout title=`${title} - SRK Creates`>
+  <div id="preloader" class="absolute inset-0 z-50 w-100 h-dvh bg-dark-blue">
+  </div>
+  <div
+    class="fixed inset-0 z-50 w-full h-0.5 mb-2 origin-left bg-dark-pink"
+    id="scroll-progress"
+  >
+  </div>
+  <main>
+    <section id="hero" class="mt-24 mb-8">
+      <h1 class="mb-8 text-4xl font-semibold splt">{title}</h1>
+      <ul
+        class="flex flex-wrap gap-3 p-0 m-0 mb-4 text-base lowercase list-none"
+        id="tags"
+      >
+        {tags.map((tag) => <Tag content={tag} />)}
+      </ul>
+    </section>
+    <section
+      id="content"
+      class="flex flex-col items-center mb-32 prose prose-pink text-lg md:max-w-none prose-img:rounded-md prose-img:first-of-type:mt-0 prose-img:mb-0 prose-headings:[width:min(100%,_42rem)] prose-headings:pt-4 prose-p:mb-3"
+    >
+      <slot />
+    </section>
+  </main>
+</BaseLayout>
+
+<script src="../scripts/animateProjectPage.js"></script>

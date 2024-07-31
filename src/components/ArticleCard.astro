@@ -1,0 +1,41 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import Tag from "../components/Tag.astro";
+import { formatDate } from "../scripts/utils";
+import Button from "./Button.astro";
+
+const { articleEntry } = Astro.props;
+const { title, description, tags, publishDate } = articleEntry.data;
+---
+
+<li
+  class="col-span-full grid grid-cols-subgrid w-full border-t xl:first:*:pt-0 first:*:pt-16 last:border-b pt-10 pb-4 hover:text-pink transition duration-800 ease-custom"
+>
+  <article
+    class="col-span-full md:grid md:grid-cols-subgrid place-items-baseline"
+  >
+    <!-- Left Col -->
+    <div class="xl:col-start-3 col-span-3 flex flex-col mb-8 md:mb-0">
+      <p
+        class="col-start-1 text-lg text-dark-pink mb-4 whitespace-break-spaces"
+      >
+        {formatDate(publishDate)}
+      </p>
+      <ul
+        class="flex flex-wrap gap-3 p-0 m-0 text-base lowercase list-none"
+        id="tags"
+      >
+        {tags.map((tag: any) => <Tag content={tag} />)}
+      </ul>
+    </div>
+    <!-- Center Col -->
+    <a class="col-span-5">
+      <h3 class="text-2xl font-semibold mb-4">{title}</h3>
+      <p class="text-lg font-medium leading-relaxed mb-8">
+        {description}
+      </p>
+      <!-- <Button link={`/article/${articleEntry.slug}/`} text="Перейти к статье" /> -->
+    </a>
+  </article>
+</li>

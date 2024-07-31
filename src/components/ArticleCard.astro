@@ -1,9 +1,6 @@
 ---
-import type { ImageMetadata } from "astro";
-import { Image } from "astro:assets";
 import Tag from "../components/Tag.astro";
 import { formatDate } from "../scripts/utils";
-import Button from "./Button.astro";
 
 const { articleEntry } = Astro.props;
 const { title, description, tags, publishDate } = articleEntry.data;

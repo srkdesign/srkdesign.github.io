@@ -23,7 +23,7 @@ const { title, description, tags, publishDate } = frontmatter;
         class="flex flex-wrap gap-3 p-0 m-0 mb-4 text-base lowercase list-none"
         id="tags"
       >
-        {tags.map((tag) => <Tag content={tag} />)}
+        {tags.map((tag: any) => <Tag content={tag} />)}
       </ul>
     </section>
     <section

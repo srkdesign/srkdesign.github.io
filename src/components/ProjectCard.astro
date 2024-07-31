@@ -41,6 +41,6 @@ if (!images[coverImage.src])
     </h2>
   </a>
   <ul class="flex flex-wrap gap-3 text-xs sm:text-base lowercase mb-2">
-    {tags.map((tag) => <Tag content={tag} />)}
+    {tags.map((tag: any) => <Tag content={tag} />)}
   </ul>
 </li>

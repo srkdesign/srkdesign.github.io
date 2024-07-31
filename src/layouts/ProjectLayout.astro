@@ -39,7 +39,7 @@ const { title, tags, stack, amountOfWork, duration, publishDate } = frontmatter;
       class="col-span-full flex flex-wrap gap-3 p-0 m-0 mb-4 text-base lowercase list-none"
       id="tags"
     >
-      {tags.map((tag) => <Tag content={tag} />)}
+      {tags.map((tag: any) => <Tag content={tag} />)}
     </ul>
   </section>
   <!-- Markdown Section -->

@@ -117,7 +117,7 @@ const articleEntries = (await getCollection("article")).sort(
   >
     <div class="grid col-span-full grid-cols-subgrid">
       <h2
-        class="mb-6 font-serif text-4xl font-semibold leading-6 tracking-wide col-span-full"
+        class="mb-6 font-serif text-4xl font-semibold leading-relaxed tracking-wide col-span-full"
       >
         Нужен сайт?
       </h2>
@@ -128,7 +128,9 @@ const articleEntries = (await getCollection("article")).sort(
         о том,что хотите видеть в Вашем новом проекте.
       </p>
     </div>
-    <ul class="col-span-full grid grid-cols-subgrid *:col-span-3 gap-5">
+    <ul
+      class="col-span-full grid grid-cols-subgrid *:col-span-3 *:row-span-1 gap-5"
+    >
       <ServicesCard
         title="Дизайн"
         price="1000"

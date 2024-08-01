@@ -105,7 +105,7 @@ const articleEntries = (await getCollection("article")).sort(
   >
     <h2 class="col-start-1 pt-[41px] text-2xl font-semibold">Статьи</h2>
     <ul
-      class="grid col-span-full grid-cols-subgrid hover:text-dark-pink hover:transition-colors hover:duration-300 hover:ease-in-out"
+      class="grid col-span-full md:grid-cols-subgrid hover:text-dark-pink hover:transition-colors hover:duration-300 hover:ease-in-out"
     >
       {articleEntries.map((articleEntry) => <ArticleCard {articleEntry} />)}
     </ul>
@@ -115,9 +115,9 @@ const articleEntries = (await getCollection("article")).sort(
     id="services"
     class="col-span-full grid grid-cols-subgrid xl:*:col-start-3 mb-52"
   >
-    <div class="grid col-span-full grid-cols-subgrid">
+    <div class="md:grid col-span-full md:grid-cols-subgrid">
       <h2
-        class="mb-6 font-serif text-4xl font-semibold leading-relaxed tracking-wide col-span-full"
+        class="mb-4 font-serif text-4xl font-semibold leading-relaxed tracking-wide col-span-full"
       >
         Нужен сайт?
       </h2>

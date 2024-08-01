@@ -7,7 +7,7 @@ const { title, description, tags, publishDate } = articleEntry.data;
 ---
 
 <li
-  class="col-span-full grid grid-cols-subgrid w-full border-t xl:first:*:pt-0 first:*:pt-16 last:border-b pt-10 pb-4 hover:text-pink transition-all duration-300 ease-linear"
+  class="col-span-full grid grid-cols-subgrid w-full border-t xl:first:*:pt-0 xl:first:pt-10 first:pt-24 last:border-b pt-10 pb-4 hover:text-pink transition-all duration-300 ease-linear"
 >
   <article
     class="col-span-full md:grid md:grid-cols-subgrid place-items-baseline"
@@ -20,7 +20,7 @@ const { title, description, tags, publishDate } = articleEntry.data;
         {formatDate(publishDate)}
       </p>
       <ul
-        class="flex flex-wrap gap-3 p-0 m-0 text-base lowercase list-none"
+        class="flex flex-wrap gap-4 p-0 m-0 text-base lowercase list-none"
         id="tags"
       >
         {tags.map((tag: any) => <Tag content={tag} />)}

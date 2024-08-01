@@ -34,7 +34,7 @@ const articleEntries = (await getCollection("article")).sort(
   <!-- Hero Section -->
   <section
     id="hero"
-    class="col-span-full grid items-center mt-32 mb-36 font-serif group place-items-center"
+    class="grid items-center mt-32 font-serif col-span-full mb-36 group place-items-center"
   >
     <picture
       id="logo"
@@ -68,7 +68,7 @@ const articleEntries = (await getCollection("article")).sort(
     </h1>
   </section>
   <!-- Projects (Works) Section -->
-  <section id="projects" class="col-span-full mb-48 scroll-mt-56">
+  <section id="projects" class="mb-48 col-span-full scroll-mt-56">
     <div class="swiper">
       <ul class="swiper-wrapper">
         {projectEntries.map((projectEntry) => <ProjectCard {projectEntry} />)}
@@ -84,8 +84,8 @@ const articleEntries = (await getCollection("article")).sort(
       paragraph="Помогаю малому и среднему бизнесу лучше донести свои идеи до клиентов и улучшить результаты, оптимизируя проекты с учетом удобства использования."
     />
     <ul slot="left-col" class="flex flex-row gap-10">
-      <StatsCounter data="60" description="выполненных проектов" />
-      <StatsCounter data="38" description="положительных отзывов" />
+      <StatsCounter data="63" description="выполненных проектов" />
+      <StatsCounter data="39" description="положительных отзывов" />
     </ul>
     <AboutCard
       slot="right-col"
@@ -105,60 +105,46 @@ const articleEntries = (await getCollection("article")).sort(
   >
     <h2 class="col-start-1 pt-[41px] text-2xl font-semibold">Статьи</h2>
     <ul
-      class="col-span-full grid grid-cols-subgrid hover:text-dark-pink transition duration-800 ease-custom"
+      class="grid col-span-full grid-cols-subgrid hover:text-dark-pink hover:transition-colors hover:duration-300 hover:ease-in-out"
     >
       {articleEntries.map((articleEntry) => <ArticleCard {articleEntry} />)}
     </ul>
   </section>
   <!-- Services Section -->
-  <!-- <EvenColumns id="order">
-    <h2
-      slot="left-col"
-      class="mb-4 font-serif text-4xl leading-none tracking-wide text-pretty"
-    >
-      Хотите создать сайт?
-    </h2>
-    <p
-      slot="left-col"
-      class="flex mb-6 prose prose-pink grow text-lg font-medium leading-relaxed"
-    >
-      Узнайте тарифы, просмотрите реальные работы и отзывы. Напишите о том, что
-      хотите видеть в Вашем новом проекте.
-    </p>
-    <ul slot="left-col" class="mb-2 divide-y divide-dark-pink">
+  <section
+    id="services"
+    class="col-span-full grid grid-cols-subgrid xl:*:col-start-3 mb-52"
+  >
+    <div class="grid col-span-full grid-cols-subgrid">
+      <h2
+        class="mb-6 font-serif text-4xl font-semibold leading-6 tracking-wide col-span-full"
+      >
+        Нужен сайт?
+      </h2>
+      <p
+        class="col-span-3 mb-16 text-lg font-medium leading-relaxed prose prose-pink"
+      >
+        Узнайте тарифы, просмотрите реальные работы и отзывы. Напишите
+        о том,что хотите видеть в Вашем новом проекте.
+      </p>
+    </div>
+    <ul class="col-span-full grid grid-cols-subgrid *:col-span-3 gap-5">
       <ServicesCard
         title="Дизайн"
-        services={["Адаптивный дизайн", "Прототип", "Анимации"]}
+        price="1000"
+        description="Создание макета и общей стилистики, подбор цветов и шрифтов сайта."
+        services={["Адаптивный дизайн", "Анимации", "Макет в Figma"]}
+        link="https://kwork.ru/web-plus-mobile-design/25147949/sozdanie-dizayna-stranitsy-sayta-internet-magazina-lendinga-v-figma?ref=2034962"
       />
       <ServicesCard
-        title="Разработка"
-        services={[
-          "Верстка страницы",
-          "Исправление верстки",
-          "Кастомизация WooCommerce",
-          "Верстка WordPress",
-        ]}
+        title="Дизайн + Верстка"
+        price="1500"
+        description="Комплексное решение для тех, кому нужен сайт с 0 без заморочек."
+        services={["Дизайн сайта в Figma", "Верстка Elementor / WordPress"]}
+        link="https://kwork.ru/web-plus-mobile-design/3588053/sozdanie-dizayna-stranitsy-sayta-na-wordpress?ref=2034962"
       />
     </ul>
-    <!-- Order Button -->
-  <!-- <Button
-      slot="left-col"
-      link="https://kwork.ru/user/sstudios?ref=2034962"
-      text="Узнать подробнее"
-    /> -->
-  <!-- Order Image -->
-  <!-- <Image
-      slot="right-col"
-      src={orderImage}
-      alt=""
-      format="webp"
-      quality="mid"
-      loading="lazy"
-      decoding="async"
-      class="md:aspect-[3/4] h-full object-cover object-left rounded-md"
-      data-img
-    />
-  </EvenColumns> -->
+  </section>
 </BaseLayout>
 
 <style>
@@ -168,12 +154,11 @@ const articleEntries = (await getCollection("article")).sort(
     --swiper-pagination-bullet-inactive-opacity: 0.3;
     --swiper-pagination-bullet-width: 16px;
     --swiper-pagination-bullet-height: 1px;
-    @apply static pt-6;
+    @apply static pt-4;
   }
 </style>
 
 <script src="../scripts/animateHomePage.js"></script>
-<!-- <script src="../scripts/highlightNavLink.js"></script> -->
 <script src="../scripts/animateCounter.js"></script>
 <script src="../scripts/projectSlider.js"></script>
 <script src="../scripts/scrollProgress.js"></script>

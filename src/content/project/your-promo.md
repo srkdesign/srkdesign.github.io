@@ -1,12 +1,12 @@
 ---
 layout: "../../layouts/ProjectLayout.astro"
-title: Art of Smile
-coverImage: { src: "/src/assets/art-of-smile-cover.jpg", alt: "Alt Text" }
+title: Your Promo
+coverImage: { src: "/src/assets/your-promo-cover.jpg", alt: "Alt Text" }
 tags: ["Дизайн сайта", "Адаптивный дизайн"]
-stack: ["Figma"]
-amountOfWork: 4 страницы
-duration: около 2 недель
-publishDate: 2023-03-16
+stack: ["Figma", " NextUi"]
+amountOfWork: 42 страницы
+duration: 1.5 месяца
+publishDate: 2024-06-11
 ---
 
 ![Превью главной страницы сайта стоматологической клиники в двух скриншотах на сером фоне, показывающее большую часть блоков](../../assets/images/art-of-smile/hero.jpg)

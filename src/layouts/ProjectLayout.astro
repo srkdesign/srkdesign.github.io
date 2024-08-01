@@ -18,9 +18,9 @@ const { title, tags, stack, amountOfWork, duration, publishDate } = frontmatter;
   >
   </div>
   <!-- Hero Section -->
-  <section id="hero" class="col-span-full grid grid-cols-subgrid mt-24 mb-8">
-    <h1 class="col-span-full mb-8 text-4xl font-semibold splt">{title}</h1>
-    <ul class="col-span-full grid grid-cols-subgrid gap-10 mb-10" id="stats">
+  <section id="hero" class="grid mt-24 mb-8 col-span-full grid-cols-subgrid">
+    <h1 class="mb-8 text-4xl font-semibold col-span-full splt">{title}</h1>
+    <ul class="grid gap-10 mb-10 col-span-full grid-cols-subgrid" id="stats">
       {
         [
           ["Инструменты", `${stack}`],
@@ -30,13 +30,13 @@ const { title, tags, stack, amountOfWork, duration, publishDate } = frontmatter;
         ].map(([heading, content]) => (
           <li class="col-span-2">
             <h2 class="mb-1 text-lg font-bold">{heading}</h2>
-            <p class="leading-normal max-w-64">{content}</p>
+            <p class="leading-normal">{content}</p>
           </li>
         ))
       }
     </ul>
     <ul
-      class="col-span-full flex flex-wrap gap-3 p-0 m-0 mb-4 text-base lowercase list-none"
+      class="flex flex-wrap gap-3 p-0 m-0 mb-4 text-base lowercase list-none col-span-full"
       id="tags"
     >
       {tags.map((tag: any) => <Tag content={tag} />)}

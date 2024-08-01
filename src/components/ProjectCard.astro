@@ -15,7 +15,7 @@ if (!images[coverImage.src])
   );
 ---
 
-<li class="swiper-slide group flex flex-col mb-4 lg:mb-0">
+<li class="flex flex-col mb-4 swiper-slide group lg:mb-0">
   <a href={`/project/${projectEntry.slug}/`} class="block">
     <picture
       class="relative block w-full h-auto mb-6 rounded-md overflow-hidden cursor-[url(/cursor.svg),_pointer]"
@@ -36,11 +36,11 @@ if (!images[coverImage.src])
         data-img
       />
     </picture>
-    <h2 class="mb-4 text-2xl font-semibold capitalize leading-6">
+    <h2 class="mb-4 text-2xl font-semibold leading-6 capitalize">
       {title}
     </h2>
   </a>
-  <ul class="flex flex-wrap gap-3 text-xs sm:text-base lowercase mb-2">
+  <ul class="flex flex-wrap gap-3 mb-2 text-xs lowercase sm:text-base">
     {tags.map((tag: any) => <Tag content={tag} />)}
   </ul>
 </li>

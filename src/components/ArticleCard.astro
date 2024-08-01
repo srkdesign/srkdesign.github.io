@@ -7,15 +7,15 @@ const { title, description, tags, publishDate } = articleEntry.data;
 ---
 
 <li
-  class="col-span-full grid grid-cols-subgrid w-full border-t xl:first:*:pt-0 first:*:pt-16 last:border-b pt-10 pb-4 hover:text-pink transition duration-800 ease-custom"
+  class="col-span-full grid grid-cols-subgrid w-full border-t xl:first:*:pt-0 first:*:pt-16 last:border-b pt-10 pb-4 hover:text-pink transition-all duration-300 ease-linear"
 >
   <article
     class="col-span-full md:grid md:grid-cols-subgrid place-items-baseline"
   >
     <!-- Left Col -->
-    <div class="xl:col-start-3 col-span-3 flex flex-col mb-8 md:mb-0">
+    <div class="flex flex-col col-span-3 mb-8 xl:col-start-3 xl:mb-0">
       <p
-        class="col-start-1 text-lg text-dark-pink mb-4 whitespace-break-spaces"
+        class="col-start-1 mb-4 text-lg text-dark-pink whitespace-break-spaces"
       >
         {formatDate(publishDate)}
       </p>
@@ -26,10 +26,10 @@ const { title, description, tags, publishDate } = articleEntry.data;
         {tags.map((tag: any) => <Tag content={tag} />)}
       </ul>
     </div>
-    <!-- Center Col -->
+    <!-- Right Col -->
     <a class="col-span-5">
-      <h3 class="text-2xl font-semibold mb-4">{title}</h3>
-      <p class="text-lg font-medium leading-relaxed mb-8">
+      <h3 class="mb-4 text-2xl font-semibold">{title}</h3>
+      <p class="mb-8 text-lg font-medium leading-relaxed">
         {description}
       </p>
       <!-- <Button link={`/article/${articleEntry.slug}/`} text="Перейти к статье" /> -->

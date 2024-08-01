@@ -23,9 +23,9 @@ import navLogo from "../assets/logo/nav-logo.png";
           ["Работы", "projects"],
           ["Профиль", "about"],
           ["Статьи", "articles"],
-          // ["Заказать сайт", "order"],
+          ["Заказать сайт", "services"],
         ].map(([title, url]) => (
-          <li class="whitespace-nowrap relative">
+          <li class="relative whitespace-nowrap">
             <a
               href={`/#${url}`}
               class="block px-5 pt-1 pb-1.5 lowercase rounded-2xl border border-dark-blue/10 transition-all  z-50"
@@ -33,7 +33,7 @@ import navLogo from "../assets/logo/nav-logo.png";
               {title}
             </a>
             <div
-              class="absolute inset-0 w-[97%] h-full bg-transparent rounded-3xl border border-pink -z-10"
+              class="absolute inset-0 w-[99%] h-full bg-transparent rounded-3xl border border-pink -z-10"
               id={`${url}-progress`}
             />
           </li>

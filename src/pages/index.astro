@@ -38,7 +38,7 @@ const articleEntries = (await getCollection("article")).sort(
   >
     <picture
       id="logo"
-      class="relative w-full h-auto max-w-[960px] col-start-1 row-start-1 ml-10"
+      class="relative w-full h-auto max-w-[960px] col-start-1 row-start-1 md:ml-10"
     >
       <Image
         src={logoOutline}
@@ -129,7 +129,7 @@ const articleEntries = (await getCollection("article")).sort(
       </p>
     </div>
     <ul
-      class="col-span-full grid grid-cols-subgrid *:col-span-3 *:row-span-1 gap-5"
+      class="col-span-full grid md:grid-cols-subgrid *:col-span-3 *:row-span-1 gap-5"
     >
       <ServicesCard
         title="Дизайн"

@@ -65,7 +65,10 @@ const articleEntries = (await getCollection("article")).sort(
     </h1>
   </section>
   <!-- Projects (Works) Section -->
-  <section id="projects" class="mb-48 col-span-full scroll-mt-56">
+  <section
+    id="projects"
+    class="grid grid-cols-subgrid mb-48 col-span-full scroll-mt-56 w-full"
+  >
     <div class="swiper">
       <ul class="swiper-wrapper">
         {projectEntries.map((projectEntry) => <ProjectCard {projectEntry} />)}
@@ -144,20 +147,20 @@ const articleEntries = (await getCollection("article")).sort(
       />
     </ul>
   </section>
+
+  <style>
+    .swiper-pagination {
+      --swiper-pagination-color: #f97b7f;
+      --swiper-pagination-bullet-inactive-color: var(--swiper-pagination-color);
+      --swiper-pagination-bullet-inactive-opacity: 0.3;
+      --swiper-pagination-bullet-width: 16px;
+      --swiper-pagination-bullet-height: 1px;
+      @apply static pt-4;
+    }
+  </style>
+
+  <script src="../scripts/animateHomePage.js"></script>
+  <script src="../scripts/animateCounter.js"></script>
+  <!-- <script src="../scripts/projectSlider.js"></script> -->
+  <script src="../scripts/scrollProgress.js"></script>
 </BaseLayout>
-
-<style>
-  .swiper-pagination {
-    --swiper-pagination-color: #f97b7f;
-    --swiper-pagination-bullet-inactive-color: var(--swiper-pagination-color);
-    --swiper-pagination-bullet-inactive-opacity: 0.3;
-    --swiper-pagination-bullet-width: 16px;
-    --swiper-pagination-bullet-height: 1px;
-    @apply static pt-4;
-  }
-</style>
-
-<script src="../scripts/animateHomePage.js"></script>
-<script src="../scripts/animateCounter.js"></script>
-<script src="../scripts/projectSlider.js"></script>
-<script src="../scripts/scrollProgress.js"></script>

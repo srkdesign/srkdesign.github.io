@@ -16,9 +16,9 @@ if (!images[coverImage.src])
 ---
 
 <li class="flex flex-col mb-4 swiper-slide group lg:mb-0">
-  <a href={`/project/${projectEntry.slug}/`} class="block">
+  <a href={`/project/${projectEntry.slug}/`} class="grid">
     <picture
-      class="relative block w-full h-auto mb-6 rounded-md overflow-hidden cursor-[url(/cursor.svg),_pointer]"
+      class="relative block w-full h-auto mb-6 rounded-md overflow-hidden cursor-[url(/cursor.svg),_pointer] max-w-[360px]"
     >
       <div
         class="absolute z-[100] w-full h-full bg-dark-blue mix-blend-color"

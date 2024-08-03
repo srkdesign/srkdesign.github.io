@@ -28,15 +28,18 @@ const articleEntries = (await getCollection("article")).sort(
 );
 ---
 
-<BaseLayout title="srkdesign.dev" type="website">
+<BaseLayout title="srkdesign.dev">
   <div id="preloader" class="absolute inset-0 z-50 w-100 h-dvh bg-dark-blue">
   </div>
   <!-- Hero Section -->
   <section
     id="hero"
-    class="grid grid-cols-subgrid items-center mt-32 font-serif col-span-6 mb-36 group place-items-center xl:col-start-3 *:row-start-1 *:col-span-full sm:pr-5 sm:pl-10"
+    class="grid items-center mt-32 font-serif col-span-full mb-36 group place-items-center"
   >
-    <picture id="logo" class="relative col-span-full">
+    <picture
+      id="logo"
+      class="relative w-full h-auto max-w-[960px] col-start-1 row-start-1 md:ml-10"
+    >
       <Image
         src={logoOutline}
         alt=""
@@ -58,17 +61,14 @@ const articleEntries = (await getCollection("article")).sort(
       />
     </picture>
     <h1
-      class="z-10 mb-2 tracking-wider whitespace-nowrap lowercase splt text-4xl-res sm:max-w-none"
+      class="z-10 max-w-[100%] col-start-1 row-start-1 mb-2 tracking-wide whitespace-nowrap lowercase splt text-4xl-res sm:max-w-none"
       data-hero-title
     >
       Дизайнер и программист
     </h1>
   </section>
   <!-- Projects (Works) Section -->
-  <section
-    id="projects"
-    class="grid grid-cols-subgrid mb-48 col-span-full scroll-mt-56 w-full"
-  >
+  <section id="projects" class="mb-48 col-span-full scroll-mt-56">
     <div class="swiper">
       <ul class="swiper-wrapper">
         {projectEntries.map((projectEntry) => <ProjectCard {projectEntry} />)}
@@ -105,7 +105,7 @@ const articleEntries = (await getCollection("article")).sort(
   >
     <h2 class="col-start-1 pt-[41px] text-2xl font-semibold">Статьи</h2>
     <ul
-      class="grid col-span-full md:grid-cols-subgrid hover:text-dark-pink hover:transition-colors hover:duration-200 hover:ease-in-out"
+      class="grid col-span-full md:grid-cols-subgrid hover:text-dark-pink hover:transition-colors hover:duration-300 hover:ease-in-out"
     >
       {articleEntries.map((articleEntry) => <ArticleCard {articleEntry} />)}
     </ul>
@@ -147,20 +147,20 @@ const articleEntries = (await getCollection("article")).sort(
       />
     </ul>
   </section>
-
-  <style>
-    .swiper-pagination {
-      --swiper-pagination-color: #f97b7f;
-      --swiper-pagination-bullet-inactive-color: var(--swiper-pagination-color);
-      --swiper-pagination-bullet-inactive-opacity: 0.3;
-      --swiper-pagination-bullet-width: 16px;
-      --swiper-pagination-bullet-height: 1px;
-      @apply static pt-4;
-    }
-  </style>
-
-  <script src="../scripts/animateHomePage.js"></script>
-  <script src="../scripts/animateCounter.js"></script>
-  <!-- <script src="../scripts/projectSlider.js"></script> -->
-  <script src="../scripts/scrollProgress.js"></script>
 </BaseLayout>
+
+<style>
+  .swiper-pagination {
+    --swiper-pagination-color: #f97b7f;
+    --swiper-pagination-bullet-inactive-color: var(--swiper-pagination-color);
+    --swiper-pagination-bullet-inactive-opacity: 0.3;
+    --swiper-pagination-bullet-width: 16px;
+    --swiper-pagination-bullet-height: 1px;
+    @apply static pt-4;
+  }
+</style>
+
+<script src="../scripts/animateHomePage.js"></script>
+<script src="../scripts/animateCounter.js"></script>
+<script src="../scripts/projectSlider.js"></script>
+<script src="../scripts/scrollProgress.js"></script>

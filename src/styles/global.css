@@ -40,7 +40,7 @@
 
 ::selection {
   color: #263d58;
-  background-color: #71abef;
+  background-color: #71ABEF;
 }
 
 ::-webkit-scrollbar {
@@ -82,8 +82,4 @@ html.lenis {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
-}
-
-.swiper-slide {
-  width: fit-content;
 }

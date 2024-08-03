@@ -30,7 +30,7 @@ const { title, price, description, link, services } = Astro.props;
     <p class="mb-20 text-lg font-medium leading-relaxed prose prose-pink grow">
       {description}
     </p>
-    <ul class="flex flex-wrap gap-3 lowercase">
+    <ul class="flex flex-wrap gap-4 lowercase">
       {services.map((service) => <Tag content={service} />)}
     </ul>
   </a>

@@ -1,14 +1,14 @@
 ---
 layout: "../../layouts/ProjectLayout.astro"
 title: Nova Prom
-coverImage: { src: "/src/assets/nova-prom-cover.jpg", alt: "Alt Text" }
+coverImage: { src: "/src/assets/nsea-cover.jpeg", alt: "Alt Text" }
 tags:
   ["Дизайн сайта", "Верстка страницы", "Настройка темы", "Адаптивный дизайн"]
 stack:
   ["Figma", " Wordpress", " Woocommerce", " Slider Revolution 6", " Elementor"]
 amountOfWork: 4 страницы
 duration: около 2 недель
-publishDate: 2024-03-18
+publishDate: 2024-06-18
 ---
 
 ![Превью страниц интернет-магазина промышленного компьютерного оборудования в нескольких скриншотах на сером фоне, показывающее большую часть блоков с футуристичными, технологичными формами изображений, представляющие собой изогнутые прямоугольными](../../assets/images/nova-prom/hero.jpg)

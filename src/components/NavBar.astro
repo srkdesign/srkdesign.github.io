@@ -1,21 +1,20 @@
----
-import { Image } from "astro:assets";
-import navLogo from "../assets/logo/nav-logo.png";
----
-
-<!-- <div class="fixed inset-0 bg-dark-pink w-full h-0.5 z-50 mb-2"></div> -->
-<header class="sticky top-0 z-50 w-full backdrop-blur-sm bg-dark-blue/95">
-  <nav class="flex items-center justify-between py-2 mx-auto text-sm" id="#nav">
-    <a
-      href="/"
-      class="block size-[72px]"
-      id="nav-logo"
-      aria-label="Логотип сайта"
-    >
-      <Image src={navLogo} alt="" format="webp" quality="mid" />
-    </a>
+<header
+  class="sticky top-0 z-50 w-full backdrop-blur-sm bg-dark-blue/95 grid grid-cols-subgrid col-span-full py-2"
+>
+  <a
+    href="/"
+    class="col-start-1 block size-[72px]"
+    id="nav-logo"
+    aria-label="Логотип сайта"
+  >
+    <div id="logo"></div>
+  </a>
+  <nav
+    class="col-start-7 col-span-4 flex py-2 text-sm items-center w-full"
+    id="nav"
+  >
     <ul
-      class="flex flex-row gap-8 pb-2 overflow-x-scroll md:pb-0 md:overflow-x-hidden"
+      class="flex flex-row pb-2 overflow-x-scroll md:pb-0 md:overflow-x-hidden w-full justify-between"
       id="nav-list"
     >
       {
@@ -23,6 +22,7 @@ import navLogo from "../assets/logo/nav-logo.png";
           ["Работы", "projects"],
           ["Профиль", "about"],
           ["Статьи", "articles"],
+          // ["Обучающие курсы", "courses"],
           ["Заказать сайт", "services"],
         ].map(([title, url]) => (
           <li class="relative whitespace-nowrap">
@@ -40,17 +40,41 @@ import navLogo from "../assets/logo/nav-logo.png";
         ))
       }
     </ul>
-    <!-- <button
-      id="hamburger-menu"
-      class="relative w-6 h-4 bg-transparent cursor-pointer md:hidden"
-    >
-      {
-        [["translate-y-[-7px]"], [""], ["translate-y-[7px]"]].map(
-          ([styles]) => (
-            <span class={`absolute left-0 w-full h-px bg-pink ${styles}`} />
-          )
-        )
-      }
-    </button> -->
   </nav>
 </header>
+
+<script>
+  import lottie from "lottie-web";
+
+  const container = document.getElementById("logo")!;
+  const logoPath = "/src/assets/logo-animation.json";
+  const playSegment = [0, 75];
+  const stopSegment = [76, 119];
+
+  let isAnimationPlaying = false;
+
+  // Initialize the Lottie animation
+  const logoAnimation = lottie.loadAnimation({
+    container,
+    renderer: "svg",
+    loop: false,
+    autoplay: false,
+    path: logoPath,
+  });
+
+  // Function to play or pause animation based on the segment
+  const controlAnimation = (segment: Array<any>, isPlaying: boolean) => {
+    if (isPlaying !== isAnimationPlaying) {
+      logoAnimation.playSegments(segment, true);
+      isAnimationPlaying = isPlaying;
+    }
+  };
+
+  // Event listeners
+  container.addEventListener("mouseover", () =>
+    controlAnimation(playSegment, true)
+  );
+  container.addEventListener("mouseleave", () =>
+    controlAnimation(stopSegment, false)
+  );
+</script>

@@ -5,30 +5,40 @@ import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
 interface Props {
-  title?: string;
+  title: string;
   description?: string;
+  type: string;
 }
 
 const {
-  title = "SRK Creates",
+  title = "srkdesign",
   description = "Портфолио веб-дизайнера и разработчика сайтов",
+  type = "website",
 } = Astro.props as Props;
 ---
 
 <!doctype html>
 <html lang="ru">
   <head>
+    <!-- HTML Meta Tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="description" content={description} />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <!-- <meta name="robots" content="index,nofollow" /> -->
+    <!-- OpenGraph Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="" />
+    <meta property="og:type" content={type} />
+    <meta property="og:locale" content="ru_RU" />
   </head>
   <body
-    class="p-4 md:p-5 text-pink bg-dark-blue flex flex-col min-h-screen mx-auto my-0 max-w-full overflow-x-hidden"
+    class="p-4 md:p-5 text-pink bg-dark-blue flex flex-col min-h-screen mx-auto my-0 max-w-full overflow-x-hidden md:grid xl:grid-cols-10 md:grid-cols-6 gap-5"
   >
     <NavBar />
-    <main class="md:grid xl:grid-cols-10 md:grid-cols-6 gap-5">
+    <main class="col-span-full grid grid-cols-subgrid">
       <slot />
     </main>
     <Footer />

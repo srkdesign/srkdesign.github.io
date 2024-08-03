@@ -43,11 +43,19 @@ export default {
             "--tw-prose-th-borders": theme("colors.blue"),
             "--tw-prose-td-borders": theme("colors.blue"),
             // Custom typography styling
-            "p:not(:has(img)), pre, table, blockquote": {
-              width: "min(100%, 42rem)",
+            "p:has(img)": {
+              "grid-column": "-1/1",
             },
-            "p:not(:has(img)) + p:not(:has(img)), h2 + p:not(:has(img))": {
-              margin: "0 0 1.5rem 0",
+            "p:not(:has(img)), h1, h2, h2, h4, h5, h6, pre, table, blockquote":
+              {
+                "grid-column": "4/span 4",
+              },
+            h2: {
+              width: "100%",
+              "text-align": "left",
+            },
+            "p:not(:has(img))>*": {
+              "grid-column": "-1/1",
             },
             "p:not(:has(img)) + p:has(img) img": {
               margin: "3rem 0 0 0",

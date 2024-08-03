@@ -5,14 +5,14 @@ const Preloader = document.getElementById("preloader");
 const LogoOutline = document.querySelector("[data-logo-outline]");
 const LogoFull = document.querySelector("[data-logo-full]");
 const Nav = document.querySelector("nav");
+const NavLogo = document.querySelector("#nav-logo");
 const AllImages = document.querySelectorAll("[data-img]");
-const AllImagesPlaceholders = document.querySelectorAll(
-  "[data-image-placeholder]"
-);
+const AllImageCovers = document.querySelectorAll("[data-image-cover]");
 
 // Prevent DOMContents from appearing before animation
 window.addEventListener("load", () => {
   Preloader.classList.add("hidden");
+  NavLogo.classList.remove("hidden");
 });
 
 // Init split text for h1 reveal
@@ -59,25 +59,17 @@ const AnimationSequence = [
     },
   ],
   [
-    Nav,
+    [Nav, NavLogo],
     {
       opacity: [0, 1],
       transform: ["translateY(-30%)", "translateY(0)"],
-    },
-    { at: ">" },
-  ],
-  [
-    AllImagesPlaceholders,
-    {
-      opacity: [1, 0],
-      clipPath: ["inset(0)", "inset(0 100% 0 0)"],
     },
   ],
   [
     AllImages,
     {
       opacity: [0, 1],
-      filter: ["grayscale(1)", "grayscale(0)"],
+      // filter: ["grayscale(1)", "grayscale(0)"],
       clipPath: ["inset(0 100% 0 0)", "inset(0)"],
     },
     {
@@ -117,5 +109,18 @@ AllImages.forEach((image) => {
       { easing: [0.4, 0, 0.2, 1] }
     ),
     { target: image, offset: [...ScrollOffset.Enter] }
+  );
+});
+
+AllImageCovers.forEach((cover) => {
+  scroll(
+    animate(
+      cover,
+      {
+        opacity: [1, 0],
+      },
+      { easing: [0.4, 0, 0.2, 1] }
+    ),
+    { target: cover, offset: [...ScrollOffset.Enter] }
   );
 });

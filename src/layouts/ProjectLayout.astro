@@ -8,7 +8,7 @@ const { frontmatter } = Astro.props;
 const { title, tags, stack, amountOfWork, duration, publishDate } = frontmatter;
 ---
 
-<BaseLayout title=`${title} - SRK Creates`>
+<BaseLayout title=`${title} / srkdesign.dev` type="article">
   <!-- <div id="preloader" class="absolute inset-0 z-50 w-100 h-dvh bg-dark-blue">
   </div> -->
   <!-- Scroll Progress Indicator -->
@@ -45,7 +45,7 @@ const { title, tags, stack, amountOfWork, duration, publishDate } = frontmatter;
   <!-- Markdown Section -->
   <section
     id="content"
-    class="col-span-full flex flex-col items-center prose prose-pink text-lg md:max-w-none prose-img:rounded-md prose-img:first-of-type:mt-0 prose-img:mb-0 prose-headings:[width:min(100%,_42rem)] prose-headings:pt-4 prose-p:mb-3"
+    class="grid grid-cols-subgrid col-span-full place-items-center prose prose-pink text-lg leading-relaxed prose-p:font-medium prose-img:rounded-md prose-img:mb-0 prose-headings:pt-4 prose-p:mb-2"
   >
     <slot />
   </section>

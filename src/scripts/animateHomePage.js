@@ -66,13 +66,13 @@ const AnimationSequence = [
     },
     { at: ">" },
   ],
-  [
-    AllImagesPlaceholders,
-    {
-      opacity: [1, 0],
-      clipPath: ["inset(0)", "inset(0 100% 0 0)"],
-    },
-  ],
+  // [
+  //   AllImagesPlaceholders,
+  //   {
+  //     opacity: [1, 0],
+  //     clipPath: ["inset(0)", "inset(0 100% 0 0)"],
+  //   },
+  // ],
   [
     AllImages,
     {
@@ -106,6 +106,18 @@ timeline(AnimationSequence, {
 //     { target: section, offset: [...ScrollOffset.Enter, ...ScrollOffset.Exit] }
 //   );
 // });
+
+AllImagesPlaceholders.forEach((placeholder) => {
+  scroll(
+    animate(placeholder, {
+      opacity: [1, 0],
+    }),
+    {
+      target: placeholder,
+      offset: [...ScrollOffset.Enter],
+    }
+  );
+});
 
 AllImages.forEach((image) => {
   scroll(

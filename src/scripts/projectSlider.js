@@ -5,10 +5,10 @@ import "swiper/css/bundle";
 
 const swiper = new Swiper(".swiper", {
   direction: "horizontal",
-  slidesPerView: 2,
+  slidesPerView: 1,
   spaceBetween: 20,
   autoplay: {
-    delay: 12000,
+    delay: 9000,
     pauseOnMouseEnter: true,
     disableOnInteraction: false,
   },

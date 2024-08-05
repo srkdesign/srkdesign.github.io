@@ -1,18 +1,18 @@
 ---
 import { Image } from "astro:assets";
-import navLogo from "../assets/logo/nav-logo.png";
+import NavLogo from "../components/NavLogo.astro";
 ---
 
-<!-- <div class="fixed inset-0 bg-dark-pink w-full h-0.5 z-50 mb-2"></div> -->
 <header class="sticky top-0 z-50 w-full backdrop-blur-sm bg-dark-blue/95">
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
   <nav class="flex items-center justify-between py-2 mx-auto text-sm" id="#nav">
     <a
       href="/"
-      class="block size-[72px]"
+      class="relative block size-[72px] group"
       id="nav-logo"
       aria-label="Логотип сайта"
     >
-      <Image src={navLogo} alt="" format="webp" quality="mid" />
+      <NavLogo />
     </a>
     <ul
       class="flex flex-row gap-8 pb-2 overflow-x-scroll md:pb-0 md:overflow-x-hidden"
@@ -29,6 +29,7 @@ import navLogo from "../assets/logo/nav-logo.png";
             <a
               href={`/#${url}`}
               class="block px-5 pt-1 pb-1.5 lowercase rounded-2xl border border-dark-blue/10 transition-all  z-50"
+              data-anchor-link
             >
               {title}
             </a>

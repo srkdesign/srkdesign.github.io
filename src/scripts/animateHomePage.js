@@ -107,17 +107,17 @@ timeline(AnimationSequence, {
 //   );
 // });
 
-AllImagesPlaceholders.forEach((placeholder) => {
-  scroll(
-    animate(placeholder, {
-      opacity: [1, 0],
-    }),
-    {
-      target: placeholder,
-      offset: [...ScrollOffset.Enter],
-    }
-  );
-});
+// AllImagesPlaceholders.forEach((placeholder) => {
+//   scroll(
+//     animate(placeholder, {
+//       opacity: [1, 0],
+//     }),
+//     {
+//       target: placeholder,
+//       offset: [...ScrollOffset.Enter],
+//     }
+//   );
+// });
 
 AllImages.forEach((image) => {
   scroll(

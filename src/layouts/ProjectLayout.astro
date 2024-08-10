@@ -20,7 +20,10 @@ const { title, tags, stack, amountOfWork, duration, publishDate } = frontmatter;
   <!-- Hero Section -->
   <section id="hero" class="grid mt-24 mb-8 col-span-full grid-cols-subgrid">
     <h1 class="mb-8 text-4xl font-semibold col-span-full splt">{title}</h1>
-    <ul class="grid gap-10 mb-10 col-span-full grid-cols-subgrid" id="stats">
+    <ul
+      class="grid gap-8 mb-10 md:gap-20 col-span-full md:grid-cols-subgrid"
+      id="stats"
+    >
       {
         [
           ["Инструменты", `${stack}`],
@@ -29,8 +32,8 @@ const { title, tags, stack, amountOfWork, duration, publishDate } = frontmatter;
           ["Дата публикации", `${formatDate(publishDate)}`],
         ].map(([heading, content]) => (
           <li class="col-span-2">
-            <h2 class="mb-1 text-lg font-bold">{heading}</h2>
-            <p class="leading-normal">{content}</p>
+            <h2 class="mb-1 text-xl font-bold">{heading}</h2>
+            <p class="text-lg font-medium leading-normal">{content}</p>
           </li>
         ))
       }
@@ -39,13 +42,13 @@ const { title, tags, stack, amountOfWork, duration, publishDate } = frontmatter;
       class="flex flex-wrap gap-3 p-0 m-0 mb-4 text-base lowercase list-none col-span-full"
       id="tags"
     >
-      {tags.map((tag: any) => <Tag content={tag} />)}
+      {tags.map((tag: string) => <Tag content={tag} />)}
     </ul>
   </section>
   <!-- Markdown Section -->
   <section
     id="content"
-    class="col-span-full flex flex-col items-center prose prose-pink text-lg md:max-w-none prose-img:rounded-md prose-img:first-of-type:mt-0 prose-img:mb-0 prose-headings:[width:min(100%,_42rem)] prose-headings:pt-4 prose-p:mb-3"
+    class="col-span-full grid md:grid-cols-subgrid prose prose-pink text-lg prose-img:rounded-md mb-12 max-w-none [&>*:has(img)]:col-span-full [&>*:has(img)]:mt-10 [&>p:has(img)>img]:my-0 gap-7 md:[&>*:not(:has(img))]:col-span-4 xl:[&>*:not(:has(img))]:col-start-4 md:[&>*:not(:has(img))]:col-start-2 prose-headings:mt-12 prose-headings:mb-0 prose-p:my-0"
   >
     <slot />
   </section>

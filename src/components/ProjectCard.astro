@@ -21,7 +21,7 @@ if (!images[coverImage.src])
       class="relative block w-full h-auto mb-6 rounded-md overflow-hidden cursor-[url(/cursor.svg),_pointer]"
     >
       <div
-        class="absolute z-[100] w-full h-full bg-dark-blue mix-blend-color"
+        class="absolute z-[100] w-full h-full bg-dark-blue mix-blend-color group-hover:opacity-0"
         data-image-placeholder
       >
       </div>
@@ -41,6 +41,6 @@ if (!images[coverImage.src])
     </h2>
   </a>
   <ul class="flex flex-wrap gap-3 mb-2 text-xs lowercase sm:text-base">
-    {tags.map((tag: any) => <Tag content={tag} />)}
+    {tags.map((tag: string) => <Tag content={tag} />)}
   </ul>
 </li>

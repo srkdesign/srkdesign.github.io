@@ -20,10 +20,10 @@ const { title, description, tags, publishDate } = articleEntry.data;
         {formatDate(publishDate)}
       </p>
       <ul
-        class="flex flex-wrap gap-4 p-0 m-0 text-base lowercase list-none"
+        class="flex flex-wrap gap-3 p-0 m-0 text-base lowercase list-none"
         id="tags"
       >
-        {tags.map((tag: any) => <Tag content={tag} />)}
+        {tags.map((tag: string) => <Tag content={tag} />)}
       </ul>
     </div>
     <!-- Right Col -->

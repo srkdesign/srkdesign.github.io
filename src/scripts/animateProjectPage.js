@@ -11,7 +11,7 @@ const TagsList = document.querySelectorAll("#tags>li");
 
 // Prevent DOMContents from appearing before animation
 window.addEventListener("load", () => {
-  Preloader.classList.add("hidden");
+  Preloader?.classList.add("hidden");
 });
 
 // Init split text for h1 reveal
@@ -89,7 +89,7 @@ AllParagraphs.forEach((p) => {
     animate(
       p,
       {
-        transform: ["translateY(40px)", "translateY(none)"],
+        transform: ["translateY(40px)", "translateY(0)"],
         opacity: [0.4, 1],
       },
       { easing: [0.4, 0, 0.2, 1] }
@@ -103,7 +103,7 @@ AllHeadings.forEach((h2) => {
     animate(
       h2,
       {
-        transform: ["translateY(40px)", "translateY(none)"],
+        transform: ["translateY(40px)", "translateY(0)"],
         opacity: [0.4, 1],
       },
       { easing: [0.4, 0, 0.2, 1] }

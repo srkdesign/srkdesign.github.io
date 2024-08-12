@@ -11,7 +11,7 @@ const TagsList = document.querySelectorAll("#tags>li");
 
 // Prevent DOMContents from appearing before animation
 window.addEventListener("load", () => {
-  Preloader?.classList.add("hidden");
+  Preloader.classList.add("hidden");
 });
 
 // Init split text for h1 reveal

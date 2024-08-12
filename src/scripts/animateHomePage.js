@@ -6,9 +6,6 @@ const LogoOutline = document.querySelector("[data-logo-outline]");
 const LogoFull = document.querySelector("[data-logo-full]");
 const Nav = document.querySelector("nav");
 const AllImages = document.querySelectorAll("[data-img]");
-const AllImagesPlaceholders = document.querySelectorAll(
-  "[data-image-placeholder]"
-);
 
 // Prevent DOMContents from appearing before animation
 window.addEventListener("load", () => {

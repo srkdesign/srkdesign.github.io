@@ -11,20 +11,19 @@ import AboutCard from "../components/AboutCard.astro";
 import StatsCounter from "../components/StatsCounter.astro";
 import ServicesCard from "../components/ServicesCard.astro";
 import ArticleCard from "../components/ArticleCard.astro";
-/*import CourseCard from "../components/CourseCard.astro";*/
-// import Button from "../components/Button.astro";
 
 /* Image Imports */
 import logoOutline from "../assets/logo/logo-outline.svg";
 import logoGradient from "../assets/logo/logo-gradient-min.svg";
-// import orderImage from "../assets/order.jpg";
 
 /* Content Collection */
 const projectEntries = (await getCollection("project")).sort(
-  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+  (a: any, b: any) =>
+    b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
 const articleEntries = (await getCollection("article")).sort(
-  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+  (a: any, b: any) =>
+    b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
 ---
 
@@ -71,7 +70,11 @@ const articleEntries = (await getCollection("article")).sort(
   <section id="projects" class="mb-48 col-span-full scroll-mt-56">
     <div class="swiper">
       <ul class="swiper-wrapper">
-        {projectEntries.map((projectEntry) => <ProjectCard {projectEntry} />)}
+        {
+          projectEntries.map((projectEntry: object) => (
+            <ProjectCard {projectEntry} />
+          ))
+        }
       </ul>
     </div>
     <div class="swiper-pagination"></div>
@@ -107,7 +110,11 @@ const articleEntries = (await getCollection("article")).sort(
     <ul
       class="grid col-span-full md:grid-cols-subgrid hover:text-dark-pink hover:transition-colors hover:duration-300 hover:ease-in-out"
     >
-      {articleEntries.map((articleEntry) => <ArticleCard {articleEntry} />)}
+      {
+        articleEntries.map((articleEntry: object) => (
+          <ArticleCard {articleEntry} />
+        ))
+      }
     </ul>
   </section>
   <!-- Services Section -->

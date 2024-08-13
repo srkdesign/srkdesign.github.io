@@ -3,16 +3,15 @@ import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 
 import "../styles/global.css";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../variables";
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const {
-  title = "SRK Creates",
-  description = "Портфолио веб-дизайнера и разработчика сайтов",
-} = Astro.props as Props;
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } =
+  Astro.props as Props;
 ---
 
 <!doctype html>

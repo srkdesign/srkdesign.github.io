@@ -2,37 +2,63 @@
 import BaseLayout from "./BaseLayout.astro";
 import Tag from "../components/Tag.astro";
 
-import { formatDate } from "../scripts/utils";
+import { SITE_TITLE } from "../variables";
+import { generateTOC } from "../scripts/utils/generateTOC";
 
-const { frontmatter } = Astro.props;
+const { frontmatter, headings } = Astro.props;
+
+interface headings {
+  depth: number;
+  text: string;
+  slug: string;
+}
+
+const TOC = generateTOC(headings);
+
 const { title, description, tags, publishDate } = frontmatter;
 ---
 
-<BaseLayout title=`${title} - SRK Creates`>
+<BaseLayout title=`${title} / ${SITE_TITLE}`>
   <div id="preloader" class="absolute inset-0 z-50 w-100 h-dvh bg-dark-blue">
   </div>
+  <!-- Scroll Progress Indicator -->
   <div
     class="fixed inset-0 z-50 w-full h-0.5 mb-2 origin-left bg-dark-pink"
     id="scroll-progress"
   >
   </div>
-  <main>
-    <section id="hero" class="mt-24 mb-8">
-      <h1 class="mb-8 text-4xl font-semibold splt">{title}</h1>
-      <ul
-        class="flex flex-wrap gap-3 p-0 m-0 mb-4 text-base lowercase list-none"
-        id="tags"
-      >
-        {tags.map((tag: any) => <Tag content={tag} />)}
-      </ul>
-    </section>
+  <!-- Hero Section -->
+  <section id="hero" class="grid mt-24 mb-8 col-span-full grid-cols-subgrid">
+    <h1 class="mb-8 text-4xl font-semibold col-span-full splt">{title}</h1>
+    <ul
+      class="flex flex-wrap gap-3 p-0 m-0 mb-4 text-base lowercase list-none col-span-full"
+      id="tags"
+    >
+      {tags.map((tag: string) => <Tag content={tag} />)}
+    </ul>
+  </section>
+  <!-- Markdown Section -->
+  <section class="col-span-full grid grid-cols-subgrid gap-5">
     <section
       id="content"
-      class="flex flex-col items-center mb-32 prose prose-pink text-lg md:max-w-none prose-img:rounded-md prose-img:first-of-type:mt-0 prose-img:mb-0 prose-headings:[width:min(100%,_42rem)] prose-headings:pt-4 prose-p:mb-3"
+      class="col-span-8 grid md:grid-cols-subgrid prose prose-pink text-lg prose-img:rounded-md mb-12 max-w-none [&>*:has(img)]:col-span-full [&>*:not(:has(img))]:col-span-4 xl:[&>*:not(:has(img))]:col-start-3 [&>*:has(img)]:mt-10 [&>p:has(img)>img]:my-0 gap-7 prose-headings:mt-12 prose-headings:mb-0 prose-p:my-0"
     >
       <slot />
     </section>
-  </main>
+    <aside class="col-span-2">
+      <nav class="sticky top-24 z-50">
+        <ul>
+          {
+            TOC.map((heading: any) => (
+              <li>
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </aside>
+  </section>
 </BaseLayout>
 
 <script src="../scripts/animateProjectPage.js"></script>

@@ -2,7 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const projectEntries = await getCollection("project");
+  const projectEntries = await getCollection("projects");
   return projectEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  entry: CollectionEntry<"project">;
+  entry: CollectionEntry<"projects">;
 }
 
 const { entry } = Astro.props;

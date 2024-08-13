@@ -1,0 +1,35 @@
+---
+/* Astro Imports */
+import { getCollection } from "astro:content";
+
+/* Global Imports */
+import { SITE_TITLE } from "../../variables";
+
+/* Component Imports */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+
+const articleEntries = (await getCollection("articles")).sort(
+  (a: any, b: any) =>
+    b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<BaseLayout title={`Статьи / ${SITE_TITLE}`}>
+  <section class="col-span-full grid grid-cols-subgrid mt-32 mb-36 gap-10">
+    <h1
+      class="z-10 max-w-[100%] col-start-1 row-start-1 mb-2 tracking-wide whitespace-nowrap text-4xl sm:max-w-none font-serif"
+    >
+      Все статьи
+    </h1>
+    <ul
+      class="grid col-span-full md:grid-cols-subgrid hover:text-dark-pink hover:transition-colors hover:duration-300 hover:ease-in-out"
+    >
+      {
+        articleEntries.map((articleEntry: object) => (
+          <ArticleCard {articleEntry} />
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

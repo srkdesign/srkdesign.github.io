@@ -15,19 +15,20 @@ import ArticleCard from "../components/ArticleCard.astro";
 /* Image Imports */
 import logoOutline from "../assets/logo/logo-outline.svg";
 import logoGradient from "../assets/logo/logo-gradient-min.svg";
+import Button from "../components/Button.astro";
 
 /* Content Collection */
-const projectEntries = (await getCollection("project")).sort(
+const projectEntries = (await getCollection("projects")).sort(
   (a: any, b: any) =>
     b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
-const articleEntries = (await getCollection("article")).sort(
+const articleEntries = (await getCollection("articles")).sort(
   (a: any, b: any) =>
     b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
 ---
 
-<BaseLayout title="srkdesign.dev">
+<BaseLayout>
   <div id="preloader" class="absolute inset-0 z-50 w-100 h-dvh bg-dark-blue">
   </div>
   <!-- Hero Section -->
@@ -106,14 +107,20 @@ const articleEntries = (await getCollection("article")).sort(
     id="articles"
     class="col-span-full grid grid-cols-subgrid mt-32 mb-52 scroll-mt-56 grid-rows-1 *:row-start-1"
   >
-    <h2 class="col-start-1 pt-[41px] text-2xl font-semibold">Статьи</h2>
+    <a
+      class="col-start-1 col-span-2 flex *:pt-[41px] row-span-1 z-50 h-fit hover:text-dark-pink transition-colors"
+      href="/articles/"
+    >
+      <h2 class="text-3xl font-semibold tracking-wide font-serif">Статьи</h2>
+      <sup class="text-base">({articleEntries.length})</sup>
+    </a>
     <ul
-      class="grid col-span-full md:grid-cols-subgrid hover:text-dark-pink hover:transition-colors hover:duration-300 hover:ease-in-out"
+      class="grid col-span-full md:grid-cols-subgrid hover:text-dark-pink hover:transition-colors hover:duration-300 hover:ease-in-out gap-0"
     >
       {
-        articleEntries.map((articleEntry: object) => (
-          <ArticleCard {articleEntry} />
-        ))
+        articleEntries
+          .slice(0, 2)
+          .map((articleEntry: object) => <ArticleCard {articleEntry} />)
       }
     </ul>
   </section>

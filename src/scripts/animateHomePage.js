@@ -6,6 +6,9 @@ const LogoOutline = document.querySelector("[data-logo-outline]");
 const LogoFull = document.querySelector("[data-logo-full]");
 const Nav = document.querySelector("nav");
 const AllImages = document.querySelectorAll("[data-img]");
+const AllImagePlaceholders = document.querySelectorAll(
+  "[data-image-placeholder]"
+);
 
 // Prevent DOMContents from appearing before animation
 window.addEventListener("load", () => {
@@ -104,17 +107,22 @@ timeline(AnimationSequence, {
 //   );
 // });
 
-// AllImagesPlaceholders.forEach((placeholder) => {
-//   scroll(
-//     animate(placeholder, {
-//       opacity: [1, 0],
-//     }),
-//     {
-//       target: placeholder,
-//       offset: [...ScrollOffset.Enter],
-//     }
-//   );
-// });
+AllImagePlaceholders.forEach((placeholder) => {
+  scroll(
+    animate(
+      placeholder,
+      {
+        opacity: [1, 0],
+        grayscale: [1, 0],
+      },
+      { easing: [0.4, 0, 0.2, 1] }
+    ),
+    {
+      target: placeholder,
+      offset: [...ScrollOffset.Enter],
+    }
+  );
+});
 
 AllImages.forEach((image) => {
   scroll(

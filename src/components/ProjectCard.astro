@@ -16,7 +16,7 @@ if (!images[coverImage.src])
 ---
 
 <li class="flex flex-col mb-4 swiper-slide group lg:mb-0">
-  <a href={`/project/${projectEntry.slug}/`} class="block">
+  <a href={`/projects/${projectEntry.slug}/`} class="block">
     <picture
       class="relative block w-full h-auto mb-6 rounded-md overflow-hidden cursor-[url(/cursor.svg),_pointer]"
     >
@@ -32,7 +32,7 @@ if (!images[coverImage.src])
         quality="mid"
         loading="eager"
         decoding="async"
-        class="object-cover aspect-[3/4] rounded-md scale-100 group-hover:scale-[1.15] transition-transform duration-200 ease-custom z-50"
+        class="object-cover aspect-[3/4] rounded-md scale-100 group-hover:scale-[1.15] transition-all duration-200 ease-custom z-50"
         data-img
       />
     </picture>

@@ -1,14 +1,9 @@
 ---
-layout: "../../layouts/ProjectLayout.astro"
-title: Nova Prom
-coverImage: { src: "/src/assets/nsea-cover.jpeg", alt: "Alt Text" }
-tags:
-  ["Дизайн сайта", "Верстка страницы", "Настройка темы", "Адаптивный дизайн"]
-stack:
-  ["Figma", " Wordpress", " Woocommerce", " Slider Revolution 6", " Elementor"]
-amountOfWork: 4 страницы
-duration: около 2 недель
-publishDate: 2024-06-18
+layout: "../../layouts/ArticleLayout.astro"
+title: Самые полезные плагины для работы в Figma
+description: Скоро...
+tags: ["HTML", "Мета теги", "OpenGraph", "SEO"]
+publishDate: 2024-08-13
 ---
 
 ![Превью страниц интернет-магазина промышленного компьютерного оборудования в нескольких скриншотах на сером фоне, показывающее большую часть блоков с футуристичными, технологичными формами изображений, представляющие собой изогнутые прямоугольными](../../assets/images/nova-prom/hero.jpg)

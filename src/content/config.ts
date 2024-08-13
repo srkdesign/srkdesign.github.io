@@ -26,6 +26,6 @@ const articleCollection = defineCollection({
 });
 
 export const collections = {
-  project: projectCollection,
-  article: articleCollection,
+  projects: projectCollection,
+  articles: articleCollection,
 };

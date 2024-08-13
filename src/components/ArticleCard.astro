@@ -1,6 +1,6 @@
 ---
 import Tag from "../components/Tag.astro";
-import { formatDate } from "../scripts/utils";
+import { formatDate } from "../scripts/utils/formatDate";
 
 const { articleEntry } = Astro.props;
 const { title, description, tags, publishDate } = articleEntry.data;
@@ -28,6 +28,7 @@ const { title, description, tags, publishDate } = articleEntry.data;
     </div>
     <!-- Right Col -->
     <a class="col-span-5">
+      <!-- href={`/articles/${articleEntry.slug}/`} -->
       <h3 class="mb-4 text-2xl font-semibold">{title}</h3>
       <p class="mb-8 text-lg font-medium leading-relaxed">
         {description}

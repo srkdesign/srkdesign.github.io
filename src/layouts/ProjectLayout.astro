@@ -2,15 +2,16 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Tag from "../components/Tag.astro";
 
-import { formatDate } from "../scripts/utils";
+import { formatDate } from "../scripts/utils/formatDate";
+import { SITE_TITLE } from "../variables";
 
 const { frontmatter } = Astro.props;
 const { title, tags, stack, amountOfWork, duration, publishDate } = frontmatter;
 ---
 
-<BaseLayout title=`${title} - SRK Creates`>
-  <!-- <div id="preloader" class="absolute inset-0 z-50 w-100 h-dvh bg-dark-blue">
-  </div> -->
+<BaseLayout title=`${title} / ${SITE_TITLE}`>
+  <div id="preloader" class="absolute inset-0 z-50 w-100 h-dvh bg-dark-blue">
+  </div>
   <!-- Scroll Progress Indicator -->
   <div
     class="fixed inset-0 z-50 w-full h-0.5 mb-2 origin-left bg-dark-pink"

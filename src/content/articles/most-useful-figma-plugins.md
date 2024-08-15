@@ -1,14 +1,14 @@
 ---
 layout: "../../layouts/ArticleLayout.astro"
 title: Самые полезные плагины для работы в Figma
-description: Скоро...
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 tags: ["HTML", "Мета теги", "OpenGraph", "SEO"]
 publishDate: 2024-08-13
 ---
 
 ![Превью страниц интернет-магазина промышленного компьютерного оборудования в нескольких скриншотах на сером фоне, показывающее большую часть блоков с футуристичными, технологичными формами изображений, представляющие собой изогнутые прямоугольными](../../assets/images/nova-prom/hero.jpg)
 
-## Задача
+## Beautiful Shadows
 
 Создать общий стиль сайта, а затем воплотить его на существующей сборке WordPress + Woocommerce, используя Elementor. В результате, получить готовый сайт с измененным каталогом, карточками товаров и фильтром в кратчайшие сроки.
 
@@ -20,7 +20,9 @@ publishDate: 2024-08-13
 
 ![Обзор всех баннеров слайдера на главной странице](../../assets/images/nova-prom/slider.jpg)
 
-## Решение
+## Пример
+
+### Пример
 
 Учитывая тематику самого сайта (интернет-магазин по продаже промышленного компьютерного оборудования) и его целевую аудиторию, было принято решение создать сайт со светлой темой. Чередование светлых и темных блоков удалось достичь с помощью использования темных или нейтрально серых изображений и баннеров на сайте с технологичными, футуристическими формами: скошенными углами и краями.
 

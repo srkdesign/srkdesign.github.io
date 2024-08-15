@@ -9,7 +9,7 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 // Smooth scroll anchor links
-const AnchorLinks = document?.querySelectorAll("[data-anchor-link]");
+const AnchorLinks = document?.querySelectorAll(".anchor");
 
 AnchorLinks.forEach((link) => {
   link.addEventListener("click", () => {

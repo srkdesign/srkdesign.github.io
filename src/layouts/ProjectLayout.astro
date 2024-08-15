@@ -60,4 +60,8 @@ const { title, tags, stack, amountOfWork, duration, publishDate } = frontmatter;
   .toc {
     @apply hidden;
   }
+
+  #content > p:has(img) img {
+    @apply w-full h-auto;
+  }
 </style>

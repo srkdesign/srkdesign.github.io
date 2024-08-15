@@ -15,7 +15,7 @@ import ArticleCard from "../components/ArticleCard.astro";
 /* Image Imports */
 import logoOutline from "../assets/logo/logo-outline.svg";
 import logoGradient from "../assets/logo/logo-gradient-min.svg";
-import Button from "../components/Button.astro";
+// import Button from "../components/Button.astro";
 
 /* Content Collection */
 const projectEntries = (await getCollection("projects")).sort(
@@ -111,11 +111,11 @@ const articleEntries = (await getCollection("articles")).sort(
       class="col-start-1 flex *:pt-[41px] row-span-1 z-40 h-fit hover:text-dark-pink transition-colors"
       href="/articles/"
     >
-      <h2 class="text-3xl font-semibold tracking-wide font-serif">Статьи</h2>
+      <h2 class="font-serif text-3xl font-semibold tracking-wide">Статьи</h2>
       <sup class="text-base">({articleEntries.length})</sup>
     </a>
     <ul
-      class="grid col-span-full md:grid-cols-subgrid hover:text-dark-pink hover:transition-colors hover:duration-300 hover:ease-in-out gap-0"
+      class="grid gap-0 col-span-full md:grid-cols-subgrid hover:text-dark-pink hover:transition-colors hover:duration-300 hover:ease-in-out"
     >
       {
         articleEntries

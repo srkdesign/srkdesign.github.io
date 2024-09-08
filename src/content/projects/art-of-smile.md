@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/ProjectLayout.astro"
 title: Art of Smile
-coverImage: { src: "/src/assets/art-of-smile-cover.jpg", alt: "Alt Text" }
+coverImage: { src: /src/assets/art-of-smile-cover.jpg, alt: "Alt Text" }
 tags: ["Дизайн сайта", "Адаптивный дизайн"]
 stack: ["Figma"]
 amountOfWork: 4 страницы

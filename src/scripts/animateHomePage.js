@@ -1,5 +1,12 @@
 import splt from "spltjs";
-import { timeline, scroll, animate, ScrollOffset, stagger } from "motion";
+import {
+  timeline,
+  scroll,
+  animate,
+  ScrollOffset,
+  stagger,
+  inView,
+} from "motion";
 
 const Preloader = document.getElementById("preloader");
 const LogoOutline = document.querySelector("[data-logo-outline]");
@@ -9,6 +16,8 @@ const AllImages = document.querySelectorAll("[data-img]");
 const AllImagePlaceholders = document.querySelectorAll(
   "[data-image-placeholder]"
 );
+const ArticlesSection = document.getElementById("articles");
+const AllBorders = document.querySelectorAll("[data-border]");
 
 // Prevent DOMContents from appearing before animation
 window.addEventListener("load", () => {
@@ -21,7 +30,7 @@ splt({
 });
 
 // Animate hero section on page load
-const AnimationSequence = [
+const HeroAnimation = [
   [Preloader, { scale: [1, 0] }, { duration: 0.1 }],
   [
     LogoOutline,
@@ -62,17 +71,10 @@ const AnimationSequence = [
     Nav,
     {
       opacity: [0, 1],
-      transform: ["translateY(-30%)", "translateY(0)"],
+      // transform: ["translateY(-30%)", "translateY(0)"],
     },
     { at: ">" },
   ],
-  // [
-  //   AllImagesPlaceholders,
-  //   {
-  //     opacity: [1, 0],
-  //     clipPath: ["inset(0)", "inset(0 100% 0 0)"],
-  //   },
-  // ],
   [
     AllImages,
     {
@@ -89,23 +91,10 @@ const AnimationSequence = [
   ],
 ];
 
-timeline(AnimationSequence, {
+timeline(HeroAnimation, {
   ease: [0, 0, 0.58, 1],
   duration: 2,
 });
-
-// Resize and set opacity for sections in view
-// const AllSections = document.querySelectorAll("section");
-// AllSections.forEach((section) => {
-//   scroll(
-//     animate(
-//       section,
-//       { scale: [0.95, 1, 1, 0.95] },
-//       { easing: [0, 0, 0.58, 1] }
-//     ),
-//     { target: section, offset: [...ScrollOffset.Enter, ...ScrollOffset.Exit] }
-//   );
-// });
 
 AllImagePlaceholders.forEach((placeholder) => {
   scroll(
@@ -136,3 +125,16 @@ AllImages.forEach((image) => {
     { target: image, offset: [...ScrollOffset.Enter] }
   );
 });
+
+// Animate border width in articles section
+inView(
+  ArticlesSection,
+  () => {
+    animate(
+      AllBorders,
+      { width: [0, 1] },
+      { easing: [0, 0, 0.58, 1], delay: stagger(0.2) }
+    );
+  },
+  { margin: "-600px 0px 0px 0px" }
+);

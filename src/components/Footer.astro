@@ -1,14 +1,16 @@
 <footer
   class="mt-auto mb-6 flex max-w-4xl w-full mx-auto justify-center leading-tight"
 >
-  <small
-    >&copy; <span id="footer-copyright"></span> SRK. Создано с помощью Astro и Github
-    Pages</small
-  >
-</footer>
+  <small class="text-dark-pink"
+    ><span class="text-pink">&copy; <span id="footer-year"></span> SRK.</span> Создано
+    с помощью <span class="text-pink">Figma, VS Code, Astro, Tailwind</span> и <span
+      class="text-pink">Github Pages.</span
+    > Все права защищены.
+  </small>
 
-<script>
-  document.querySelector("#footer-copyright")!.textContent = new Date()
-    .getFullYear()
-    .toString();
-</script>
+  <script>
+    document.querySelector("#footer-year")!.textContent = new Date()
+      .getFullYear()
+      .toString();
+  </script>
+</footer>

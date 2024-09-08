@@ -1,0 +1,145 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "projects",
+      "previewPath": "'projects'",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "coverImage",
+          "type": "fields",
+          "required": true,
+          "fields": [
+            {
+              "name": "src",
+              "type": "string",
+              "default": "{{image}}",
+              "required": true
+            },
+            {
+              "name": "alt",
+              "type": "string",
+              "required": true
+            }
+          ],
+          "isPreviewImage": true
+        },
+        {
+          "name": "tags",
+          "type": "tags",
+          "required": true
+        },
+        {
+          "name": "stack",
+          "type": "list"
+        },
+        {
+          "name": "amountOfWork",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "publishDate",
+          "type": "datetime",
+          "default": "{{now}}",
+          "required": true
+        },
+        {
+          "name": "duration",
+          "type": "string",
+          "single": true
+        },
+        {
+          "title": "layout",
+          "name": "layout",
+          "type": "string",
+          "default": "../../layouts/ProjectLayout.astro"
+        },
+        {
+          "title": "slug",
+          "name": "slug",
+          "type": "slug",
+          "editable": true,
+          "default": "{{slug}}"
+        }
+      ]
+    },
+    {
+      "name": "articles",
+      "previewPath": "'articles'",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "tags",
+          "type": "tags",
+          "required": true
+        },
+        {
+          "name": "publishDate",
+          "type": "datetime",
+          "default": "{{now}}",
+          "required": true
+        },
+        {
+          "title": "layout",
+          "name": "layout",
+          "type": "string",
+          "default": "../../layouts/ArticleLayout.astro"
+        },
+        {
+          "title": "slug",
+          "name": "slug",
+          "type": "slug",
+          "editable": true,
+          "default": "{{slug}}"
+        }
+      ]
+    }
+  ],
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.content.placeholders": [
+    {
+      "id": "image",
+      "value": "/src/assets/{{title}}-cover.jpg"
+    }
+  ],
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "projects",
+      "path": "[[workspace]]/src/content/projects",
+      "contentTypes": ["projects"]
+    },
+    {
+      "title": "articles",
+      "path": "[[workspace]]/src/content/articles",
+      "contentTypes": ["articles"]
+    }
+  ],
+  "frontMatter.content.publicFolder": {
+    "path": "src/assets",
+    "relative": true
+  },
+  // "frontMatter.taxonomy.slugTemplate": "{{title}}",
+  "frontMatter.git.enabled": false
+}

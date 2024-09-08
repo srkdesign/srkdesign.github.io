@@ -7,8 +7,10 @@ const { title, description, tags, publishDate } = articleEntry.data;
 ---
 
 <li
-  class="col-span-full grid grid-cols-subgrid w-full border-t xl:first:*:pt-0 xl:first:pt-10 first:pt-24 last:border-b pt-10 pb-4 hover:text-pink transition-all duration-300 ease-linear"
+  class="col-span-full grid grid-cols-subgrid w-full xl:first:*:pt-0 xl:first:pt-10 first:pt-24 pt-10 pb-4 hover:text-pink transition-all duration-300 ease-linear [&>div:last-of-type]:last-of-type:block"
+  data-border
 >
+  <div data-border class="bg-pink h-px w-full col-span-full mb-10"></div>
   <article
     class="col-span-full md:grid md:grid-cols-subgrid place-items-baseline"
   >
@@ -36,4 +38,5 @@ const { title, description, tags, publishDate } = articleEntry.data;
       <!-- <Button link={`/article/${articleEntry.slug}/`} text="Перейти к статье" /> -->
     </a>
   </article>
+  <div data-border class="bg-pink h-px w-full col-span-full mt-12 hidden"></div>
 </li>

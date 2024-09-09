@@ -3,12 +3,10 @@ dist/
 
 # generated types
 .astro/
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
+.vscode/
+.vscode/launch.json
+.vscode/extensions.json
+
 .frontmatter
 .frontmatter/*
 

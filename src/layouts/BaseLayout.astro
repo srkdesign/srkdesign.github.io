@@ -20,14 +20,21 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- OpenGraph Meta Tags -->
-    <meta property="og:title" content={title} />
+    <!-- Meta Tags -->
+    <title>{title}</title>
     <meta name="description" content={description} />
+    <!-- OpenGraph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <!-- OpenGraph Image -->
     <meta property="og:image" content="/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <title>{title}</title>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="/og-image.png" />
   </head>
   <body
     class="p-4 md:p-5 text-pink bg-dark-blue flex flex-col min-h-screen mx-auto my-0 max-w-full overflow-x-hidden"

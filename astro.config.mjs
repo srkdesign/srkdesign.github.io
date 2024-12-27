@@ -1,32 +1,47 @@
+// @ts-check
 import { defineConfig } from "astro/config";
-
-// Astro Integrations
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 
-// Markdown Plugins
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeToc from "rehype-toc";
+import rehypePrettyCode from "rehype-pretty-code";
+import { transformerCopyButton } from "@rehype-pretty/transformers";
+
+import playformCompress from "@playform/compress";
+
+const prettyCodeOptions = {
+  theme: "min-dark",
+  wrap: true,
+  keepBackground: true,
+  transformers: [
+    transformerCopyButton({
+      visibility: "hover",
+      feedbackDuration: 3_000,
+    }),
+  ],
+};
+
+const remarkTocOptions = {
+  heading: "toc",
+  maxDepth: 3,
+};
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://srkdesign.github.io/",
-  integrations: [tailwind()],
+  site: "https://example.com",
+  integrations: [
+    mdx(),
+    sitemap(),
+    react({
+      experimentalReactChildren: false,
+    }),
+    tailwind(),
+    playformCompress(),
+  ],
   markdown: {
-    rehypePlugins: [
-      rehypeSlug,
-      [rehypeAutolinkHeadings, { behaviour: "append" }],
-      [
-        rehypeToc,
-        {
-          headings: ["h2", "h3", "h4"],
-          tight: true,
-          ordered: true,
-          cssClasses: {
-            link: "anchor",
-          },
-        },
-      ],
-    ],
+    // extendDefaultPlugins: true,
+    syntaxHighlight: false,
+    rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
   },
 });

@@ -1,0 +1,35 @@
+---
+// Content
+import { getCollection } from "astro:content";
+const posts = (
+  await getCollection("blog", ({ data }) => {
+    return data.isDraft !== true;
+  })
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Functions
+import FormatDate from "../../utils/FormatDate";
+
+// Components
+import ContentLayout from "../../layouts/ContentLayout.astro";
+import BlogLayout from "../../layouts/BlogLayout";
+import PostLink from "../../components/_PostLink";
+---
+
+<ContentLayout title="Блог">
+  <BlogLayout client:load>
+    <ul>
+      {
+        posts.map((post) => (
+          <PostLink
+            id={post.id}
+            title={post.data.title}
+            date={FormatDate(post.data.pubDate)}
+            image={post.data.heroImage}
+            client:load
+          />
+        ))
+      }
+    </ul>
+  </BlogLayout>
+</ContentLayout>

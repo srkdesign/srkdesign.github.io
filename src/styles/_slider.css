@@ -1,0 +1,21 @@
+@media (hover: hover) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  mix-blend-mode: difference;
+  --swiper-navigation-size: 32px;
+  --swiper-theme-color: #ffffff;
+  --swiper-navigation-sides-offset: 20px;
+}
+
+.swiper:hover .swiper-button-prev,
+.swiper:hover .swiper-button-next {
+  opacity: 1;
+  visibility: visible;
+}

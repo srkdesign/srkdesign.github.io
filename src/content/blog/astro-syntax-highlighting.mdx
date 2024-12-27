@@ -1,0 +1,66 @@
+---
+title: "Подсветка синтаксиса в Astro"
+description: "В Markdown и MDX файлах"
+pubDate: "Dec 15 2024"
+heroImage: "/images/blog/astro-syntax-highlighting/hero.png"
+isDraft: false
+---
+
+Поддержка подсветки синтаксиса у фреймворка Astro заявлена из коробки. Несмотря на это, при создании сайта у многих возникают вопросы. В этой статьи рассмотрим не только то, как включить эту подсветку, но и как вывести ее на совершенно новый уровень.
+
+## Подсветка синтаксиса не работает
+
+Для начала нужно прояснить один важный момент. **Подствека синтаксиса работает только для .mdx файлов.** Даже если вы установили Astro вместе с шаблоном для блога, подсветка по-умолчанию работать не будет. Вам нужно перевести файл с блоком кода в .mdx или подключить сторонний плагин.
+
+## Устанавливаем плагин Rehype Pretty Code
+
+```shell title="Terminal"
+npm i rehype-pretty-code
+```
+
+Сделать это можно путем добавления нескольких строк в файл конфигурации Astro. Полный список настроек плагина можно найти на [официальном сайте](https://rehype-pretty.pages.dev).
+
+Импортируем плагин в конфиг-файл и добавляем раздел `markdown` и отключаем стандартную подсветку с помощью `syntaxHighlight: false`. Затем, добавляем `rehypePrettyCode` в общий список плагинов Rehype: `rehypePlugins: [[rehypePrettyCode, {}]]`.
+
+```js title="astro.config.mjs" {3,9-12}
+import { defineConfig } from "astro/config";
+...
+import rehypePrettyCode from "rehype-pretty-code";
+
+// https://astro.build/config
+export default defineConfig({
+  site: "https://example.com",
+  integrations: [...],
+  markdown: {
+    syntaxHighlight: false,
+    rehypePlugins: [[rehypePrettyCode, {}]],
+  },
+});
+```
+
+## Персонализация темы блока с кодом
+
+Для этого сайта выбрала тему Min Dark. [Полный список встроенных в модуль Shiki тем](https://shiki.style/themes)
+
+```js showLineNumbers title="astro.config.mjs" {5-10,18}
+import { defineConfig } from "astro/config";
+...
+import rehypePrettyCode from "rehype-pretty-code";
+
+const prettyCodeOptions = {
+  theme: "min-dark",
+  wrap: true,
+  keepBackground: true,
+  transformers: [],
+};
+
+// https://astro.build/config
+export default defineConfig({
+  site: "https://example.com",
+  integrations: [...],
+  markdown: {
+    syntaxHighlight: false,
+    rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
+  },
+});
+```

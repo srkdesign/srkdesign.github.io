@@ -1,180 +1,36 @@
 ---
-/* Astro Imports */
-import { Image } from "astro:assets";
+// Content
 import { getCollection } from "astro:content";
+const projects = (
+  await getCollection("projects", ({ data }) => {
+    return data.isDraft !== true;
+  })
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-/* Component Imports */
-import BaseLayout from "../layouts/BaseLayout.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import EvenColumns from "../components/EvenColumns.astro";
-import AboutCard from "../components/AboutCard.astro";
-import StatsCounter from "../components/StatsCounter.astro";
-import ServicesCard from "../components/ServicesCard.astro";
-import ArticleCard from "../components/ArticleCard.astro";
+// Constants
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
-/* Image Imports */
-import logoOutline from "../assets/logo/logo-outline.svg";
-import logoGradient from "../assets/logo/logo-gradient-min.svg";
-// import Button from "../components/Button.astro";
+// Components
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.jsx";
+import HomeLayout from "../layouts/HomeLayout.jsx";
+import DiscussProject from "../components/DiscussProject";
+import Footer from "../components/Footer.jsx";
 
-/* Content Collection */
-const projectEntries = (await getCollection("projects")).sort(
-  (a: any, b: any) =>
-    b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
-const articleEntries = (await getCollection("articles")).sort(
-  (a: any, b: any) =>
-    b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
+// console.log(projects);
 ---
 
-<BaseLayout>
-  <div id="preloader" class="absolute inset-0 z-50 w-100 h-dvh bg-dark-blue">
-  </div>
-  <!-- Hero Section -->
-  <section
-    id="hero"
-    class="grid items-center justify-items-center mt-24 font-serif col-span-6 mb-36 group xl:col-start-3"
-  >
-    <picture
-      id="logo"
-      class="relative w-full h-auto col-start-1 row-start-1 md:ml-8"
-    >
-      <Image
-        src={logoOutline}
-        alt=""
-        class="absolute"
-        data-logo-outline
-        format="webp"
-        quality="mid"
-        loading="eager"
-        decoding="async"
-      />
-      <Image
-        src={logoGradient}
-        alt="Логотип с обводкой текста и градиентом"
-        data-logo-full
-        format="webp"
-        quality="mid"
-        loading="eager"
-        decoding="async"
-      />
-    </picture>
-    <h1
-      class="z-10 max-w-[100%] col-start-1 row-start-1 mb-2 tracking-wide whitespace-nowrap lowercase splt text-4xl-res sm:max-w-none"
-      data-hero-title
-    >
-      Дизайнер и программист
-    </h1>
-  </section>
-  <!-- Projects (Works) Section -->
-  <section id="projects" class="mb-48 col-span-full scroll-mt-56">
-    <div class="swiper">
-      <ul class="swiper-wrapper">
-        {
-          projectEntries.map((projectEntry: object) => (
-            <ProjectCard {projectEntry} />
-          ))
-        }
-      </ul>
-    </div>
-    <div class="swiper-pagination"></div>
-  </section>
-  <!-- About Section -->
-  <EvenColumns id="about">
-    <AboutCard
-      slot="left-col"
-      heading="Как Фрилансер"
-      paragraph="Помогаю малому и среднему бизнесу лучше донести свои идеи до клиентов и улучшить результаты, оптимизируя проекты с учетом удобства использования."
-    />
-    <ul slot="left-col" class="flex flex-row gap-10">
-      <StatsCounter data="63" description="выполненных проектов" />
-      <StatsCounter data="39" description="положительных отзывов" />
-    </ul>
-    <AboutCard
-      slot="right-col"
-      heading="Как Дизайнер"
-      paragraph="Создаю стильные и минималистичные дизайны для сайтов и интерфейсов. Забочусь не только о красивом внешнем виде, но и о том, чтобы сайт был удобным и легко реализуемым."
-    />
-    <AboutCard
-      slot="right-col"
-      heading="Как Разработчик"
-      paragraph="Забочусь о правильности кода и удобстве просмотра сайта на разных устройствах. Пишу HTML-код так, чтобы его было легко читать и поддерживать, используя методику BEM."
-    />
-  </EvenColumns>
-  <!-- Articles Section -->
-  <section
-    id="articles"
-    class="col-span-full grid grid-cols-subgrid mt-32 mb-52 scroll-mt-56 grid-rows-1 *:row-start-1"
-  >
-    <!-- <a
-      class="col-start-1 flex row-span-1 z-40 h-fit hover:text-dark-pink transition-colors lg:mt-20"
-      href="/articles/"
-    >
-      <h2 class="text-2xl font-semibold tracking-wide">Статьи</h2>
-      <sup class="text-base">({articleEntries.length})</sup>
-    </a> -->
-    <ul
-      class="grid gap-0 col-span-full md:grid-cols-subgrid hover:text-dark-pink hover:transition-colors hover:duration-300 hover:ease-in-out"
-    >
-      {
-        articleEntries
-          .slice(0, 2)
-          .map((articleEntry: object) => <ArticleCard {articleEntry} />)
-      }
-    </ul>
-  </section>
-  <!-- Services Section -->
-  <section
-    id="services"
-    class="col-span-full grid grid-cols-subgrid xl:*:col-start-3 mb-52"
-  >
-    <div class="md:grid col-span-full md:grid-cols-subgrid">
-      <h2
-        class="mb-4 font-serif text-4xl font-semibold leading-relaxed tracking-wide col-span-full"
-      >
-        Нужен сайт?
-      </h2>
-      <p
-        class="col-span-3 mb-16 text-lg font-medium leading-relaxed prose prose-pink"
-      >
-        Узнайте тарифы, просмотрите реальные работы и отзывы. Напишите
-        о том,что хотите видеть в Вашем новом проекте.
-      </p>
-    </div>
-    <ul
-      class="col-span-full grid md:grid-cols-subgrid *:col-span-3 *:row-span-1 gap-5"
-    >
-      <ServicesCard
-        title="Дизайн"
-        price="1000"
-        description="Создание макета и общей стилистики, подбор цветов и шрифтов сайта."
-        services={["Адаптивный дизайн", "Анимации", "Макет в Figma"]}
-        link="https://kwork.ru/web-plus-mobile-design/25147949/sozdanie-dizayna-stranitsy-sayta-internet-magazina-lendinga-v-figma?ref=2034962"
-      />
-      <ServicesCard
-        title="Дизайн + Верстка"
-        price="1500"
-        description="Комплексное решение для тех, кому нужен сайт с 0 без заморочек."
-        services={["Дизайн сайта в Figma", "Верстка Elementor / WordPress"]}
-        link="https://kwork.ru/web-plus-mobile-design/3588053/sozdanie-dizayna-stranitsy-sayta-na-wordpress?ref=2034962"
-      />
-    </ul>
-  </section>
-</BaseLayout>
-
-<style>
-  .swiper-pagination {
-    --swiper-pagination-color: #f97b7f;
-    --swiper-pagination-bullet-inactive-color: var(--swiper-pagination-color);
-    --swiper-pagination-bullet-inactive-opacity: 0.3;
-    --swiper-pagination-bullet-width: 16px;
-    --swiper-pagination-bullet-height: 1px;
-    @apply static pt-4;
-  }
-</style>
-
-<script src="../scripts/animateHomePage.js"></script>
-<script src="../scripts/animateCounter.js"></script>
-<script src="../scripts/projectSlider.js"></script>
-<script src="../scripts/scrollProgress.js"></script>
+<!doctype html>
+<html lang="ru">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="text-white bg-black">
+    <section class="lg:h-screen flex flex-col justify-between">
+      <Header client:load />
+      <HomeLayout projects={projects} client:load />
+      <DiscussProject client:load />
+    </section>
+    <Footer client:load />
+  </body>
+</html>

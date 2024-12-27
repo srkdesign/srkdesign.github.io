@@ -1,0 +1,96 @@
+pre {
+  overflow-x: auto;
+  padding: 1.5rem 0;
+  background-color: #0a0c10 !important;
+}
+
+pre [data-line] {
+  padding: 0 0.5rem;
+}
+
+code {
+  padding-top: 1rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Styling titles */
+[data-rehype-pretty-code-title] {
+  background-color: #0a0c10;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  color: var(--tw-prose-captions);
+  margin-bottom: -1.5rem;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+/* Styling captions */
+[data-rehype-pretty-code-caption] {
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+/* Styling highlighted blocks */
+[data-highlighted-line],
+[data-highlighted-chars] {
+  background-color: rgba(49, 173, 113, 0.2);
+}
+
+[data-highlighted-line] {
+  border-left-width: 4px;
+  border-left-style: solid;
+  border-left-color: #6f4870;
+}
+
+/* Styling line numbers */
+code[data-line-numbers] {
+  counter-reset: line;
+}
+
+code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 0.75rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: var(--tw-prose-captions);
+}
+
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  width: 1.25rem;
+}
+
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
+  width: 1.75rem;
+}
+
+code[data-line-numbers-max-digits="4"] > [data-line]::before {
+  width: 2.25rem;
+}
+
+/* Neaten everything up */
+[data-rehype-pretty-code-fragment] pre {
+  padding-left: 0;
+  padding-right: 0;
+  overflow-x: scroll;
+}
+
+[data-line] {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+[data-rehype-pretty-code-title] + pre {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+.rehype-pretty-copy {
+  margin-right: 1.5rem !important;
+}

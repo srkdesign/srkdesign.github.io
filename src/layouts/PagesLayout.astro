@@ -1,0 +1,48 @@
+---
+// Constants
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+const { frontmatter } = Astro.props;
+
+// Components
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header";
+import DiscussProject from "../components/DiscussProject";
+import Footer from "../components/Footer";
+import MotionContainer from "../components/_MotionContainer";
+import ProjectPhrase from "../components/_ProjectPhrase";
+import MarkdownComponent from "../components/MarkdownComponent";
+import SmoothScroll from "../components/_SmoothScroll";
+---
+
+<html lang="ru">
+  <head>
+    <BaseHead
+      title={`${frontmatter.title} / ${SITE_TITLE}`}
+      description={SITE_DESCRIPTION}
+    />
+  </head>
+  <body class="text-white bg-black">
+    <section class="flex flex-col">
+      <Header client:load />
+      <SmoothScroll client:load>
+        <MotionContainer client:load>
+          <div class="py-24">
+            <ProjectPhrase
+              title={frontmatter.title}
+              description={frontmatter.description}
+              client:load
+            />
+            <MarkdownComponent
+              isFullWidth={frontmatter.isFullWidth}
+              client:load
+            >
+              <slot />
+            </MarkdownComponent>
+          </div>
+        </MotionContainer>
+      </SmoothScroll>
+      <DiscussProject client:load />
+    </section>
+    <Footer client:load />
+  </body>
+</html>

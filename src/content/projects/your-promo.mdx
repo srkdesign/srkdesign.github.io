@@ -1,0 +1,25 @@
+---
+title: "Your Promo"
+description: "Дизайн площадки для размещения рекламы в соцсетях"
+pubDate: "Jun 11 2024"
+heroImage: "/images/projects/your-promo/hero.png"
+isDraft: false
+isFullWidth: true
+---
+
+{/* Components */}
+import { Image } from "astro:assets";
+import HeroImage from "../../components/\_HeroImage";
+
+{/* Images */}
+import fullPageImage from "/public/images/projects/your-promo/full-page.png";
+
+<HeroImage client:load>
+  <Image
+    src={fullPageImage}
+    alt="Full Image of a Cristal Print Website"
+    format="webp"
+    quality="mid"
+    decoding="async"
+  />
+</HeroImage>

@@ -1,0 +1,32 @@
+---
+// Constants
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
+// Styles
+import "../styles/_syntaxHighlight.css";
+
+// Components
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header";
+import DiscussProject from "../components/DiscussProject";
+import Footer from "../components/Footer";
+
+const { title } = Astro.props;
+---
+
+<html lang="ru">
+  <head>
+    <BaseHead
+      title={`${title} / ${SITE_TITLE}`}
+      description={SITE_DESCRIPTION}
+    />
+  </head>
+  <body class="text-white bg-black">
+    <section class="flex flex-col justify-between">
+      <Header client:load />
+      <slot />
+      <DiscussProject client:load />
+    </section>
+    <Footer client:load />
+  </body>
+</html>

@@ -1,0 +1,26 @@
+---
+layout: "../layouts/PagesLayout.astro"
+title: "Машина времени"
+description: "Предыдущие версии сайта"
+isFullWidth: true
+---
+
+import { Image } from "astro:assets";
+import portfolio_v2 from "../assets/portfolio_v2.png";
+import portfolio_v1 from "../assets/portfolio_v1.jpg";
+
+<Image
+  src={portfolio_v2}
+  alt="Blue and Pink Portfolio v2"
+  format="webp"
+  quality="70"
+  decoding="async"
+/>
+<Image
+  src={portfolio_v1}
+  alt="Aurora Background Portfolio v1"
+  format="webp"
+  quality="70"
+  loading="lazy"
+  decoding="async"
+/>

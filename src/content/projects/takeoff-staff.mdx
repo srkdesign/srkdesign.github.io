@@ -1,0 +1,60 @@
+---
+title: "Takeoff Staff"
+description: "Дизайн страниц для email рассылки"
+pubDate: "Jul 18 2023"
+heroImage: "/images/projects/takeoff-staff/hero.png"
+isDraft: false
+isFullWidth: true
+---
+
+{/* Components */}
+import { Image } from "astro:assets";
+import HeroImage from "../../components/\_HeroImage";
+
+{/* Images */}
+import fullPageSlice_1 from "/public/images/projects/takeoff-staff/full-page-1.png";
+import fullPageSlice_2 from "/public/images/projects/takeoff-staff/full-page-2.png";
+import fullPageSlice_3 from "/public/images/projects/takeoff-staff/full-page-3.png";
+import fullPageSlice_4 from "/public/images/projects/takeoff-staff/full-page-4.png";
+
+export const quality = "mid";
+export const format = "webp";
+export const alt =
+  "Полноэкранное изображение страницы сайта для e-mail рассылки по подбору IT-персонала";
+
+<HeroImage client:load>
+  <Image
+    src={fullPageSlice_1}
+    alt={alt}
+    format={format}
+    quality={quality}
+    decoding="async"
+  />
+</HeroImage>
+
+<Image
+  src={fullPageSlice_2}
+  alt={alt}
+  format={format}
+  quality={quality}
+  decoding="async"
+  loading="lazy"
+/>
+
+<Image
+  src={fullPageSlice_3}
+  alt={alt}
+  format={format}
+  quality={quality}
+  decoding="async"
+  loading="lazy"
+/>
+
+<Image
+  src={fullPageSlice_4}
+  alt={alt}
+  format={format}
+  quality={quality}
+  decoding="async"
+  loading="lazy"
+/>

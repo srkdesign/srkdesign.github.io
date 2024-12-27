@@ -1,0 +1,83 @@
+---
+title: "Деплой Django на хостинг"
+description: "Фулл-стэк приложение на Django и React"
+pubDate: "Dec 16 2024"
+heroImage: "/images/blog/deploy-django-on-shared-hosting/hero.png"
+tags: ["django"]
+isDraft: false
+---
+
+В этой статье мы разберем, как загрузить Django-приложение на хостинг на примере full-stack приложения, в котором Django выполняет роль бэкэнда, а React — фронтэнда.
+
+## Настройка WSGI файла
+
+**WSGI (Web Server Gateway Interface)** — это стандарт, который позволяет веб-серверу взаимодействовать с вашим Django-приложением. Этот файл необходим для того, чтобы сервер знал, как запускать и работать с Django-приложением.
+
+WSGI файл обычно называется `passenger_wsgi.py` или `wsgi.py` и находится в корне вашего проекта. В нем прописываются настройки для корректной работы приложения на сервере.
+
+**Почему WSGI файл называется `passenger_wsgi.py`?** Связано это с использованием на хостинге **Phusion Passenger** — популярного веб-сервера
+и приложения для деплоя на shared-хостингах и VPS.
+
+```python title="passenger_wsgi.py"
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(__file__))
+# Указываем путь до manage.py
+sys.path.append(os.path.dirname(__file__) + "path/to/your_app")
+# Указываем путь до settings.py
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'your_app.settings')
+
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+```
+
+## Настройка settings.py
+
+В Django настройка `ALLOWED_HOSTS` определяет, какие доменные имена или IP-адреса могут обращаться к вашему приложению. Это важная мера безопасности, которая помогает предотвратить такие атаки, как **DNS spoofing** (подделка DNS-запросов) и **HTTP Host header attacks** (атаки с подменой заголовка Host).
+
+Когда сервер получает HTTP-запрос, он проверяет значение заголовка Host и сравнивает его с доменами или IP-адресами, указанными в `ALLOWED_HOSTS`. Если значение заголовка не совпадает с разрешенными адресами, сервер отклоняет запрос и возвращает ошибку **400 (Bad Request).**
+
+В файле `settings.py` нужно указать только допустимые хосты, которые будут обслуживаться на сервере.
+
+Указывать `*` в `ALLOWED_HOSTS` в продакшене нельзя, поскольку это может привести к проблемам с безопасностью, описанным выше.
+
+```python title="settings.py"
+ALLOWED_HOSTS = [
+  "your-site.com",
+  "www.your-site.com"
+]
+```
+
+## Подключаем статические файлы
+
+Статические файлы в Django — это ресурсы, которые отображаются на странице в браузере. К ним относятся HTML, CSS, JS-файлы, а также изображения, видео, музыка, векторная графика и GIF-анимации.
+
+Необходимо правильно указать пути к этим статическим файлам, чтобы они корректно отображались после деплоя Django. Например, в фулл-стэк приложении, где за бэкенд отвечает Django REST Framework, а за фронтенд — React, потребуется настроить путь к build-файлам React.
+
+Сделать это можно добавив путь к параметру `STATICFILES_DIRS` в `settings.py`.
+
+```python title="settings.py" {3-6}
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+  FRONTEND_DIR / "build",
+  # или [os.path.join(BASE_DIR, "путь_к_папке_build_React")]
+]
+
+STATIC_ROOT = BASE_DIR / "static"
+```
+
+Чтобы сгенерировать все статические файлы проекта, нужно прописать в терминале следующую команду:
+
+```shell title="Terminal"
+python manage.py collectstatic
+```
+
+После этого файлы будут доступны по пути, указанному в `STATIC_URL`.
+
+Далее необходимо перенести папку `/static/` (со всеми сгенерированными файлами) в директорию `PUBLIC_HTML` на хостинге. Это позволит корректно отображать статические файлы (CSS, JavaScript, изображения и т.д.) на вашем сайте.
+
+## Источники
+
+1. [How to deploy django app at cPanel / Namecheap](https://medium.com/@whitedodox/how-to-deploy-django-app-at-cpanel-namecheap-188ca5262f57)

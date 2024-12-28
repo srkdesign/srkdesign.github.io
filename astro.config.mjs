@@ -32,7 +32,9 @@ export default defineConfig({
       experimentalReactChildren: false,
     }),
     tailwind(),
-    playformCompress(),
+    playformCompress({
+      JavaScript: false,
+    }),
   ],
   markdown: {
     // extendDefaultPlugins: true,

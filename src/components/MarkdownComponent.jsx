@@ -1,4 +1,4 @@
-const MarkdownComponent = ({ children, isFullWidth, customHeading }) => {
+const MarkdownComponent = ({ children, isFullWidth }) => {
   return (
     <section
       className={`w-full flex justify-center ${isFullWidth ? "" : "px-8"}`}

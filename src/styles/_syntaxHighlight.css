@@ -1,15 +1,25 @@
 pre {
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  white-space: nowrap;
   overflow-x: auto;
   padding: 1.5rem 0;
   background-color: #0a0c10 !important;
+  max-width: 100%;
+  width: auto !important;
+  box-sizing: border-box !important;
 }
 
 pre [data-line] {
   padding: 0 0.5rem;
+  display: inline; /* Default inline behavior */
+  white-space: normal; /* Override pre's whitespace behavior */
+  word-wrap: normal; /* Break long words */
+  overflow-wrap: anywhere; /* Break content at any opportunity */
 }
 
 code {
-  padding-top: 1rem !important;
   padding-bottom: 0.5rem !important;
 }
 
@@ -49,8 +59,7 @@ code {
 code[data-line-numbers] {
   counter-reset: line;
 }
-
-code[data-line-numbers] > [data-line]::before {
+*/ code[data-line-numbers] > [data-line]::before {
   counter-increment: line;
   content: counter(line);
 
@@ -61,8 +70,7 @@ code[data-line-numbers] > [data-line]::before {
   text-align: right;
   color: var(--tw-prose-captions);
 }
-
-code[data-line-numbers-max-digits="2"] > [data-line]::before {
+*/ code[data-line-numbers-max-digits="2"] > [data-line]::before {
   width: 1.25rem;
 }
 

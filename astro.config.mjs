@@ -22,14 +22,9 @@ const prettyCodeOptions = {
   ],
 };
 
-const remarkTocOptions = {
-  heading: "toc",
-  maxDepth: 3,
-};
-
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://srkdesign.pro/",
   integrations: [
     mdx(),
     sitemap(),

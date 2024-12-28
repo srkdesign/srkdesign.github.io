@@ -9,7 +9,7 @@ const ProjectLayout = ({ children, metadata }) => {
   return (
     <SmoothScroll>
       <MotionContainer>
-        <section id="project-hero" className="pt-24 mb-10">
+        <section id="project-hero" className="lg:pt-24">
           <ProjectPhrase
             title={metadata.title}
             description={metadata.description}

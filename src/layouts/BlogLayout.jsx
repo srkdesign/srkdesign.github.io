@@ -7,7 +7,7 @@ const BlogLayout = ({ children }) => {
   return (
     <SmoothScroll>
       <MotionContainer>
-        <ul className="lg:px-24 px-8 pt-32">{children}</ul>
+        <ul className="lg:px-24 px-8 lg:pt-32">{children}</ul>
       </MotionContainer>
     </SmoothScroll>
   );

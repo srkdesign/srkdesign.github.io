@@ -6,7 +6,7 @@ const AnimatedLink = ({ openInNewTab, href, children }) => {
       href={href}
       target={openInNewTab ? "_blank" : ""}
       rel="noopener noreferrer"
-      className="relative whitespace-nowrap"
+      className="relative"
       initial="initial"
       whileHover="whileHover"
       exit="exit"

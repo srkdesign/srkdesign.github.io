@@ -6,10 +6,6 @@ const MarkdownComponent = ({ children, isFullWidth }) => {
       <section
         className={`prose prose-invert prose-xl prose-headings:font-medium prose-strong:font-medium ${
           isFullWidth ? "max-w-none prose-img:mb-0 prose-img:mt-0" : ""
-        } ${
-          customHeading
-            ? "first:prose-headings:font-normal first:prose-headings:pb-8 lg:first:prose-headings:text-4xl lg:first:prose-headings:leading-snug"
-            : ""
         }`}
       >
         {children}

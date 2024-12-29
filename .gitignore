@@ -12,7 +12,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-.IDENTIFIER
+*.Identifier
 
 # environment variables
 .env
@@ -23,3 +23,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

@@ -25,7 +25,7 @@ export const format = "webp";
 export const alt =
   "Полноэкранное изображение страницы сайта типографии о различных видах каталогов";
 
-<HeroImage client:load>
+<HeroImage client:only="react">
   <Image
     src={fullPageSlice_1}
     alt={alt}

@@ -21,7 +21,7 @@ import PostLayout from "../../layouts/PostLayout";
 ---
 
 <ContentLayout title={post.data.title}>
-  <PostLayout metadata={post.data} client:load>
+  <PostLayout metadata={post.data} client:only="react">
     <Content />
   </PostLayout>
 </ContentLayout>

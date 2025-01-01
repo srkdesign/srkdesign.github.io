@@ -23,26 +23,26 @@ import SmoothScroll from "../components/_SmoothScroll";
   </head>
   <body class="text-white bg-black">
     <section class="flex flex-col">
-      <Header client:load />
-      <SmoothScroll client:load>
-        <MotionContainer client:load>
+      <Header client:only="react" />
+      <SmoothScroll client:only="react">
+        <MotionContainer client:only="react">
           <div class="lg:py-24">
             <ProjectPhrase
               title={frontmatter.title}
               description={frontmatter.description}
-              client:load
+              client:only="react"
             />
             <MarkdownComponent
               isFullWidth={frontmatter.isFullWidth}
-              client:load
+              client:only="react"
             >
               <slot />
             </MarkdownComponent>
           </div>
         </MotionContainer>
       </SmoothScroll>
-      <DiscussProject client:load />
+      <DiscussProject client:only="react" />
     </section>
-    <Footer client:load />
+    <Footer client:only="react" />
   </body>
 </html>

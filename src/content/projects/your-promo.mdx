@@ -14,7 +14,7 @@ import HeroImage from "../../components/\_HeroImage";
 {/* Images */}
 import fullPageImage from "/public/images/projects/your-promo/full-page.png";
 
-<HeroImage client:load>
+<HeroImage client:only="react">
   <Image
     src={fullPageImage}
     alt="Full Image of a Cristal Print Website"

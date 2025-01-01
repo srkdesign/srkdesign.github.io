@@ -23,7 +23,7 @@ export const format = "webp";
 export const alt =
   "Полноэкранное изображение главной страницы сайта стоматологической клиники";
 
-<HeroImage client:load>
+<HeroImage client:only="react">
   <Image
     src={fullPageSlice_1}
     alt={alt}

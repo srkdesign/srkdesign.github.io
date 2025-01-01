@@ -31,7 +31,7 @@ export const format = "webp";
 export const alt =
   "Полноэкранное изображение главной страницы сайта по заказу банковский карт";
 
-<HeroImage client:load>
+<HeroImage client:only="react">
   <Image
     src={fullPageSlice_1}
     alt={alt}

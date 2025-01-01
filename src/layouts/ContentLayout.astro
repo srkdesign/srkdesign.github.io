@@ -23,10 +23,10 @@ const { title } = Astro.props;
   </head>
   <body class="text-white bg-black">
     <section class="flex flex-col justify-between">
-      <Header client:load />
+      <Header client:only="react" />
       <slot />
-      <DiscussProject client:load />
+      <DiscussProject client:only="react" />
     </section>
-    <Footer client:load />
+    <Footer client:only="react" />
   </body>
 </html>

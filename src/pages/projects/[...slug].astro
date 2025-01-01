@@ -21,7 +21,7 @@ import ProjectLayout from "../../layouts/ProjectLayout";
 ---
 
 <ContentLayout title={project.data.title}>
-  <ProjectLayout metadata={project.data} client:load>
+  <ProjectLayout metadata={project.data} client:only="react">
     <Content />
   </ProjectLayout>
 </ContentLayout>

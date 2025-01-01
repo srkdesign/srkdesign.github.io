@@ -27,10 +27,10 @@ import Footer from "../components/Footer.jsx";
   </head>
   <body class="text-white bg-black">
     <section class="lg:h-screen flex flex-col justify-between">
-      <Header client:load />
-      <HomeLayout projects={projects} client:load />
-      <DiscussProject client:load />
+      <Header client:only="react" />
+      <HomeLayout projects={projects} client:only="react" />
+      <DiscussProject client:only="react" />
     </section>
-    <Footer client:load />
+    <Footer client:only="react" />
   </body>
 </html>

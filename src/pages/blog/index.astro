@@ -17,7 +17,7 @@ import PostLink from "../../components/_PostLink";
 ---
 
 <ContentLayout title="Блог">
-  <BlogLayout client:load>
+  <BlogLayout client:only="react">
     <ul>
       {
         posts.map((post) => (
@@ -26,7 +26,7 @@ import PostLink from "../../components/_PostLink";
             title={post.data.title}
             date={FormatDate(post.data.pubDate)}
             image={post.data.heroImage}
-            client:load
+            client:only="react"
           />
         ))
       }

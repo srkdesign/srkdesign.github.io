@@ -25,23 +25,23 @@ const { title } = Astro.props;
   </head>
   <body class="text-white bg-black">
     <section class="lg:h-screen flex flex-col">
-      <Header client:load />
-      <SmoothScroll client:load>
-        <MotionContainer client:load>
+      <Header client:only="react" />
+      <SmoothScroll client:only="react">
+        <MotionContainer client:only="react">
           <h2
             class="font-serif [font-size:clamp(4rem,-0.4rem+22vw,26rem)] text-center leading-none -mb-[3.5%] z-50 mix-blend-difference select-none pr-5 italic pt-[6%]"
           >
             Error 404
           </h2>
           <ProjectPhrase
-            client:load
+            client:only="react"
             title="Эта не та страница, которую вы ищете"
             description="Эта не та страница, которую вы ищете"
           />
         </MotionContainer>
       </SmoothScroll>
-      <DiscussProject client:load />
+      <DiscussProject client:only="react" />
     </section>
-    <Footer client:load />
+    <Footer client:only="react" />
   </body>
 </html>

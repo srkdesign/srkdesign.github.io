@@ -11,7 +11,9 @@ const PostLink = ({ id, title, date, image }) => {
         href={`/blog/${id}/`}
         className="flex flex-col md:flex-row justify-between md:items-center pt-10 pb-11"
       >
-        <h4 className="lg:text-7xl md:text-5xl text-2xl max-w-5xl">{title}</h4>
+        <h4 className="lg:text-7xl md:text-5xl text-2xl max-w-5xl line-clamp-2">
+          {title}
+        </h4>
         <motion.img
           src={image}
           alt={title}

@@ -11,14 +11,14 @@ import Header from "../components/Header";
 import DiscussProject from "../components/DiscussProject";
 import Footer from "../components/Footer";
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <html lang="ru">
   <head>
     <BaseHead
       title={`${title} / ${SITE_TITLE}`}
-      description={SITE_DESCRIPTION}
+      description={description || SITE_DESCRIPTION}
     />
   </head>
   <body class="text-white bg-black">

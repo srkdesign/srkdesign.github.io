@@ -5,6 +5,7 @@ export default {
     fontFamily: {
       serif: "Pangaia, serif",
       sans: "Neue Montreal, sans-serif",
+      italic: "Neue Montreal Italic, sans-serif",
     },
     extend: {},
   },

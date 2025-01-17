@@ -1,11 +1,25 @@
 ---
-title: "Деплой Django на хостинг"
-description: "Фулл-стэк приложение на Django и React"
+title: "Деплой Django-приложения: настройка WSGI, settings.py и статических файлов"
+description: "Как настроить WSGI, корректно подключить статические файлы и обеспечить бесперебойную работу Django приложения с React фронтендом на сервере"
 pubDate: "Dec 16 2024"
 heroImage: "/images/blog/deploy-django-on-shared-hosting/hero.png"
-tags: ["django"]
+tags:
+  [
+    "деплой django",
+    "django приложение на сервер",
+    "настройка wsgi django",
+    "настройки settings.py django",
+    "статические файлы django",
+    "развертывание django",
+    "настройка django на сервере",
+    "подключение статических файлов django",
+    "Django + React",
+    "настройка Django на хостинге",
+  ]
 isDraft: false
 ---
+
+import Tags from "../../components/Tags.astro";
 
 В этой статье мы разберем, как загрузить Django-приложение на хостинг на примере full-stack приложения, в котором Django выполняет роль бэкэнда, а React — фронтэнда.
 
@@ -77,6 +91,10 @@ python manage.py collectstatic
 После этого файлы будут доступны по пути, указанному в `STATIC_URL`.
 
 Далее необходимо перенести папку `/static/` (со всеми сгенерированными файлами) в директорию `PUBLIC_HTML` на хостинге. Это позволит корректно отображать статические файлы (CSS, JavaScript, изображения и т.д.) на вашем сайте.
+
+## Теги
+
+<Tags tags={frontmatter.tags} />
 
 ## Источники
 

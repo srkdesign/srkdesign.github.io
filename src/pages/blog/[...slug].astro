@@ -20,7 +20,7 @@ import ContentLayout from "../../layouts/ContentLayout.astro";
 import PostLayout from "../../layouts/PostLayout";
 ---
 
-<ContentLayout title={post.data.title}>
+<ContentLayout title={post.data.title} description={post.data.description}>
   <PostLayout metadata={post.data} client:only="react">
     <Content />
   </PostLayout>

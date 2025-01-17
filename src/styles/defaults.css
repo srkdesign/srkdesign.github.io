@@ -19,6 +19,14 @@
 }
 
 @font-face {
+  font-family: "Neue Montreal Italic";
+  src: url("/fonts/PPNeueMontreal-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Neue Montreal";
   src: url("/fonts/PPNeueMontreal-Medium.woff2") format("woff2");
   font-weight: 500;

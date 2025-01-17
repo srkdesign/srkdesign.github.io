@@ -9,11 +9,8 @@ const ProjectLayout = ({ children, metadata }) => {
     <SmoothScroll>
       <MotionContainer>
         <section id="project-hero" className="lg:pt-24 lg:mb-16">
-          <ProjectPhrase
-            title={metadata.title}
-            description={metadata.description}
-          />
-          <motion.img
+          <ProjectPhrase title={metadata.title} description={metadata.title} />
+          <img
             className="w-full h-auto"
             src={metadata.heroImage}
             alt={metadata.title}

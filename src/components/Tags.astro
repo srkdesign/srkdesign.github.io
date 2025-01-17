@@ -1,0 +1,11 @@
+---
+const { tags } = Astro.props;
+---
+
+<ul class="list-none p-0 flex whitespace-break-spaces flex-wrap font-italic">
+  {
+    tags.map((tag: string) => (
+      <li class="[&:not(:last-of-type)]:after:content-[','] m-0">{tag}</li>
+    ))
+  }
+</ul>

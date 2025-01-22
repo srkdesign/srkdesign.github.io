@@ -13,7 +13,7 @@ const HeadingAnimation = () => {
           whileHover: { y: "-100%" },
         }}
       >
-        <h1 className="flex flex-col *:leading-none">
+        <p className="flex flex-col *:leading-none">
           <span>
             <span className="font-serif italic">web</span> дизайнер
           </span>
@@ -21,7 +21,7 @@ const HeadingAnimation = () => {
             и &nbsp;<span className="font-serif italic">front-end</span>{" "}
             разработчик
           </span>
-        </h1>
+        </p>
       </motion.div>
       <motion.div
         className="absolute inset-0"

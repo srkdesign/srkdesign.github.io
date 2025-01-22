@@ -11,9 +11,9 @@ const ProjectPhrase = ({ title, description }) => {
         style={{ x }}
         className="relative items-center flex whitespace-nowrap *:text-5xl lg:*:text-9xl *:whitespace-nowrap *:inline-block gap-10 px-4"
       >
-        <h2 className="after:content-['—'] after:pl-10" data-heading="scroll">
+        <h1 className="after:content-['—'] after:pl-10" data-heading="scroll">
           {title}
-        </h2>
+        </h1>
         <h2 className="after:content-['—'] after:pl-10" data-heading="scroll">
           {description}
         </h2>

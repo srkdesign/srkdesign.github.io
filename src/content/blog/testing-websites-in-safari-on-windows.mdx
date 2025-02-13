@@ -1,6 +1,7 @@
 ---
 title: "Тестирование сайта в Safari на Windows"
 description: "Методы и инструменты для проверки совместимости сайтов с браузером Safari без использования macOS"
+category: "Другое"
 pubDate: "Dec 29 2024"
 heroImage: "/images/blog/testing-websites-in-safari-on-windows/hero.png"
 isDraft: false
@@ -169,7 +170,7 @@ npm init playwright@latest
 
 Также будут установлены некоторые файлы для ознакомления с работой Playwright. В основном, это будут папки `tests` и `e2e`.
 
-#### Пример настройки конфиг-файла `playwright.config.ts` для отображения как десктопной, так и мобильной версии браузера Safari.
+**Пример настройки конфиг-файла `playwright.config.ts` для отображения как десктопной, так и мобильной версии браузера Safari.**
 
 ```typescript title="playwright.config.ts"
 export default defineConfig({
@@ -191,7 +192,7 @@ export default defineConfig({
 
 Модель устройства (например, iPhone 12) можно поменять на любую в [списке поддерживаемых](https://github.com/microsoft/playwright/blob/main/packages/playwright-core/src/server/deviceDescriptorsSource.json).
 
-#### Пример автоматического включения локального сервера разработки перед запуском теста:
+**Пример автоматического включения локального сервера разработки перед запуском теста:**
 
 ```typescript title="playwright.config.ts"
 export default defineConfig({

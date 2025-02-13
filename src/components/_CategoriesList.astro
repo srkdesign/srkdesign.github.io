@@ -1,0 +1,58 @@
+---
+// Imports
+import { getCollection } from "astro:content";
+
+// Props
+interface CategoryLinksProps {
+  title: string;
+  links: Array<{ text: string; href: string }>;
+}
+
+// Constants
+const currentPath = Astro.url.pathname;
+
+const posts = await getCollection("blog", ({ data }) => {
+  return data.isDraft !== true;
+});
+
+const categories = posts.reduce<Record<string, CategoryLinksProps>>(
+  (acc, post) => {
+    const { category = "", title = "" } = post.data;
+    const href = `/blog/${post.id}/`;
+
+    if (!acc[category]) {
+      acc[category] = { title: category, links: [] };
+    }
+
+    acc[category].links.push({ text: title, href });
+    return acc;
+  },
+  {}
+);
+
+const sections = Object.values(categories);
+---
+
+<aside>
+  <nav>
+    {
+      sections.map((category) => (
+        <details open="true" class="cursor-pointer mb-9">
+          <summary class="text-xl font-medium mb-2">{category.title}</summary>
+          <ul class="flex flex-col gap-3">
+            {category.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class={`text-base ${link.href === currentPath ? "text-white" : "text-gray-400"}`}
+                >
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      ))
+    }
+  </nav>
+</aside>

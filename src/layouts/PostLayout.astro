@@ -1,0 +1,60 @@
+---
+// Constants
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
+// Styles
+import "../styles/_syntaxHighlight.css";
+
+import { Image } from "astro:assets";
+
+// Components
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import CategoriesList from "../components/_CategoriesList.astro";
+import MotionContainer from "../components/_MotionContainer";
+import TableOfContents from "../components/_TableOfContents.astro";
+import Sidebar from "../components/Sidebar.astro";
+import SmoothScroll from "../components/_SmoothScroll";
+
+const { title, description, heroImage, headings } = Astro.props;
+---
+
+<html lang="ru">
+  <head>
+    <BaseHead
+      title={`${title} / ${SITE_TITLE}`}
+      description={description || SITE_DESCRIPTION}
+    />
+  </head>
+  <body class="text-white bg-black">
+    <section class="flex flex-col justify-between">
+      <Header client:only="react" />
+      <SmoothScroll client:only="react">
+        <section
+          class="xl:grid xl:grid-cols-[20%,1fr,auto] lg:px-12 px-8 lg:pt-24 gap-24"
+        >
+          <Sidebar bordered={true}><CategoriesList /></Sidebar>
+          <div
+            class="col-start-2 prose prose-invert prose-xl prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic max-w-none"
+          >
+            <h1>{title}</h1>
+            <Image
+              src={heroImage}
+              alt="123"
+              width="100"
+              height="100"
+              class="w-full h-auto rounded-lg"
+            />
+            <slot />
+          </div>
+          <Sidebar bordered={false}>
+            <h2 class="text-xl font-medium mb-2">Оглавление</h2>
+            <TableOfContents headings={headings} />
+          </Sidebar>
+        </section>
+      </SmoothScroll>
+    </section>
+    <Footer client:only="react" />
+  </body>
+</html>

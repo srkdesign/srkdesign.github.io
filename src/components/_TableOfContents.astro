@@ -1,0 +1,17 @@
+---
+import type { HeadingProps } from "../types";
+
+const { headings = [] }: { headings?: HeadingProps[] } = Astro.props;
+---
+
+<ul class="flex flex-col gap-3" data-toc>
+  {
+    headings.map((heading) => (
+      <li>
+        <a href={`#${heading.slug}`} class="text-gray-300">
+          {heading.text}
+        </a>
+      </li>
+    ))
+  }
+</ul>

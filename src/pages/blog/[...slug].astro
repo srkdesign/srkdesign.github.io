@@ -3,25 +3,38 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import { render } from "astro:content";
 
+interface Props {
+  post: CollectionEntry<"blog">;
+  headings: HeadingProps[];
+}
+
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-  return posts.map((post: { id: string }) => ({
+  const headings = await Promise.all(
+    posts.map(async (post) => {
+      const data = await render(post);
+      return data.headings;
+    })
+  );
+  return posts.map((post: { id: string }, index) => ({
     params: { slug: post.id },
-    props: post,
+    props: { post, headings: headings[index] },
   }));
 }
-type Props = CollectionEntry<"blog">;
 
-const post = Astro.props;
+const { post, headings }: Props = Astro.props;
 const { Content } = await render(post);
 
 // Components
 import ContentLayout from "../../layouts/ContentLayout.astro";
-import PostLayout from "../../layouts/PostLayout";
+import PostLayout from "../../layouts/PostLayout.astro";
+import type { HeadingProps } from "../../types";
 ---
 
-<ContentLayout title={post.data.title} description={post.data.description}>
+<PostLayout {...post.data} headings={headings}><Content /></PostLayout>
+
+<!-- <ContentLayout title={post.data.title} description={post.data.description}>
   <PostLayout metadata={post.data} client:only="react">
     <Content />
   </PostLayout>
-</ContentLayout>
+</ContentLayout> -->

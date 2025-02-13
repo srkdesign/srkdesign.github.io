@@ -1,0 +1,31 @@
+---
+// Content
+import { getCollection } from "astro:content";
+const projects = (
+  await getCollection("projects", ({ data }) => {
+    return data.isDraft !== true;
+  })
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Constants
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
+// Components
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.jsx";
+import HomeLayout from "../layouts/HomeLayout.jsx";
+import DiscussProject from "../components/DiscussProject";
+import Footer from "../components/Footer.jsx";
+
+// console.log(projects);
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta http-equiv="refresh" content="0; url=/blog/" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Перенаправление...</title>
+  </head>
+  <body class="text-white bg-black">Перенаправление...</body>
+</html>

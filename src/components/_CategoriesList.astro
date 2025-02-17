@@ -34,10 +34,13 @@ const sections = Object.values(categories);
 ---
 
 <aside>
-  <nav>
+  <nav class="flex flex-col">
     {
       sections.map((category) => (
-        <details open="true" class="cursor-pointer mb-9">
+        <details
+          open="true"
+          class={`mb-9 cursor-pointer ${category.title === "Начинающим" ? "order-first" : ""}`}
+        >
           <summary class="text-xl font-medium mb-2">{category.title}</summary>
           <ul class="flex flex-col gap-3">
             {category.links.map((link) => (

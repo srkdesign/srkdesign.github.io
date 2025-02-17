@@ -17,7 +17,10 @@ import TableOfContents from "../components/_TableOfContents.astro";
 import Sidebar from "../components/Sidebar.astro";
 import SmoothScroll from "../components/_SmoothScroll";
 
-const { title, description, heroImage, headings } = Astro.props;
+// Functions
+import FormatDate from "../utils/FormatDate";
+
+const { title, description, heroImage, pubDate, headings } = Astro.props;
 ---
 
 <html lang="ru">
@@ -32,21 +35,24 @@ const { title, description, heroImage, headings } = Astro.props;
       <Header client:only="react" />
       <SmoothScroll client:only="react">
         <section
-          class="xl:grid xl:grid-cols-[20%,1fr,auto] lg:px-12 px-8 lg:pt-24 gap-24"
+          class="xl:grid xl:grid-cols-[20%,1fr,20%] lg:px-12 px-8 lg:pt-24 gap-24"
         >
           <Sidebar bordered={true}><CategoriesList /></Sidebar>
           <div
             class="col-start-2 prose prose-invert prose-xl prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic max-w-none"
           >
-            <h1>{title}</h1>
+            <h1 class="text-[clamp(2.625rem,_1.5313rem_+_3.5vw,_3.5rem)]">
+              {title}
+            </h1>
             <Image
               src={heroImage}
-              alt="123"
+              alt={title}
               width="100"
               height="100"
               class="w-full h-auto rounded-lg"
             />
             <slot />
+            <p class="pt-12">Опубликовано: {FormatDate(pubDate)}</p>
           </div>
           <Sidebar bordered={false}>
             <h2 class="text-xl font-medium mb-2">Оглавление</h2>

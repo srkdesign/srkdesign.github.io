@@ -18,7 +18,7 @@ import SmoothScroll from "../components/_SmoothScroll";
   <head>
     <BaseHead
       title={`${frontmatter.title} / ${SITE_TITLE}`}
-      description={SITE_DESCRIPTION}
+      description={frontmatter.meta || SITE_DESCRIPTION}
     />
   </head>
   <body class="text-white bg-black">

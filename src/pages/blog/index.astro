@@ -24,6 +24,7 @@ import PostLink from "../../components/_PostLink";
           <PostLink
             id={post.id}
             title={post.data.title}
+            category={post.data.category}
             date={FormatDate(post.data.pubDate)}
             image={post.data.heroImage}
             client:only="react"

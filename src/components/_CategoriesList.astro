@@ -39,7 +39,7 @@ const sections = Object.values(categories);
       sections.map((category) => (
         <details
           open="true"
-          class={`mb-9 cursor-pointer ${category.title === "Начинающим" ? "order-first" : ""}`}
+          class={`mb-9 cursor-pointer ${category.title === "Начинающим" ? "order-first" : ""} ${category.title === "Другое" ? "order-last" : ""}`}
         >
           <summary class="text-xl font-medium mb-2">{category.title}</summary>
           <ul class="flex flex-col gap-3">

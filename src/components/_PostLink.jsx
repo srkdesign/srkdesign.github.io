@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 
-const PostLink = ({ id, title, date, image }) => {
+const PostLink = ({ id, title, category, date, image }) => {
   return (
     <motion.li
       className="border-t last:border-b border-white/10 gap-2 relative"
@@ -11,7 +11,7 @@ const PostLink = ({ id, title, date, image }) => {
         href={`/blog/${id}/`}
         className="flex flex-col md:flex-row justify-between md:items-center pt-10 pb-11"
       >
-        <h4 className="lg:text-7xl md:text-5xl text-2xl max-w-5xl line-clamp-2">
+        <h4 className="lg:text-5xl md:text-5xl text-2xl max-w-5xl line-clamp-2">
           {title}
         </h4>
         <motion.img
@@ -33,7 +33,10 @@ const PostLink = ({ id, title, date, image }) => {
             ease: [0.16, 1, 0.3, 1],
           }}
         />
-        <p className="text-md md:text-2xl">{date}</p>
+        <div className="text-md md:text-2xl">
+          <p>{date}</p>
+          <p className="opacity-50">{category}</p>
+        </div>
       </a>
     </motion.li>
   );

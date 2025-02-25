@@ -38,23 +38,25 @@ const { title, description, heroImage, pubDate, headings } = Astro.props;
           class="xl:grid xl:grid-cols-[20%,1fr,20%] lg:px-12 px-8 lg:pt-24 gap-24"
         >
           <Sidebar bordered={true}><CategoriesList /></Sidebar>
-          <div
-            class="col-start-2 prose prose-invert prose-xl prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic max-w-none"
-          >
-            <h1 class="text-[clamp(2.625rem,_1.5313rem_+_3.5vw,_3.5rem)]">
-              {title}
-            </h1>
-            <Image
-              src={heroImage}
-              alt={title}
-              format="webp"
-              width="100"
-              height="100"
-              class="w-full h-auto rounded-lg"
-            />
-            <slot />
-            <p class="pt-12">Опубликовано: {FormatDate(pubDate)}</p>
-          </div>
+          <MotionContainer client:only="react">
+            <div
+              class="col-start-2 prose prose-invert prose-xl prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic max-w-none"
+            >
+              <h1 class="text-[clamp(2.625rem,_1.5313rem_+_3.5vw,_3.5rem)]">
+                {title}
+              </h1>
+              <Image
+                src={heroImage}
+                alt={title}
+                format="webp"
+                width="100"
+                height="100"
+                class="w-full h-auto rounded-lg"
+              />
+              <slot />
+              <p class="pt-12">Опубликовано: {FormatDate(pubDate)}</p>
+            </div>
+          </MotionContainer>
           <Sidebar bordered={false}>
             <h2 class="text-xl font-medium mb-2">Оглавление</h2>
             <TableOfContents headings={headings} />

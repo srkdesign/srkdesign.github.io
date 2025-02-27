@@ -1,6 +1,6 @@
 ---
 // Imports
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 // Props
 interface CategoryLinksProps {
@@ -11,9 +11,12 @@ interface CategoryLinksProps {
 // Constants
 const currentPath = Astro.url.pathname;
 
-const posts = await getCollection("blog", ({ data }) => {
-  return data.isDraft !== true;
-});
+const posts: CollectionEntry<"blog">[] = await getCollection(
+  "blog",
+  ({ data }: CollectionEntry<"blog">) => {
+    return data.isDraft !== true;
+  }
+);
 
 const categories = posts.reduce<Record<string, CategoryLinksProps>>(
   (acc, post) => {

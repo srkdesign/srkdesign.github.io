@@ -1,7 +1,6 @@
 ---
 // Content
-import { type CollectionEntry, getCollection } from "astro:content";
-import { render } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -11,12 +10,12 @@ interface Props {
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   const headings = await Promise.all(
-    posts.map(async (post) => {
+    posts.map(async (post: CollectionEntry<"blog">) => {
       const data = await render(post);
       return data.headings;
     })
   );
-  return posts.map((post: { id: string }, index) => ({
+  return posts.map((post: { id: string }, index: number) => ({
     params: { slug: post.id },
     props: { post, headings: headings[index] },
   }));
@@ -26,15 +25,10 @@ const { post, headings }: Props = Astro.props;
 const { Content } = await render(post);
 
 // Components
-import ContentLayout from "../../layouts/ContentLayout.astro";
 import PostLayout from "../../layouts/PostLayout.astro";
 import type { HeadingProps } from "../../types";
 ---
 
-<PostLayout {...post.data} headings={headings}><Content /></PostLayout>
-
-<!-- <ContentLayout title={post.data.title} description={post.data.description}>
-  <PostLayout metadata={post.data} client:only="react">
-    <Content />
-  </PostLayout>
-</ContentLayout> -->
+<PostLayout {...post.data} headings={headings}>
+  <Content />
+</PostLayout>

@@ -1,36 +1,21 @@
 ---
 // Content
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 const projects = (
-  await getCollection("projects", ({ data }) => {
+  await getCollection("projects", ({ data }: CollectionEntry<"projects">) => {
     return data.isDraft !== true;
   })
-).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-// Constants
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+).sort(
+  (a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 
 // Components
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.jsx";
+import Layout from "../layouts/Layout.astro";
 import HomeLayout from "../layouts/HomeLayout.jsx";
-import DiscussProject from "../components/DiscussProject";
-import Footer from "../components/Footer.jsx";
-
-// console.log(projects);
 ---
 
-<!doctype html>
-<html lang="ru">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body class="text-white bg-black">
-    <section class="lg:h-screen flex flex-col justify-between">
-      <Header client:only="react" />
-      <HomeLayout projects={projects} client:only="react" />
-      <DiscussProject client:only="react" />
-    </section>
-    <Footer client:only="react" />
-  </body>
-</html>
+<Layout>
+  <!-- Using dedicated React Component for smooth animation -->
+  <HomeLayout projects={projects} client:only="react" />
+</Layout>

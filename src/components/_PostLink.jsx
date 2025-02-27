@@ -6,6 +6,7 @@ const PostLink = ({ id, title, category, date, image }) => {
       className="border-t last:border-b border-white/10 gap-2 relative"
       initial="initial"
       whileHover="whileHover"
+      key={id}
     >
       <a
         href={`/blog/${id}/`}

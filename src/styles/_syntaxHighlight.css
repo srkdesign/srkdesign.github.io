@@ -1,3 +1,4 @@
+/* General styling for pre element */
 pre {
   width: 100%;
   height: auto;
@@ -7,10 +8,9 @@ pre {
   padding: 1.5rem 0;
   background-color: #0a0c10 !important;
   max-width: 100%;
-  width: auto !important;
-  box-sizing: border-box !important;
 }
 
+/* Styling for lines within pre element */
 pre [data-line] {
   padding: 0 0.5rem;
   display: inline; /* Default inline behavior */
@@ -19,11 +19,12 @@ pre [data-line] {
   overflow-wrap: anywhere; /* Break content at any opportunity */
 }
 
+/* Code styling inside pre element */
 code {
   padding-bottom: 0.5rem !important;
 }
 
-/* Styling titles */
+/* Styling titles for code blocks */
 [data-rehype-pretty-code-title] {
   background-color: #0a0c10;
   border-top-left-radius: 0.5rem;
@@ -36,14 +37,14 @@ code {
   z-index: 10;
 }
 
-/* Styling captions */
+/* Styling captions under code blocks */
 [data-rehype-pretty-code-caption] {
   text-align: center;
   font-size: 1rem;
   line-height: 1.25rem;
 }
 
-/* Styling highlighted blocks */
+/* Styling for highlighted lines and characters */
 [data-highlighted-line],
 [data-highlighted-chars] {
   background-color: rgba(49, 173, 113, 0.2);
@@ -55,22 +56,25 @@ code {
   border-left-color: #6f4870;
 }
 
-/* Styling line numbers */
+/* Line number styling */
 code[data-line-numbers] {
   counter-reset: line;
 }
-*/ code[data-line-numbers] > [data-line]::before {
+
+code[data-line-numbers] > [data-line]::before {
   counter-increment: line;
   content: counter(line);
 
-  /* Other styling */
+  /* Line number styling */
   display: inline-block;
   width: 0.75rem;
   margin-right: 2rem;
   text-align: right;
   color: var(--tw-prose-captions);
 }
-*/ code[data-line-numbers-max-digits="2"] > [data-line]::before {
+
+/* Adjust widths based on line number digits */
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
   width: 1.25rem;
 }
 
@@ -82,23 +86,26 @@ code[data-line-numbers-max-digits="4"] > [data-line]::before {
   width: 2.25rem;
 }
 
-/* Neaten everything up */
+/* Neaten up code block padding */
 [data-rehype-pretty-code-fragment] pre {
   padding-left: 0;
   padding-right: 0;
   overflow-x: scroll;
 }
 
+/* Adjust padding for individual lines inside pre element */
 [data-line] {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
+/* Remove border-radius for pre element after the title */
 [data-rehype-pretty-code-title] + pre {
-  border-top-right-radius: 0px;
-  border-top-left-radius: 0px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 
+/* Styling for copy button */
 .rehype-pretty-copy {
   margin-right: 1.5rem !important;
 }

@@ -1,26 +1,35 @@
 ---
+// Constants
+import { SITE_TITLE } from "../../consts";
+type PostProps = CollectionEntry<"blog">;
+
 // Content
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 const posts = (
-  await getCollection("blog", ({ data }) => {
+  await getCollection("blog", ({ data }: CollectionEntry<"blog">) => {
     return data.isDraft !== true;
   })
-).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+).sort(
+  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 
 // Functions
 import FormatDate from "../../utils/FormatDate";
 
 // Components
-import ContentLayout from "../../layouts/ContentLayout.astro";
-import BlogLayout from "../../layouts/BlogLayout";
+import Layout from "../../layouts/Layout.astro";
 import PostLink from "../../components/_PostLink";
+import SmoothScroll from "../../components/_SmoothScroll";
+import MotionContainer from "../../components/_MotionContainer";
+import AnimatedLayout from "../../layouts/AnimatedLayout";
 ---
 
-<ContentLayout title="Блог">
-  <BlogLayout client:only="react">
-    <ul>
+<Layout title={`Блог / ${SITE_TITLE}`}>
+  <AnimatedLayout client:only="react">
+    <ul class="lg:px-24 px-8 lg:pt-32">
       {
-        posts.map((post) => (
+        posts.map((post: PostProps) => (
           <PostLink
             id={post.id}
             title={post.data.title}
@@ -32,5 +41,5 @@ import PostLink from "../../components/_PostLink";
         ))
       }
     </ul>
-  </BlogLayout>
-</ContentLayout>
+  </AnimatedLayout>
+</Layout>

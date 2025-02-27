@@ -1,31 +1,32 @@
 ---
-// Constants
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
-// Styles
-import "../styles/_syntaxHighlight.css";
-
-// Components
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header";
 import DiscussProject from "../components/DiscussProject";
 import Footer from "../components/Footer";
 
+const isHomePage = Astro.url.pathname === "/";
+const isBlogPage = Astro.url.pathname.includes("blog");
+
 const { title, description } = Astro.props;
 ---
 
-<html lang="ru">
+<!doctype html>
+<html lang={Astro.currentLocale}>
   <head>
     <BaseHead
-      title={`${title} / ${SITE_TITLE}`}
+      title={title || SITE_TITLE}
       description={description || SITE_DESCRIPTION}
     />
   </head>
   <body class="text-white bg-black">
-    <section class="flex flex-col justify-between">
+    <section
+      class={`${isHomePage ? "lg:h-screen" : "lg:min-h-screen"} flex flex-col justify-between`}
+    >
       <Header client:only="react" />
       <slot />
-      <DiscussProject client:only="react" />
+      {!isBlogPage ? <DiscussProject client:only="react" /> : ""}
     </section>
     <Footer client:only="react" />
   </body>

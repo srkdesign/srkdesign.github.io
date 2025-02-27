@@ -1,47 +1,30 @@
 ---
 // Constants
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE } from "../consts";
 
 // Components
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.jsx";
-import HomeLayout from "../layouts/HomeLayout.jsx";
-import DiscussProject from "../components/DiscussProject";
-import Footer from "../components/Footer.jsx";
 import SmoothScroll from "../components/_SmoothScroll.jsx";
 import MotionContainer from "../components/_MotionContainer.jsx";
 import ProjectPhrase from "../components/_ProjectPhrase";
-
-const { title } = Astro.props;
+import Layout from "../layouts/Layout.astro";
 ---
 
-<!doctype html>
-<html lang="ru">
-  <head>
-    <BaseHead
-      title={`${title} / ${SITE_TITLE}`}
-      description={SITE_DESCRIPTION}
-    />
-  </head>
-  <body class="text-white bg-black">
-    <section class="lg:h-screen flex flex-col">
-      <Header client:only="react" />
-      <SmoothScroll client:only="react">
-        <MotionContainer client:only="react">
-          <h2
-            class="font-serif [font-size:clamp(4rem,-0.4rem+22vw,26rem)] text-center leading-none -mb-[3.5%] z-50 mix-blend-difference select-none pr-5 italic pt-[6%]"
-          >
-            Error 404
-          </h2>
-          <ProjectPhrase
-            client:only="react"
-            title="Эта не та страница, которую вы ищете"
-            description="Эта не та страница, которую вы ищете"
-          />
-        </MotionContainer>
-      </SmoothScroll>
-      <DiscussProject client:only="react" />
-    </section>
-    <Footer client:only="react" />
-  </body>
-</html>
+<Layout
+  title={`Ошибка 404 / ${SITE_TITLE}`}
+  description="Эта не та страница, которую вы ищете"
+>
+  <SmoothScroll client:only="react">
+    <MotionContainer client:only="react">
+      <h2
+        class="font-serif [font-size:clamp(4rem,-0.4rem+22vw,26rem)] text-center leading-none -mb-[3.5%] z-50 mix-blend-difference select-none pr-5 italic pt-[6%]"
+      >
+        Error 404
+      </h2>
+      <ProjectPhrase
+        client:only="react"
+        title="Эта не та страница, которую вы ищете"
+        description="Эта не та страница, которую вы ищете"
+      />
+    </MotionContainer>
+  </SmoothScroll>
+</Layout>

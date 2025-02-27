@@ -1,48 +1,32 @@
 ---
 // Constants
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE } from "../consts";
 const { frontmatter } = Astro.props;
 
 // Components
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header";
-import DiscussProject from "../components/DiscussProject";
-import Footer from "../components/Footer";
-import MotionContainer from "../components/_MotionContainer";
+import Layout from "./Layout.astro";
 import ProjectPhrase from "../components/_ProjectPhrase";
 import MarkdownComponent from "../components/MarkdownComponent";
-import SmoothScroll from "../components/_SmoothScroll";
+import AnimatedLayout from "./AnimatedLayout";
 ---
 
-<html lang="ru">
-  <head>
-    <BaseHead
-      title={`${frontmatter.title} / ${SITE_TITLE}`}
-      description={frontmatter.meta || SITE_DESCRIPTION}
-    />
-  </head>
-  <body class="text-white bg-black">
-    <section class="flex flex-col">
-      <Header client:only="react" />
-      <SmoothScroll client:only="react">
-        <MotionContainer client:only="react">
-          <div class="lg:py-24">
-            <ProjectPhrase
-              title={frontmatter.title}
-              description={frontmatter.description}
-              client:only="react"
-            />
-            <MarkdownComponent
-              isFullWidth={frontmatter.isFullWidth}
-              client:only="react"
-            >
-              <slot />
-            </MarkdownComponent>
-          </div>
-        </MotionContainer>
-      </SmoothScroll>
-      <DiscussProject client:only="react" />
-    </section>
-    <Footer client:only="react" />
-  </body>
-</html>
+<Layout
+  title={`${frontmatter.title} / ${SITE_TITLE}`}
+  description={frontmatter.meta}
+>
+  <AnimatedLayout client:only="react">
+    <div class="lg:py-24">
+      <ProjectPhrase
+        title={frontmatter.title}
+        description={frontmatter.description}
+        client:only="react"
+      />
+      <MarkdownComponent
+        isFullWidth={frontmatter.isFullWidth}
+        client:only="react"
+      >
+        <slot />
+      </MarkdownComponent>
+    </div>
+  </AnimatedLayout>
+</Layout>

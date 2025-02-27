@@ -41,4 +41,8 @@ export default defineConfig({
     syntaxHighlight: false,
     rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
   },
+  i18n: {
+    defaultLocale: "ru",
+    locales: ["ru"],
+  },
 });

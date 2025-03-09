@@ -8,10 +8,13 @@ import ProjectSlide from "./_ProjectSlide";
 
 const ProjectSlider = ({ projects }) => {
   // console.log(projects);
+
   return (
     <Swiper
       className="w-full bg-gray-300"
-      modules={[Navigation, Autoplay]}
+      id="swiper"
+      modules={[Autoplay, Navigation]}
+      direction={"horizontal"}
       spaceBetween={1}
       slidesPerView={1}
       breakpoints={{
@@ -24,32 +27,20 @@ const ProjectSlider = ({ projects }) => {
       }}
       navigation={true}
       autoplay={{
-        delay: 2000,
+        delay: 3000,
         pauseOnMouseEnter: true,
         disableOnInteraction: true,
         stopOnLastSlide: true,
       }}
-      speed={4000}
-      freeMode={false}
-      parallax={true}
+      speed={3000}
+      // freeMode={false}
+      // parallax={true}
     >
       {projects?.map((project, index) => (
         <SwiperSlide key={index}>
           <ProjectSlide url={project.id} image={project.data.heroImage} />
         </SwiperSlide>
       ))}
-      {/* <SwiperSlide>
-        <ProjectSlide slideText={`Slide+1`} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProjectSlide slideText={`Slide+2`} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProjectSlide slideText={`Slide+3`} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProjectSlide slideText={`Slide+4`} />
-      </SwiperSlide> */}
     </Swiper>
   );
 };

@@ -1,10 +1,11 @@
 import { SITE_URL, MEDIA_URL_KWORK, MEDIA_URL_GITHUB } from "../consts";
 import GetYear from "../utils/GetYear";
 import AnimatedLink from "./_AnimatedLink.jsx";
+import StatsItem from "./_StatsItem.jsx";
 
 const Footer = () => {
   return (
-    <footer className="py-24 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 px-8 lg:px-24 gap-24 static">
+    <footer className="py-24 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 px-8 lg:px-24 gap-24 static *:w-full">
       <div className="flex flex-col xl:justify-self-start">
         <h3 className="text-3xl font-medium mb-10">Будет полезно</h3>
         <div className="flex lg:gap-24 gap-12 *:text-xl *:flex *:flex-col *:gap-4">
@@ -68,22 +69,46 @@ const Footer = () => {
       </div>
       <div className="flex flex-col h-full gap-6 xl:justify-self-end">
         <div className="text-lg flex-grow">
-          <p id="footer-copyright" className="">
-            © {GetYear()} {SITE_URL}. Все права соблюдены.
-          </p>
-          <p id="footer-disclaimer">
-            На сайте используются реферальные ссылки.
-          </p>
-          <p id="footer-acknowledgements">Особая благодарность osk.</p>
+          <ul className="flex gap-16">
+            <li>
+              <StatsItem number="80" description="выполненных проектов" />
+            </li>
+            <li>
+              <StatsItem number="50" description="положительных отзывов" />
+            </li>
+          </ul>
         </div>
-        <a href="https://astro.build">
-          <img
-            src="https://astro.badg.es/v2/built-with-astro/small.svg"
-            alt="Built with Astro"
-            width="192"
-            height="32"
-          />
-        </a>
+        <div className="text-base">
+          <p id="footer-copyright" className="*:mr-1 mb-5 flex flex-col">
+            <span>
+              © {GetYear()} {SITE_URL}. Все права соблюдены.
+            </span>
+            <span id="footer-disclaimer">
+              На сайте используются реферальные ссылки.
+            </span>
+            <span id="footer-acknowledgements">Особая благодарность osk.</span>
+          </p>
+          <ul className="flex gap-4 *:size-6">
+            <li>
+              <img src="/icons/figma.png" alt="Figma" />
+            </li>
+            <li>
+              <img src="/icons/vs-code.png" alt="Vs Code" />
+            </li>
+            <li>
+              <img src="/icons/astro.png" alt="Astro" />
+            </li>
+            <li>
+              <img src="/icons/react.png" alt="React" />
+            </li>
+            <li>
+              <img src="/icons/tailwind.png" alt="Tailwind" />
+            </li>
+            <li>
+              <img src="/icons/github.png" alt="Github" />
+            </li>
+          </ul>
+        </div>
       </div>
     </footer>
   );

@@ -1,4 +1,4 @@
-import ProjectPhrase from "../components/_ProjectPhrase";
+import ProjectPhrase from "../components/ScrollableText";
 import MarkdownComponent from "../components/MarkdownComponent";
 import AnimatedLayout from "./AnimatedLayout";
 

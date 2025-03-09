@@ -23,23 +23,29 @@ import PostLink from "../../components/_PostLink";
 import SmoothScroll from "../../components/_SmoothScroll";
 import MotionContainer from "../../components/_MotionContainer";
 import AnimatedLayout from "../../layouts/AnimatedLayout";
+import ScrollableText from "../../components/ScrollableText";
 ---
 
 <Layout title={`Блог / ${SITE_TITLE}`}>
   <AnimatedLayout client:only="react">
-    <ul class="lg:px-24 px-8 lg:pt-32">
-      {
-        posts.map((post: PostProps) => (
-          <PostLink
-            id={post.id}
-            title={post.data.title}
-            category={post.data.category}
-            date={FormatDate(post.data.pubDate)}
-            image={post.data.heroImage}
-            client:only="react"
-          />
-        ))
-      }
-    </ul>
+    <div class="lg:pt-32">
+      <h1 class="lg:px-24 px-8 text-5xl lg:text-9xl whitespace-nowrap mb-16">
+        Статьи
+      </h1>
+      <ul>
+        {
+          posts.map((post: PostProps) => (
+            <PostLink
+              id={post.id}
+              title={post.data.title}
+              category={post.data.category}
+              date={FormatDate(post.data.pubDate)}
+              image={post.data.heroImage}
+              client:only="react"
+            />
+          ))
+        }
+      </ul>
+    </div>
   </AnimatedLayout>
 </Layout>

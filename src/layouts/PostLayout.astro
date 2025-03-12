@@ -28,6 +28,11 @@ const { title, description, heroImage, pubDate, headings } = Astro.props;
         <div
           class="col-start-2 prose prose-invert prose-xl prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic max-w-none"
         >
+          <a
+            href="/blog/"
+            class="no-underline font-normal flex mb-4 opacity-80 w-fit"
+            >← Назад к блогу</a
+          >
           <h1 class="text-[clamp(2.625rem,_1.5313rem_+_3.5vw,_3.5rem)]">
             {title}
           </h1>

@@ -9,15 +9,19 @@ import Footer from "../components/Footer";
 const isHomePage = Astro.url.pathname === "/";
 const isBlogPage = Astro.url.pathname.includes("blog");
 
+const postImage = `/images${Astro.url.pathname}hero.png`;
+
 const { title, description } = Astro.props;
 ---
 
-<!doctype html>
 <html lang={Astro.currentLocale}>
   <head>
     <BaseHead
       title={title || SITE_TITLE}
       description={description || SITE_DESCRIPTION}
+      image={isBlogPage && Astro.url.pathname != "/blog/"
+        ? postImage
+        : `/image.png`}
     />
   </head>
   <body class="text-white bg-black">

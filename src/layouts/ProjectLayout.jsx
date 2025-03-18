@@ -1,4 +1,4 @@
-import ProjectPhrase from "../components/ScrollableText";
+import ScrollableText from "../components/ScrollableText";
 import MarkdownComponent from "../components/MarkdownComponent";
 import AnimatedLayout from "./AnimatedLayout";
 
@@ -6,9 +6,9 @@ const ProjectLayout = ({ children, metadata }) => {
   return (
     <AnimatedLayout>
       <section id="project-hero" className="lg:pt-24">
-        <ProjectPhrase
-          title={metadata.title}
-          description={metadata.description}
+        <ScrollableText
+          heading={metadata.title}
+          subheading={metadata.description}
         />
       </section>
       <MarkdownComponent isFullWidth={metadata.isFullWidth}>

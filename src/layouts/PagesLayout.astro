@@ -5,7 +5,7 @@ const { frontmatter } = Astro.props;
 
 // Components
 import Layout from "./Layout.astro";
-import ProjectPhrase from "../components/ScrollableText";
+import ScrollableText from "../components/ScrollableText";
 import MarkdownComponent from "../components/MarkdownComponent";
 import AnimatedLayout from "./AnimatedLayout";
 ---
@@ -16,9 +16,9 @@ import AnimatedLayout from "./AnimatedLayout";
 >
   <AnimatedLayout client:only="react">
     <div class="lg:py-24">
-      <ProjectPhrase
-        title={frontmatter.title}
-        description={frontmatter.description}
+      <ScrollableText
+        heading={frontmatter.title}
+        subheading={frontmatter.description}
         client:only="react"
       />
       <MarkdownComponent

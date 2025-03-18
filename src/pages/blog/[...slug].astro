@@ -2,6 +2,10 @@
 // Content
 import { type CollectionEntry, getCollection, render } from "astro:content";
 
+// Components
+import PostLayout from "../../layouts/PostLayout.astro";
+import type { HeadingProps } from "../../types";
+
 interface Props {
   post: CollectionEntry<"blog">;
   headings: HeadingProps[];
@@ -23,10 +27,6 @@ export async function getStaticPaths() {
 
 const { post, headings }: Props = Astro.props;
 const { Content } = await render(post);
-
-// Components
-import PostLayout from "../../layouts/PostLayout.astro";
-import type { HeadingProps } from "../../types";
 ---
 
 <PostLayout {...post.data} headings={headings}>

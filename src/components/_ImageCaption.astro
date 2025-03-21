@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import FormatLink from "../utils/FormatLink";
+const { image, format, quality, caption, link = "" } = Astro.props;
+---
+
+<figure>
+  <Image
+    src={image}
+    alt={caption}
+    format={format}
+    quality={quality}
+    decoding="async"
+    loading="lazy"
+  />
+  <figcaption class="text-center font-sans">
+    {caption}
+    {link ? <a href={link}>({FormatLink(link)})</a> : ""}
+  </figcaption>
+</figure>

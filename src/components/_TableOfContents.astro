@@ -4,14 +4,19 @@ import type { HeadingProps } from "../types";
 const { headings = [] }: { headings?: HeadingProps[] } = Astro.props;
 ---
 
-<ul class="flex flex-col gap-3" data-toc>
+<ul
+  class="dark flex flex-col gap-2 overflow-y-hidden hover:overflow-y-scroll [scrollbar-width:thin] max-h-[72vh]"
+  data-toc
+>
   {
-    headings.map((heading) => (
-      <li>
-        <a href={`#${heading.slug}`} class="text-gray-300">
-          {heading.text}
-        </a>
-      </li>
-    ))
+    headings
+      .filter((heading) => heading.depth < 4)
+      .map((heading) => (
+        <li>
+          <a href={`#${heading.slug}`} class="flex text-gray-400">
+            {heading.text}
+          </a>
+        </li>
+      ))
   }
 </ul>

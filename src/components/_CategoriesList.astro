@@ -44,13 +44,13 @@ const sections = Object.values(categories);
           open="true"
           class={`mb-9 cursor-pointer ${category.title === "Начинающим" ? "order-first" : ""} ${category.title === "Другое" ? "order-last" : ""}`}
         >
-          <summary class="text-xl font-medium mb-2">{category.title}</summary>
-          <ul class="flex flex-col gap-3">
+          <summary class="text-xl font-medium mb-4">{category.title}</summary>
+          <ul class="flex flex-col gap-2">
             {category.links.map((link) => (
               <li>
                 <a
                   href={link.href}
-                  class={`text-base ${link.href === currentPath ? "text-white" : "text-gray-400"}`}
+                  class={`flex text-base ${link.href === currentPath ? "text-white" : "text-gray-400"}`}
                 >
                   {link.text}
                 </a>

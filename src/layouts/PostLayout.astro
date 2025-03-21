@@ -15,7 +15,8 @@ import SmoothScroll from "../components/_SmoothScroll";
 // Functions
 import FormatDate from "../utils/FormatDate";
 
-const { title, description, heroImage, pubDate, headings } = Astro.props;
+const { title, description, heroImage, pubDate, headingDepth, headings } =
+  Astro.props;
 ---
 
 <Layout title={title} description={description}>
@@ -26,7 +27,7 @@ const { title, description, heroImage, pubDate, headings } = Astro.props;
       <Sidebar bordered={true}><CategoriesList /></Sidebar>
       <MotionContainer client:only="react">
         <div
-          class="col-start-2 prose prose-invert prose-xl prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic max-w-none"
+          class="col-start-2 prose prose-invert prose-xl prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg max-w-none"
         >
           <a
             href="/blog/"

@@ -13,7 +13,7 @@ const { headings = [] }: { headings?: HeadingProps[] } = Astro.props;
       .filter((heading) => heading.depth < 4)
       .map((heading) => (
         <li>
-          <a href={`#${heading.slug}`} class="flex text-gray-400">
+          <a href={`#${heading.slug}`} class="flex text-neutral-400">
             {heading.text}
           </a>
         </li>

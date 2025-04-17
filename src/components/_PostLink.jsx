@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { CATEGORIES } from "../categories";
 
 const PostLink = ({ id, title, category, date, image }) => {
   return (
@@ -37,7 +38,7 @@ const PostLink = ({ id, title, category, date, image }) => {
         <div className="text-md md:text-2xl lg:w-44 flex lg:justify-center">
           <div>
             <p>{date}</p>
-            <p className="opacity-50">{category}</p>
+            <p className="opacity-50">{CATEGORIES[category]}</p>
           </div>
         </div>
       </a>

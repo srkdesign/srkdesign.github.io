@@ -7,7 +7,11 @@ export default {
       sans: "Neue Montreal, sans-serif",
       italic: "Neue Montreal Italic, sans-serif",
     },
-    extend: {},
+    extend: {
+      textColor: {
+        snow: "#FFFAFA",
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 };

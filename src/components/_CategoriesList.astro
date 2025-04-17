@@ -1,64 +1,59 @@
 ---
 // Imports
 import { getCollection, type CollectionEntry } from "astro:content";
+import { CATEGORIES } from "../categories";
 
 // Props
-interface CategoryLinksProps {
-  title: string;
-  links: Array<{ text: string; href: string }>;
-}
+type Post = CollectionEntry<"blog">;
+type CategorySlug = keyof typeof CATEGORIES;
 
 // Constants
 const currentPath = Astro.url.pathname;
 
-const posts: CollectionEntry<"blog">[] = await getCollection(
-  "blog",
-  ({ data }: CollectionEntry<"blog">) => {
-    return data.isDraft !== true;
-  }
-);
+const allPosts: Post[] = await getCollection("blog", ({ data }: Post) => {
+  return data.isDraft !== true;
+});
 
-const categories = posts.reduce<Record<string, CategoryLinksProps>>(
-  (acc, post) => {
-    const { category = "", title = "" } = post.data;
-    const href = `/blog/${post.id}/`;
-
-    if (!acc[category]) {
-      acc[category] = { title: category, links: [] };
-    }
-
-    acc[category].links.push({ text: title, href });
+const postsByCategory = Object.entries(CATEGORIES).reduce(
+  (acc, [slug, label]) => {
+    const categorySlug = slug as CategorySlug;
+    const postsInCategory = allPosts.filter(
+      (post: Post) => post.data.category === categorySlug
+    );
+    acc[categorySlug] = postsInCategory;
     return acc;
   },
-  {}
+  {} as Record<CategorySlug, Post[]>
 );
-
-const sections = Object.values(categories);
 ---
 
 <aside>
   <nav class="flex flex-col">
     {
-      sections.map((category) => (
-        <details
-          open="true"
-          class={`mb-9 cursor-pointer ${category.title === "Начинающим" ? "order-first" : ""} ${category.title === "Другое" ? "order-last" : ""}`}
-        >
-          <summary class="text-xl font-medium mb-4">{category.title}</summary>
-          <ul class="flex flex-col gap-2">
-            {category.links.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class={`flex text-base ${link.href === currentPath ? "text-white" : "text-neutral-400"}`}
-                >
-                  {link.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </details>
-      ))
+      Object.entries(postsByCategory).map(([slug, posts]) => {
+        const categoryLabel = CATEGORIES[slug as CategorySlug];
+        return (
+          <details open="true" class="mb-9 cursor-pointer">
+            <summary class="text-xl font-medium mb-4">{categoryLabel}</summary>
+            {posts.length === 0 ? (
+              <p>В этой категории нет статей</p>
+            ) : (
+              <ul class="flex flex-col gap-2">
+                {posts.map((post) => (
+                  <li>
+                    <a
+                      href={`/blog/${post.id}/`}
+                      class={`flex text-base ${`/blog/${post.id}/` === currentPath ? "text-white" : "text-neutral-400"}`}
+                    >
+                      {post.data.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </details>
+        );
+      })
     }
   </nav>
 </aside>

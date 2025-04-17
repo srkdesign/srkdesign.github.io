@@ -1,5 +1,6 @@
 import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
+import { CATEGORY_SLUGS } from "./categories";
 
 const projects = defineCollection({
   // Load Markdown and MDX files in the `src/content/blog/` directory.
@@ -24,7 +25,7 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    category: z.string(),
+    category: z.enum(CATEGORY_SLUGS as [string, ...string[]]),
     // Transform string to Date object
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),

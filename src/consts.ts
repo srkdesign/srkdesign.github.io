@@ -8,3 +8,4 @@ export const SITE_URL = "srkdesign.pro";
 
 export const MEDIA_URL_KWORK = "https://kwork.ru/user/srkdesign?ref=2034962";
 export const MEDIA_URL_GITHUB = "https://github.com/srkdesign/";
+export const MEDIA_URL_BOOSTY = "https://boosty.to/srkdesign/";

@@ -1,7 +1,11 @@
 import { motion } from "motion/react";
 import HeadingAnimation from "./_HeadingAnimation.jsx";
 import AnimatedLink from "./_AnimatedLink.jsx";
-import { MEDIA_URL_GITHUB, MEDIA_URL_KWORK } from "../consts.ts";
+import {
+  MEDIA_URL_BOOSTY,
+  MEDIA_URL_GITHUB,
+  MEDIA_URL_KWORK,
+} from "../consts.ts";
 
 const Header = () => {
   return (
@@ -23,6 +27,11 @@ const Header = () => {
         <li>
           <AnimatedLink href={MEDIA_URL_KWORK} openInNewTab={true}>
             Kwork
+          </AnimatedLink>
+        </li>
+        <li>
+          <AnimatedLink href={MEDIA_URL_BOOSTY} openInNewTab={true}>
+            Boosty
           </AnimatedLink>
         </li>
         <li>

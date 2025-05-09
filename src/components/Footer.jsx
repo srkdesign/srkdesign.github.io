@@ -1,4 +1,9 @@
-import { SITE_URL, MEDIA_URL_KWORK, MEDIA_URL_GITHUB } from "../consts";
+import {
+  SITE_URL,
+  MEDIA_URL_KWORK,
+  MEDIA_URL_BOOSTY,
+  MEDIA_URL_GITHUB,
+} from "../consts";
 import GetYear from "../utils/GetYear";
 import AnimatedLink from "./_AnimatedLink.jsx";
 import StatsItem from "./_StatsItem.jsx";
@@ -49,7 +54,9 @@ const Footer = () => {
               </AnimatedLink>
             </li>
             <li>
-              <a>Behance (скоро)</a>
+              <AnimatedLink href={MEDIA_URL_BOOSTY} openInNewTab={true}>
+                Boosty
+              </AnimatedLink>
             </li>
             <li>
               <AnimatedLink href={MEDIA_URL_GITHUB} openInNewTab={true}>

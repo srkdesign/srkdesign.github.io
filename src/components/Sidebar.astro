@@ -1,9 +1,9 @@
 ---
-const { bordered } = Astro.props;
+const { margin, bordered } = Astro.props;
 ---
 
 <aside
-  class={`hidden xl:block xl:relative xl:border-r border-white/10  ${bordered ? "xl:border-l lg:px-12" : "lg:pr-24"}`}
+  class={`hidden xl:block xl:relative  border-white/10 ${margin ? "lg:px-12" : ""} ${bordered ? "xl:border-l xl:border-r" : "lg:pr-24"}`}
 >
   <section class="sticky top-36 left-0">
     <slot />

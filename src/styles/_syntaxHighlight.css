@@ -6,7 +6,6 @@ pre {
   white-space: nowrap;
   overflow-x: auto;
   padding: 1.5rem 0;
-  background-color: #0a0c10 !important;
   max-width: 100%;
 }
 
@@ -26,7 +25,7 @@ code {
 
 /* Styling titles for code blocks */
 [data-rehype-pretty-code-title] {
-  background-color: #0a0c10;
+  background-color: #1F1F1F;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   color: var(--tw-prose-captions);

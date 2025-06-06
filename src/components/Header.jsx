@@ -22,7 +22,7 @@ const Header = () => {
       </div>
       <ul
         id="header-links"
-        className="hidden md:flex flex-col md:flex-row gap-px md:gap-8 capitalize mix-blend-difference text-base pr-4 md:pr-0"
+        className="hidden md:flex flex-col md:flex-row gap-px md:gap-12 capitalize mix-blend-difference text-base pr-4 md:pr-0"
       >
         <li>
           <AnimatedLink href={MEDIA_URL_KWORK} openInNewTab={true}>

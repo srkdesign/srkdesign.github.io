@@ -28,22 +28,27 @@ const postsByCategory = Object.entries(CATEGORIES).reduce(
 ---
 
 <aside>
-  <nav class="flex flex-col">
+  <nav class="flex flex-col gap-4">
     {
       Object.entries(postsByCategory).map(([slug, posts]) => {
         const categoryLabel = CATEGORIES[slug as CategorySlug];
+        const isCurrentCategory = posts.some(
+          (post) => `/blog/${post.id}/` === currentPath
+        );
         return (
-          <details open="true" class="mb-9 cursor-pointer">
-            <summary class="text-xl font-medium mb-4">{categoryLabel}</summary>
+          <details open={isCurrentCategory} class="cursor-pointer">
+            <summary class="md:text-xl text-3xl font-medium md:mb-4 mb-8">
+              {categoryLabel}
+            </summary>
             {posts.length === 0 ? (
               <p>В этой категории нет статей</p>
             ) : (
-              <ul class="flex flex-col gap-2">
+              <ul class="flex flex-col md:gap-2 gap-4">
                 {posts.map((post) => (
                   <li>
                     <a
                       href={`/blog/${post.id}/`}
-                      class={`flex text-base ${`/blog/${post.id}/` === currentPath ? "text-white" : "text-neutral-400"}`}
+                      class={`flex md:text-base text-xl ${`/blog/${post.id}/` === currentPath ? "text-white" : "text-neutral-400"}`}
                     >
                       {post.data.title}
                     </a>

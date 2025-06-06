@@ -20,39 +20,45 @@ const { title, description, heroImage, pubDate, headingDepth, headings } =
 ---
 
 <Layout title={title} description={description}>
-  <SmoothScroll client:only="react">
-    <section
-      class="xl:grid xl:grid-cols-[20%,1fr,20%] lg:px-12 px-8 lg:pt-24 gap-24"
+  <!-- <SmoothScroll client:only="react"> -->
+  <section class="lg:pt-24 lg:mb-24 mb-8">
+    <div class="lg:px-24 px-8 mb-16">
+      <a
+        href="/blog/"
+        class="no-underline font-normal flex mb-8 opacity-80 w-fit text-lg"
+        >← Назад к блогу</a
+      >
+      <h1 class="text-[clamp(2rem,0.8rem+6vw,8rem)] leading-none">
+        {title}
+      </h1>
+    </div>
+    <Image
+      src={heroImage}
+      alt={title}
+      format="webp"
+      width="1920"
+      height="1080"
+      class="w-full h-auto"
+    />
+  </section>
+  <section
+    class="relative flex flex-col xl:grid xl:grid-cols-[minmax(auto,20%),1fr,minmax(auto,20%)] xl:px-24 px-8 md:gap-16 gap-8"
+  >
+    <aside class="xl:sticky xl:top-32 max-w-auto h-fit md:order-1 order-3">
+      <CategoriesList />
+    </aside>
+    <div
+      class="order-2 col-start-2 prose prose-neutral prose-invert prose-xl prose-medium prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg max-w-none"
     >
-      <Sidebar bordered={true}><CategoriesList /></Sidebar>
-      <MotionContainer client:only="react">
-        <div
-          class="col-start-2 prose prose-neutral prose-invert prose-xl prose-medium prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg max-w-none"
-        >
-          <a
-            href="/blog/"
-            class="no-underline font-normal flex mb-4 opacity-80 w-fit"
-            >← Назад к блогу</a
-          >
-          <h1 class="text-[clamp(2.625rem,_1.5313rem_+_3.5vw,_3.5rem)]">
-            {title}
-          </h1>
-          <Image
-            src={heroImage}
-            alt={title}
-            format="webp"
-            width="100"
-            height="100"
-            class="w-full h-auto rounded-lg"
-          />
-          <slot />
-          <p class="pt-12">Опубликовано: {FormatDate(pubDate)}</p>
-        </div>
-      </MotionContainer>
-      <Sidebar bordered={false}>
-        <h2 class="text-xl font-medium mb-2">Оглавление</h2>
-        <TableOfContents headings={headings} />
-      </Sidebar>
-    </section>
-  </SmoothScroll>
+      <slot />
+      <p class="pt-12">Опубликовано: {FormatDate(pubDate)}</p>
+    </div>
+    <aside
+      class="xl:sticky xl:top-32 max-w-auto h-fit md:pl-6 md:order-3 order-1"
+    >
+      <h2 class="md:text-xl text-3xl font-medium mb-4">Оглавление</h2>
+      <TableOfContents headings={headings} />
+    </aside>
+  </section>
+  <!-- </SmoothScroll> -->
 </Layout>

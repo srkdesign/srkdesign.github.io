@@ -22,7 +22,7 @@ const HomeLayout = ({ projects }) => {
 
   return (
     <AnimatedLayout>
-      <h1 className="font-serif [font-size:clamp(4rem,-0.4rem+22vw,26rem)] text-center leading-none -mb-[3.5%] z-50 mix-blend-difference select-none block text-zinc-50">
+      <h1 className="font-serif [font-size:clamp(4rem,-0.4rem+22vw,26rem)] text-center leading-none -mb-[min(1.5rem,1.5%)] z-50 mix-blend-difference select-none block text-zinc-50">
         srkdesign
       </h1>
       <ProjectSlider projects={projects} />

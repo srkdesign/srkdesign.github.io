@@ -77,3 +77,9 @@ body,
 h2[data-heading="scroll"] {
   line-height: 1.5 !important;
 }
+
+@-moz-document url-prefix() {
+  .firefox-leading {
+    line-height: 0.85 !important;
+  }
+}

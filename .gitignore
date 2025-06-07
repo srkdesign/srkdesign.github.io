@@ -1,3 +1,5 @@
+.vscode/
+
 # build output
 dist/
 # generated types
@@ -21,7 +23,7 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
+# setting folder
 .idea/
 /test-results/
 /playwright-report/

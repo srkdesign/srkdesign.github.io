@@ -13,7 +13,7 @@ const Footer = () => {
     <footer className="py-24 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 px-8 lg:px-24 gap-24 static *:w-full">
       <div className="flex flex-col xl:justify-self-start">
         <h3 className="text-3xl font-medium mb-10">Будет полезно</h3>
-        <div className="flex lg:gap-24 gap-12 *:text-xl *:flex *:flex-col *:gap-4">
+        <div className="flex gap-12 *:text-xl *:flex *:flex-col *:gap-4">
           <ul>
             <li>
               <AnimatedLink href="/blog/" openInNewTab={false}>
@@ -21,10 +21,7 @@ const Footer = () => {
               </AnimatedLink>
             </li>
             <li>
-              <a>
-                Обучающие материалы <br />
-                (скоро)
-              </a>
+              <a>Обучение (скоро)</a>
             </li>
             <li>
               <AnimatedLink href="/resources/" openInNewTab={false}>

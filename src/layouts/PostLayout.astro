@@ -7,10 +7,10 @@ import { Image } from "astro:assets";
 // Components
 import Layout from "./Layout.astro";
 import CategoriesList from "../components/_CategoriesList.astro";
-import MotionContainer from "../components/_MotionContainer";
+// import MotionContainer from "../components/_MotionContainer";
 import TableOfContents from "../components/_TableOfContents.astro";
-import Sidebar from "../components/Sidebar.astro";
-import SmoothScroll from "../components/_SmoothScroll";
+// import Sidebar from "../components/Sidebar.astro";
+// import SmoothScroll from "../components/_SmoothScroll";
 
 // Functions
 import FormatDate from "../utils/FormatDate";
@@ -21,7 +21,7 @@ const { title, description, heroImage, pubDate, headingDepth, headings } =
 
 <Layout title={title} description={description}>
   <!-- <SmoothScroll client:only="react"> -->
-  <section class="lg:pt-24 lg:mb-24 mb-8">
+  <section class="lg:pt-24 lg:mb-24 mb-10">
     <div class="lg:px-24 px-8 lg:mb-16 mb-10">
       <a
         href="/blog/"
@@ -42,9 +42,9 @@ const { title, description, heroImage, pubDate, headingDepth, headings } =
     />
   </section>
   <section
-    class="relative flex flex-col xl:grid xl:grid-cols-[minmax(auto,20%),1fr,minmax(auto,20%)] xl:px-24 px-8 md:gap-16 gap-8"
+    class="relative flex flex-col xl:grid xl:grid-cols-[minmax(auto,20%),1fr,minmax(auto,20%)] xl:px-24 px-8 lg:gap-16 gap-10"
   >
-    <aside class="xl:sticky xl:top-32 max-w-auto h-fit md:order-1 order-3">
+    <aside class="xl:sticky xl:top-32 max-w-auto h-fit lg:order-1 order-3">
       <CategoriesList />
     </aside>
     <div
@@ -54,10 +54,16 @@ const { title, description, heroImage, pubDate, headingDepth, headings } =
       <p class="pt-12">Опубликовано: {FormatDate(pubDate)}</p>
     </div>
     <aside
-      class="xl:sticky xl:top-32 max-w-auto h-fit md:pl-6 md:order-3 order-1"
+      class="xl:sticky xl:top-32 max-w-auto h-fit lg:pl-6 lg:order-3 order-1"
     >
-      <h2 class="md:text-xl text-3xl font-medium mb-4">Оглавление</h2>
+    <details open="true">
+      <summary class="lg:text-xl text-2xl font-medium mb-4">
+        Оглавление
+      </summary>
       <TableOfContents headings={headings} />
+    </details>
+      
+      
     </aside>
   </section>
   <!-- </SmoothScroll> -->

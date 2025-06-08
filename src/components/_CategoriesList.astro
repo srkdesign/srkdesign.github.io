@@ -36,8 +36,8 @@ const postsByCategory = Object.entries(CATEGORIES).reduce(
           (post) => `/blog/${post.id}/` === currentPath
         );
         return (
-          <details open={isCurrentCategory} class="cursor-pointer">
-            <summary class="md:text-xl text-3xl font-medium md:mb-4 mb-8">
+          <details open={isCurrentCategory} class="cursor-pointer mb-2">
+            <summary class="lg:text-xl text-2xl font-medium mb-4">
               {categoryLabel}
             </summary>
             {posts.length === 0 ? (

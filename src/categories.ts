@@ -1,4 +1,5 @@
 export const CATEGORIES = {
+  design: "Дизайн",
   frontend: "Фронтенд",
   backend: "Бэкенд",
   other: "Другое",

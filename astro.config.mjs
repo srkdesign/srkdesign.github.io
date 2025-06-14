@@ -16,7 +16,7 @@ const prettyCodeOptions = {
   keepBackground: true,
   transformers: [
     transformerCopyButton({
-      visibility: "hover",
+      visibility: "always",
       feedbackDuration: 3_000,
     }),
   ],

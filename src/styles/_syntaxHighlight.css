@@ -3,29 +3,32 @@ pre {
   width: 100%;
   height: auto;
   box-sizing: border-box;
-  white-space: nowrap;
-  overflow-x: auto;
+  white-space: pre-wrap; /* allow wrapping */
+  word-break: break-word; /* wrap long tokens */
+  overflow-x: auto; /* fallback scroll */
   padding: 1.5rem 0;
   max-width: 100%;
 }
 
-/* Styling for lines within pre element */
-pre [data-line] {
-  padding: 0 0.5rem;
-  display: inline; /* Default inline behavior */
-  white-space: normal; /* Override pre's whitespace behavior */
-  word-wrap: normal; /* Break long words */
-  overflow-wrap: anywhere; /* Break content at any opportunity */
+/* Code styling inside pre element */
+pre > code {
+  display: block;
+  padding-bottom: 0.5rem !important;
+  position: relative;
 }
 
-/* Code styling inside pre element */
-code {
-  padding-bottom: 0.5rem !important;
+/* Styling for individual code lines */
+pre [data-line] {
+  display: block; /* preserve indentation */
+  white-space: pre-wrap; /* allow wrapping inside lines */
+  overflow-wrap: anywhere; /* break long content */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 /* Styling titles for code blocks */
 [data-rehype-pretty-code-title] {
-  background-color: #1F1F1F;
+  background-color: #1f1f1f;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   color: var(--tw-prose-captions);
@@ -64,7 +67,6 @@ code[data-line-numbers] > [data-line]::before {
   counter-increment: line;
   content: counter(line);
 
-  /* Line number styling */
   display: inline-block;
   width: 0.75rem;
   margin-right: 2rem;
@@ -85,19 +87,6 @@ code[data-line-numbers-max-digits="4"] > [data-line]::before {
   width: 2.25rem;
 }
 
-/* Neaten up code block padding */
-[data-rehype-pretty-code-fragment] pre {
-  padding-left: 0;
-  padding-right: 0;
-  overflow-x: scroll;
-}
-
-/* Adjust padding for individual lines inside pre element */
-[data-line] {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
 /* Remove border-radius for pre element after the title */
 [data-rehype-pretty-code-title] + pre {
   border-top-right-radius: 0;
@@ -106,5 +95,45 @@ code[data-line-numbers-max-digits="4"] > [data-line]::before {
 
 /* Styling for copy button */
 .rehype-pretty-copy {
+  position: absolute;
+  top: 0;
+  right: 0.5rem;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  opacity: 1; /* Always visible */
+  z-index: 100;
   margin-right: 1.5rem !important;
+}
+
+/* Copy icon (visible by default) */
+.rehype-pretty-copy .ready {
+  display: block;
+  background-image: var(--copy-icon);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Success icon (hidden until copied) */
+.rehype-pretty-copy .success {
+  display: none;
+  background-image: var(--success-icon);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Show success icon after copy */
+.rehype-pretty-copy.rehype-pretty-copied .ready {
+  display: none;
+}
+.rehype-pretty-copy.rehype-pretty-copied .success {
+  display: block;
 }

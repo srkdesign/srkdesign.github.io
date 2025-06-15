@@ -1,0 +1,134 @@
+/* Callout Type Colors */
+[data-callout="note"],
+[data-callout="chatbot"] {
+  --rc-color-light-rgb: 8, 109, 221;
+  --rc-color-dark-rgb: 2, 122, 255;
+}
+
+[data-callout="abstract"],
+[data-callout="summary"],
+[data-callout="tldr"],
+[data-callout="tip"],
+[data-callout="hint"],
+[data-callout="important"] {
+  --rc-color-light-rgb: 0, 191, 188;
+  --rc-color-dark-rgb: 83, 223, 221;
+}
+
+[data-callout="info"],
+[data-callout="todo"] {
+  --rc-color-light-rgb: 8, 109, 221;
+  --rc-color-dark-rgb: 2, 122, 255;
+}
+
+[data-callout="success"],
+[data-callout="check"],
+[data-callout="done"] {
+  --rc-color-light-rgb: 8, 185, 78;
+  --rc-color-dark-rgb: 68, 207, 110;
+}
+
+[data-callout="question"],
+[data-callout="help"],
+[data-callout="faq"],
+[data-callout="boosty"],
+[data-callout="warning"],
+[data-callout="attention"],
+[data-callout="caution"],
+[data-callout="promo"] {
+  --rc-color-light-rgb: 236, 117, 0;
+  --rc-color-dark-rgb: 233, 151, 63;
+}
+
+[data-callout="failure"],
+[data-callout="fail"],
+[data-callout="danger"],
+[data-callout="error"],
+[data-callout="bug"],
+[data-callout="missing"] {
+  --rc-color-light-rgb: 233, 49, 71;
+  --rc-color-dark-rgb: 251, 70, 76;
+}
+
+[data-callout="example"] {
+  --rc-color-light-rgb: 155, 125, 255;
+  --rc-color-dark-rgb: 190, 160, 255;
+}
+
+[data-callout="quote"],
+[data-callout="cite"] {
+  --rc-color-light-rgb: 158, 158, 158;
+  --rc-color-dark-rgb: 158, 158, 158;
+}
+
+/* Callout Box Styling */
+.callout {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+
+  /* Light mode background and border */
+  background-color: rgba(var(--rc-color-light-rgb, 136, 136, 136), 0.16);
+  border-color: rgba(var(--rc-color-light-rgb, 136, 136, 136), 0.16);
+}
+
+/* Dark mode */
+.dark .callout {
+  background-color: rgba(var(--rc-color-dark-rgb, 136, 136, 136), 0.15);
+  border-color: rgba(var(--rc-color-dark-rgb, 136, 136, 136), 0.4);
+}
+
+/* Callout Title */
+.callout-title {
+  display: flex;
+  align-items: start;
+  gap: 0.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+
+  /* Title color same as border color */
+  color: rgba(var(--rc-color-light-rgb, 136, 136, 136), 1);
+}
+
+.dark .callout-title {
+  color: rgba(var(--rc-color-dark-rgb, 136, 136, 136), 1);
+}
+
+/* Icons inside title */
+.callout-title-icon,
+.callout-fold-icon {
+  display: flex;
+  flex: none;
+  align-items: center;
+}
+
+.callout-title-icon svg,
+.callout-fold-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Invisible zero-width space to fix layout */
+.callout-title-icon::after,
+.callout-fold-icon::after {
+  content: "\200B";
+}
+
+/* Paragraph spacing inside callout */
+.callout-content > p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: rgba(var(--rc-color-light-rgb, 136, 136, 136), 1);
+  font-weight: 400;
+}
+
+.callout-content > p a {
+  color: inherit;
+}

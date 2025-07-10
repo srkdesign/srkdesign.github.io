@@ -17,8 +17,8 @@
 
 [data-callout="info"],
 [data-callout="todo"] {
-  --rc-color-light-rgb: 8, 109, 221;
-  --rc-color-dark-rgb: 2, 122, 255;
+  --rc-color-light-rgb: 8, 149, 221;
+  --rc-color-dark-rgb: 2, 122, 63;
 }
 
 [data-callout="success"],

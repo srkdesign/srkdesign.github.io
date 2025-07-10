@@ -28,7 +28,7 @@ pre [data-line] {
 
 /* Styling titles for code blocks */
 [data-rehype-pretty-code-title] {
-  background-color: #1f1f1f;
+  background-color: #24292e;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   color: var(--tw-prose-captions);

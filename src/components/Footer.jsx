@@ -75,7 +75,7 @@ const Footer = () => {
         <div className="text-lg flex-grow">
           <ul className="flex gap-16">
             <li>
-              <StatsItem number="80" description="выполненных проектов" />
+              <StatsItem number="90" description="выполненных проектов" />
             </li>
             <li>
               <StatsItem number="50" description="положительных отзывов" />

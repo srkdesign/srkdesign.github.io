@@ -12,7 +12,7 @@ import rehypeCallouts from "rehype-callouts";
 import playformCompress from "@playform/compress";
 
 const prettyCodeOptions = {
-  theme: "min-dark",
+  theme: "github-dark",
   wrap: true,
   keepBackground: true,
   transformers: [

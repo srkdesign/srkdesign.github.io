@@ -52,7 +52,9 @@ const SmartVideo = ({ src, poster }) => {
       playsInline
       preload="auto"
       style={{ maxWidth: "100%", display: "block" }}
-    />
+    >
+      <img src={poster} alt="Image Preview of a video file" />
+    </video>
   );
 };
 

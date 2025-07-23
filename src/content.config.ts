@@ -15,6 +15,8 @@ const projects = defineCollection({
     heroImage: z.string().optional(),
     isDraft: z.boolean().optional(),
     isFullWidth: z.boolean().optional(),
+    responsibilities: z.array(z.string()).optional(),
+    stack: z.array(z.string()).optional(),
   }),
 });
 

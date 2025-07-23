@@ -1,6 +1,11 @@
 ---
 title: "Cristal Print"
 description: "Дизайн страницы товара для сайта типографии"
+responsibilities:
+  - дизайн
+  - редизайн
+stack:
+  - Figma
 pubDate: "Aug 12 2024"
 heroImage: "/images/projects/cristal-print/hero.png"
 isDraft: false
@@ -8,89 +13,10 @@ isFullWidth: true
 ---
 
 {/* Components */}
-import { Image } from "astro:assets";
-import HeroImage from "../../components/\_HeroImage";
+import SmartVideo from "../../components/SmartVideo";
 
-{/* Images */}
-import fullPageSlice_1 from "/public/images/projects/cristal-print/full-page-1.png";
-import fullPageSlice_2 from "/public/images/projects/cristal-print/full-page-2.png";
-import fullPageSlice_3 from "/public/images/projects/cristal-print/full-page-3.png";
-import fullPageSlice_4 from "/public/images/projects/cristal-print/full-page-4.png";
-import fullPageSlice_5 from "/public/images/projects/cristal-print/full-page-5.png";
-import fullPageSlice_6 from "/public/images/projects/cristal-print/full-page-6.png";
-import mockupImage from "/public/images/projects/cristal-print/mockup.png";
-
-export const quality = "mid";
-export const format = "webp";
-export const alt =
-  "Полноэкранное изображение страницы сайта типографии о различных видах каталогов";
-
-<HeroImage client:only="react">
-  <Image
-    src={fullPageSlice_1}
-    alt={alt}
-    format={format}
-    quality={quality}
-    decoding="async"
-  />
-</HeroImage>
-
-<Image
-  src={fullPageSlice_2}
-  alt={alt}
-  format={format}
-  quality={quality}
-  decoding="async"
-  loading="lazy"
-  class="w-full object-cover"
-/>
-
-<Image
-  src={fullPageSlice_3}
-  alt={alt}
-  format={format}
-  quality={quality}
-  decoding="async"
-  loading="lazy"
-  class="w-full object-cover"
-/>
-
-<Image
-  src={fullPageSlice_4}
-  alt={alt}
-  format={format}
-  quality={quality}
-  decoding="async"
-  loading="lazy"
-  class="w-full object-cover"
-/>
-
-<Image
-  src={fullPageSlice_5}
-  alt={alt}
-  format={format}
-  quality={quality}
-  decoding="async"
-  loading="lazy"
-  class="w-full object-cover"
-/>
-
-<Image
-  src={fullPageSlice_6}
-  alt={alt}
-  format={format}
-  quality={quality}
-  decoding="async"
-  loading="lazy"
-  class="w-full object-cover"
-/>
-
-<Image
-  src={mockupImage}
-  alt="Мокап (пример) каталога с клеевым бесшвейным скреплением"
-  format={format}
-  quality={quality}
-  decoding="async"
-  loading="lazy"
-  class="w-full object-cover"
-/>
+<SmartVideo
+  src="/videos/cristal_scroll.mp4"
+  poster="/images/projects/cristal-print/hero.png"
+  client:only="react"
+></SmartVideo>

@@ -122,7 +122,9 @@
 }
 
 /* Paragraph spacing inside callout */
-.callout-content > p {
+.callout-content > p,
+.callout-content > ul > li,
+.callout-content > ol > li {
   margin-top: 1rem;
   margin-bottom: 1rem;
   color: rgba(var(--rc-color-light-rgb, 136, 136, 136), 1);

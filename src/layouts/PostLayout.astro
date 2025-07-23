@@ -16,7 +16,7 @@ import TableOfContents from "../components/_TableOfContents.astro";
 // Functions
 import FormatDate from "../utils/FormatDate";
 
-const { title, description, heroImage, pubDate, headingDepth, headings } =
+const { title, description, heroImage, pubDate, updatedDate, headingDepth, headings } =
   Astro.props;
 ---
 
@@ -52,7 +52,10 @@ const { title, description, heroImage, pubDate, headingDepth, headings } =
       class="order-2 col-start-2 prose prose-neutral prose-invert prose-xl prose-medium prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg max-w-none"
     >
       <slot />
-      <p class="pt-12">Опубликовано: {FormatDate(pubDate)}</p>
+      <ul class="pt-12 list-none m-0 p-0 flex flex-col gap-1">
+        <li class="p-0 m-0"><p class="p-0 m-0">Опубликовано: {FormatDate(pubDate)}</p></li>
+        { updatedDate  ? <li class="p-0 m-0"><p class="p-0 m-0">Обновлено: {FormatDate(updatedDate)}</p></li> : ""}
+      </ul>
     </div>
     <aside
       class="xl:sticky xl:top-32 max-w-auto h-fit lg:pl-6 lg:order-3 order-1"

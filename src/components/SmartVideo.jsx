@@ -42,7 +42,8 @@ const SmartVideo = ({ src, poster }) => {
 
   return (
     <div
-      className={`relative w-full h-auto overflow-hidden "background-image-${poster}"`}
+      className={`relative block w-screen h-lvh overflow-hidden bg-cover bg-top bg-no-repeat`}
+      style={{ backgroundImage: `url(${poster})` }}
     >
       <video
         ref={videoRef}
@@ -51,7 +52,7 @@ const SmartVideo = ({ src, poster }) => {
         controls
         playsInline
         preload="auto"
-        className={`block w-full h-full object-cover m-0 p-0 `}
+        className={`block w-full h-full object-cover object-top m-0 p-0`}
       />
     </div>
   );

@@ -42,7 +42,7 @@ const HeadingAnimation = () => {
             <span className="font-serif italic">web</span> дизайнер
           </span>
           <span>
-            &nbsp;и&nbsp;
+            и&nbsp;
             <span className="font-serif italic">front-end</span> разработчик
           </span>
         </p>

@@ -77,17 +77,18 @@ const SmartVideo = ({ src, poster }) => {
           videoLoaded ? "opacity-0" : "opacity-100"
         }`}
       />
-      {videoLoaded && (
-        <video
-          ref={videoRef}
-          src={src}
-          muted
-          controls
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover m-0 p-0 z-10"
-        />
-      )}
+      <video
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        muted
+        controls
+        playsInline
+        preload="auto"
+        className={`w-full h-full object-cover m-0 p-0 z-10 ${
+          videoLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      ></video>
       {videoFailed && <p>Video failed to load.</p>}
     </div>
   );

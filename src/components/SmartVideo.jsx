@@ -3,61 +3,62 @@ import { useEffect, useRef, useState } from "react";
 const SmartVideo = ({ src, poster }) => {
   const videoRef = useRef(null);
   const [hasPlayedOnce, setHasPlayedOnce] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false); // ← added
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleEnded = () => {
-      setHasPlayedOnce(true);
-    };
+    const onPlay = () => setIsPlaying(true); // ← track play
+    const onPause = () => setIsPlaying(false); // ← track pause
+    const onEnded = () => setHasPlayedOnce(true);
 
-    video.addEventListener("ended", handleEnded);
+    video.addEventListener("play", onPlay);
+    video.addEventListener("pause", onPause);
+    video.addEventListener("ended", onEnded);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!video) return;
+        if (!video || hasPlayedOnce) return;
 
-        if (
-          entry.isIntersecting &&
-          entry.intersectionRatio >= 0.4 &&
-          !hasPlayedOnce
-        ) {
-          video.play();
-        } else {
-          if (!video.paused) video.pause();
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
+          video.play().catch(() => {});
+        } else if (!video.paused) {
+          video.pause();
         }
       },
-      {
-        threshold: [0, 0.4, 1],
-      }
+      { threshold: [0.4] }
     );
 
     observer.observe(video);
 
     return () => {
-      video.removeEventListener("ended", handleEnded);
+      video.removeEventListener("play", onPlay);
+      video.removeEventListener("pause", onPause);
+      video.removeEventListener("ended", onEnded);
       observer.disconnect();
     };
   }, [hasPlayedOnce]);
 
   return (
-    <video
-      ref={videoRef}
-      src={src}
-      width="100%"
-      className="max-w-full, block"
-      muted
-      controls
-      playsInline
-      preload="auto"
-    >
+    <div className="relative w-full overflow-hidden">
       <img
         src={poster}
-        className="w-full"
-        alt="Image Preview of a video file"
+        alt="Video placeholder"
+        className={`absolute top-0 left-0 w-full h-auto max-h-[1080px] transition-opacity duration-300 ${
+          isPlaying ? "opacity-0" : "opacity-100"
+        }`}
       />
-    </video>
+      <video
+        ref={videoRef}
+        src={src}
+        muted
+        controls
+        playsInline
+        preload="auto"
+        className="w-full h-full object-cover m-0 p-0"
+      />
+    </div>
   );
 };
 

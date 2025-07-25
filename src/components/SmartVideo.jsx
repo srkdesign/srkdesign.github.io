@@ -70,13 +70,13 @@ const SmartVideo = ({ src, poster }) => {
 
   return (
     <div className="relative w-full overflow-hidden">
-      {videoLoading && (
-        <img
-          src={poster}
-          alt="Video placeholder"
-          className="absolute top-0 left-0 w-full h-auto max-h-[1080px] transition-opacity duration-300"
-        />
-      )}
+      <img
+        src={poster}
+        alt="Video placeholder"
+        className={`absolute top-0 left-0 w-full h-auto max-h-[1080px] transition-opacity duration-300 z-50 ${
+          videoLoaded ? "opacity-0" : "opacity-100"
+        }`}
+      />
       {videoLoaded && (
         <video
           ref={videoRef}
@@ -85,7 +85,7 @@ const SmartVideo = ({ src, poster }) => {
           controls
           playsInline
           preload="auto"
-          className="w-full h-full object-cover m-0 p-0"
+          className="w-full h-full object-cover m-0 p-0 z-10"
         />
       )}
       {videoFailed && <p>Video failed to load.</p>}

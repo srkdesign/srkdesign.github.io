@@ -45,15 +45,18 @@ const SmartVideo = ({ src, poster }) => {
     <video
       ref={videoRef}
       src={src}
-      poster={poster}
       width="100%"
+      className="max-w-full, block"
       muted
       controls
       playsInline
       preload="auto"
-      style={{ maxWidth: "100%", display: "block" }}
     >
-      <img src={poster} alt="Image Preview of a video file" />
+      <img
+        src={poster}
+        className="w-full"
+        alt="Image Preview of a video file"
+      />
     </video>
   );
 };

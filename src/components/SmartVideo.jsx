@@ -42,7 +42,7 @@ const SmartVideo = ({ src, poster }) => {
 
   return (
     <div
-      className={`relative block w-screen h-lvh overflow-hidden bg-cover bg-top bg-no-repeat`}
+      className={`relative block w-screen lg:h-lvh overflow-hidden bg-cover bg-top bg-no-repeat`}
       style={{ backgroundImage: `url(${poster})` }}
     >
       <video

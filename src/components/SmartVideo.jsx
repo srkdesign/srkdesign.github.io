@@ -22,14 +22,20 @@ const SmartVideo = ({ src, poster }) => {
     const video = document.createElement("video");
     video.src = src;
 
-    video.addEventListener("loadeddata", setLoadingTrue);
+    const onCanPlay = () => {
+      setLoaded(true);
+    };
+
+    video.addEventListener("canplay", onCanPlay);
+    // video.addEventListener("loadeddata", setLoadingTrue);
     video.addEventListener("error", setErrorTrue);
 
     return () => {
-      video.removeEventListener("loadeddata", setLoadingTrue);
+      // video.removeEventListener("loadeddata", setLoadingTrue);
+      video.removeEventListener("canplay", setLoadingTrue);
       video.removeEventListener("error", setErrorTrue);
     };
-  }, [src, setLoadingTrue, setErrorTrue]);
+  }, [src, setErrorTrue]);
 
   useEffect(() => {
     if (!videoRef.current) return;

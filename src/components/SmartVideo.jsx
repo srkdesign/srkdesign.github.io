@@ -3,14 +3,14 @@ import { useEffect, useRef, useState } from "react";
 const SmartVideo = ({ src, poster }) => {
   const videoRef = useRef(null);
   const [hasPlayedOnce, setHasPlayedOnce] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false); // ← added
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const onPlay = () => setIsPlaying(true); // ← track play
-    const onPause = () => setIsPlaying(false); // ← track pause
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
     const onEnded = () => setHasPlayedOnce(true);
 
     video.addEventListener("play", onPlay);

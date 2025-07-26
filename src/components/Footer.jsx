@@ -21,7 +21,7 @@ const Footer = () => {
               </AnimatedLink>
             </li>
             <li>
-              <a>Обучение (скоро)</a>
+              <a>Курсы (скоро)</a>
             </li>
             <li>
               <AnimatedLink href="/resources/" openInNewTab={false}>

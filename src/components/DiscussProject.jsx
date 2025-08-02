@@ -17,7 +17,7 @@ const DiscussProject = () => {
       animate={{ rotate: 180 }}
       style={{ rotate }}
       transition={{ ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ opacity: 0.6 }}
+      whileHover={{ opacity: 0.8, rotate: 0 }}
     >
       <svg
         className="size-20 lg:size-28"

@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
-import HeadingAnimation from "./_HeadingAnimation.jsx";
-import AnimatedLink from "./_AnimatedLink.jsx";
+import HeadingAnimation from "./HeadingAnimation.jsx";
+import AnimatedLink from "./AnimatedLink.jsx";
 import {
   MEDIA_URL_BOOSTY,
   MEDIA_URL_GITHUB,

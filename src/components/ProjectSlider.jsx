@@ -4,7 +4,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import "../styles/_slider.css";
 
-import ProjectSlide from "./_ProjectSlide";
+import ProjectSlide from "./ProjectSlide";
 
 const ProjectSlider = ({ projects }) => {
   // console.log(projects);

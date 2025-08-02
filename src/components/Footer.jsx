@@ -5,8 +5,8 @@ import {
   MEDIA_URL_GITHUB,
 } from "../consts";
 import GetYear from "../utils/GetYear";
-import AnimatedLink from "./_AnimatedLink.jsx";
-import StatsItem from "./_StatsItem.jsx";
+import AnimatedLink from "./AnimatedLink.jsx";
+import StatsItem from "./StatsItem.jsx";
 
 const Footer = () => {
   return (

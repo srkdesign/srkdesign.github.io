@@ -1,10 +1,10 @@
-import MotionContainer from "../components/_MotionContainer";
+import MotionContainer from "../components/MotionContainer";
 // import SmoothScroll from "../components/_SmoothScroll";
 
 const AnimatedLayout = ({ children }) => {
   return (
     // <SmoothScroll>
-      <MotionContainer>{children}</MotionContainer>
+    <MotionContainer>{children}</MotionContainer>
     // </SmoothScroll>
   );
 };

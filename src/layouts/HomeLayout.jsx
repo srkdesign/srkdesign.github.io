@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import ProjectSlider from "../components/ProjectSlider";
 import AnimatedLayout from "./AnimatedLayout";
 import { motion, useScroll, useTransform } from "motion/react";
-import ProjectSlide from "../components/_ProjectSlide";
+import ProjectSlide from "../components/ProjectSlide";
 
 const HomeLayout = ({ projects }) => {
   // console.log(projects);

@@ -31,7 +31,9 @@ const Footer = () => {
           </ul>
           <ul>
             <li>
-              <a>Шаблоны (скоро)</a>
+              <AnimatedLink href="/apps/" openInNewTab={false}>
+                Приложения
+              </AnimatedLink>
             </li>
             <li>
               <AnimatedLink href="/time-machine/" openInNewTab={false}>

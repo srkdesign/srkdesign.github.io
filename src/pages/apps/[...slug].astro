@@ -1,0 +1,33 @@
+---
+// Content
+import { type CollectionEntry, getCollection, render } from "astro:content";
+
+// Components
+import type { HeadingProps } from "../../types";
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import ScrollableText from "../../components/ScrollableText";
+import AppLayout from "../../layouts/AppLayout";
+
+interface Props {
+  app: CollectionEntry<"apps">;
+  headings: HeadingProps[];
+}
+
+export async function getStaticPaths() {
+  const apps = await getCollection("apps");
+  return apps.map((app: { id: string }, index: number) => ({
+    params: { slug: app.id },
+    props: { app },
+  }));
+}
+
+const { app }: Props = Astro.props;
+const { Content } = await render(app);
+---
+
+<Layout title={app.data.title} description={app.data.description}>
+  <AppLayout metadata={app.data} client:only="react">
+    <Content/>
+  </AppLayout>
+</Layout>

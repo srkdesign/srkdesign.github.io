@@ -49,7 +49,7 @@ const { title, description, heroImage, pubDate, updatedDate, headingDepth, headi
       <CategoriesList />
     </aside>
     <div
-      class="order-2 col-start-2 prose prose-neutral prose-invert prose-xl prose-medium prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg max-w-none"
+      class="order-2 col-start-2 prose prose-neutral prose-invert prose-xl prose-medium prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg prose-img:w-full max-w-none"
     >
       <slot />
       <ul class="pt-12 list-none m-0 p-0 flex flex-col gap-1">
@@ -66,8 +66,6 @@ const { title, description, heroImage, pubDate, updatedDate, headingDepth, headi
       </summary>
       <TableOfContents headings={headings} />
     </details>
-      
-      
     </aside>
   </section>
   <!-- </SmoothScroll> -->

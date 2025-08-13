@@ -1,0 +1,81 @@
+---
+import type { GetStaticPaths } from "astro";
+// Constants
+import { SITE_TITLE } from "../../consts";
+type PostProps = CollectionEntry<"apps">;
+
+// Content
+import { getCollection, type CollectionEntry } from "astro:content";
+
+// Functions
+import FormatDate from "../../utils/FormatDate";
+
+// Components
+import Layout from "../../layouts/Layout.astro";
+import PostLink from "../../components/PostLink";
+import AnimatedLayout from "../../layouts/AnimatedLayout";
+import Pagination from "../../components/Pagination.astro";
+
+interface PaginationData {
+  data: CollectionEntry<"apps">[];
+  url: {
+    current: string;
+    prev?: string;
+    next?: string;
+  };
+}
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const allPosts = await getCollection("apps");
+  const isProd = import.meta.env.PROD;
+  const filteredPosts = allPosts
+  .filter(({ data }: CollectionEntry<"apps">) =>
+    isProd ? !data.isDraft : true
+  )
+
+  return paginate(filteredPosts, {
+    pageSize: 5,
+  });
+};
+
+const page = Astro.props.page as PaginationData;
+if (!page) throw new Error("Pagination data is missing");
+---
+
+<Layout
+  title={`Приложения / ${SITE_TITLE}`}
+  description="Блог о веб-дизайне и фронтэнд-разработке: статьи, советы и лучшие практики по UX/UI, адаптивному дизайну, HTML, CSS, JavaScript и SEO. Всё, что нужно для создания эффективных сайтов!"
+>
+  <AnimatedLayout client:only="react">
+    <div class="lg:pt-32">
+      <div
+        class="flex justify-between items-center mb-8 md:mb-16 lg:px-24 px-8 text-5xl lg:text-9xl"
+      >
+        <h1 class="whitespace-nowrap">Приложения</h1>
+        <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+      </div>
+      <ul>
+        {
+          page.data.map((app) => (
+          <li class="border-t last:border-b border-white/10 relative lg:px-24 px-8">
+            <a href={`/apps/${app.id}/`} class="flex flex-col md:flex-row justify-between md:items-center pt-10 pb-11 lg:gap-24 gap-4">
+              <div class="flex gap-8 items-center">
+                <img src={app.data.icon} alt="" class="max-w-16 rounded-xl" />
+                <h4 class="lg:text-5xl md:text-5xl text-2xl max-w-5xl line-clamp-2">
+                  {app.data.title}
+                </h4>
+              </div>
+              <div class="text-md md:text-2xl lg:w-44 flex lg:justify-center">
+                <div>
+                  <p class="capitalize">{app.data.platform}</p>
+                  <p class="opacity-50">{app.data.size} MB</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          ))
+        }
+      </ul>
+    </div>
+  </AnimatedLayout>
+</Layout>

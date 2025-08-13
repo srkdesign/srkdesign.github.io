@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 const ProjectHeroImage = ({ children }) => {
   return (
     <motion.picture
-      className="w-full h-auto my-0 *:mb-0"
+      className="w-full h-auto my-0 *:mb-0 overflow-hidden"
       initial={{ y: 200 }}
       animate={{ y: 0 }}
       exit={{ y: 0 }}

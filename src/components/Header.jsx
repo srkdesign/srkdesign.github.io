@@ -22,8 +22,23 @@ const Header = () => {
       </div>
       <ul
         id="header-links"
-        className="hidden md:flex flex-col md:flex-row gap-px md:gap-12 capitalize mix-blend-difference text-base pr-4 md:pr-0"
+        className="hidden md:flex flex-col md:flex-row gap-px md:gap-12 mix-blend-difference text-base pr-4 md:pr-0"
       >
+        <li>
+          <AnimatedLink href="/web-design/" openInNewTab={true}>
+            Веб-дизайн
+          </AnimatedLink>
+        </li>
+        {/* <li>
+          <AnimatedLink href="/web-design/" openInNewTab={true}>
+            Верстка сайтов
+          </AnimatedLink>
+        </li>
+        <li>
+          <AnimatedLink href="/web-design/" openInNewTab={true}>
+            Сайты под ключ
+          </AnimatedLink>
+        </li> */}
         <li>
           <AnimatedLink href={MEDIA_URL_KWORK} openInNewTab={true}>
             Kwork
@@ -32,11 +47,6 @@ const Header = () => {
         <li>
           <AnimatedLink href={MEDIA_URL_BOOSTY} openInNewTab={true}>
             Boosty
-          </AnimatedLink>
-        </li>
-        <li>
-          <AnimatedLink href={MEDIA_URL_GITHUB} openInNewTab={true}>
-            Github
           </AnimatedLink>
         </li>
       </ul>

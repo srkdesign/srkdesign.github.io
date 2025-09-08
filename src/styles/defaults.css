@@ -83,3 +83,7 @@ h2[data-heading="scroll"] {
     line-height: 0.85 !important;
   }
 }
+
+[data-counter]::before {
+  content: counter(process, decimal-leading-zero);
+}

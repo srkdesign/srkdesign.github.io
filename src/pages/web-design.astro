@@ -1,0 +1,280 @@
+---
+// Content
+// Imports
+import { getCollection, type CollectionEntry } from "astro:content";
+import { CATEGORIES } from "../categories";
+
+// Props
+type Post = CollectionEntry<"blog">;
+type CategorySlug = keyof typeof CATEGORIES;
+
+// Constants
+const FEATURED_CATEGORIES = ["design", "other"];
+
+const allPosts: Post[] = await getCollection("blog", ({ data }: Post) => {
+  return data.isDraft !== true;
+});
+
+const postsByCategory = Object.entries(CATEGORIES)
+  .filter(([slug]) => FEATURED_CATEGORIES.includes(slug as CategorySlug))
+  .reduce(
+    (acc, [slug, label]) => {
+      const categorySlug = slug as CategorySlug;
+      const postsInCategory = allPosts.filter(
+        (post: Post) => post.data.category === categorySlug
+      );
+      acc[categorySlug] = postsInCategory;
+      return acc;
+    },
+    {} as Record<CategorySlug, Post[]>
+  );
+
+// Components
+import Layout from "../layouts/Layout.astro";
+import AnimatedLayout from "../layouts/AnimatedLayout";
+import CounterCard from "../components/CounterCard.astro";
+import FormatDate from "../utils/FormatDate";
+import Accordion from "../components/Accordion";
+import ScrollableText from "../components/ScrollableText";
+import BorderedCard from "../components/BorderedCard";
+import SmartVideo from "../components/SmartVideo";
+---
+
+<Layout
+  title="Веб-дизайн сайтов — современный и удобный дизайн для бизнеса"
+  description="Профессиональный веб-дизайн сайтов для малого и среднего бизнеса. Удобный и современный дизайн, адаптированный под мобильные устройства. "
+>
+  <AnimatedLayout client:only="react">
+    <!-- Hero -->
+    <section class="lg:px-24 px-8 md:mb-24 mb-10 md:pt-24">
+      <h1 class="xl:text-9xl lg:text-8xl text-4xl flex flex-col gap-2">
+        <span>Веб-дизайн сайта </span>
+        <span>в <span class="font-serif italic">Figma</span></span>
+      </h1>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="mb-36 overflow-hidden">
+      <SmartVideo
+        src="/videos/projects/belarus-remont_scroll.mp4"
+        poster="/images/projects/belarus-remont/hero.png"
+        client:only="react"
+      />
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <!-- <section
+      class="md:mb-56 mb-24 py-4 overflow-x-hidden bg-zinc-50 text-black"
+    >
+      <ScrollableText
+        from="0%"
+        to="-50%"
+        style="*:text-3xl lg:*:text-7xl"
+        heading="90+ выполненных заказов"
+        subheading="50+ положительных отзывов"
+        client:only="react"
+      />
+    </section> -->
+
+    <!-- WEBSITE CREATION PROCESS -->
+    <section
+      class="px-8 lg:px-24 flex flex-col md:gap-16 gap-10 md:mb-56 mb-24"
+    >
+      <h2 class="lg:text-7xl text-4xl">Процесс создания сайта</h2>
+      <ol
+        class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 list-none [counter-reset:process] items-stretch self-stretch"
+      >
+        <CounterCard
+          isChosen
+          title="Дизайн"
+          synopsis="Создается макет сайта с продуманной структурой и удобным UI/UX. Дизайн адаптируется под все устройства, сочетая стиль и функциональность."
+          features={[
+            "Брифинг",
+            "Визуальная концепция",
+            "Готовый к верстке макет",
+            // "Подбор или генерация изображений",
+            // "Работа с типографикой",
+            // "Психология цвета",
+            // "Настройка сетки",
+            // "Понятная композиция"
+          ]}
+        />
+        <CounterCard
+          title="Верстка"
+          synopsis="Макеты превращаются в рабочий сайт с адаптивной структурой. Используется чистый и современный код для стабильной работы сайта."
+          features={[
+            "Чистая и адаптивная верстка",
+            "Подключение библиотек и API",
+            "Создание компонентов",
+          ]}
+        />
+        <CounterCard
+          title="Интеграция с CMS"
+          synopsis="Сайт подключается к CMS для удобного управления контентом. Настраиваются шаблоны, блоки и необходимые функции."
+          features={[
+            "Настройка страниц и меню",
+            "Подключение форм",
+            "Персонализированная админка",
+          ]}
+        />
+      </ol>
+    </section>
+
+    <!-- WHY ORDER -->
+    <section
+      class="px-8 lg:px-24 md:gap-24 gap-10 md:mb-56 mb-24 grid md:grid-cols-2 grid-cols-1"
+    >
+      <h2 class="lg:text-7xl text-4xl md:col-span-2 md:max-w-[18ch] col-span-2">
+        Каждый макет продуман до мелочей
+      </h2>
+      <section
+        class="grid md:grid-cols-2 xl:grid-cols-3 gap-x-8 md:gap-y-32 col-span-2"
+      >
+        <BorderedCard
+          icon="star"
+          title="Индивидуальный подход"
+          description="Каждый проект уникален. Учитываю особенности вашего бизнеса, чтобы сайт отражал ваш стиль и ценности."
+          client:only="react"
+        />
+        <BorderedCard
+          icon="start"
+          title="Быстрый запуск"
+          description="Макет сразу продуман с точки зрения разработки, поэтому сайт можно запустить без лишних доработок."
+          client:only="react"
+        />
+        <BorderedCard
+          icon="layout"
+          title="Удобный интерфейс"
+          description="Логичная и понятная структура макета поможет вашим клиентам легко найти нужную информацию."
+          client:only="react"
+        />
+        <BorderedCard
+          icon="reviews"
+          title="Реальные отзывы клиентов"
+          description="Более 50 отзывов подтверждают надёжность и эффективность дизайнов."
+          client:only="react"
+        />
+        <BorderedCard
+          icon="deal"
+          title="Безопасная сделка"
+          description="Заказ выполняется только через фриланс-платформу. Ваши деньги защищены, а проект под контролем."
+          client:only="react"
+        />
+        <BorderedCard
+          icon="time"
+          title="Соблюдение сроков"
+          description="Все этапы работы строго планируются и выполняются в согласованные сроки."
+          client:only="react"
+        />
+      </section>
+    </section>
+    <!-- TESTIMONIALS -->
+
+    <!-- TECH STACK -->
+    <section
+      class="md:mb-56 mb-24 py-4 overflow-x-hidden bg-zinc-50 text-black"
+    >
+      <ScrollableText
+        from="0%"
+        to="-50%"
+        style="*:text-3xl lg:*:text-7xl"
+        heading="Сайт-визитка — Интернет-магазин"
+        subheading="Лендинг — Корпоративный сайт"
+        client:only="react"
+      />
+    </section>
+
+    <!-- POSTS -->
+    <section
+      class="px-8 lg:px-24 flex flex-col gap-16 justify-start items-start md:mb-52 mb-24"
+    >
+      <h2 class="lg:text-7xl text-4xl">Гайды и лучшие практики веб-дизайна</h2>
+      <ul class="grid md:grid-cols-2 gap-8">
+        {
+          Object.entries(postsByCategory).map(([slug, posts]) =>
+            posts.slice(0, 1).map((post) => (
+              <li>
+                <a href={`/blog/${post.id}`}>
+                  <div class="flex flex-col md:gap-8 gap-4">
+                    <picture class="relative block overflow-hidden">
+                      <img
+                        class="transition duration-300 ease-in-out hover:scale-110"
+                        src={post.data.heroImage}
+                        alt={post.data.title}
+                      />
+                    </picture>
+                    <div class="flex flex-col gap-2">
+                      <h3 class="md:text-3xl text-xl">{post.data.title}</h3>
+                      <p class="md:text-xl text-base opacity-70">
+                        {post.data.updatedDate
+                          ? FormatDate(post.data.updatedDate)
+                          : FormatDate(post.data.pubDate)}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            ))
+          )
+        }
+      </ul>
+    </section>
+
+    <!-- PRICING -->
+
+    <!-- FAQ -->
+    <section
+      class="px-8 lg:px-24 grid md:grid-cols-2 grid-cols-1 md:gap-16 gap-10 md:mb-52 mb-24 md-24"
+    >
+      <h2 class="lg:text-7xl text-4xl">Часто задаваемые вопросы</h2>
+      <div class="flex flex-col">
+        <Accordion
+          title="Что такое веб-дизайн и зачем он нужен бизнесу?"
+          description="Веб-дизайн — это оформление и структура сайта, которые делают его удобным и понятным для посетителей. Грамотный дизайн помогает привлекать клиентов, выделяться среди конкурентов и повышать доверие к вашему бизнесу."
+          client:only="react"
+        />
+        <Accordion
+          title="Сколько стоит дизайн сайта?"
+          description="Стоимость зависит от сложности проекта, количества блоков и функций. Для малого бизнеса мы предлагаем доступны следующие решения: от простого лендинга до полноценного корпоративного сайта."
+          client:only="react"
+        />
+        <Accordion
+          title="Сколько времени занимает создание дизайна сайта?"
+          description="В среднем — от 7 до 21 дня. Все зависит от задач и уровня проработки. Небольшие сайты можно запустить быстрее, а более сложные проекты требуют больше времени."
+          client:only="react"
+        />
+        <Accordion
+          title="Чем индивидуальный дизайн сайта лучше шаблонного?"
+          description="Шаблоны подходят для старта, но они ограничены в настройке и часто выглядят одинаково. Индивидуальный дизайн учитывает специфику бизнеса, помогает выделиться и лучше конвертировать посетителей в клиентов."
+          client:only="react"
+        />
+        <Accordion
+          title="Делаете ли вы адаптивный дизайн под телефон и планшет?"
+          description="Да. Современный сайт должен корректно отображаться на всех устройствах. В стоимость уже включен адаптив для мобильных, которого будет достаточно для большинства сценариев. Адаптив для планшетов докупается отдельно."
+          client:only="react"
+        />
+        <Accordion
+          title="Можно ли доработать существующий сайт, а не делать новый?"
+          description="Да, в такое случае, вам понадобится редизайн сайта. Если у вас уже есть сайт, но он устарел или неудобен, можно обновить его дизайн без полной переделки."
+          client:only="react"
+        />
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section
+      class="px-8 lg:px-24 flex flex-col gap-16 md:mb-36 mb-16 justify-start items-start"
+    >
+      <h3 class="md:text-7xl text-4xl md:flex md:flex-col">
+        <span>Веб-дизайн сайта — это</span>
+        <span>гармония стиля и удобства</span>
+      </h3>
+      <button
+        class="bg-zinc-50 text-black pt-3 pb-3 px-9 text-xl rounded-full font-medium flex gap-3"
+        ><span>Заказать дизайн сайта</span><span class="text-2xl font-normal"
+          >→</span
+        ></button
+      >
+    </section>
+  </AnimatedLayout>
+</Layout>

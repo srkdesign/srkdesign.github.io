@@ -1,0 +1,27 @@
+---
+const { title, synopsis, features, isChosen } = Astro.props;
+---
+
+<li class="relative counter-increment [counter-increment:process]">
+  <div
+    class=`mix-blend-difference border md:py-8 md:px-8 py-5 px-5 flex flex-col gap-12 justify-between aspect-[4/3] ${isChosen ? "bg-zinc-50 text-black" : "border-white/20"}`
+  >
+    <div class="flex flex-col gap-5 w-full h-full">
+      <div class="flex md:gap-4 gap-3 md:text-4xl text-2xl">
+        <span data-counter></span>
+        <h3>{title}</h3>
+      </div>
+      <p class="md:text-xl text-base leading-normal opacity-70">{synopsis}</p>
+    </div>
+
+    <ul class="flex flex-col gap-2 list-['—'] list-inside md:text-xl text-base">
+      {
+        features.map((feature: string) => (
+          <li class="">
+            <span class="pl-3">{feature}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</li>

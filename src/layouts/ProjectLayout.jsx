@@ -14,6 +14,7 @@ const ProjectLayout = ({ children, metadata }) => {
       <MarkdownComponent isFullWidth={metadata.isFullWidth}>
         {children}
       </MarkdownComponent>
+
       {/* <section className="flex flex-col gap-8 px-8 lg:px-24 text-xl">
         <div className="flex flex-col gap-1">
           <p className="font-medium">Обязанности</p>

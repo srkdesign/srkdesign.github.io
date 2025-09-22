@@ -1,0 +1,10 @@
+---
+const { heading } = Astro.props;
+---
+
+<section class="lg:px-24 px-8 pt-16 flex flex-col">
+  <h2>{heading}</h2>
+  <div class="[column-count:2] [column-gap:3rem] prose-lg prose-p:mt-0 p-0">
+    <slot />
+  </div>
+</section>

@@ -8,7 +8,7 @@ import tailwind from "@astrojs/tailwind";
 import rehypePrettyCode from "rehype-pretty-code";
 import { transformerCopyButton } from "@rehype-pretty/transformers";
 import rehypeCallouts from "rehype-callouts";
-
+import remarkFrontmatter from "remark-frontmatter";
 import playformCompress from "@playform/compress";
 
 const prettyCodeOptions = {

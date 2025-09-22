@@ -30,7 +30,7 @@ const { title, description } = Astro.props;
     >
       <Header client:only="react" />
       <slot />
-      {!isBlogPage ? <DiscussProject client:only="react" /> : ""}
+      <!-- {!isBlogPage ? <DiscussProject client:only="react" /> : ""} -->
     </section>
     <Footer client:only="react" />
   </body>

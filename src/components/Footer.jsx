@@ -10,11 +10,11 @@ import StatsItem from "./StatsItem.jsx";
 
 const Footer = () => {
   return (
-    <footer className="py-24 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 px-8 lg:px-24 gap-24 static *:w-full">
-      <div className="flex flex-col xl:justify-self-start">
+    <footer className="relative py-24 flex justify-between px-8 lg:px-24 gap-24 *:w-full ">
+      <div className="flex flex-col xl:justify-self-start max-w-[36ch]">
         <h3 className="text-3xl font-medium mb-10">Будет полезно</h3>
-        <div className="flex gap-11 *:text-xl *:flex *:flex-col *:gap-4">
-          <ul>
+        <div className="*:text-xl">
+          <ul className="grid grid-cols-2 auto-rows-auto gap-x-10 gap-y-4">
             <li>
               <AnimatedLink href="/blog/" openInNewTab={false}>
                 Статьи
@@ -28,62 +28,15 @@ const Footer = () => {
                 Ресурсы
               </AnimatedLink>
             </li>
-          </ul>
-          <ul>
             <li>
               <AnimatedLink href="/apps/" openInNewTab={false}>
                 Приложения
               </AnimatedLink>
             </li>
-            <li>
-              <AnimatedLink href="/time-machine/" openInNewTab={false}>
-                Машина времени
-              </AnimatedLink>
-            </li>
           </ul>
         </div>
       </div>
-      <div className="flex flex-col xl:justify-self-center">
-        <h3 className="text-3xl font-medium mb-10">Другие ссылки</h3>
-        <div className="flex lg:gap-24 *:text-xl *:flex *:flex-col *:gap-4">
-          <ul className="w-52 md:w-auto">
-            <li>
-              <AnimatedLink href={MEDIA_URL_KWORK} openInNewTab={true}>
-                Kwork
-              </AnimatedLink>
-            </li>
-            <li>
-              <AnimatedLink href={MEDIA_URL_BOOSTY} openInNewTab={true}>
-                Boosty
-              </AnimatedLink>
-            </li>
-            <li>
-              <AnimatedLink href={MEDIA_URL_GITHUB} openInNewTab={true}>
-                Github
-              </AnimatedLink>
-            </li>
-            <li>
-              <AnimatedLink
-                href="https://www.reddit.com/user/1Sstudios1/"
-                openInNewTab={true}
-              >
-                Reddit
-              </AnimatedLink>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className="flex flex-col h-full gap-6 xl:justify-self-end">
-        <div className="text-lg flex-grow">
-          <ul className="flex gap-16">
-            <li>
-              <StatsItem number="90" description="выполненных проектов" />
-            </li>
-            <li>
-              <StatsItem number="50" description="положительных отзывов" />
-            </li>
-          </ul>
-        </div>
+      <div className="flex flex-col h-full max-w-fit xl:justify-self-end">
         <div className="text-base">
           <p id="footer-copyright" className="*:mr-1 mb-5 flex flex-col">
             <span>

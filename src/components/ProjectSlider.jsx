@@ -38,7 +38,11 @@ const ProjectSlider = ({ projects }) => {
     >
       {projects?.map((project, index) => (
         <SwiperSlide key={index}>
-          <ProjectSlide url={project.id} image={project.data.heroImage} />
+          <ProjectSlide
+            url={project.id}
+            image={project.data.heroImage}
+            hoverImage={project.data.hoverImage}
+          />
         </SwiperSlide>
       ))}
     </Swiper>

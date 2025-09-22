@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 
 const ProjectPhrase = ({
   from = "0%",
-  to = "-200%",
+  to = "-50%",
   style = "*:text-5xl lg:*:text-9xl",
   heading,
   subheading,

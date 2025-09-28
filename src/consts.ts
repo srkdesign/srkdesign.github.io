@@ -29,6 +29,7 @@ export const MENU_LINKS = [
   },
 ];
 
-export const MEDIA_LINKS = {
-  medium: { label: "Medium", href: "https://medium.com/@srkdesign" },
-};
+export const MEDIA_LINKS = [
+  { label: "Medium", href: "https://medium.com/@srkdesign" },
+  { label: "Youtube", href: "https://www.youtube.com/@srkdesignpro" },
+];

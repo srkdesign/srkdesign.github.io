@@ -21,9 +21,9 @@ const ProjectSlider = ({ projects }) => {
         768: {
           slidesPerView: 2,
         },
-        1280: {
-          slidesPerView: 3,
-        },
+        // 1280: {
+        //   slidesPerView: 3,
+        // },
       }}
       navigation={true}
       autoplay={{

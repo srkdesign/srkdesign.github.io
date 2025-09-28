@@ -26,10 +26,13 @@ const { title, description } = Astro.props;
   </head>
   <body class="text-zinc-50 bg-zinc-950">
     <section
-      class={`${isHomePage ? "lg:h-screen" : "lg:min-h-screen"} flex flex-col justify-between`}
+      class={`${isHomePage ? "lg:h-full" : "lg:min-h-screen"} flex flex-col justify-between`}
     >
       <Header client:only="react" />
-      <slot />
+      <div class="pt-12">
+        <slot />
+      </div>
+
       <!-- {!isBlogPage ? <DiscussProject client:only="react" /> : ""} -->
     </section>
     <Footer client:only="react" />

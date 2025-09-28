@@ -6,6 +6,29 @@ export const SITE_DESCRIPTION =
   "Портфолио веб-дизайнера и front-end разработчика. Создание адаптивных сайтов: UX/UI дизайн, верстка, React, JavaScript, WordPress, Elementor";
 export const SITE_URL = "srkdesign.pro";
 
-export const MEDIA_URL_KWORK = "https://kwork.ru/user/srkdesign?ref=2034962";
-export const MEDIA_URL_GITHUB = "https://github.com/srkdesign/";
-export const MEDIA_URL_BOOSTY = "https://boosty.to/srkdesign/";
+export const MENU_LINKS = [
+  {
+    label: "Веб-дизайн",
+    href: "/web-design/",
+    image: "/images/webdesign.png",
+  },
+  {
+    label: "Статьи",
+    href: "/blog/",
+    image: "/images/blog.png",
+  },
+  {
+    label: "Приложения",
+    href: "/apps/",
+    image: "/images/apps.png",
+  },
+  {
+    label: "Ресурсы",
+    href: "/resources/",
+    image: "/images/resources.png",
+  },
+];
+
+export const MEDIA_LINKS = {
+  medium: { label: "Medium", href: "https://medium.com/@srkdesign" },
+};

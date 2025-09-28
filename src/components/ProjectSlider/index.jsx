@@ -2,9 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 
 import "swiper/swiper-bundle.css";
-import "../styles/_slider.css";
+import "../../styles/_slider.css";
 
-import ProjectSlide from "./ProjectSlide";
+import ProjectSlide from "./Slide";
 
 const ProjectSlider = ({ projects }) => {
   // console.log(projects);

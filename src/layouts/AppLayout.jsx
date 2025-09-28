@@ -1,7 +1,7 @@
 import ScrollableText from "../components/ScrollableText";
 import MarkdownComponent from "../components/MarkdownComponent";
 import AnimatedLayout from "./AnimatedLayout";
-import AnimatedLink from "../components/AnimatedLink";
+import AnimatedLink from "../components/Footer/Link";
 
 const ProjectLayout = ({ children, metadata }) => {
   return (

@@ -1,44 +1,44 @@
-import {
-  SITE_URL,
-  MEDIA_URL_KWORK,
-  MEDIA_URL_BOOSTY,
-  MEDIA_URL_GITHUB,
-} from "../consts";
-import GetYear from "../utils/GetYear";
-import AnimatedLink from "./AnimatedLink.jsx";
-import StatsItem from "./StatsItem.jsx";
+import { SITE_URL } from "../../consts.js";
+import GetYear from "../../utils/GetYear.js";
+import AnimatedLink from "./Link.jsx";
+
+import { MENU_LINKS } from "../../consts.js";
+import { MEDIA_LINKS } from "../../consts.js";
 
 const Footer = () => {
   return (
-    <footer className="relative py-24 flex justify-between px-8 lg:px-24 gap-24 *:w-full ">
-      <div className="flex flex-col xl:justify-self-start max-w-[36ch]">
+    <footer className="relative py-24 flex flex-col md:flex-row justify-between px-8 lg:px-24 gap-24 *:w-full ">
+      <div className="flex flex-col xl:justify-self-start max-w-96">
         <h3 className="text-3xl font-medium mb-10">Будет полезно</h3>
         <div className="*:text-xl">
           <ul className="grid grid-cols-2 auto-rows-auto gap-x-10 gap-y-4">
-            <li>
-              <AnimatedLink href="/blog/" openInNewTab={false}>
-                Статьи
-              </AnimatedLink>
-            </li>
-            <li>
-              <a>Курсы (скоро)</a>
-            </li>
-            <li>
-              <AnimatedLink href="/resources/" openInNewTab={false}>
-                Ресурсы
-              </AnimatedLink>
-            </li>
-            <li>
-              <AnimatedLink href="/apps/" openInNewTab={false}>
-                Приложения
-              </AnimatedLink>
-            </li>
+            {Object.entries(MENU_LINKS).map(([key, { label, href }]) => (
+              <li key={key}>
+                <AnimatedLink href={href} openInNewTab={false}>
+                  {label}
+                </AnimatedLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="flex flex-col xl:justify-self-start max-w-96">
+        <h3 className="text-3xl font-medium mb-10">Другие ссылки</h3>
+        <div className="*:text-xl">
+          <ul className="grid grid-cols-2 auto-rows-auto gap-x-10 gap-y-4">
+            {Object.entries(MEDIA_LINKS).map(([key, { label, href }]) => (
+              <li key={key}>
+                <AnimatedLink href={href} openInNewTab={false}>
+                  {label}
+                </AnimatedLink>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
       <div className="flex flex-col h-full max-w-fit xl:justify-self-end">
         <div className="text-base">
-          <p id="footer-copyright" className="*:mr-1 mb-5 flex flex-col">
+          <p id="footer-copyright" className="*:mr-1 mb-5 md:flex flex-col">
             <span>
               © {GetYear()} {SITE_URL}. Все права соблюдены.
             </span>

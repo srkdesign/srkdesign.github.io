@@ -25,13 +25,13 @@ interface PaginationData {
   };
 }
 
+// Get all posts
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const allPosts = await getCollection("apps");
   const isProd = import.meta.env.PROD;
-  const filteredPosts = allPosts
-  .filter(({ data }: CollectionEntry<"apps">) =>
+  const filteredPosts = allPosts.filter(({ data }: CollectionEntry<"apps">) =>
     isProd ? !data.isDraft : true
-  )
+  );
 
   return paginate(filteredPosts, {
     pageSize: 5,
@@ -46,21 +46,27 @@ if (!page) throw new Error("Pagination data is missing");
   title={`Приложения / ${SITE_TITLE}`}
   description="Блог о веб-дизайне и фронтэнд-разработке: статьи, советы и лучшие практики по UX/UI, адаптивному дизайну, HTML, CSS, JavaScript и SEO. Всё, что нужно для создания эффективных сайтов!"
 >
+  <!-- <BlogLayout posts={posts} client:only="react" /> -->
   <AnimatedLayout client:only="react">
-    <div class="lg:pt-32">
-      <div
-        class="flex justify-between items-center mb-8 md:mb-16 lg:px-24 px-8 text-5xl lg:text-9xl"
-      >
-        <h1 class="whitespace-nowrap">Приложения</h1>
-        <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-      </div>
-      <ul>
-        {
-          page.data.map((app) => (
+    <div
+      class="flex justify-between items-center mb-8 md:mb-16 lg:px-24 px-8 text-4xl lg:text-9xl"
+    >
+      <h1 class="whitespace-nowrap">Приложения</h1>
+      <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+    </div>
+    <ul>
+      {
+        page.data.map((app) => (
           <li class="border-t last:border-b border-white/10 relative lg:px-24 px-8">
-            <a href={`/apps/${app.id}/`} class="flex flex-col md:flex-row justify-between md:items-center pt-10 pb-11 lg:gap-24 gap-4">
+            <a
+              href={`/apps/${app.id}/`}
+              class="flex justify-between md:items-center pt-10 pb-11 lg:gap-24 gap-4"
+            >
               <div class="flex gap-8 items-center">
-                <img src={app.data.icon} alt="" class="max-w-16 rounded-xl" />
+                <div class="size-16 max-w-16">
+                  <img src={app.data.icon} alt="" class="rounded-xl" />
+                </div>
+
                 <h4 class="lg:text-5xl md:text-5xl text-2xl max-w-5xl line-clamp-2">
                   {app.data.title}
                 </h4>
@@ -73,9 +79,8 @@ if (!page) throw new Error("Pagination data is missing");
               </div>
             </a>
           </li>
-          ))
-        }
-      </ul>
-    </div>
+        ))
+      }
+    </ul>
   </AnimatedLayout>
 </Layout>

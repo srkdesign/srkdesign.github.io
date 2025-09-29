@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <header
-      className={`lg:px-24 px-8 py-6 flex justify-between items-center sticky top-0 left-0 z-[999] pb-24 ${
+      className={`lg:px-24 px-8 py-6 flex justify-between items-center sticky top-0 left-0 z-[999] ${
         isActive ? "" : "mix-blend-difference"
       }`}
     >

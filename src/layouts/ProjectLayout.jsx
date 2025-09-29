@@ -5,7 +5,7 @@ import AnimatedLayout from "./AnimatedLayout";
 const ProjectLayout = ({ children, metadata }) => {
   return (
     <AnimatedLayout>
-      <section id="project-hero" className="lg:pt-24">
+      <section id="project-hero" className="">
         <ScrollableText
           heading={metadata.title}
           subheading={metadata.description}

@@ -16,8 +16,15 @@ import TableOfContents from "../components/TableOfContents.astro";
 // Functions
 import FormatDate from "../utils/FormatDate";
 
-const { title, description, heroImage, pubDate, updatedDate, headingDepth, headings } =
-  Astro.props;
+const {
+  title,
+  description,
+  heroImage,
+  pubDate,
+  updatedDate,
+  headingDepth,
+  headings,
+} = Astro.props;
 ---
 
 <Layout title={title} description={description}>
@@ -53,19 +60,29 @@ const { title, description, heroImage, pubDate, updatedDate, headingDepth, headi
     >
       <slot />
       <ul class="pt-12 list-none m-0 p-0 flex flex-col gap-1">
-        <li class="p-0 m-0"><p class="p-0 m-0">Опубликовано: {FormatDate(pubDate)}</p></li>
-        { updatedDate  ? <li class="p-0 m-0"><p class="p-0 m-0">Обновлено: {FormatDate(updatedDate)}</p></li> : ""}
+        <li class="p-0 m-0">
+          <p class="p-0 m-0">Опубликовано: {FormatDate(pubDate)}</p>
+        </li>
+        {
+          updatedDate ? (
+            <li class="p-0 m-0">
+              <p class="p-0 m-0">Обновлено: {FormatDate(updatedDate)}</p>
+            </li>
+          ) : (
+            ""
+          )
+        }
       </ul>
     </div>
     <aside
       class="xl:sticky xl:top-32 max-w-auto h-fit lg:pl-6 lg:order-3 order-1"
     >
-    <details open="true">
-      <summary class="lg:text-xl text-2xl font-medium mb-4">
-        Оглавление
-      </summary>
-      <TableOfContents headings={headings} />
-    </details>
+      <details open="true">
+        <summary class="lg:text-xl text-2xl font-medium mb-4">
+          Оглавление
+        </summary>
+        <TableOfContents headings={headings} />
+      </details>
     </aside>
   </section>
   <!-- </SmoothScroll> -->

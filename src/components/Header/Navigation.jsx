@@ -11,7 +11,7 @@ const Navigation = ({ onHover }) => {
     <motion.div className="flex flex-col justify-end gap-6 text-white lg:px-24 px-8 lg:py-24 py-8 pt-36">
       {links.map((link) => (
         <motion.a
-          key={link.key}
+          key={link.href}
           href={link.href}
           className="md:text-5xl text-3xl w-fit"
           initial={{ opacity: 0 }}

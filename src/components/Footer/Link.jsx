@@ -1,12 +1,12 @@
 import { motion } from "motion/react";
 
-const AnimatedLink = ({ openInNewTab, href, children }) => {
+const Link = ({ openInNewTab, href, children }) => {
   return (
     <motion.a
       href={href}
       target={openInNewTab ? "_blank" : ""}
       rel="noopener noreferrer"
-      className="relative"
+      className="relative transition-all"
       initial="initial"
       whileHover="whileHover"
       exit="exit"
@@ -17,7 +17,7 @@ const AnimatedLink = ({ openInNewTab, href, children }) => {
         className="absolute -bottom-px left-0 w-full h-px bg-white/75 overflow-x-hidden"
         variants={{
           initial: { clipPath: "inset(0 100% 0 0)" },
-          whileHover: { clipPath: "inset(0 0 0 0)" },
+          whileHover: { clipPath: "inset(0 0% 0 0)" },
           exit: { clipPath: "inset(0 100% 0 0)" },
         }}
       ></motion.span>
@@ -25,4 +25,4 @@ const AnimatedLink = ({ openInNewTab, href, children }) => {
   );
 };
 
-export default AnimatedLink;
+export default Link;

@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "motion/react";
+import Link from "./Link.jsx";
 
-import { MENU_LINKS } from "../../consts.ts";
+import { EASE, MENU_LINKS } from "../../consts.ts";
 
 const Navigation = ({ onHover }) => {
   const links = Array.isArray(MENU_LINKS)
@@ -13,16 +14,17 @@ const Navigation = ({ onHover }) => {
         <motion.a
           key={link.href}
           href={link.href}
-          className="md:text-5xl text-3xl w-fit"
+          className="md:text-5xl text-3xl w-fit group transition-transform"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{
             opacity: 0,
           }}
-          transition={{ duration: 0.15, ease: "easeOut" }}
+          transition={{ duration: 0.3, ease: EASE }}
           onMouseEnter={() => onHover(link.image)}
         >
-          {link.label}
+          <Link label={link.label}></Link>
+          {/* {link.label} */}
         </motion.a>
       ))}
     </motion.div>

@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from "motion/react";
+import { EASE } from "../consts";
 
 const ProjectPhrase = ({
   from = "0%",
@@ -15,6 +16,7 @@ const ProjectPhrase = ({
     <section className="overflow-hidden z-50">
       <motion.div
         style={{ x }}
+        transition={{ ease: EASE }}
         className={`relative items-center flex whitespace-nowrap ${style} *:whitespace-nowrap *:inline-block gap-10 px-4`}
       >
         <h1 className="after:content-['—'] after:pl-10" data-heading="scroll">

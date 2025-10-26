@@ -3,25 +3,22 @@ import { motion, AnimatePresence } from "motion/react";
 
 const Image = ({ hovered }) => {
   return (
-    <div className="md:w-full md:h-full justify-self-stretch">
+    <div className="hidden md:block md:w-full md:h-full justify-self-stretch overflow-hidden">
       <AnimatePresence mode="wait">
-        <motion.div
-          style={{
-            backgroundImage: `url("${hovered}")`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            width: "100%",
-            height: "100%",
-            // Safari rendering hints
-            WebkitTransform: "translateZ(0)",
-            transform: "translateZ(0)",
-            WebkitBackfaceVisibility: "hidden",
-            backfaceVisibility: "hidden",
-            willChange: "opacity, transform",
-          }}
-          className="block w-auto h-full pointer-events-none"
-          aria-hidden
-        ></motion.div>
+        {hovered && (
+          <motion.div
+            className="block w-auto h-full pointer-events-none"
+            aria-hidden
+          >
+            <motion.picture>
+              <source srcSet={`${hovered}.webp`} type="image/webp" />
+              <img
+                src={`${hovered}.png`}
+                className="w-full h-full object-cover select-none pointer-events-none bg-center"
+              />
+            </motion.picture>
+          </motion.div>
+        )}
       </AnimatePresence>
     </div>
   );

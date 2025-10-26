@@ -2,8 +2,10 @@ import { motion, AnimatePresence } from "motion/react";
 import Phrase from "./Phrase.jsx";
 import Button from "./Button.jsx";
 import Image from "./Image.jsx";
+import Link from "./Link.jsx";
 import Navigation from "./Navigation.jsx";
 import { useEffect, useState } from "react";
+import { EASE } from "../../consts.js";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);

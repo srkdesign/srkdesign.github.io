@@ -10,22 +10,22 @@ export const MENU_LINKS = [
   {
     label: "Веб-дизайн",
     href: "/web-design/",
-    image: "/images/webdesign.png",
+    image: "/images/menu/webdesign",
   },
   {
     label: "Статьи",
     href: "/blog/",
-    image: "/images/blog.png",
+    image: "/images/menu/blog",
   },
   {
     label: "Приложения",
     href: "/apps/",
-    image: "/images/apps.png",
+    image: "/images/menu/apps",
   },
   {
     label: "Ресурсы",
     href: "/resources/",
-    image: "/images/resources.png",
+    image: "/images/menu/resources",
   },
 ];
 
@@ -33,3 +33,5 @@ export const MEDIA_LINKS = [
   { label: "Medium", href: "https://medium.com/@srkdesign" },
   { label: "Youtube", href: "https://www.youtube.com/@srkdesignpro" },
 ];
+
+export const EASE = [0.33, 1, 0.68, 1];

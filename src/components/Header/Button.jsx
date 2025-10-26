@@ -1,5 +1,6 @@
 import React from "react";
 import { easeInOut, motion } from "motion/react";
+import Link from "./Link";
 
 const Button = ({ isActive, setIsActive }) => {
   return (
@@ -18,7 +19,8 @@ const Button = ({ isActive, setIsActive }) => {
           animate={{ opacity: isActive ? 0 : 1, scale: isActive ? 0.95 : 1 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
         >
-          <ShiftText label="Меню" />
+          {/* <ShiftText label="Меню" /> */}
+          <Link label="Меню"></Link>
         </motion.div>
         <motion.div
           className="absolute top-full left-0 bg-zinc-50 text-zinc-950"
@@ -30,7 +32,8 @@ const Button = ({ isActive, setIsActive }) => {
             delay: isActive ? 0.05 : 0,
           }}
         >
-          <ShiftText label="Закрыть" />
+          <Link label="Закрыть"></Link>
+          {/* <ShiftText label="Закрыть" /> */}
         </motion.div>
       </motion.div>
     </div>

@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay, Mousewheel } from "swiper/modules";
 
 import "swiper/swiper-bundle.css";
 import "../../styles/_slider.css";
@@ -13,8 +13,9 @@ const ProjectSlider = ({ projects }) => {
     <Swiper
       className="w-full bg-gray-300"
       id="swiper"
-      modules={[Autoplay, Navigation]}
+      modules={[Autoplay, Navigation, Mousewheel]}
       direction={"horizontal"}
+      mousewheel={true}
       spaceBetween={1}
       slidesPerView={1}
       breakpoints={{
@@ -25,15 +26,15 @@ const ProjectSlider = ({ projects }) => {
         //   slidesPerView: 3,
         // },
       }}
-      navigation={true}
+      // navigation={true}
       autoplay={{
         delay: 3000,
-        pauseOnMouseEnter: true,
+        // pauseOnMouseEnter: true,
         disableOnInteraction: true,
         stopOnLastSlide: true,
       }}
-      speed={3000}
-      // freeMode={false}
+      speed={1500}
+      // freeMode={true}
       // parallax={true}
     >
       {projects?.map((project, index) => (

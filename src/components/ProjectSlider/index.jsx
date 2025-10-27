@@ -43,7 +43,7 @@ const SwiperSlider = ({ projects }) => {
         disableOnInteraction: true,
         stopOnLastSlide: true,
       }}
-      speed={4000}
+      speed={3000}
       // parallax={true}
     >
       {projects?.map((project, idx) => (

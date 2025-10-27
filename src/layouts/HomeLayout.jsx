@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import ProjectSlider from "../components/ProjectSlider";
+import ProjectSlider from "../components/ProjectSlider/index.jsx";
 import AnimatedLayout from "./AnimatedLayout";
-import { motion, useScroll, useTransform } from "motion/react";
-import Slide from "../components/ProjectSlider/Slide.jsx";
 
 const HomeLayout = ({ projects }) => {
   // console.log(projects);
@@ -22,11 +20,11 @@ const HomeLayout = ({ projects }) => {
 
   return (
     <AnimatedLayout>
+      {/* <Scroll projects={projects}></Scroll> */}
       <h1 className="font-serif [font-size:clamp(4rem,-0.4rem+22vw,26rem)] text-center leading-none firefox-leading -mb-[min(1.5rem,1.5%)] z-50 mix-blend-difference select-none block text-zinc-50">
         srkdesign
       </h1>
       <ProjectSlider projects={projects} />
-
       {/* Horizontal Scroll Version */}
       {/* <section
         ref={containerRef}
@@ -36,10 +34,10 @@ const HomeLayout = ({ projects }) => {
           <h1 className="relative font-serif [font-size:clamp(4rem,-0.4rem+22vw,26rem)] text-center leading-none -mb-[3.5%] z-50 mix-blend-difference select-none block">
             srkdesign
           </h1>
-          <motion.ul ref={listRef} className="hidden lg:flex" style={{ x }}>
+          <motion.ul ref={listRef} className="flex" style={{ x }}>
             {projects?.map((project, index) => (
-              <li key={index} className="flex-shrink-0 md:basis-1/3 basis-1/2">
-                <ProjectSlide url={project.id} image={project.data.heroImage} />
+              <li key={index} className="flex-shrink-0 md:basis-1/2">
+                <img src={project.data.heroImage} alt="" />
               </li>
             ))}
           </motion.ul>

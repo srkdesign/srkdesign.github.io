@@ -1,12 +1,13 @@
 import { motion } from "motion/react";
 import { useState } from "react";
+import { EASE } from "../../consts";
 
 const HeadingAnimation = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const transition = {
-    duration: 0.2,
-    ease: [0.33, 1, 0.68, 1],
+    duration: 0.3,
+    ease: EASE,
   };
 
   const variants = {

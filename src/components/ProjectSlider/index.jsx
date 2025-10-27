@@ -1,53 +1,58 @@
+import { motion } from "motion/react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Mousewheel } from "swiper/modules";
 
 import "swiper/swiper-bundle.css";
 import "../../styles/_slider.css";
+import { useEffect, useRef } from "react";
 
-import ProjectSlide from "./Slide";
+import Slide from "./Slide";
 
-const ProjectSlider = ({ projects }) => {
-  // console.log(projects);
-
+const SwiperSlider = ({ projects }) => {
   return (
     <Swiper
       className="w-full bg-gray-300"
       id="swiper"
       modules={[Autoplay, Navigation, Mousewheel]}
       direction={"horizontal"}
-      mousewheel={true}
+      navigation={true}
+      mousewheel={{
+        enabled: true,
+        forceToAxis: false,
+        releaseOnEdges: true,
+        sensitivity: 2,
+        thresholdDelta: 1,
+      }}
+      freeMode={{
+        enabled: true,
+        momentum: true,
+        sticky: false,
+      }}
+      grabCursor={true}
       spaceBetween={1}
       slidesPerView={1}
       breakpoints={{
         768: {
           slidesPerView: 2,
         },
-        // 1280: {
-        //   slidesPerView: 3,
-        // },
       }}
-      // navigation={true}
       autoplay={{
-        delay: 3000,
+        delay: 2000,
         // pauseOnMouseEnter: true,
         disableOnInteraction: true,
         stopOnLastSlide: true,
       }}
       speed={1500}
-      // freeMode={true}
       // parallax={true}
     >
-      {projects?.map((project, index) => (
-        <SwiperSlide key={index}>
-          <ProjectSlide
-            url={project.id}
-            image={project.data.heroImage}
-            hoverImage={project.data.hoverImage}
-          />
+      {projects?.map((project, idx) => (
+        <SwiperSlide key={idx}>
+          <Slide project={project}></Slide>
         </SwiperSlide>
       ))}
     </Swiper>
   );
 };
 
-export default ProjectSlider;
+export default SwiperSlider;

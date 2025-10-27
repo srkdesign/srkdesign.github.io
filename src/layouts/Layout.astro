@@ -1,8 +1,6 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
-import { ClientRouter } from "astro:transitions";
-
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header";
 import DiscussProject from "../components/DiscussProject";
@@ -25,19 +23,27 @@ const { title, description } = Astro.props;
         ? postImage
         : `/image.png`}
     />
-    <ClientRouter />
+    <!-- <ClientRouter /> -->
   </head>
-  <body class="text-zinc-50 bg-zinc-950">
+  <body class="text-zinc-50 bg-zinc-950 transition-main">
     <section
       class={`${isHomePage ? "lg:h-full" : "lg:min-h-screen"} flex flex-col justify-between`}
     >
       <Header client:only="react" />
-      <div class="pt-28">
+      <div class="pt-28" id="swup">
         <slot />
       </div>
 
       <!-- {!isBlogPage ? <DiscussProject client:only="react" /> : ""} -->
     </section>
     <Footer client:only="react" />
+    <div class="overlay transition-overlay"></div>
   </body>
 </html>
+
+<script>
+  import Swup from "swup";
+  const swup = new Swup({
+    containers: ["#swup"],
+  });
+</script>

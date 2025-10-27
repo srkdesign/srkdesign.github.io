@@ -38,7 +38,8 @@
     "remark-mdx-frontmatter": "^5.2.0",
     "remark-toc": "^9.0.0",
     "shiki": "^1.29.2",
-    "swiper": "^11.1.15"
+    "swiper": "^11.1.15",
+    "swup": "^4.8.2"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",

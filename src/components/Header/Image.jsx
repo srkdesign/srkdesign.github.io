@@ -14,7 +14,7 @@ const Image = ({ hovered }) => {
               <source srcSet={`${hovered}.webp`} type="image/webp" />
               <img
                 src={`${hovered}.png`}
-                className="w-full h-full object-cover select-none pointer-events-none bg-center"
+                className="w-full h-full object-cover select-none pointer-events-none bg-center mix-blend-normal"
               />
             </motion.picture>
           </motion.div>

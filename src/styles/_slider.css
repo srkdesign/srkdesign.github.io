@@ -19,3 +19,13 @@
   opacity: 1;
   visibility: visible;
 }
+
+.swiper-transition {
+  -webkit-transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  -o-transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}

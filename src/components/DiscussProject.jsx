@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "motion/react";
-import { MEDIA_URL_KWORK } from "../consts";
+// import { MEDIA_URL_KWORK } from "../consts";
 
 const DiscussProject = () => {
   const { scrollYProgress } = useScroll();

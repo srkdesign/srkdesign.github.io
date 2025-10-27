@@ -6,7 +6,7 @@ const Slide = ({ project }) => {
       <img
         className="block w-full h-auto object-cover z-0 aspect-video object-top"
         src={project.data.heroImage}
-        transition:name={`image_${project.id}`}
+        transition:name="heroImage"
       />
     </a>
   );

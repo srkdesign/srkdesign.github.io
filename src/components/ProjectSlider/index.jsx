@@ -38,12 +38,12 @@ const SwiperSlider = ({ projects }) => {
         },
       }}
       autoplay={{
-        delay: 2000,
+        delay: 1000,
         // pauseOnMouseEnter: true,
         disableOnInteraction: true,
         stopOnLastSlide: true,
       }}
-      speed={1500}
+      speed={4000}
       // parallax={true}
     >
       {projects?.map((project, idx) => (

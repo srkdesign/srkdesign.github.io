@@ -11,6 +11,7 @@ const Card = ({ element }) => {
           className="w-full h-full object-cover object-top"
           src={element.data.heroImage}
           alt={element.data.title}
+          loading="lazy"
         />
       </a>
     </div>

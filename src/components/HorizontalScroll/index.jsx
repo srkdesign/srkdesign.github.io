@@ -1,6 +1,7 @@
-import React, { useRef, useLayoutEffect, useState, useEffect } from "react";
+import React, { useRef, useLayoutEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import Card from "./Card";
+import BubbleText from "./BubbleText";
 
 const HorizontalScroll = ({ elements }) => {
   const sectionWrapper = useRef(null);
@@ -18,7 +19,7 @@ const HorizontalScroll = ({ elements }) => {
     updateScrollWidth();
     window.addEventListener("resize", updateScrollWidth);
     return () => window.removeEventListener("resize", updateScrollWidth);
-  }, [elements]);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionWrapper,
@@ -30,15 +31,16 @@ const HorizontalScroll = ({ elements }) => {
   return (
     <main
       ref={sectionWrapper}
-      className="relative min-h-screen"
+      className="relative min-h-screen bg-zinc-950"
       style={{
         height: `${elements.length * 100}vh`,
       }}
     >
       <section className="sticky xl:top-[15%] top-1/3 left-0">
-        <h1 className="font-serif [font-size:clamp(4rem,-0.4rem+22vw,26rem)] text-center leading-none firefox-leading -mb-[min(1.5rem,1.5%)] z-50 mix-blend-difference select-none block text-zinc-50">
-          srkdesign
-        </h1>
+        <div className="">
+          <BubbleText text="srkdesign"></BubbleText>
+        </div>
+
         <div className="overflow-x-auto hide-scrollbar">
           <motion.div style={{ x }} ref={scrollContent} className="flex">
             {elements.map((el) => (

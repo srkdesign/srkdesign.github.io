@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import ProjectSlider from "../components/ProjectSlider/index.jsx";
 import AnimatedLayout from "./AnimatedLayout";
+import HorizontalScroll from "../components/HorizontalScroll/index.jsx";
 
 const HomeLayout = ({ projects }) => {
   // console.log(projects);
@@ -20,11 +21,12 @@ const HomeLayout = ({ projects }) => {
 
   return (
     <AnimatedLayout>
+      <HorizontalScroll elements={projects}></HorizontalScroll>
       {/* <Scroll projects={projects}></Scroll> */}
-      <h1 className="font-serif [font-size:clamp(4rem,-0.4rem+22vw,26rem)] text-center leading-none firefox-leading -mb-[min(1.5rem,1.5%)] z-50 mix-blend-difference select-none block text-zinc-50">
+      {/* <h1 className="font-serif [font-size:clamp(4rem,-0.4rem+22vw,26rem)] text-center leading-none firefox-leading -mb-[min(1.5rem,1.5%)] z-50 mix-blend-difference select-none block text-zinc-50">
         srkdesign
       </h1>
-      <ProjectSlider projects={projects} />
+      <ProjectSlider projects={projects} /> */}
       {/* Horizontal Scroll Version */}
       {/* <section
         ref={containerRef}

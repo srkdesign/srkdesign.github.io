@@ -119,3 +119,12 @@ html.is-animating .transition-overlay {
 html.is-rendering .transition-overlay {
   transform: translate3d(0, calc(var(--overlay-direction, 1) * 100%), 0);
 }
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

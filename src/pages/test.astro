@@ -1,0 +1,22 @@
+---
+// Content
+import { getCollection, type CollectionEntry } from "astro:content";
+const projects = (
+  await getCollection("projects", ({ data }: CollectionEntry<"projects">) => {
+    return data.isDraft !== true;
+  })
+).sort(
+  (a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// Components
+import Layout from "../layouts/Layout.astro";
+import HomeLayout from "../layouts/HomeLayout.jsx";
+import HorizontalScroll from "../components/HorizontalScroll";
+---
+
+<Layout>
+  <!-- Using dedicated React Component for smooth animation -->
+  <HorizontalScroll elements={projects} client:only="react" />
+</Layout>

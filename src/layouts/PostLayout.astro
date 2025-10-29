@@ -40,18 +40,16 @@ const { title, description, heroImage, pubDate, updatedDate, headings } =
         class="w-full h-auto"
       />
     </section>
-    <section
-      class="flex flex-col lg:grid grid-cols-[18%_1fr_18%] lg:gap-24 gap-16 px-8 lg:px-24 max-w-full"
-    >
-      <div class="">
+    <section class="flex flex-col gap-16 px-8 lg:px-24 items-center">
+      <!-- <div class="">
         <TableOfContents headings={headings} />
-      </div>
+      </div> -->
       <div
-        class="prose prose-neutral prose-invert prose-xl prose-medium prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg prose-img:w-full max-w-none prose-table:block prose-table:overflow-x-auto"
+        class="prose prose-neutral prose-invert prose-xl prose-medium prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg prose-img:w-full prose-table:block prose-table:overflow-x-auto max-w-[48ch]"
       >
         <slot />
       </div>
-      <ul class="list-none m-0 p-0 flex flex-col gap-2 text-neutral-400">
+      <!-- <ul class="list-none m-0 p-0 flex flex-col gap-2 text-neutral-400">
         <li class="p-0 m-0">
           <p class="p-0 m-0">Опубликовано: {FormatDate(pubDate)}</p>
         </li>
@@ -64,7 +62,7 @@ const { title, description, heroImage, pubDate, updatedDate, headings } =
             ""
           )
         }
-      </ul>
+      </ul> -->
     </section>
   </AnimatedLayout>
 </Layout>

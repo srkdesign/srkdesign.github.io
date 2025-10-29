@@ -1,13 +1,10 @@
 ---
-import type { HeadingProps } from "../types";
+import type { HeadingProps } from "../../types";
 
 const { headings = [] }: { headings?: HeadingProps[] } = Astro.props;
 ---
 
-<ul
-  class="dark flex flex-col gap-2 overflow-y-hidden hover:overflow-y-scroll [scrollbar-width:thin] max-h-[72vh]"
-  data-toc
->
+<ul class="dark flex flex-col gap-2" data-toc>
   {
     headings
       .filter((heading) => heading.depth < 3)

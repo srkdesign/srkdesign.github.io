@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { animate, motion } from "motion/react";
+import { EASE } from "../consts";
 
 const Accordion = ({ title, description }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +11,7 @@ const Accordion = ({ title, description }) => {
       initial="initial"
       whileHover="whileHover"
       exit="exit"
-      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.4, ease: EASE }}
     >
       <button
         className="flex justify-between items-start gap-8 py-8 w-full cursor-pointer"
@@ -30,7 +31,7 @@ const Accordion = ({ title, description }) => {
           isOpen ? "h-auto" : "h-0"
         }`}
         animate={{ height: isOpen ? "auto" : 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.5, ease: EASE }}
       >
         <p className="leading-relaxed md:text-lg text-base overflow-hidden pb-10 opacity-75 font-normal">
           {description}

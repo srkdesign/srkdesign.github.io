@@ -4,8 +4,8 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import "../styles/_slider.css";
 
-import ProjectSlide from "./ProjectSlider/Slide";
-import SmartVideo from "./SmartVideo";
+import ProjectSlide from "./Slide";
+import SmartVideo from "../Markdown/SmartVideo";
 
 const ProjectSlider = ({ projects }) => {
   // console.log(projects);

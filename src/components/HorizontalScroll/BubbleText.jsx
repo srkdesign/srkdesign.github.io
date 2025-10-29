@@ -1,5 +1,3 @@
-import React, { useEffect } from "react";
-
 const BubbleText = ({ text }) => {
   return (
     <h2 className="font-serif [font-size:clamp(4rem,-0.4rem+22vw,26rem)] text-center leading-none firefox-leading -mb-[min(1.5rem,1.5%)] z-50 mix-blend-difference select-none block text-zinc-50">

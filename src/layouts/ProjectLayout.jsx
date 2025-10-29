@@ -1,5 +1,5 @@
 import ScrollableText from "../components/ScrollableText";
-import MarkdownComponent from "../components/MarkdownComponent";
+import MarkdownComponent from "../components/Markdown/MarkdownComponent";
 import AnimatedLayout from "./AnimatedLayout";
 
 const ProjectLayout = ({ children, metadata }) => {

@@ -41,9 +41,11 @@ const { title, description, heroImage, pubDate, updatedDate, headings } =
       />
     </section>
     <section
-      class="flex flex-col lg:grid grid-cols-[20%_1fr_20%] lg:gap-24 gap-16 px-8 lg:px-24"
+      class="flex flex-col lg:grid grid-cols-[18%_1fr_18%] lg:gap-24 gap-16 px-8 lg:px-24 max-w-full"
     >
-      <TableOfContents headings={headings} />
+      <div class="">
+        <TableOfContents headings={headings} />
+      </div>
       <div
         class="prose prose-neutral prose-invert prose-xl prose-medium prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg prose-img:w-full max-w-none prose-table:block prose-table:overflow-x-auto"
       >

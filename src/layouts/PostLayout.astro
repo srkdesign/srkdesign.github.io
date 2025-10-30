@@ -8,14 +8,19 @@ import { Image } from "astro:assets";
 // Components
 import Layout from "./Layout.astro";
 // import CategoriesList from "../components/Post/CategoriesList.astro";
-import TableOfContents from "../components/Post/TableOfContents.astro";
+// import TableOfContents from "../components/Post/TableOfContents.astro";
+import TableOfContents from "../components/Post/TableOfContents.jsx";
 
 // Functions
 import FormatDate from "../utils/FormatDate";
 import AnimatedLayout from "./AnimatedLayout";
-
+import type { HeadingProps } from "../types";
 const { title, description, heroImage, pubDate, updatedDate, headings } =
   Astro.props;
+
+const filteredHeadings = headings.filter(
+  (heading: HeadingProps) => heading.depth < 3
+);
 ---
 
 <Layout title={title} description={description}>
@@ -40,16 +45,22 @@ const { title, description, heroImage, pubDate, updatedDate, headings } =
         class="w-full h-auto"
       />
     </section>
-    <section class="flex flex-col gap-16 px-8 lg:px-24 items-center">
-      <!-- <div class="">
-        <TableOfContents headings={headings} />
-      </div> -->
+    <section
+      class="relative flex flex-col md:gap-24 gap-8 px-8 lg:px-24 items-start max-w-full lg:grid grid-cols-[minmax(auto,19%)_1fr_minmax(auto,19%)] justify-center"
+    >
+      <div class="order-2 md:order-none lg:sticky top-32 left-0">
+        <!-- <TableOfContents headings={headings} /> -->
+        <TableOfContents headings={filteredHeadings} client:only="react" />
+      </div>
       <div
-        class="prose prose-neutral prose-invert prose-xl prose-medium prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg prose-img:w-full prose-table:block prose-table:overflow-x-auto max-w-[48ch]"
+        class="order-3 md:order-none prose prose-neutral prose-invert prose-xl prose-medium prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg prose-img:w-full prose-table:block prose-table:overflow-x-auto max-w-none w-full"
       >
         <slot />
       </div>
-      <!-- <ul class="list-none m-0 p-0 flex flex-col gap-2 text-neutral-400">
+
+      <ul
+        class="order-1 md:order-none list-none m-0 p-0 flex flex-col gap-2 text-neutral-400 text-xl md:text-base"
+      >
         <li class="p-0 m-0">
           <p class="p-0 m-0">Опубликовано: {FormatDate(pubDate)}</p>
         </li>
@@ -62,7 +73,8 @@ const { title, description, heroImage, pubDate, updatedDate, headings } =
             ""
           )
         }
-      </ul> -->
+      </ul>
     </section>
   </AnimatedLayout>
 </Layout>
+ß

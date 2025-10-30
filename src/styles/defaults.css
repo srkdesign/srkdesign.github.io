@@ -136,3 +136,9 @@ html.is-rendering .transition-overlay {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.swup-progress-bar {
+  opacity: 0;
+  height: 1px;
+  background-color: #fafafa;
+}

@@ -3,6 +3,7 @@ export const CATEGORIES = {
   frontend: "Фронтенд",
   backend: "Бэкенд",
   other: "Другое",
+  personal: "Личный опыт",
 } as const;
 
 export const CATEGORY_SLUGS = Object.keys(CATEGORIES) as Array<

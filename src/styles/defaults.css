@@ -142,3 +142,7 @@ html.is-rendering .transition-overlay {
   height: 1px;
   background-color: #fafafa;
 }
+
+kbd {
+  background-color: oklch(27.4% 0.006 286.033);
+}

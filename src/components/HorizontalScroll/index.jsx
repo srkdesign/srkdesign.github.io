@@ -37,12 +37,12 @@ const HorizontalScroll = ({ elements }) => {
       }}
     >
       <section className="sticky xl:top-[15%] top-1/3 left-0">
-        <div className="">
+        <div className="z-50">
           <BubbleText text="srkdesign"></BubbleText>
         </div>
 
-        <div className="overflow-x-auto hide-scrollbar">
-          <motion.div style={{ x }} ref={scrollContent} className="flex">
+        <div className="static overflow-x-auto hide-scrollbar z-0 isolate">
+          <motion.div style={{ x }} ref={scrollContent} className="flex static">
             {elements.map((el) => (
               <Card element={el} key={el.id} />
             ))}

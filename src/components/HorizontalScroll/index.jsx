@@ -44,7 +44,7 @@ const HorizontalScroll = ({ elements }) => {
         <div className="static overflow-x-auto hide-scrollbar z-0 isolate">
           <motion.div style={{ x }} ref={scrollContent} className="flex static">
             {elements.map((el) => (
-              <Card element={el} key={el.id} />
+              <Card project={el} key={el.id} />
             ))}
           </motion.div>
         </div>

@@ -1,11 +1,15 @@
 import React from "react";
 import { easeInOut, motion } from "motion/react";
 import Link from "./Link";
+import { useTranslation } from "react-i18next";
 
-const Button = ({ isActive, setIsActive }) => {
+const Button = ({ label, isMaxWidth, isActive, setIsActive }) => {
+  const { t } = useTranslation();
   return (
     <div
-      className="cursor-pointer  text-zinc-300  uppercase text-sm font-medium overflow-hidden w-[88px] h-9 select-none rounded-full border border-white/20 mix-blend-difference z-[999] relative"
+      className={`cursor-pointer  text-zinc-300  uppercase text-sm font-medium overflow-hidden ${
+        isMaxWidth ? "w-32" : "w-24"
+      } h-9 select-none rounded-full border border-white/20 mix-blend-difference z-[999] relative`}
       onClick={() => setIsActive(!isActive)}
     >
       <motion.div
@@ -20,7 +24,7 @@ const Button = ({ isActive, setIsActive }) => {
           transition={{ duration: 0.25, ease: "easeOut" }}
         >
           {/* <ShiftText label="Меню" /> */}
-          <Link label="Меню"></Link>
+          <Link label={label}></Link>
         </motion.div>
         <motion.div
           className="absolute top-full left-0 bg-zinc-50 text-zinc-950"
@@ -32,7 +36,7 @@ const Button = ({ isActive, setIsActive }) => {
             delay: isActive ? 0.05 : 0,
           }}
         >
-          <Link label="Закрыть"></Link>
+          <Link label={t("nav.btn.close")}></Link>
           {/* <ShiftText label="Закрыть" /> */}
         </motion.div>
       </motion.div>

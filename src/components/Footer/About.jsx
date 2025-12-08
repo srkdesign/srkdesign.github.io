@@ -1,20 +1,22 @@
 import React from "react";
 import { SITE_URL } from "../../consts.js";
 import GetYear from "../../utils/GetYear.js";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col h-full max-w-fit xl:justify-self-end">
       <div className="text-lg flex gap-4 items-center">
         <img src="/logo_alt.svg" alt="" className="hidden lg:block size-12" />
         <p id="footer-copyright" className="md:flex flex-col">
           <span>
-            © {GetYear()} {SITE_URL}. Все права соблюдены.
+            © {GetYear()} {SITE_URL}. {t("nav.copyright")}
           </span>
           {/* <span id="footer-disclaimer">
             На сайте используются реферальные ссылки.
           </span> */}
-          <span id="footer-acknowledgements">Особая благодарность osk.</span>
+          <span id="footer-acknowledgements">{t("nav.acknowledgements")}</span>
         </p>
         {/* <ul className="flex gap-4 *:size-6">
           <li>

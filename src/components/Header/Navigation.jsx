@@ -1,10 +1,11 @@
 import React from "react";
 import { motion } from "motion/react";
 import Link from "./Link.jsx";
-
+import { useTranslation } from "react-i18next";
 import { EASE, MENU_LINKS } from "../../consts.ts";
 
 const Navigation = ({ onHover, onNavigate }) => {
+  const { t } = useTranslation();
   const links = Array.isArray(MENU_LINKS)
     ? MENU_LINKS
     : Object.entries(MENU_LINKS).map(([key, value]) => ({ key, ...value }));
@@ -29,7 +30,7 @@ const Navigation = ({ onHover, onNavigate }) => {
           onMouseEnter={() => onHover(link.image)}
           onClick={handleClick}
         >
-          <Link label={link.label}></Link>
+          <Link label={t(link.label)}></Link>
           {/* {link.label} */}
         </motion.a>
       ))}

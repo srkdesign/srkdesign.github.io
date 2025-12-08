@@ -1,8 +1,10 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { EASE } from "../../consts";
+import { useTranslation, Trans } from "react-i18next";
 
 const HeadingAnimation = () => {
+  const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
 
   const transition = {
@@ -39,13 +41,16 @@ const HeadingAnimation = () => {
         }}
       >
         <p className="flex flex-col *:leading-none">
-          <span>
-            <span className="font-serif italic">web</span> дизайнер
-          </span>
-          <span>
-            и&nbsp;
-            <span className="font-serif italic">front-end</span> разработчик
-          </span>
+          <Trans
+            i18nKey="nav.phrase.default"
+            components={{
+              0: <span></span>,
+              1: <span></span>,
+              2: <span className="font-serif italic"></span>,
+              3: <span></span>,
+              4: <span className="font-serif italic"></span>,
+            }}
+          />
         </p>
       </motion.div>
       <motion.div
@@ -61,8 +66,14 @@ const HeadingAnimation = () => {
         }}
       >
         <h2 className="flex flex-col *:leading-none">
-          <span>Удобный для верстки</span>
-          <span>дизайн и сайты под ключ</span>
+          <Trans
+            i18nKey="nav.phrase.hover"
+            components={{
+              0: <span></span>,
+              1: <span></span>,
+              2: <span></span>,
+            }}
+          />
         </h2>
       </motion.div>
     </motion.div>

@@ -4,7 +4,10 @@ import { CATEGORY_SLUGS } from "./categories";
 
 const projects = defineCollection({
   // Load Markdown and MDX files in the `src/content/blog/` directory.
-  loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
+  loader: glob({
+    base: "./src/content/projects",
+    pattern: "**/*.{md,mdx}",
+  }),
   // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),
@@ -13,11 +16,10 @@ const projects = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
-    hoverImage: z.string().optional(),
     isDraft: z.boolean().optional(),
     isFullWidth: z.boolean().optional(),
-    responsibilities: z.array(z.string()).optional(),
-    stack: z.array(z.string()).optional(),
+    tags: z.array(z.string()).optional(),
+    locale: z.string(),
   }),
 });
 

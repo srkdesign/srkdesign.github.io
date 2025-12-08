@@ -1,0 +1,23 @@
+{
+  "hello_world": "Salam, Dünya!",
+  "nav": {
+    "phrase": {
+      "default": "<1><2>web</2> dizayner</1><3>və <4>front-end</4> tərtibatçı</3></0>",
+      "hover": "<1>İntuitiv dizayn</1><2> və full-stack saytlar</2></0>"
+    },
+    "btn": {
+      "default": "Menyu",
+      "close": "Bağla"
+    },
+    "links": {
+      "webdesign": "Veb dizayn",
+      "blog": "Məqalələr",
+      "apps": "Proqramlar",
+      "resources": "Resurslar"
+    },
+    "useful": "Faydalı olacaq",
+    "other": "Digər linklər",
+    "copyright": "Bütün hüquqlar qorunur.",
+    "acknowledgements": "osk-a xüsusi təşəkkürlər."
+  }
+}

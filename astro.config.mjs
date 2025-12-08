@@ -8,8 +8,9 @@ import tailwind from "@astrojs/tailwind";
 import rehypePrettyCode from "rehype-pretty-code";
 import { transformerCopyButton } from "@rehype-pretty/transformers";
 import rehypeCallouts from "rehype-callouts";
-import remarkFrontmatter from "remark-frontmatter";
 import playformCompress from "@playform/compress";
+
+import reactI18next from "astro-react-i18next";
 
 const prettyCodeOptions = {
   theme: "github-dark",
@@ -55,6 +56,10 @@ export default defineConfig({
     playformCompress({
       JavaScript: false,
     }),
+    reactI18next({
+      locales: ["ru", "en", "az"],
+      defaultLocale: "ru",
+    }),
   ],
   markdown: {
     // extendDefaultPlugins: true,
@@ -63,9 +68,5 @@ export default defineConfig({
       [rehypePrettyCode, prettyCodeOptions],
       [rehypeCallouts, calloutOptions],
     ],
-  },
-  i18n: {
-    defaultLocale: "ru",
-    locales: ["ru"],
   },
 });

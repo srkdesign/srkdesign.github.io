@@ -7,13 +7,11 @@ const Button = ({ label, isMaxWidth, isActive, setIsActive }) => {
   const { t } = useTranslation();
   return (
     <div
-      className={`cursor-pointer  text-zinc-300  uppercase text-sm font-medium overflow-hidden ${
-        isMaxWidth ? "w-32" : "w-24"
-      } h-9 select-none rounded-full border border-white/20 mix-blend-difference z-[999] relative`}
+      className={`cursor-pointer  text-zinc-300  uppercase text-sm font-medium overflow-hidden w-fit h-9 select-none rounded-full border border-white/20 mix-blend-difference z-[999] relative`}
       onClick={() => setIsActive(!isActive)}
     >
       <motion.div
-        className="group w-full h-full *:flex *:items-center *:justify-center *:h-full *:w-full relative"
+        className="group px-5 w-full h-full *:flex *:items-center *:justify-center *:h-full *:w-full relative"
         animate={{
           translateY: isActive ? "-100%" : "0",
         }}

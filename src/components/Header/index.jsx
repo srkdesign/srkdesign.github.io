@@ -31,6 +31,20 @@ const Header = () => {
     document.dispatchEvent(new Event("swup:contentReplaced"));
   };
 
+  const toggleLangOpen = () => {
+    setLangOpen((prev) => {
+      if (!prev) setMenuOpen(false);
+      return !prev;
+    });
+  };
+
+  const toggleMenuOpen = () => {
+    setMenuOpen((prev) => {
+      if (!prev) setLangOpen(false);
+      return !prev;
+    });
+  };
+
   useEffect(() => {
     const soup = window.soup;
     if (!soup) return;
@@ -58,10 +72,12 @@ const Header = () => {
           <img
             src="/logo.svg"
             alt="Logo"
-            className="mix-blend-difference w-9 h-auto md:w-full"
+            className="mix-blend-difference w-9 h-auto md:w-full min-w-10"
           />
         </motion.a>
-        <Phrase></Phrase>
+        <div className="hidden md:block">
+          <Phrase></Phrase>
+        </div>
       </div>
       <div className="flex items-center">
         {/* <LanguagePicker></LanguagePicker> */}
@@ -69,7 +85,7 @@ const Header = () => {
           label={FormatLocale(i18n.language)}
           isMaxWidth={true}
           isActive={langOpen}
-          setIsActive={setLangOpen}
+          setIsActive={toggleLangOpen}
         ></Button>
         <AnimatePresence>
           {langOpen && (
@@ -142,7 +158,7 @@ const Header = () => {
         <Button
           label={t("nav.btn.default")}
           isActive={menuOpen}
-          setIsActive={setMenuOpen}
+          setIsActive={toggleMenuOpen}
         ></Button>
         <AnimatePresence>
           {menuOpen && (

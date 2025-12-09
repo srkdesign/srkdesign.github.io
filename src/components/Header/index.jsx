@@ -106,7 +106,7 @@ const Header = () => {
                 duration: 0.3,
               }}
             >
-              <motion.div className="flex flex-col gap-10 -full h-full justify-end px-24 pb-24">
+              <motion.div className="flex flex-col w-full h-full justify-start sm:justify-end gap-6 lg:px-24 px-8 lg:py-24 py-8 pt-36">
                 <motion.a
                   href={getRelativeLocaleUrl("ru", "")}
                   data-soup

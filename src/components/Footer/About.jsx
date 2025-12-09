@@ -16,7 +16,9 @@ const About = () => {
           {/* <span id="footer-disclaimer">
             На сайте используются реферальные ссылки.
           </span> */}
-          <span id="footer-acknowledgements">{t("nav.acknowledgements")}</span>
+          <span id="footer-acknowledgements" className="pl-1 sm:pl-0">
+            {t("nav.acknowledgements")}
+          </span>
         </p>
         {/* <ul className="flex gap-4 *:size-6">
           <li>

@@ -57,7 +57,7 @@ const Card = ({ project }) => {
       >
         <a href={`/projects/${project.id}`} className="relative block">
           <motion.div
-            className="absolute top-0 left-0 z-10 w-full h-full"
+            className="absolute top-0 left-0 z-10 w-full h-full hidden md:block"
             variants={overlayVariants}
           >
             <div className="w-full h-full bg-zinc-950/90 backdrop-blur-sm">

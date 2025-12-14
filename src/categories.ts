@@ -4,6 +4,7 @@ export const CATEGORIES = {
   backend: "Бэкенд",
   other: "Другое",
   personal: "Личный опыт",
+  woocommerce: "Woocommerce",
 } as const;
 
 export const CATEGORY_SLUGS = Object.keys(CATEGORIES) as Array<

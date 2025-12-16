@@ -19,7 +19,25 @@ const { title, description, image = "/image.png" } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+<link
+  rel="icon"
+  type="image/x-icon"
+  href="/favicon_dark.ico"
+  media="(prefers-color-scheme:dark)"
+/>
+<link
+  rel="icon"
+  type="image/x-icon"
+  href="/favicon_light.ico"
+  media="(prefers-color-scheme:light)"
+  sizes=""
+/>
+<link
+  rel="/apple-touch-icon"
+  sizes="180x180"
+  href="/favicon.png/apple-touch-icon.png"
+/>
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->
@@ -59,11 +77,11 @@ const { title, description, image = "/image.png" } = Astro.props;
         return;
       }
     }
-    (k = e.createElement(t)),
+    ((k = e.createElement(t)),
       (a = e.getElementsByTagName(t)[0]),
       (k.async = 1),
       (k.src = r),
-      a.parentNode.insertBefore(k, a);
+      a.parentNode.insertBefore(k, a));
   })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
   ym(99365770, "init", {

@@ -21,19 +21,15 @@ const { title, description, image = "/image.png" } = Astro.props;
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link
   rel="icon"
+  href="/favicon/favicon.ico"
   type="image/x-icon"
-  href="/favicon_dark.ico"
-  media="(prefers-color-scheme:dark)"
+  sizes="48x48"
 />
 <link
-  rel="icon"
-  type="image/x-icon"
-  href="/favicon_light.ico"
-  media="(prefers-color-scheme:light)"
-  sizes=""
+  rel="apple-touch-icon"
+  type="image/png"
+  href="/favicon/apple-touch-icon.png"
 />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->

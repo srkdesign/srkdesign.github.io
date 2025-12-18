@@ -12,10 +12,10 @@ const isBlogPage = Astro.url.pathname.includes("blog");
 
 const postImage = `/images${Astro.url.pathname}hero.png`;
 
-const { title, description } = Astro.props;
+const { title, description, locale } = Astro.props;
 ---
 
-<html lang={i18n.language} class="text-base">
+<html lang={locale || i18n.language} class="text-base">
   <head>
     <BaseHead
       title={title || SITE_TITLE}

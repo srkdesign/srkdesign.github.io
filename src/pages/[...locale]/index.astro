@@ -10,12 +10,14 @@ const projects = (
     return data.isDraft !== true;
   })
 )
-  .filter((entry) => entry.data.locale.includes(locale || "ru"))
+  .filter((entry) => {
+    const entryLocale = entry.id.includes("/") ? entry.id.split("/")[0] : "ru";
+    return entryLocale === locale;
+  })
   .sort(
     (a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) =>
       b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
   );
-
 // console.log(projects);
 
 // Components
@@ -30,5 +32,5 @@ export function getStaticPaths() {
 
 <Layout>
   <!-- Using dedicated React Component for smooth animation -->
-  <HomeLayout projects={projects} client:only="react" />
+  <HomeLayout projects={projects} locale={locale} client:only="react" />
 </Layout>

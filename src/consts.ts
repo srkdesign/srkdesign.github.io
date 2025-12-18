@@ -37,3 +37,5 @@ export const MEDIA_LINKS = [
 ];
 
 export const EASE = [0.33, 1, 0.68, 1];
+
+export const LOCALES = ["ru", "en", "az"];

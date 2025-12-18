@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { EASE } from "../../consts";
 import { init } from "astro/virtual-modules/prefetch.js";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
-const Card = ({ project }) => {
+const Card = ({ project, locale }) => {
   const [isHovered, setIsHovered] = useState(false);
   const parentVariants = {
     initial: {},
@@ -55,7 +56,15 @@ const Card = ({ project }) => {
         transition={{ duration: 0.3, ease: EASE }}
         key={project.id}
       >
-        <a href={`/projects/${project.id}`} className="relative block">
+        <a
+          href={getRelativeLocaleUrl(
+            locale,
+            `/projects/${
+              project.id.includes("/") ? project.id.split("/")[1] : project.id
+            }`
+          )}
+          className="relative block"
+        >
           <motion.div
             className="absolute top-0 left-0 z-10 w-full h-full hidden md:block"
             variants={overlayVariants}

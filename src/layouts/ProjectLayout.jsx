@@ -2,7 +2,7 @@ import ScrollableText from "../components/ScrollableText";
 import MarkdownComponent from "../components/Markdown/MarkdownComponent";
 import AnimatedLayout from "./AnimatedLayout";
 
-const ProjectLayout = ({ children, metadata }) => {
+const ProjectLayout = ({ children, metadata, locale }) => {
   return (
     <AnimatedLayout>
       <section id="project-hero" className="">

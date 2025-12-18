@@ -12,6 +12,8 @@ import playformCompress from "@playform/compress";
 
 import reactI18next from "astro-react-i18next";
 
+const locales = ["ru", "en", "az"];
+
 const prettyCodeOptions = {
   theme: "github-dark",
   wrap: true,
@@ -57,7 +59,7 @@ export default defineConfig({
       JavaScript: false,
     }),
     reactI18next({
-      locales: ["ru", "en", "az"],
+      locales: locales,
       defaultLocale: "ru",
     }),
   ],
@@ -68,5 +70,9 @@ export default defineConfig({
       [rehypePrettyCode, prettyCodeOptions],
       [rehypeCallouts, calloutOptions],
     ],
+  },
+  i18n: {
+    locales: locales,
+    defaultLocale: "ru",
   },
 });

@@ -110,6 +110,8 @@ const Header = () => {
                 <motion.a
                   href={getRelativeLocaleUrl("ru", "")}
                   data-soup
+                  rel="alternate"
+                  hrefLang="ru"
                   className="md:text-5xl text-3xl w-fit group transition-transform cursor-pointer"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -125,6 +127,8 @@ const Header = () => {
                 <motion.a
                   href={getRelativeLocaleUrl("en", "")}
                   data-soup
+                  rel="alternate"
+                  hrefLang="en"
                   className="md:text-5xl text-3xl w-fit group transition-transform cursor-pointer"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -140,6 +144,8 @@ const Header = () => {
                 <motion.a
                   href={getRelativeLocaleUrl("az", "")}
                   data-soup
+                  rel="alternate"
+                  hrefLang="az"
                   className="md:text-5xl text-3xl w-fit group transition-transform cursor-pointer"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}

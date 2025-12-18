@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import Card from "./Card";
 import BubbleText from "./BubbleText";
 
-const HorizontalScroll = ({ elements }) => {
+const HorizontalScroll = ({ elements, locale }) => {
   const sectionWrapper = useRef(null);
   const scrollContent = useRef(null);
   const [scrollRange, setScrollRange] = useState(0);
@@ -44,7 +44,7 @@ const HorizontalScroll = ({ elements }) => {
         <div className="static overflow-x-auto hide-scrollbar z-0 isolate">
           <motion.div style={{ x }} ref={scrollContent} className="flex static">
             {elements.map((el) => (
-              <Card project={el} key={el.id} />
+              <Card project={el} key={el.id} locale={locale} />
             ))}
           </motion.div>
         </div>

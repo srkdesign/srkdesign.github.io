@@ -1,7 +1,10 @@
 import { motion } from "motion/react";
 import { CATEGORIES } from "../categories";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 const PostLink = ({ id, title, category, date, image }) => {
+  const [locale, slug] = id.split("/");
+  const href = `/${locale}/blog/${slug}`;
   return (
     <motion.li
       className="border-t last:border-b border-white/10 relative lg:px-24 px-8"
@@ -10,7 +13,7 @@ const PostLink = ({ id, title, category, date, image }) => {
       key={id}
     >
       <a
-        href={`/blog/${id}/`}
+        href={getRelativeLocaleUrl(locale, `blog/${id.split("/")[1]}`)}
         className="flex flex-col md:flex-row justify-between md:items-center pt-10 pb-11 lg:gap-24 gap-4"
       >
         <h4 className="lg:text-5xl md:text-5xl text-2xl max-w-5xl line-clamp-2">

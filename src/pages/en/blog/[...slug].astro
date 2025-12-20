@@ -4,7 +4,7 @@ import { type CollectionEntry, getCollection, render } from "astro:content";
 
 // Components
 import PostLayout from "@layouts/PostLayout.astro";
-import type { HeadingProps } from "../../types";
+import type { HeadingProps } from "../../../types";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  const pLocale = "ru";
+  const pLocale = "en";
   const posts = await getCollection("blog");
   const localizedPosts = posts.filter((p) => p.id.startsWith(`${pLocale}/`));
   const headings = await Promise.all(
@@ -31,6 +31,6 @@ const { post, headings }: Props = Astro.props;
 const { Content } = await render(post);
 ---
 
-<PostLayout {...post.data} headings={headings} locale="ru">
+<PostLayout {...post.data} headings={headings} locale="en">
   <Content />
 </PostLayout>

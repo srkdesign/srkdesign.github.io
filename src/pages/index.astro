@@ -1,0 +1,37 @@
+---
+// Content
+import { getCollection, type CollectionEntry } from "astro:content";
+
+const locale = "ru";
+
+const projects = (
+  await getCollection("projects", ({ data }: CollectionEntry<"projects">) => {
+    return data.isDraft !== true;
+  })
+)
+  .filter((entry) => {
+    const entryLocale = entry.id.includes("/")
+      ? entry.id.split("/")[0]
+      : console.log("No locale defined in project name");
+    return entryLocale === locale;
+  })
+  .sort(
+    (a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) =>
+      b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+// console.log(projects);
+
+// Components
+import Layout from "@layouts/Layout.astro";
+import HomeLayout from "@layouts/HomeLayout.jsx";
+import { buildStaticPaths } from "astro-react-i18next/utils";
+
+export function getStaticPaths() {
+  return buildStaticPaths();
+}
+---
+
+<Layout>
+  <!-- Using dedicated React Component for smooth animation -->
+  <HomeLayout projects={projects} locale={locale} client:only="react" />
+</Layout>

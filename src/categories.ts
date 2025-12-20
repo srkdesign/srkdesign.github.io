@@ -1,10 +1,12 @@
+import i18n from "i18next";
+
 export const CATEGORIES = {
-  design: "Дизайн",
-  frontend: "Фронтенд",
-  backend: "Бэкенд",
-  other: "Другое",
-  personal: "Личный опыт",
-  woocommerce: "Woocommerce",
+  design: i18n.t("blog.categories.design"),
+  frontend: i18n.t("blog.categories.frontend"),
+  backend: i18n.t("blog.categories.backend"),
+  other: i18n.t("blog.categories.other"),
+  personal: i18n.t("blog.categories.personal"),
+  woocommerce: i18n.t("blog.categories.woocommerce"),
 } as const;
 
 export const CATEGORY_SLUGS = Object.keys(CATEGORIES) as Array<

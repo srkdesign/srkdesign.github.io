@@ -3,6 +3,7 @@
 import "../styles/_syntaxHighlight.css";
 import "../styles/_callouts.css";
 
+import i18n from "i18next";
 import { Image } from "astro:assets";
 
 // Components
@@ -15,15 +16,22 @@ import TableOfContents from "../components/Post/TableOfContents.jsx";
 import FormatDate from "../utils/FormatDate";
 import AnimatedLayout from "./AnimatedLayout";
 import type { HeadingProps } from "../types";
-const { title, description, heroImage, pubDate, updatedDate, headings } =
-  Astro.props;
+const {
+  title,
+  description,
+  heroImage,
+  pubDate,
+  updatedDate,
+  headings,
+  locale,
+} = Astro.props;
 
 const filteredHeadings = headings.filter(
   (heading: HeadingProps) => heading.depth < 3
 );
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} locale={locale}>
   <AnimatedLayout client:only="react">
     <section class="lg:mb-24 mb-10">
       <div class="lg:px-24 px-8 lg:mb-16 mb-10">
@@ -62,12 +70,17 @@ const filteredHeadings = headings.filter(
         class="order-1 md:order-none list-none m-0 p-0 flex flex-col gap-2 text-neutral-400 text-xl md:text-base"
       >
         <li class="p-0 m-0">
-          <p class="p-0 m-0">Опубликовано: {FormatDate(pubDate)}</p>
+          <p class="p-0 m-0">
+            {i18n.t("blog.published")}: {FormatDate(pubDate, i18n.language)}
+          </p>
         </li>
         {
           updatedDate ? (
             <li class="p-0 m-0">
-              <p class="p-0 m-0">Обновлено: {FormatDate(updatedDate)}</p>
+              <p class="p-0 m-0">
+                {i18n.t("blog.updated")}:{" "}
+                {FormatDate(updatedDate, i18n.language)}
+              </p>
             </li>
           ) : (
             ""

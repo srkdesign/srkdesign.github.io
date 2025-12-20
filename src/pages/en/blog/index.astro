@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from "astro";
 // Constants
-import { SITE_TITLE } from "../../consts";
+import { SITE_TITLE } from "../../../consts";
 type PostProps = CollectionEntry<"blog">;
 
 // Content
@@ -17,47 +17,28 @@ import AnimatedLayout from "@layouts/AnimatedLayout";
 import Pagination from "@components/Pagination.astro";
 import i18n from "i18next";
 
-interface PaginationData {
-  data: CollectionEntry<"blog">[];
-  url: {
-    current: string;
-    prev?: string;
-    next?: string;
-  };
-}
-
 // Get all posts
-export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
-  const pLocale = "ru";
-  console.log("BLOG:", pLocale);
+const pLocale = "en";
+console.log("BLOG:", pLocale);
 
-  const posts = await getCollection("blog");
-  const isProd = import.meta.env.PROD;
+const posts = await getCollection("blog");
+const isProd = import.meta.env.PROD;
 
-  const localizedPosts = posts.filter((p) => p.id.startsWith(`${pLocale}/`));
-  const filteredPosts = localizedPosts
-    .filter((p) => p.id.startsWith(`${pLocale}/`))
-    .filter(({ data }: CollectionEntry<"blog">) =>
-      isProd ? !data.isDraft : true
-    )
-    .sort((a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) => {
-      const getDate = (post: CollectionEntry<"blog">) =>
-        post.data.updatedDate?.valueOf?.() ?? post.data.pubDate.valueOf();
-
-      return getDate(b) - getDate(a);
-    });
-
-  filteredPosts.map((p) => {
-    console.log(p.id);
+const localizedPosts = posts.filter((p) => p.id.startsWith(`${pLocale}/`));
+const filteredPosts = localizedPosts
+  .filter((p) => p.id.startsWith(`${pLocale}/`))
+  .filter(({ data }: CollectionEntry<"blog">) =>
+    isProd ? !data.isDraft : true
+  )
+  .sort((a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) => {
+    const getDate = (post: CollectionEntry<"blog">) =>
+      post.data.updatedDate?.valueOf?.() ?? post.data.pubDate.valueOf();
+    return getDate(b) - getDate(a);
   });
 
-  return paginate(filteredPosts, {
-    pageSize: 10,
-  });
-};
-
-const page = Astro.props.page as PaginationData;
-if (!page) throw new Error("Pagination data is missing");
+filteredPosts.map((p) => {
+  console.log(p.id);
+});
 ---
 
 <Layout
@@ -69,20 +50,19 @@ if (!page) throw new Error("Pagination data is missing");
     <div
       class="flex justify-between items-center mb-8 md:mb-16 lg:px-24 px-8 text-5xl lg:text-9xl"
     >
-      <h1 class="whitespace-nowrap">Статьи</h1>
-      <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+      <h1 class="whitespace-nowrap">{i18n.t("blog.title")}</h1>
     </div>
     <ul>
       {
-        page.data.map((post) => (
+        filteredPosts.map((post) => (
           <PostLink
             id={post.id}
             title={post.data.title}
             category={post.data.category}
             date={
               post.data.updatedDate
-                ? FormatDate(post.data.updatedDate, "ru")
-                : FormatDate(post.data.pubDate, "ru")
+                ? FormatDate(post.data.updatedDate, "en")
+                : FormatDate(post.data.pubDate, "en")
             }
             image={post.data.heroImage}
             client:only="react"

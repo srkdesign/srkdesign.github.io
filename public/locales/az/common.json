@@ -19,5 +19,19 @@
     "other": "Digər linklər",
     "copyright": "Bütün hüquqlar qorunur.",
     "acknowledgements": "osk-a xüsusi təşəkkürlər."
+  },
+  "blog": {
+    "title": "Bloq",
+    "go_back": "Bloqa qayıt",
+    "published": "Dərc edilmişdir",
+    "updated": "Yenilənmişdir",
+    "categories": {
+      "design": "Dizayn",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "other": "Digər",
+      "personal": "şəxsi təcrübə",
+      "woocommerce": "Woocommerce"
+    }
   }
 }

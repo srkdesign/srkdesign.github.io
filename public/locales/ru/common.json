@@ -19,5 +19,19 @@
     "other": "Другие ссылки",
     "copyright": "Все права соблюдены.",
     "acknowledgements": "Особая благодарность osk."
+  },
+  "blog": {
+    "title": "Статьи",
+    "go_back": "Назад к блогу",
+    "published": "Опубликовано",
+    "updated": "Обновлено",
+    "categories": {
+      "design": "Дизайн",
+      "frontend": "Фронтенд",
+      "backend": "Бэкенд",
+      "other": "Другое",
+      "personal": "Личный опыт",
+      "woocommerce": "Woocommerce"
+    }
   }
 }

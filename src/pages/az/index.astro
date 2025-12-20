@@ -2,8 +2,7 @@
 // Content
 import { getCollection, type CollectionEntry } from "astro:content";
 
-const locale = Astro.currentLocale;
-// console.log(locale);
+const locale = "az";
 
 const projects = (
   await getCollection("projects", ({ data }: CollectionEntry<"projects">) => {
@@ -11,7 +10,9 @@ const projects = (
   })
 )
   .filter((entry) => {
-    const entryLocale = entry.id.includes("/") ? entry.id.split("/")[0] : "ru";
+    const entryLocale = entry.id.includes("/")
+      ? entry.id.split("/")[0]
+      : console.log("No locale defined in project name");
     return entryLocale === locale;
   })
   .sort(
@@ -21,8 +22,8 @@ const projects = (
 // console.log(projects);
 
 // Components
-import Layout from "../../layouts/Layout.astro";
-import HomeLayout from "../../layouts/HomeLayout.jsx";
+import Layout from "@layouts/Layout.astro";
+import HomeLayout from "@layouts/HomeLayout.jsx";
 import { buildStaticPaths } from "astro-react-i18next/utils";
 
 export function getStaticPaths() {

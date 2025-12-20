@@ -1,0 +1,45 @@
+---
+//Content
+import { type CollectionEntry, getCollection, render } from "astro:content";
+
+// Components
+import Layout from "@layouts/Layout.astro";
+import ProjectLayout from "@layouts/ProjectLayout";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+export async function getStaticPaths() {
+  const pLocale = "az";
+  console.log(pLocale);
+  const projects = await getCollection("projects");
+  const localizedProjects = projects.filter((p) =>
+    p.id.startsWith(`${pLocale}/`)
+  );
+  return localizedProjects.map((project: CollectionEntry<"projects">) => {
+    console.log(project.id);
+    return {
+      params: {
+        locale: pLocale,
+        slug: project.id.split("/")[1],
+      },
+      props: { project },
+    };
+  });
+}
+
+const { project }: Props = Astro.props;
+const { locale, slug } = Astro.params;
+const { Content } = await render(project);
+---
+
+<Layout
+  title={project.data.title}
+  description={project.data.description}
+  locale={locale}
+>
+  <ProjectLayout metadata={project.data} locale={locale} client:only="react">
+    <Content />
+  </ProjectLayout>
+</Layout>

@@ -153,7 +153,7 @@ const Header = () => {
                     opacity: 0,
                   }}
                   transition={{ duration: 0.3, ease: EASE }}
-                  onClick={() => changeLanguage("az-AZ")}
+                  onClick={() => changeLanguage("az")}
                 >
                   <Link label="Azerbaycan dili"></Link>
                 </motion.a>

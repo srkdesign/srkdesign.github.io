@@ -19,5 +19,19 @@
     "other": "Other links",
     "copyright": "All right reserved.",
     "acknowledgements": "Special thanks to osk."
+  },
+  "blog": {
+    "title": "Blog",
+    "go_back": "Back to blog",
+    "published": "Published",
+    "updated": "Updated",
+    "categories": {
+      "design": "Design",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "other": "Other",
+      "personal": "Personal",
+      "woocommerce": "Woocommerce"
+    }
   }
 }

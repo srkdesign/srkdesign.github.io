@@ -3,6 +3,8 @@ import { motion } from "motion/react";
 import Link from "./Link.jsx";
 import { useTranslation } from "react-i18next";
 import { EASE, MENU_LINKS } from "../../consts.ts";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import i18n from "i18next";
 
 const Navigation = ({ onHover, onNavigate }) => {
   const { t } = useTranslation();
@@ -18,7 +20,7 @@ const Navigation = ({ onHover, onNavigate }) => {
       {links.map((link) => (
         <motion.a
           key={link.href}
-          href={link.href}
+          href={getRelativeLocaleUrl(i18n.language, link.href)}
           data-soup
           className="md:text-5xl text-3xl w-fit group transition-transform cursor-pointer"
           initial={{ opacity: 0 }}

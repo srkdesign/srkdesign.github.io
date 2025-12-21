@@ -1,5 +1,8 @@
 {
   "hello_world": "Salam, Dünya!",
+  "site": {
+    "description": "Veb-dizayner və front-end tərtibatçının portfeli. Adaptiv veb-saytların yaradılması: UX/UI dizayn, kod yazılması, React, JavaScript, WordPress, Elementor."
+  },
   "nav": {
     "phrase": {
       "default": "<1><2>web</2> dizayner</1><3>və <4>front-end</4> tərtibatçı</3></0>",

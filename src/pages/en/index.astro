@@ -31,7 +31,9 @@ export function getStaticPaths() {
 }
 ---
 
-<Layout>
+<Layout
+  description="Portfolio of a web designer and front-end developer. Responsive websites creation: UX/UI design, layout, React, JavaScript, WordPress, Elementor."
+>
   <!-- Using dedicated React Component for smooth animation -->
   <HomeLayout projects={projects} locale={locale} client:only="react" />
 </Layout>

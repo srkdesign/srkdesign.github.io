@@ -1,10 +1,10 @@
 ---
 import i18n from "i18next";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE } from "../consts";
 
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header";
-import DiscussProject from "../components/DiscussProject";
+// import DiscussProject from "../components/DiscussProject";
 import Footer from "../components/Footer";
 
 const isHomePage = Astro.url.pathname === "/";
@@ -19,7 +19,7 @@ const { title, description, locale } = Astro.props;
   <head>
     <BaseHead
       title={title || SITE_TITLE}
-      description={description || SITE_DESCRIPTION}
+      description={description || i18n.t("site.description")}
       image={isBlogPage && Astro.url.pathname != "/blog/"
         ? postImage
         : `/image.png`}

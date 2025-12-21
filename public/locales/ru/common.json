@@ -1,5 +1,8 @@
 {
   "hello_world": "Привет, мир!",
+  "site": {
+    "description": "Портфолио веб-дизайнера и front-end разработчика. Создание адаптивных сайтов: UX/UI дизайн, верстка, React, JavaScript, WordPress, Elementor"
+  },
   "nav": {
     "phrase": {
       "default": "<1><2>web</2> дизайнер</1><3>и <4>front-end</4> разработчик</3></0>",

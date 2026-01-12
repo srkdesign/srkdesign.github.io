@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { EASE } from "../../consts";
-import { init } from "astro/virtual-modules/prefetch.js";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
 const Card = ({ project, locale }) => {

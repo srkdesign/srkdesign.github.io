@@ -12,13 +12,13 @@ interface Props {
 
 export async function getStaticPaths() {
   const pLocale = "ru";
-  console.log(pLocale);
+  // console.log(pLocale);
   const projects = await getCollection("projects");
   const localizedProjects = projects.filter((p) =>
     p.id.startsWith(`${pLocale}/`)
   );
   return localizedProjects.map((project: CollectionEntry<"projects">) => {
-    console.log(project.id);
+    // console.log(project.id);
     return {
       params: {
         locale: pLocale,

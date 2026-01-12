@@ -6,7 +6,8 @@ export const CATEGORIES = {
   backend: i18n.t("blog.categories.backend"),
   other: i18n.t("blog.categories.other"),
   personal: i18n.t("blog.categories.personal"),
-  woocommerce: i18n.t("blog.categories.woocommerce"),
+  woocommerce: "Woocommerce",
+  wordpress: "Wordpress",
 } as const;
 
 export const CATEGORY_SLUGS = Object.keys(CATEGORIES) as Array<

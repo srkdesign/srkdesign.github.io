@@ -36,7 +36,8 @@ const HorizontalScroll = ({ elements, locale }) => {
         height: `${elements.length * 100}vh`,
       }}
     >
-      <section className="sticky xl:top-[15%] top-1/3 left-0">
+      {/* <section className="sticky xl:top-28 top-1/3 left-0"> */}
+      <section className="sticky xl:top-16 top-1/3 left-0">
         <div className="z-50">
           <BubbleText text="srkdesign"></BubbleText>
         </div>

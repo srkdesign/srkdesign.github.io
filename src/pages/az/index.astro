@@ -1,6 +1,7 @@
 ---
 // Content
 import { getCollection, type CollectionEntry } from "astro:content";
+import i18n from "i18next";
 
 const locale = "az";
 
@@ -31,7 +32,7 @@ export function getStaticPaths() {
 }
 ---
 
-<Layout>
+<Layout title={i18n.t("site.title")} description={i18n.t("site.description")}>
   <!-- Using dedicated React Component for smooth animation -->
   <HomeLayout projects={projects} locale={locale} client:only="react" />
 </Layout>

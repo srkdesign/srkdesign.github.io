@@ -1,6 +1,7 @@
 {
   "hello_world": "Привет, мир!",
   "site": {
+    "title": "srkdesign — веб-дизайнер и front-end разработчик",
     "description": "Портфолио веб-дизайнера и front-end разработчика. Создание адаптивных сайтов: UX/UI дизайн, верстка, React, JavaScript, WordPress, Elementor"
   },
   "nav": {

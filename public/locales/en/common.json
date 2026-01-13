@@ -1,6 +1,7 @@
 {
   "hello_world": "Hello, World!",
   "site": {
+    "title": "srkdesign — web designer and front-end developer",
     "description": "Portfolio of a web designer and front-end developer. Responsive website creation: UX/UI design, coding, React, JavaScript, WordPress, Elementor."
   },
   "nav": {

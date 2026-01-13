@@ -1,6 +1,7 @@
 {
   "hello_world": "Salam, Dünya!",
   "site": {
+    "title": "srkdesign — veb-dizayner və front-end tərtibatçı",
     "description": "Veb-dizayner və front-end tərtibatçının portfeli. Adaptiv veb-saytların yaradılması: UX/UI dizayn, kod yazılması, React, JavaScript, WordPress, Elementor."
   },
   "nav": {

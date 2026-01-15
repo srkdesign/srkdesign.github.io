@@ -8,7 +8,7 @@ isDraft: false
 ---
 
 {/* Components */}
-import { Image } from "astro:assets";
+import ImageCaption from "../../../components/Markdown/ImageCaption.astro";
 
 {/* Images */}
 import browserStats from "/public/images/blog/testing-websites-in-safari-on-windows/browser-stats.png";
@@ -18,6 +18,9 @@ import playwrightInstallation_1 from "/public/images/blog/testing-websites-in-sa
 import playwrightInstallation_2 from "/public/images/blog/testing-websites-in-safari-on-windows/playwright-installation-2.png";
 import playwrightTest from "/public/images/blog/testing-websites-in-safari-on-windows/launch-playwright-test.png";
 import playwrightBrowser from "/public/images/blog/testing-websites-in-safari-on-windows/playwright-browser.png";
+import browserling_1 from "/public/images/blog/testing-websites-in-safari-on-windows/browserling_1.png";
+import browserling_2 from "/public/images/blog/testing-websites-in-safari-on-windows/browserling_2.png";
+import browserling_3 from "/public/images/blog/testing-websites-in-safari-on-windows/browserling_3.png";
 
 {/* Consts */}
 export const quality = "mid";
@@ -29,20 +32,13 @@ export const format = "webp";
 
 Тестирование сайта во всех браузерах помогает обеспечить высокий уровень UX для всех пользователей и улучшить его видимость в поисковых системах.
 
-<figure>
-  <Image
-    src={browserStats}
-    alt="Самые популярные браузеры в мире (ноябрь 2024)"
-    format={format}
-    quality={quality}
-    decoding="async"
-    loading="lazy"
-  />
-  <figcaption className="text-center italic font-serif">
-    Browser Market Share Worldwide - November 2024
-    <a href="https://gs.statcounter.com/">(StatsCounter)</a>
-  </figcaption>
-</figure>
+<ImageCaption
+  image={browserStats}
+  format={format}
+  quality={quality}
+  caption="Browser Market Share Worldwide - November 2024"
+  link="https://gs.statcounter.com/"
+/>
 
 По статистике, Safari (18.22%) является вторым по популярности браузером в мире после Google Chrome (67.48%).
 
@@ -72,8 +68,36 @@ Webkit - это движок, на котором работает Safari. Он 
 
 Если нужно протестировать сайт в Safari, но при этом не рисковать безопасностью, можно воспользоваться такими способами:
 
-1. Установить **Epiphany** — альтернативный браузер с движком WebKit (для Linux или Windows WSL)
-2. Настроить **Playwright** (для этого понадобится Node.js)
+1. Воспользоваться онлайн-сервисом **Browserling**
+2. Установить **Epiphany** — альтернативный браузер с движком WebKit (для Linux или Windows WSL)
+3. Настроить **Playwright** (для этого понадобится Node.js)
+
+> [!hint] Способы тестирования сайта в Safari
+> Описанные способы тестирования приведены от самого простого к самому сложному.
+
+## Тестирование сайта в онлайн-сервисе Browserling
+
+Безусловный плюс данного подхода в том, что не нужно ничего устанавливать. Достаточно зайти на сайт сервиса, ввести адрес сайта который хотите протестировать и выбрать версию браузера.
+
+<ImageCaption
+  image={browserling_2}
+  format={format}
+  quality={quality}
+  caption="Главная страница Browserling"
+  link="https://www.browserling.com"
+/>
+
+По бесплатному тарифу Browserling предоставляет доступ к Safari на 3 минуты. Наличие домена в публичном доступе для данного способа также обязательно.
+
+Для более продолжительного тестирования или для сайтов находящихся в разработке и не имеющих доменного имени подойдут остальные способы, описанные в этой статье.
+
+<ImageCaption
+  image={browserling_3}
+  format={format}
+  quality={quality}
+  caption="Интерфейс Browserling во время тестирования сайта"
+  link="https://www.browserling.com"
+/>
 
 ## Установка Epiphany с помощью WSL
 
@@ -89,21 +113,13 @@ Epiphany, как и Safari, основан на движке WebKit. Это по
 sudo apt install epiphany-browser
 ```
 
-<figure>
-  <Image
-    src={epiphanyBrowser}
-    alt="Интерфейс браузера Epiphany"
-    format={format}
-    quality={quality}
-    decoding="async"
-    loading="lazy"
-  />
-  <figcaption className="text-center">
-    Интерфейс браузера{" "}
-    <span className="font-serif italic ">Epiphany (GNOME Web)</span>
-    на примере сайта <a href="https://developer.mozilla.org/en-US/">MDN Docs</a>
-  </figcaption>
-</figure>
+<ImageCaption
+  image={epiphanyBrowser}
+  format={format}
+  quality={quality}
+  caption="Интерфейс браузера Epiphany (GNOME Web) на примере сайта MDN Docs"
+  link="https://developer.mozilla.org/en-US/"
+/>
 
 ## Настройка Playwright
 
@@ -131,43 +147,31 @@ npm init playwright@latest
 
 Для начала, нужно установить плагин из маркетплейса VS Code. Устанавливайте только тот плагин, что был подтвержден Microsoft.
 
-<figure>
-  <Image
-    src={playwrightExtension}
-    alt="Расширение Playwright в маркетплейсе VS Code"
-    format={format}
-    quality={quality}
-    decoding="async"
-    loading="lazy"
-  />
-  <figcaption className="text-center">
-    Расширение <span className="font-serif italic">Playwright</span> в
-    маркетплейсе <span className="font-serif italic">VS Code</span>
-  </figcaption>
-</figure>
+<ImageCaption
+  image={playwrightExtension}
+  format={format}
+  quality={quality}
+  caption="Расширение Playwright в маркетплейсе VS Code"
+/>
 
 После установки плагина, откройте командную строку в VS Code. Сделать это можно с помощью сочетания клавиш <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>. В командной строке начните вводить `install playwright`. Как только появятся результаты, выберите `Test: Install Playwright`.
 
-<Image
-  src={playwrightInstallation_1}
-  alt="Установка плагина Playwright для VS Code"
+<ImageCaption
+  image={playwrightInstallation_1}
   format={format}
   quality={quality}
-  decoding="async"
-  loading="lazy"
+  caption="Установка плагина Playwright для VS Code"
 />
 
 В следующем окне выбираем нужные браузеры из списка. В нашем случае это `WebKit (— powers Apple Safari)`. По умолчанию будет также будет выбрана опция `Add Github Actions workflow`. Если вы не хотите, чтобы playwright-тесты запускались каждый раз при сборке проекта на Github, смело отключайте эту опцию.
 
 Если вы устанавливаете плагин в WSL, обязательно включите функцию `Install Linux dependencies`. После завершения установки в терминале появится сообщение о том, что Playwright был добавлен в ваш Node.js проект как dev-зависимость.
 
-<Image
-  src={playwrightInstallation_2}
-  alt="Установка плагина Playwright для VS Code. Выбор браузера и прочие настройки"
+<ImageCaption
+  image={playwrightInstallation_2}
   format={format}
   quality={quality}
-  decoding="async"
-  loading="lazy"
+  caption="Выбор браузера и прочие настройки плагина Playwright"
 />
 
 Также будут установлены некоторые файлы для ознакомления с работой Playwright. В основном, это будут папки `tests` и `e2e`.
@@ -224,29 +228,19 @@ test("test browser", async ({ page }) => {
 
 После создания теста откройте вкладку **Testing** (Тестирование). В разделе **Playwright** (в правом нижнем углу) выберите нужную версию браузера (WebKit или Mobile Safari). Затем нажмите на зеленую иконку запуска теста и дождитесь открытия браузера.
 
-<Image
-  src={playwrightTest}
-  alt="Запускаем тест с помощью Playwright"
+<ImageCaption
+  image={playwrightTest}
   format={format}
   quality={quality}
-  decoding="async"
-  loading="lazy"
+  caption="Запускаем тест с помощью Playwright"
 />
 
-<figure>
-  <Image
-    src={playwrightBrowser}
-    alt="Интерфейс браузера Playwright на примере данного сайта-портфолио"
-    format={format}
-    quality={quality}
-    decoding="async"
-    loading="lazy"
-  />
-  <figcaption className="text-center">
-    Интерфейс браузера <span className="font-serif italic">Playwright</span> на
-    примере данного сайта-портфолио. Смогли заметить баг?
-  </figcaption>
-</figure>
+<ImageCaption
+  image={playwrightBrowser}
+  format={format}
+  quality={quality}
+  caption="Интерфейс браузера Playwright на примере данного сайта-портфолио. Смогли заметить баг?"
+/>
 
 ## Как это проверить
 

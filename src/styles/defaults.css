@@ -146,3 +146,13 @@ html.is-rendering .transition-overlay {
 kbd {
   background-color: oklch(27.4% 0.006 286.033);
 }
+
+table {
+  width: 100%;
+  table-layout: auto;
+}
+
+td > code,
+th > code {
+  white-space: nowrap;
+}

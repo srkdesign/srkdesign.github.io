@@ -149,7 +149,13 @@ kbd {
 
 table {
   width: 100%;
-  table-layout: auto;
+  display: flex;
+  flex-flow: column;
+}
+
+tr,
+th {
+  width: 100%;
 }
 
 td > code,

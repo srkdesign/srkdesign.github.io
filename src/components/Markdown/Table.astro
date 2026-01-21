@@ -1,0 +1,27 @@
+---
+interface Props {
+  headers: string[];
+  data: Record<string, any>[];
+  keys?: string[];
+}
+
+const { headers, data, keys } = Astro.props;
+const columnCount = headers.length;
+const dataKeys =
+  keys || headers.map((h) => h.toLowerCase().replace(/\s+/g, "_"));
+---
+
+<section id="table" class={`py-4 *:grid *:grid-cols-${columnCount}`}>
+  <header class="font-medium text-zinc-50 pb-2 border-zinc-600 border-b">
+    {headers.map((header) => <div>{header}</div>)}
+  </header>
+  <div>
+    {
+      data.map((row) =>
+        dataKeys.map((key) => (
+          <div class="py-3 border-zinc-800 border-b">{row[key]}</div>
+        )),
+      )
+    }
+  </div>
+</section>

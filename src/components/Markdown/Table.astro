@@ -11,11 +11,13 @@ const dataKeys =
   keys || headers.map((h) => h.toLowerCase().replace(/\s+/g, "_"));
 ---
 
-<section id="table" class={`py-4 *:grid *:grid-cols-${columnCount}`}>
-  <header class="font-medium text-zinc-50 pb-2 border-zinc-600 border-b">
+<section id="table">
+  <header
+    class={`grid grid-cols-${columnCount} font-medium text-zinc-50 pb-2 border-zinc-600 border-b`}
+  >
     {headers.map((header) => <div>{header}</div>)}
   </header>
-  <div>
+  <div class={`grid grid-cols-${columnCount}`}>
     {
       data.map((row) =>
         dataKeys.map((key) => (

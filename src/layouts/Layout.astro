@@ -4,15 +4,11 @@ import { SITE_TITLE } from "../consts";
 
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header";
-// import DiscussProject from "../components/DiscussProject";
 import Footer from "../components/Footer";
 
-const isHomePage = Astro.url.pathname === "/";
-const isBlogPage = Astro.url.pathname.includes("blog");
-
-const postImage = `/images${Astro.url.pathname}hero.png`;
-
 const { title, description, locale } = Astro.props;
+const isBlogPage = Astro.url.pathname.includes("blog");
+const postImage = `/images${Astro.url.pathname}hero.png`;
 ---
 
 <html lang={locale || i18n.language} class="text-base">
@@ -24,53 +20,58 @@ const { title, description, locale } = Astro.props;
         ? postImage
         : `/image.png`}
     />
-    <!-- <ClientRouter /> -->
   </head>
-  <body class="text-zinc-50 bg-zinc-950 transition-main">
-    <section
-      class={`${isHomePage ? "lg:h-full" : "lg:min-h-screen"} flex flex-col justify-between`}
-    >
+  <body class="text-zinc-50 bg-zinc-950">
+    <!-- Loader -->
+    <div class="page-loader">
+      <div class="loader-content"></div>
+    </div>
+    <!-- Content -->
+    <div id="swup">
       <Header client:only="react" />
-      <div class="pt-28" id="swup">
+      <main class="pt-28">
         <slot />
-      </div>
-
+      </main>
+      <Footer client:only="react" />
       <!-- {!isBlogPage ? <DiscussProject client:only="react" /> : ""} -->
-    </section>
-    <Footer client:only="react" />
-    <div class="overlay transition-overlay"></div>
-    <div class="swup-progress-bar"></div>
+    </div>
   </body>
 </html>
 
 <script>
   import Swup from "swup";
-  // import SwupScriptsPlugin from "@swup/scripts-plugin";
   import SwupHeadPlugin from "@swup/head-plugin";
   import SwupBodyClassPlugin from "@swup/body-class-plugin";
-  import SwupProgressPlugin from "@swup/progress-plugin";
   import SwupPreloadPlugin from "@swup/preload-plugin";
+
+  const pageLoader = document.querySelector(".page-loader") as HTMLElement;
+  const swupContainer: HTMLElement | null = document.querySelector(
+    "#swup",
+  ) as HTMLElement;
+
+  function showLoader() {
+    pageLoader.classList.remove("is-exiting");
+    pageLoader.classList.add("is-entering");
+  }
+
+  function hideLoader() {
+    pageLoader.classList.remove("is-entering");
+    pageLoader.classList.add("is-exiting");
+  }
+
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      hideLoader();
+    }, 200);
+  });
 
   const swup = new Swup({
     containers: ["#swup"],
     plugins: [
-      new SwupPreloadPlugin({
-        preloadHoveredLinks: true,
-      }),
-      new SwupHeadPlugin({
-        persistTags: true,
-        awaitAssets: true,
-        persistAssets: true,
-      }),
+      new SwupPreloadPlugin({ preloadHoveredLinks: true }),
+      new SwupHeadPlugin({ persistTags: true, awaitAssets: true }),
       new SwupBodyClassPlugin(),
-      new SwupProgressPlugin({
-        className: "swup-progress-bar",
-        transition: 300,
-        delay: 300,
-        initialValue: 0.25,
-      }),
     ],
-    // plugins: [new SwupScriptsPlugin()],
   });
 
   function waitForImage(img: HTMLImageElement): Promise<void> {
@@ -78,7 +79,7 @@ const { title, description, locale } = Astro.props;
     return new Promise((resolve) => {
       img.onload = () => resolve();
       img.onerror = () => resolve();
-      setTimeout(() => resolve, 3000);
+      setTimeout(() => resolve(), 3000);
     });
   }
 
@@ -98,13 +99,11 @@ const { title, description, locale } = Astro.props;
     });
   }
 
-  swup.hooks.on("page:view", async () => {
-    const container = document.querySelector("#swup");
-    if (!container) return;
-
+  async function waitForMedia(container: HTMLElement) {
     const images = Array.from(
       container.querySelectorAll("img:not([loading='lazy'])"),
     ).filter((el): el is HTMLImageElement => el instanceof HTMLImageElement);
+
     const videos = Array.from(container.querySelectorAll("video")).filter(
       (el): el is HTMLVideoElement => el instanceof HTMLVideoElement,
     );
@@ -113,5 +112,22 @@ const { title, description, locale } = Astro.props;
       ...images.map(waitForImage),
       ...videos.map(waitForVideo),
     ]);
+  }
+
+  swup.hooks.on("animation:out:start", async () => {
+    showLoader();
+    if (swupContainer) {
+      swupContainer.style.opacity = "0";
+      await waitForMedia(swupContainer);
+    }
+  });
+
+  swup.hooks.on("animation:in:start", async () => {
+    if (swupContainer) {
+      swupContainer.style.opacity = "1";
+      await waitForMedia(swupContainer);
+    }
+
+    hideLoader();
   });
 </script>

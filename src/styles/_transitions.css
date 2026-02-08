@@ -1,0 +1,77 @@
+/* swup container fade */
+#swup {
+  opacity: 1;
+  transition: opacity 1s ease; /* fade in/out */
+}
+
+/* page loader */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background-color: #09090b;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+
+  pointer-events: all;
+  transition: all 1s ease;
+}
+
+@keyframes loader-in {
+  0% {
+    clip-path: inset(100% 0 -100% 0);
+  }
+  50% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes loader-out {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(100% 0 -100% 0);
+  }
+}
+
+.page-loader.is-entering {
+  clip-path: inset(100% 0 -100% 0);
+  animation: loader-in 1s cubic-bezier(0.61, 1, 0.88, 1) forwards;
+}
+
+.page-loader.is-exiting {
+  animation: loader-out 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 
+.page-loader.entering {
+  clip-path: inset(-100% 0 0 0);
+  transition: clip-path 800ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.page-loader.entered {
+  clip-path: inset(0 0 0 0);
+}
+
+.page-loader.exiting {
+  opacity: 0;
+  clip-path: inset(100% 0 -100% 0);
+  pointer-events: none;
+  transition: clip-path 800ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.page-loader.exited {
+  clip-path: inset(100% 0 -100% 0);
+  pointer-events: none;
+} */
+
+.loader-content {
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+}

@@ -36,11 +36,10 @@ const HorizontalScroll = ({ elements, locale }) => {
         height: `${elements.length * 100}vh`,
       }}
     >
-      {/* <section className="sticky xl:top-28 top-1/3 left-0"> */}
-      <section className="sticky xl:top-16 top-1/3 left-0">
-        <div className="z-50">
-          <BubbleText text="srkdesign"></BubbleText>
-        </div>
+      <section className="sticky top-1/3 md:top-0 left-0 h-screen flex flex-col">
+        <div className="md:flex-grow"></div>
+
+        <BubbleText text="srkdesign"></BubbleText>
 
         <div className="static overflow-x-auto hide-scrollbar z-0 isolate">
           <motion.div style={{ x }} ref={scrollContent} className="flex static">

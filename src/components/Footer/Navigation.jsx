@@ -8,7 +8,7 @@ const Navigation = () => {
   const { t } = useTranslation();
   return (
     <div className="grid md:grid-cols-2 grid-cols-1 gap-8 text-xl [&>*>p]:opacity-75 mb-8">
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 gap-1">
         <p>{t("nav.useful")}</p>
         <ul className="flex flex-col gap-1">
           {Object.entries(MENU_LINKS).map(([key, { label, href }]) => (
@@ -25,7 +25,7 @@ const Navigation = () => {
         <ul className="flex flex-col gap-1">
           {Object.entries(MEDIA_LINKS).map(([key, { label, href }]) => (
             <li key={key}>
-              <Link href={href} openInNewTab={false}>
+              <Link href={href} openInNewTab={true}>
                 {label}
               </Link>
             </li>

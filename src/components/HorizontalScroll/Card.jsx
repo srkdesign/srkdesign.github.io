@@ -60,7 +60,7 @@ const Card = ({ project, locale }) => {
             locale,
             `/projects/${
               project.id.includes("/") ? project.id.split("/")[1] : project.id
-            }`
+            }`,
           )}
           className="relative block"
         >
@@ -105,7 +105,6 @@ const Card = ({ project, locale }) => {
             className="w-full h-full object-cover object-top z-0"
             src={project.data.heroImage}
             alt={project.data.title}
-            loading="lazy"
           />
         </a>
       </motion.div>

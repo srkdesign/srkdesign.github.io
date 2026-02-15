@@ -16,7 +16,7 @@ export const MENU_LINKS = [
   },
   {
     label: "nav.links.blog",
-    href: getRelativeLocaleUrl(i18n.language, "blog"),
+    href: "/blog",
     image: "/images/menu/blog",
   },
   {
@@ -26,10 +26,7 @@ export const MENU_LINKS = [
   },
   {
     label: "nav.links.resources",
-    href: getRelativeLocaleUrl(
-      i18n.language,
-      "blog/useful-tools-for-webdesign-and-development",
-    ),
+    href: "blog/useful-tools-for-webdesign-and-development",
     image: "/images/menu/resources",
   },
 ];

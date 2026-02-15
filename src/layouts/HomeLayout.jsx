@@ -28,7 +28,7 @@ const HomeLayout = ({ projects, locale }) => {
           />
         </div>
 
-        <div className="mix-blend-lighten order-3 md:order-2">
+        <div className="md:mix-blend-lighten order-3 md:order-2">
           <AutoPlayVideo src="/videos/ascii_converted.mp4" threshold={0.3} />
         </div>
 

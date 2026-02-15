@@ -1,9 +1,11 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
+import i18n from "i18next";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 export const SITE_TITLE = "srkdesign";
 export const SITE_DESCRIPTION =
-  "Портфолио веб-дизайнера и front-end разработчика. Создание адаптивных сайтов: UX/UI дизайн, верстка, React, JavaScript, WordPress, Elementor";
+  "Портфолио дизайнера и front-end разработчика. Создание адаптивных сайтов: UX/UI дизайн, верстка, React, JavaScript, WordPress, Elementor";
 export const SITE_URL = "srkdesign.pro";
 
 export const MENU_LINKS = [
@@ -14,7 +16,7 @@ export const MENU_LINKS = [
   },
   {
     label: "nav.links.blog",
-    href: "/blog",
+    href: getRelativeLocaleUrl(i18n.language, "blog"),
     image: "/images/menu/blog",
   },
   {
@@ -24,7 +26,10 @@ export const MENU_LINKS = [
   },
   {
     label: "nav.links.resources",
-    href: "/resources",
+    href: getRelativeLocaleUrl(
+      i18n.language,
+      "blog/useful-tools-for-webdesign-and-development",
+    ),
     image: "/images/menu/resources",
   },
 ];

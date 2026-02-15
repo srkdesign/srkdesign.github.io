@@ -16,7 +16,7 @@ const PostLink = ({ id, title, category, date, image }) => {
         href={getRelativeLocaleUrl(locale, `blog/${id.split("/")[1]}`)}
         className="flex flex-col md:flex-row justify-between md:items-center pt-10 pb-11 lg:gap-24 gap-4"
       >
-        <h4 className="lg:text-5xl md:text-5xl text-2xl max-w-5xl line-clamp-2">
+        <h4 className="lg:text-5xl md:text-5xl text-2xl max-w-5xl line-clamp-2 overflow-visible">
           {title}
         </h4>
         <motion.img
@@ -38,7 +38,7 @@ const PostLink = ({ id, title, category, date, image }) => {
             ease: [0.16, 1, 0.3, 1],
           }}
         />
-        <div className="text-md md:text-2xl lg:w-40 flex lg:justify-start">
+        <div className="text-md md:text-2xl lg:w-44 flex lg:justify-start">
           <div>
             <p>{date}</p>
             <p className="opacity-50">{CATEGORIES[category]}</p>

@@ -42,7 +42,11 @@ const HorizontalScroll = ({ elements, locale }) => {
         <BubbleText text="srkdesign"></BubbleText>
 
         <div className="static overflow-x-auto hide-scrollbar z-0 isolate">
-          <motion.div style={{ x }} ref={scrollContent} className="flex static">
+          <motion.div
+            style={{ x }}
+            ref={scrollContent}
+            className="flex static "
+          >
             {elements.map((el) => (
               <Card project={el} key={el.id} locale={locale} />
             ))}

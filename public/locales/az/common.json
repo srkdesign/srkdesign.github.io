@@ -1,12 +1,12 @@
 {
   "hello_world": "Salam, Dünya!",
   "site": {
-    "title": "srkdesign — veb-dizayner və front-end tərtibatçı",
-    "description": "Veb-dizayner və front-end tərtibatçının portfeli. Adaptiv veb-saytların yaradılması: UX/UI dizayn, kod yazılması, React, JavaScript, WordPress, Elementor."
+    "title": "srkdesign — dizayner və front-end tərtibatçı",
+    "description": "Dizayner və front-end tərtibatçının portfeli. Adaptiv veb-saytların yaradılması: UX/UI dizayn, kod yazılması, React, JavaScript, WordPress, Elementor."
   },
   "nav": {
     "phrase": {
-      "default": "<1><2>web</2> dizayner</1><3>və <4>front-end</4> tərtibatçı</3></0>",
+      "default": "<1><2>qrafik</2> dizayner</1><3>və <4>front-end</4> proqramçı</3></0>",
       "hover": "<1>İntuitiv dizayn</1><2> və full-stack saytlar</2></0>"
     },
     "btn": {
@@ -23,6 +23,40 @@
     "other": "Digər linklər",
     "copyright": "Bütün hüquqlar qorunur.",
     "acknowledgements": "osk-a xüsusi təşəkkürlər."
+  },
+  "home": {
+    "about": {
+      "heading": {
+        "designer": "Qrafik dizayner,",
+        "developer": "front-end proqramçı,",
+        "author": "və kontent müəllifi"
+      },
+      "accordion": {
+        "designer": {
+          "title": "Dizayn fəlsəfəm",
+          "description": "Dizayn ilk növbədə “gözəl şəkil” demək deyil, məlumatı auditoriyaya onlar üçün ən aydın və rahat şəkildə çatdırmaqdır. Deyildiyi kimi: “Yaxşı dizayn dərhal görünür. Əla dizayn isə görünməzdir.” Məncə, əla dizayn üç elementin kəsişməsidir: estetika, rahatlıq və texniki icra."
+        },
+        "developer": {
+          "title": "Texniki həyata keçirməyə yanaşma",
+          "description": "Gözəl, amma həyata keçirilə bilməyən dizaynın faydası azdır. Buna görə dizaynerlər ən azı bir qədər kod bilməlidirlər ki, kodda asanlıqla reallaşdırıla bilən dizayn yarada bilsinlər."
+        },
+        "author": {
+          "title": "Biliklərin paylaşılmasının əhəmiyyəti",
+          "description": "Dizaynla tanışlığım YouTube dərsliklərindən başladı. Həmin müəlliflərə təşəkkür əlaməti olaraq, video və məqalə formatında pulsuz tədris məzmunu paylaşıram."
+        }
+      }
+    },
+    "grid": {
+      "heading": "Məna detallardadır",
+      "subheading": "(layihələri görmək üçün aşağı sürüşdürün)"
+    }
+  },
+  "project": {
+    "view": {
+      "heading": "Layihəyə baxmaq",
+      "link": "Keçmək"
+    },
+    "about": "Layihə haqqında"
   },
   "blog": {
     "title": "Bloq",

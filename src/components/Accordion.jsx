@@ -14,14 +14,14 @@ const Accordion = ({ title, description }) => {
       transition={{ duration: 0.4, ease: EASE }}
     >
       <button
-        className="flex justify-between items-start gap-8 py-8 w-full cursor-pointer"
+        className="flex justify-between items-start gap-8 py-4 w-full cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h3 className="md:text-3xl text-xl text-left">{title}</h3>
-        <div className="relative flex mt-1 min-w-6 h-6">
-          <motion.span className="absolute right-0 block w-full md:h-[2px] h-px bg-zinc-50 bottom-[calc(50%-1px)]"></motion.span>
+        <h3 className="text-xl text-left">{title}</h3>
+        <div className="relative flex mt-1 min-w-4 h-4">
+          <motion.span className="absolute right-0 block w-full md:h-[1px] h-px bg-zinc-50 bottom-[calc(50%-1px)]"></motion.span>
           <motion.span
-            className="absolute right-[calc(50%-1px)] block md:w-[2px] h-full w-px bg-zinc-50"
+            className="absolute right-[calc(50%-1px)] block h-full w-px bg-zinc-50"
             animate={{ rotate: isOpen ? 90 : 0 }}
           ></motion.span>
         </div>
@@ -33,7 +33,7 @@ const Accordion = ({ title, description }) => {
         animate={{ height: isOpen ? "auto" : 0 }}
         transition={{ duration: 0.5, ease: EASE }}
       >
-        <p className="leading-relaxed md:text-lg text-base overflow-hidden pb-10 opacity-75 font-normal">
+        <p className="leading-relaxed md:text-lg text-base overflow-hidden pb-7 opacity-75 font-normal">
           {description}
         </p>
       </motion.div>

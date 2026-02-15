@@ -23,11 +23,11 @@ const postImage = `/images${Astro.url.pathname}hero.png`;
   </head>
   <body class="text-zinc-50 bg-zinc-950">
     <!-- Loader -->
-    <div class="page-loader">
+    <div id="page-loader">
       <div class="loader-content"></div>
     </div>
     <!-- Content -->
-    <div id="swup">
+    <div id="page">
       <Header client:only="react" />
       <main class="pt-28">
         <slot />
@@ -39,95 +39,116 @@ const postImage = `/images${Astro.url.pathname}hero.png`;
 </html>
 
 <script>
-  import Swup from "swup";
-  import SwupHeadPlugin from "@swup/head-plugin";
-  import SwupBodyClassPlugin from "@swup/body-class-plugin";
-  import SwupPreloadPlugin from "@swup/preload-plugin";
+  const loader = document.querySelector("#page-loader") as HTMLElement;
+  const page = document.querySelector("#page");
 
-  const pageLoader = document.querySelector(".page-loader") as HTMLElement;
-  const swupContainer: HTMLElement | null = document.querySelector(
-    "#swup",
-  ) as HTMLElement;
-
-  function showLoader() {
-    pageLoader.classList.remove("is-exiting");
-    pageLoader.classList.add("is-entering");
-  }
-
-  function hideLoader() {
-    pageLoader.classList.remove("is-entering");
-    pageLoader.classList.add("is-exiting");
-  }
-
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      hideLoader();
-    }, 200);
-  });
-
-  const swup = new Swup({
-    containers: ["#swup"],
-    plugins: [
-      new SwupPreloadPlugin({ preloadHoveredLinks: true }),
-      new SwupHeadPlugin({ persistTags: true, awaitAssets: true }),
-      new SwupBodyClassPlugin(),
-    ],
-  });
-
-  function waitForImage(img: HTMLImageElement): Promise<void> {
-    if (img.complete) return Promise.resolve();
-    return new Promise((resolve) => {
-      img.onload = () => resolve();
-      img.onerror = () => resolve();
-      setTimeout(() => resolve(), 3000);
-    });
-  }
-
-  function waitForVideo(video: HTMLVideoElement): Promise<void> {
-    if (video.readyState >= 3) return Promise.resolve();
-    return new Promise((resolve) => {
-      video.oncanplay = () => resolve();
-      video.oncanplaythrough = () => resolve();
-      video.onerror = () => resolve();
-
-      if (video.preload === "none") {
-        video.preload = "metadata";
-        video.load();
+  // Wait for assets to load first
+  async function waitForPageLoad() {
+    await new Promise((resolve) => {
+      if (document.readyState === "complete") {
+        resolve(null);
+      } else {
+        window.addEventListener("load", resolve);
       }
-
-      setTimeout(() => resolve(), 3000);
     });
+
+    console.log("page loaded");
+
+    await document.fonts.ready;
+
+    console.log("fonts loaded");
+
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+
+    console.log("react components loaded");
+
+    await new Promise((resolve) => {
+      function checkImages() {
+        const images = Array.from(document.images).filter(
+          (img) => img.loading !== "lazy",
+        );
+        if (images.length > 0 && images.every((img) => img.complete)) {
+          resolve(null);
+        } else {
+          requestAnimationFrame(checkImages);
+        }
+      }
+      checkImages();
+    });
+
+    console.log("images loaded");
+
+    loader?.classList.add("transitioned");
   }
 
-  async function waitForMedia(container: HTMLElement) {
-    const images = Array.from(
-      container.querySelectorAll("img:not([loading='lazy'])"),
-    ).filter((el): el is HTMLImageElement => el instanceof HTMLImageElement);
+  waitForPageLoad();
 
-    const videos = Array.from(container.querySelectorAll("video")).filter(
-      (el): el is HTMLVideoElement => el instanceof HTMLVideoElement,
+  // Handle links on page
+  document.addEventListener("click", (e) => {
+    const link = (e.target as HTMLElement).closest("a");
+    if (!link?.href || link.target) return;
+    const url = new URL(link.href);
+
+    // If anchor link don't show transition
+    if (url.pathname === location.pathname && url.hash) return;
+
+    // If external link don't show transition
+    if (url.origin !== location.origin) return;
+
+    e.preventDefault();
+    page?.classList.add("faded");
+    setTimeout(() => {
+      loader?.classList.remove("shown");
+      // document.getElementById("overlay")?.classList.remove("hide");
+      setTimeout(() => {
+        window.location.href = link.href;
+      }, 300);
+    }, 300);
+  });
+
+  // Handle back and forward browser button navigation
+  window.addEventListener("pageshow", (e) => {
+    if (e.persisted) {
+      page?.classList.remove("faded");
+      loader?.classList.add("transitioned");
+    }
+  });
+
+  function waitForRevealImages() {
+    const images = document.querySelectorAll(".reveal-image");
+    if (images.length) {
+      revealImg(images);
+    } else {
+      // retry next frame
+      requestAnimationFrame(waitForRevealImages);
+    }
+  }
+
+  // Observe loader transition first
+  const loaderObserver = new MutationObserver(() => {
+    if (loader?.classList.contains("transitioned")) {
+      waitForRevealImages(); // wait for images to mount
+      loaderObserver.disconnect();
+    }
+  });
+
+  loaderObserver.observe(loader, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+
+  function revealImg(images: NodeListOf<Element> | Element[]) {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.2 },
     );
 
-    await Promise.all([
-      ...images.map(waitForImage),
-      ...videos.map(waitForVideo),
-    ]);
+    images.forEach((el) => observer.observe(el));
   }
-
-  swup.hooks.on("animation:out:start", async () => {
-    showLoader();
-    if (swupContainer) {
-      swupContainer.style.opacity = "0";
-      await waitForMedia(swupContainer);
-    }
-  });
-
-  swup.hooks.on("animation:in:start", async () => {
-    if (swupContainer) {
-      swupContainer.style.opacity = "1";
-      await waitForMedia(swupContainer);
-    }
-
-    hideLoader();
-  });
 </script>

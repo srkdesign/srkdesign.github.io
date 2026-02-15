@@ -16,12 +16,12 @@ export async function getStaticPaths() {
   const posts = await getCollection("blog");
   const localizedPosts = posts.filter((p) => p.id.startsWith(`${pLocale}/`));
   const headings = await Promise.all(
-    posts.map(async (post: CollectionEntry<"blog">) => {
+    localizedPosts.map(async (post: CollectionEntry<"blog">) => {
       const data = await render(post);
       return data.headings;
-    })
+    }),
   );
-  return posts.map((post, index) => ({
+  return localizedPosts.map((post, index) => ({
     params: { locale: pLocale, slug: post.id.split("/")[1] },
     props: { post, headings: headings[index] },
   }));

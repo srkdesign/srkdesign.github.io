@@ -19,7 +19,10 @@ const projects = defineCollection({
     isDraft: z.boolean().optional(),
     isFullWidth: z.boolean().optional(),
     tags: z.array(z.string()).optional(),
+    tagGroups: z.record(z.array(z.string())).optional(),
     locale: z.string(),
+    order: z.number().optional(),
+    href: z.string().optional(),
   }),
 });
 
@@ -55,7 +58,7 @@ const apps = defineCollection({
         z.object({
           title: z.string(),
           href: z.string().url(),
-        })
+        }),
       )
       .optional(),
     isDraft: z.boolean().optional(),

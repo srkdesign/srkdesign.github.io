@@ -6,7 +6,7 @@ const Link = ({ openInNewTab, href, children }) => {
       href={href}
       target={openInNewTab ? "_blank" : ""}
       rel="noopener noreferrer"
-      className="relative transition-all"
+      className="relative transition-all w-fit"
       initial="initial"
       whileHover="whileHover"
       exit="exit"

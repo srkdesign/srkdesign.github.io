@@ -51,7 +51,7 @@ const BubbleText = ({ text }) => {
           <motion.span
             variants={overlayVariants}
             transition={transition}
-            className="absolute inset-0 font-extralight italic inline-block"
+            className="absolute inset-0 font-extralight italic inline-block overflow-visible"
             style={{
               pointerEvents: "none",
               willChange: "opacity, transform",

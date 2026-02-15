@@ -1,0 +1,195 @@
+---
+title: "WordPress kompüterə necə yükləmək olar"
+description: "Локальная установка WordPress на компьютер — зачем нужна, какие программы использовать и как быстро развернуть сайт для разработки."
+category: "wordpress"
+pubDate: "Jan 15 2026"
+heroImage: "/images/blog/how-to-install-wordpress-locally/hero.webp"
+isDraft: true
+---
+
+import ImageCaption from "../../../components/Markdown/ImageCaption.astro";
+import Table from "../../../components/Markdown/Table.astro";
+
+import local_1 from "/public/images/blog/how-to-install-wordpress-locally/local_1.png";
+import local_2 from "/public/images/blog/how-to-install-wordpress-locally/local_2.png";
+import local_3 from "/public/images/blog/how-to-install-wordpress-locally/local_3.png";
+import local_4 from "/public/images/blog/how-to-install-wordpress-locally/local_4.png";
+import local_5 from "/public/images/blog/how-to-install-wordpress-locally/local_5.png";
+import local_6 from "/public/images/blog/how-to-install-wordpress-locally/local_6.png";
+
+{/* Consts */}
+export const quality = "mid";
+export const format = "webp";
+
+WordPress — sayt yaratmaq üçün məşhur platformadır. Bütün kontent admin paneli vasitəsilə idarə olunur. WordPress istifadəçi üçün sadədir və saytın hazırlanma müddətini azaldır.
+
+## Niyə lokal quraşdırma lazımdır?
+
+- öz plaginlərinizi yaratmaq
+- tema və dizaynlar yaratmaq
+- saytda xətaları tapmaq və düzəltmək (WP_DEBUG)
+- kod və plaginləri təhlükəsiz sınaqdan keçirmək
+- saytın hostinqdəki backup-ını çıxarmaq
+
+## Quraşdırma variantları və üstünlükləri
+
+WordPress-i lokal olaraq bir neçə proqram vasitəsilə quraşdıra bilərsiniz. Ən populyar variantlar:
+
+### LocalWP
+
+export const localwp = [
+  { pros: "asan yükləmə", cons: "məhdud konfiqurasiya imkanları" },
+  { pros: "sadə interfeys", cons: "daha çox resurs tələb edir" },
+  { pros: "verilənlər bazası və phpMyAdmin avtomatik idarə olunur", cons: "" },
+  { pros: "verilənlər bazası və phpMyAdmin avtomatik idarə olunur", cons: "" },
+  { pros: "SSL sertifikatlarını avtomatik quraşdırır", cons: "" },
+  { pros: "saytları klonlamaq və ixrac etmək olur", cons: "" },
+  { pros: "müştəri saytlar və təhsil üçün uyğundur", cons: "" },
+  { pros: "Windows, MacOS və Linux dəstəkləyir", cons: "" },
+];
+
+<Table
+  headers={["Üstünlüklər", "Çatışmazlıqlar"]}
+  data={localwp}
+  keys={["pros", "cons"]}
+/>
+
+Bütün platformaları dəstəklədiyi üçün bundan sonra nümunələrdə əsasən LocalWP istifadə olunacaq.
+
+### Wampserver
+
+export const wampserver = [
+  {
+    pros: "serveri layihəyə uyğun tam quraşdırmaq olar",
+    cons: "quraşdırma zamanı əlavə proqramlar yükləmək təklif olunur",
+  },
+  { pros: "", cons: "verilənlər bazası və phpMyAdmin əl ilə qurulmalıdır" },
+];
+
+<Table
+  headers={["Üstünlüklər", "Çatışmazlıqlar"]}
+  data={wampserver}
+  keys={["pros", "cons"]}
+/>
+
+### Openserver
+
+export const openserver = [
+  {
+    pros: "asan yükləmə",
+    cons: "quraşdırma LocalWP-dən daha çox vaxt aparır",
+  },
+  {
+    pros: "serverin bütün komponentlərini idarə etmək olar",
+    cons: "interfeys bir qədər mürəkkəbdir",
+  },
+  {
+    pros: "MariaDB tam dəstəkləyir",
+    cons: "təzə başlayanlar üçün çətindir",
+  },
+  {
+    pros: "Virtual hostlar",
+    cons: "",
+  },
+  {
+    pros: "tamamilə pulsuz",
+    cons: "",
+  },
+];
+
+<Table
+  headers={["Üstünlüklər", "Çatışmazlıqlar"]}
+  data={openserver}
+  keys={["pros", "cons"]}
+/>
+
+### Mamp
+
+export const mamp = [
+  {
+    pros: "sadə interfeys",
+    cons: "geniş funksiyalar üçün ödənişli versiya tələb olunur",
+  },
+  {
+    pros: "Windows və MacOS dəstəyi",
+    cons: "verilənlər bazası və phpMyAdmin əl ilə qurulmalıdır",
+  },
+];
+
+<Table
+  headers={["Üstünlüklər", "Çatışmazlıqlar"]}
+  data={mamp}
+  keys={["pros", "cons"]}
+/>
+
+## LocalWP ilə WordPress-in yüklənilməsi
+
+1. [localwp.com](https://localwp.com) saytına daxil olun
+2. "Download For Free" düyməsini klikləyin və açılan pəncərədə məlumatları doldurun
+3. Məlumatlarınızı doldurduqdan sonra "Get it now" düyməsini klikləyin
+4. Quraşdırıcı yüklənəndən sonra işə salın və təlimatlara əməl edin
+
+<ImageCaption
+  image={local_1}
+  format={format}
+  quality={quality}
+  caption="Yükləmə modal pəncərəsi"
+  link="https://localwp.com"
+/>
+
+## LocalWP-də yeni saytının yaradılması
+
+1. LocalWP-ni işə salın
+2. Sol alt küncdəki + (plyus) düyməsini klikləyin
+
+<ImageCaption
+  image={local_2}
+  format={format}
+  quality={quality}
+  caption="Sol alt küncdəki + (plyus) düyməsini klikləyin"
+/>
+
+3. Saytı 0-dan yaratmaq istəyirsinizsə, “Create new site” (Yeni sayt yarat) seçin və daha sonra “Continue” (Davam et) düyməsini klikləyin
+4. _(İstəyə görə) ZIP fayldan backup-ını işə salmaq istəyirsinizsə, faylı sahəyə sürükləyin_
+
+<ImageCaption
+  image={local_3}
+  format={format}
+  quality={quality}
+  caption="Hansını yaratmaq istədiyinizi seçin: sıfırdan sayt və ya .zip fayldan"
+/>
+
+5. Saytın adını daxil edin. Bu ad avtomatik olaraq saytın domeninə çevriləcək (istəsəniz özü də yaza bilərsiniz). Sonra, saytın kompüterdə yerləşəcəyi qovluğu seçin (standart olaraq Local Sites)
+
+<ImageCaption
+  image={local_4}
+  format={format}
+  quality={quality}
+  caption="Saytın adını mütləq latın hərfləri ilə daxil edin"
+/>
+
+6. **Mühitin quraşdırması.** “Custom” bölməsində PHP versiyasını, web serveri (Apache və ya Nginx) və verilənlər bazasını seçə bilərsiniz. Əgər sizə vacib deyilsə, “Preferred” seçimi ilə standart parametrləri saxlaya bilərsiniz.
+
+<ImageCaption
+  image={local_5}
+  format={format}
+  quality={quality}
+  caption="LocalWP ilə sayt yaradarkən WordPress mühitinin quraşdırılması. Nə olduğunu bilmirsinizsə, standart parametrləri saxlamaq daha yaxşıdır"
+/>
+
+7. **WordPress quraşdırması.** Admin istifadəçi adı və şifrənizi daxil edin və saytın dilini seçə bilərsiniz.
+
+<ImageCaption
+  image={local_6}
+  format={format}
+  quality={quality}
+  caption="LocalWP ilə sayt yaradarkən WordPress quraşdırması"
+/>
+
+> [!hint] Davam oxuya biləcəyiniz
+> Daha çox WordPress və dizayn haqqında məqalələr üçün [bloqa](/az/blog/) baxa bilərsiniz.
+
+## Mənbələr
+
+1. [How I built a super fast minimal WordPress blog](https://youtu.be/oS7IVUwQniM)
+2. [LocalWP](https://localwp.com)

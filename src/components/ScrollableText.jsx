@@ -1,10 +1,12 @@
+import { useEffect } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { EASE } from "../consts";
 
-const ProjectPhrase = ({
+const ScrollableText = ({
   from = "0%",
   to = "-50%",
   style = "*:text-5xl lg:*:text-9xl",
+  padding,
   heading,
   subheading,
 }) => {
@@ -17,7 +19,7 @@ const ProjectPhrase = ({
       <motion.div
         style={{ x }}
         transition={{ ease: EASE }}
-        className={`relative items-center flex whitespace-nowrap ${style} *:whitespace-nowrap *:inline-block gap-10 px-4`}
+        className={`relative items-center flex justify-start whitespace-nowrap ${style} translate-x-0 *:whitespace-nowrap *:inline-block gap-10 px-4 ${padding}`}
       >
         <h1 className="after:content-['—'] after:pl-10" data-heading="scroll">
           {heading}
@@ -30,4 +32,4 @@ const ProjectPhrase = ({
   );
 };
 
-export default ProjectPhrase;
+export default ScrollableText;

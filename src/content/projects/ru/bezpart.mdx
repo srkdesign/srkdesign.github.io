@@ -1,24 +1,46 @@
 ---
 title: "БезПарт"
-description: "Лендинг и реферальная программа для онлайн-школы"
+description: "Уникальный, нестандартный визуальный стиль с нуля для онлайн-школы: простой логотип, сайт, лендинг реферальной программы и флаер. Акцент на отходе от типичных «книг и лампочек», создание цельной, согласованной с брендом системы для веба и печати."
 pubDate: "Aug 19 2025"
-heroImage: "/images/projects/bezpart/hero.png"
+heroImage: "/images/projects/bezpart/hero_final.png"
 isDraft: false
 isFullWidth: true
 locale: "ru-RU"
-tags:
-  - дизайн
-  - сайт
-  - листовка
-  - figma
-  - affinity
+href: "https://bezpart.online/"
+order: 1
+tagGroups:
+  Дисциплины:
+    - Графический дизайн
+    - Веб-дизайн
+  Объем:
+    - Сайт
+    - Листовка
+    - Логотип
+    - Лендинг
+  Инструменты:
+    - Figma
+    - Affinity
+  Навыки:
+    - Брендинг
+    - UI/UX
+    - Фирменный стиль
+    - Интерактивный дизайн
 ---
 
-{/* Components */}
-import SmartVideo from "../../../components/Markdown/SmartVideo";
+import SmartVideo from "@components/Markdown/SmartVideo";
+import ImageGrid from "@components/Markdown/ImageGrid.astro";
 
 <SmartVideo
   src="/videos/projects/bezpart_scroll.mp4"
   poster="/images/projects/bezpart/hero.png"
   client:only="react"
 ></SmartVideo>
+
+<ImageGrid>
+  <img src="/images/projects/bezpart/hero_final.png" />
+  <img src="/images/projects/bezpart/shirt.png" />
+  <img
+    className="col-span-full"
+    src="/images/projects/bezpart/iterations.png"
+  />
+</ImageGrid>

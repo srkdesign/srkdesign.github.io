@@ -3,9 +3,9 @@ import MarkdownComponent from "../components/Markdown/MarkdownComponent";
 import AnimatedLayout from "./AnimatedLayout";
 import AnimatedLink from "../components/Footer/Link";
 
-const ProjectLayout = ({ children, metadata }) => {
+const AppLayout = ({ children, metadata }) => {
   return (
-    <>
+    <AnimatedLayout>
       <section id="app-hero" class="">
         <ScrollableText
           heading={metadata.title}
@@ -13,7 +13,7 @@ const ProjectLayout = ({ children, metadata }) => {
         />
         <img src={metadata.heroImage} alt={metadata.title} />
       </section>
-      <section class="py-24 grid grid-cols-2 px-8 lg:px-24 *:w-full">
+      <section className="py-24 grid grid-cols-2 px-8 lg:px-24 *:w-full">
         <aside className="lg:sticky lg:top-32 lg:left-0 self-start grid grid-cols-2 gap-4 *:col-start-1">
           <div className="grid grid-cols-2 place-items-baseline text-xl">
             <p className="opacity-80">Платформа</p>
@@ -37,8 +37,8 @@ const ProjectLayout = ({ children, metadata }) => {
           <MarkdownComponent isFullWidth>{children}</MarkdownComponent>
         </div>
       </section>
-    </>
+    </AnimatedLayout>
   );
 };
 
-export default ProjectLayout;
+export default AppLayout;

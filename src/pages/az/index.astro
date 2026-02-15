@@ -18,7 +18,7 @@ const projects = (
   })
   .sort(
     (a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) =>
-      b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+      (a.data.order ?? 0) - (b.data.order ?? 0),
   );
 // console.log(projects);
 

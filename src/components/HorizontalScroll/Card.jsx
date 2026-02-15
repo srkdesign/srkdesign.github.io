@@ -5,6 +5,13 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 
 const Card = ({ project, locale }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const tags = Object.entries(project.data.tagGroups ?? {})
+    .filter(([groupName]) => groupName !== "Инструменты")
+    .filter(([groupName]) => groupName !== "Tools")
+    .filter(([groupName]) => groupName !== "Alətlər")
+    .flatMap(([, groupValues]) => groupValues.slice(0, 2));
+
   const parentVariants = {
     initial: {},
     hover: {},
@@ -81,14 +88,17 @@ const Card = ({ project, locale }) => {
                     alt=""
                   />
                 </div>
-                <motion.ul className="flex" variants={listVariants}>
-                  {project.data.tags.map((item, idx) => (
+                <motion.ul
+                  className="flex flex-wrap gap-y-4"
+                  variants={listVariants}
+                >
+                  {tags.map((tag, idx) => (
                     <motion.li
                       key={idx}
-                      className="uppercase text-sm border border-white/20 px-4 py-2 rounded-full"
+                      className="uppercase text-sm border border-white/20 px-4 py-2 rounded-full text-nowrap"
                       variants={itemVariants}
                     >
-                      {item}
+                      {tag}
                     </motion.li>
                   ))}
                 </motion.ul>
@@ -101,11 +111,14 @@ const Card = ({ project, locale }) => {
               </div>
             </div>
           </motion.div>
-          <img
-            className="w-full h-full object-cover object-top z-0"
-            src={project.data.heroImage}
-            alt={project.data.title}
-          />
+          <div className="reveal-image">
+            <img
+              className="w-full h-full object-cover object-top z-0 overflow-hidden"
+              src={project.data.heroImage}
+              alt={project.data.title}
+              loading="eager"
+            />
+          </div>
         </a>
       </motion.div>
     </AnimatePresence>

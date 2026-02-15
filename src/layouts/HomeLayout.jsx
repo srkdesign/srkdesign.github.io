@@ -29,7 +29,10 @@ const HomeLayout = ({ projects, locale }) => {
         </div>
 
         <div className="mix-blend-lighten order-3 md:order-2">
-          <AutoPlayVideo src="/videos/ascii_ios15_safe.mp4" threshold={0.3} />
+          <AutoPlayVideo
+            src="/videos/ascii_ios15_safe_noise.mp4"
+            threshold={0.3}
+          />
         </div>
 
         <div className="order-2 md:order-3 md:py-44 flex flex-col justify-end items-end">

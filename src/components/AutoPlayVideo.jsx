@@ -39,11 +39,11 @@ const AutoPlayVideo = ({ src, threshold }) => {
 
   return (
     <video
-      key={src}
       ref={ref}
       src={src}
       muted
       loop
+      controls
       playsInline
       preload="auto"
       className="block w-full h-auto object-cover object-center m-0 p-0"

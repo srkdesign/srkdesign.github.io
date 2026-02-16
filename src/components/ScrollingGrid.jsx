@@ -39,7 +39,7 @@ export default function ScrollingGrid({ heading, subheading }) {
 
   return (
     <section ref={ref} className="h-[350vh]">
-      <div className="sticky top-0 h-screen grid grid-cols-3 grid-rows-3 gap-0 overflow-visible">
+      <div className="sticky top-0 h-screen grid grid-cols-3 grid-rows-3 gap-0 overflow-y-visible">
         {/* Text */}
         <motion.div
           className="absolute w-full h-full flex flex-col items-center justify-center z-20 text-center gap-4"

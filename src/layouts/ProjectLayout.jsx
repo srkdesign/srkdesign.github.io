@@ -27,11 +27,11 @@ const ProjectLayout = ({ children, metadata, locale }) => {
     <AnimatedLayout>
       <section id="project-hero">
         <ScrollableText
-          padding="ml-20"
+          padding="lg:ml-20 ml-4"
           heading={metadata.title}
           subheading={metadata.description}
         />
-        <section className="px-8 lg:px-24 pt-6 pb-20 text-lg *:border-zinc-800 [&>*:not(:last-child)]:border-b *:py-3 *:grid *:grid-cols-2 [&>div>h2]:text-zinc-400 [&>div>ul]:list-none [&>div>ul]:flex [&>div>ul]:gap-3 [&>div>ul>li:not(:last-child)]:after:content-[',']">
+        <section className="px-8 lg:px-24 pt-6 pb-20 text-lg *:border-zinc-800 [&>*:not(:last-child)]:border-b *:py-4 *:grid *:grid-cols-2 [&>div>h2]:text-zinc-400 [&>div>ul]:list-none [&>div>ul]:flex [&>div>ul]:md:gap-3 [&>div>ul>li:not(:last-child)]:after:content-[','] [&>div>ul]:flex-col [&>div>ul]:md:flex-row [&>div>ul]:gap-1 [&>#about]:flex [&>#about]:flex-col [&>#about]:md:grid">
           {metadata.href && (
             <div>
               <h2>{t("project.view.heading")}</h2>
@@ -41,8 +41,8 @@ const ProjectLayout = ({ children, metadata, locale }) => {
             </div>
           )}
 
-          <div>
-            <h2>{t("project.about")}</h2>
+          <div id="about">
+            <h2 className="mb-2">{t("project.about")}</h2>
             <p>{metadata.description}</p>
           </div>
 

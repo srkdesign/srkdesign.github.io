@@ -1,4 +1,4 @@
-import React, { use, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const AutoPlayVideo = ({ src, threshold }) => {
   const ref = useRef(null);
@@ -10,7 +10,7 @@ const AutoPlayVideo = ({ src, threshold }) => {
         setIsVisible(entry.isIntersecting);
       },
       {
-        threshold: `${threshold}`,
+        threshold: threshold,
       },
     );
 
@@ -23,13 +23,14 @@ const AutoPlayVideo = ({ src, threshold }) => {
         observer.unobserve(ref.current);
       }
     };
-  }, []);
+  }, [threshold]);
 
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
 
     if (isVisible) {
+      video.load();
       video.play().catch(() => {});
     } else {
       video.pause();
@@ -38,6 +39,7 @@ const AutoPlayVideo = ({ src, threshold }) => {
 
   return (
     <video
+      key={src}
       ref={ref}
       src={src}
       muted

@@ -1,0 +1,158 @@
+---
+title: "Убираем белый фон со сложного изображения за 1 минуту"
+description: "4 способа удалить белый или другой фон со сложного изображения в Affinity, Figma и Photopea"
+category: "design"
+pubDate: "Feb 18 2026"
+heroImage: "/images/blog/remove-white-background-from-image/hero.webp"
+isDraft: false
+---
+
+import ImageCaption from "@components/Markdown/ImageCaption.astro";
+
+import affinity_1 from "/public/images/blog/remove-white-background-from-image/affinity-by-canva.png";
+import affinity_2 from "/public/images/blog/remove-white-background-from-image/affinity-download.png";
+import affinity_3 from "/public/images/blog/remove-white-background-from-image/affinity-open-file.png";
+import affinity_4 from "/public/images/blog/remove-white-background-from-image/affinity-select-layer.png";
+import affinity_5 from "/public/images/blog/remove-white-background-from-image/affinity-erase-white-paper.png";
+import affinity_6 from "/public/images/blog/remove-white-background-from-image/affinity-final-image.png";
+import affinity_7 from "/public/images/blog/remove-white-background-from-image/examples.png";
+import photopea_1 from "/public/images/blog/remove-white-background-from-image/photopea-remove-bg.png";
+import photopea_2 from "/public/images/blog/remove-white-background-from-image/photopea-color-range.png";
+import photopea_3 from "/public/images/blog/remove-white-background-from-image/photopea-inverse-selection.png";
+import photopea_4 from "/public/images/blog/remove-white-background-from-image/photopea-mask.png";
+import photopea_5 from "/public/images/blog/remove-white-background-from-image/photopea-final.png";
+
+export const quality = "mid";
+export const format = "webp";
+
+Существует множество способов удалить белый или другой фон с изображения. Одни из этих способов затратные по времени, другие применяются буквально в 1-2 клика.
+
+Больше всего эти способы различаются качеством итогового изображения. В особо сложных областях фон может быть удален только частично, или у изображения может остаться обводка от фона в 1-2 пикселя.
+
+Одним из самых точных способов удаления фона является метод в Affinity, о котором и пойдет речь в статье. Помимо удаления фона в Affinity, будет рассмотрено еще 3 быстрых способа удаления фона в таких программах как Photopea и Figma. Все рассмотренные в статье способы бесплатны и не требуют оформления подписок на какие-либо сервисы.
+
+## Как убрать белый фон с изображения в Affinity
+
+### Установка Affinity
+
+1. Зайдите на сайт [affinity.studio](https://affinity.studio)
+
+<ImageCaption
+  image={affinity_1}
+  format={format}
+  quality={quality}
+  caption="Главная страница Affinity"
+/>
+
+2. Создайте аккаунт Canva или войдите в уже существующий, после чего вам станет доступна ссылка на скачивание программы
+
+<ImageCaption
+  image={affinity_2}
+  format={format}
+  quality={quality}
+  caption="Скачать Affinity можно как для MacOS, так и для Windows"
+/>
+
+3. После установки, запустите программу
+
+### Работа с изображением
+
+4. Выберите иконку папки в правом верхнем углу, чтобы открыть нужное изображение
+
+<ImageCaption
+  image={affinity_3}
+  format={format}
+  quality={quality}
+  caption="Иконка папки находится слева от кнопки с плюсом"
+/>
+
+5. Выберите слой с нужным вам изображением в правом углу экрана
+
+<ImageCaption
+  image={affinity_4}
+  format={format}
+  quality={quality}
+  caption="Выбранный слой подсвечивается синим"
+/>
+
+6. Во вкладке «Pixel» выберите «Filters» > «Colours» > «Erase White Paper»
+
+<ImageCaption
+  image={affinity_5}
+  format={format}
+  quality={quality}
+  caption="Иконка папки находится слева от кнопки с плюсом"
+/>
+
+7. Изображение готово: белый фон заменен на прозрачный. Теперь можете экспортировать изображение в любом удобном формате
+
+<ImageCaption
+  image={affinity_6}
+  format={format}
+  quality={quality}
+  caption="Иконка папки находится слева от кнопки с плюсом"
+/>
+
+Таким образом, можно убрать белый фон со сложного изображения буквально в 2 клика, то есть в течение 1 минуты (не считая открытия изображения в редакторе).
+
+## Сравнение с другими методами
+
+<ImageCaption
+  image={affinity_7}
+  format={format}
+  quality={quality}
+  caption="«Remove BG» в Photopea (слева), «Icons8 Background Remover» в Figma (посередине), «Erase White Paper» в Affinity (справа)"
+/>
+
+## Альтернатива: убираем белый фон с изображения в Photopea и Figma
+
+**Photopea** — это одновременно и веб-сервис, и плагин в Figma. Если изображение объемное, лучше использовать веб-сервис. Для всех остальных случаев, подойдет и плагин в Figma.
+
+> [!hint] Другие полезные программы для дизайна
+> Больше о ползеных программах и ресурсах для дизайна читайте в подборке [«Полезные ресурсы для дизайна и разработки»](/blog/useful-tools-for-webdesign-and-development)
+
+<ImageCaption
+  image={photopea_1}
+  format={format}
+  quality={quality}
+  caption="«Remove BG» в Photopea"
+/>
+
+Раз уже речь зашла о Photopea, то в этой программе есть другой более точный способ удаления фона, нежели рассмотренный ранее **«Remove BG».** Для того чтобы его применить, перейдите во вкладку **«Select»** и выберите опцию **«Color Range».**
+
+<ImageCaption
+  image={photopea_2}
+  format={format}
+  quality={quality}
+  caption="«Color Range» в Photopea (Select > Color Range)"
+/>
+
+Убедитесь, что в разделе **«Select»** открывшегося окна выбрана опция **«Sampled Colors».**
+
+Раздел **«Fuzziness»** регулирует диапазон оттенков, которые вы хотите удалить. Увеличивайте значение, пока весь фон не станет белым на превью ниже.
+
+По нажатию на кнопку **«Ok»,** вы можете удалить фон нажав на кнопку **«Delete»** или скрыть его с помощью маски, предварительно инверсировав контур (правая кнопка мыши > Inverse > Значок маски в правом нижнем углу).
+
+<ImageCaption
+  image={photopea_3}
+  format={format}
+  quality={quality}
+  caption="Чтобы инверсировать контур, нажмите правой кнопкой мыши по контуру и выберите опцию «Inverse»"
+/>
+
+После инверсирования контура, можно скрыть белый фон маской. Чтобы добавить маску, нажмите на соответствующую иконку в правом нижнем углу.
+
+<ImageCaption
+  image={photopea_4}
+  format={format}
+  quality={quality}
+  caption="Белый фон убран с помощью растровой маски в Photopea (3 иконка слева в правом нижнем углу)"
+/>
+
+Финальный результат удаления фона с помощью **«Color Range»** получился в разы лучше чем с тем же **«Remove BG»,** но не так точно как в **Affinity.** Можно сказать, что изображение получилось примерно на одном уровне с **«Icons8 Background Remover».**
+
+<ImageCaption image={photopea_5} format={format} quality={quality} caption="" />
+
+## Выводы
+
+Самым качественным способом удаления белого фона со сложного изображени оказался «Erase White Paper» в Affinity. Сразу после него по точности удаления фона идут «Icons8 Background Remover» в Figma и «Color Range» в Photopea.

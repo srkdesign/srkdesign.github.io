@@ -1,7 +1,5 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
-import i18n from "i18next";
-import { getRelativeLocaleUrl } from "astro:i18n";
 
 export const SITE_TITLE = "srkdesign";
 export const SITE_DESCRIPTION =
@@ -26,7 +24,7 @@ export const MENU_LINKS = [
   },
   {
     label: "nav.links.resources",
-    href: "blog/useful-tools-for-webdesign-and-development",
+    href: "/blog/useful-tools-for-webdesign-and-development",
     image: "/images/menu/resources",
   },
 ];

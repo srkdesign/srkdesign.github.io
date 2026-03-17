@@ -43,7 +43,7 @@ const AutoPlayVideo = ({ src, threshold }) => {
       src={src}
       muted
       loop
-      controls
+      // controls
       playsInline
       preload="auto"
       className="block w-full h-auto object-cover object-center m-0 p-0"

@@ -1,36 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const AutoPlayVideo = ({ src, threshold }) => {
-  const ref = useRef(null);
+const AutoPlayVideo = ({ src, poster, threshold, aspectRatio = "16/9" }) => {
+  const containerRef = useRef(null);
+  const videoRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const hasLoadedRef = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      {
-        threshold: threshold,
-      },
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold },
     );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
+    if (containerRef.current) observer.observe(containerRef.current);
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      if (containerRef.current) observer.unobserve(containerRef.current);
     };
   }, [threshold]);
 
   useEffect(() => {
-    const video = ref.current;
+    const video = videoRef.current;
     if (!video) return;
 
     if (isVisible) {
-      video.load();
+      // Only call load() once — repeated load() resets Safari's buffer
+      // and triggers layout recalculation
+      if (!hasLoadedRef.current) {
+        video.load();
+        hasLoadedRef.current = true;
+      }
       video.play().catch(() => {});
     } else {
       video.pause();
@@ -38,16 +35,49 @@ const AutoPlayVideo = ({ src, threshold }) => {
   }, [isVisible]);
 
   return (
-    <video
-      ref={ref}
-      src={src}
-      muted
-      loop
-      // controls
-      playsInline
-      preload="auto"
-      className="block w-full h-auto object-cover object-center m-0 p-0"
-    />
+    <div
+      ref={containerRef}
+      style={{
+        position: "relative",
+        width: "100%",
+        // Explicit aspect ratio prevents any height recalculation
+        aspectRatio,
+        backgroundImage: `url(${poster})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        overflow: "hidden",
+      }}
+    >
+      <video
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        muted
+        loop
+        playsInline
+        preload="auto"
+        style={{
+          // Fill the aspect-ratio-locked container absolutely
+          // so the video itself never contributes to layout flow
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center",
+          // Prevents Safari from briefly flashing a blank frame on pause
+          // by keeping the poster visually underneath via the container bg
+          display: "block",
+          margin: 0,
+          padding: 0,
+        }}
+        onLoadedMetadata={(e) => {
+          const { videoWidth, videoHeight } = e.target;
+          containerRef.current.style.aspectRatio = `${videoWidth}/${videoHeight}`;
+        }}
+      />
+    </div>
   );
 };
 

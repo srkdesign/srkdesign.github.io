@@ -29,7 +29,7 @@ interface PaginationData {
 // Get all posts
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const pLocale = "ru";
-  console.log("BLOG:", pLocale);
+  // console.log("BLOG:", pLocale);
 
   const posts = await getCollection("blog");
   const isProd = import.meta.env.PROD;
@@ -47,9 +47,9 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
       return getDate(b) - getDate(a);
     });
 
-  filteredPosts.map((p) => {
-    console.log(p.id);
-  });
+  // filteredPosts.map((p) => {
+  //   console.log(p.id);
+  // });
 
   return paginate(filteredPosts, {
     pageSize: 10,
@@ -66,13 +66,13 @@ if (!page) throw new Error("Pagination data is missing");
 >
   <!-- <BlogLayout posts={posts} client:only="react" /> -->
   <AnimatedLayout client:only="react">
-    <div
-      class="flex justify-between items-center mb-8 md:mb-16 lg:px-24 px-8 text-5xl lg:text-9xl"
-    >
-      <h1 class="whitespace-nowrap">Статьи</h1>
+    <div class="flex justify-between items-center mb-8 md:mb-24 lg:px-24 px-8">
+      <h1 class="whitespace-nowrap text-[clamp(2rem,0.8rem+6vw,8rem)]">
+        Статьи
+      </h1>
       <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
     </div>
-    <ul>
+    <ul class="group border-b border-white/20">
       {
         page.data.map((post) => (
           <PostLink

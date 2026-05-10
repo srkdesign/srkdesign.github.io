@@ -14,6 +14,8 @@ import chunking from "/public/images/blog/overload-in-design-and-how-to-fix-it/c
 import choiceOverload from "/public/images/blog/overload-in-design-and-how-to-fix-it/choice-overload.png";
 import recommendation from "/public/images/blog/overload-in-design-and-how-to-fix-it/recommendation.png";
 
+import Table from "@components/Markdown/Table.astro";
+
 export const quality = "mid";
 export const format = "webp";
 
@@ -45,10 +47,35 @@ export const format = "webp";
 
 Учитывая ограниченные возможности человеческой памяти, Миллер предлагает разбивать контент на небольшие, легко усваиваемые группы — чанки. Например, номер телефона или банковской карточки гораздо легче воспринимать, когда цифры поделены на группы, а сами группы разделены пробелом или черточкой.
 
-|                           | Без чанкинга     | С чанкингом         |
-| ------------------------- | ---------------- | ------------------- |
-| Номер телефона            | +1(234)5678910   | +1 (234) 567-89-10  |
-| Номер банковской карточки | 1234567890123456 | 1234 5678 9012 3456 |
+### Номер телефона
+
+export const phone = [
+  {
+    without: "+1(234)5678910",
+    with: "+1 (234) 567-89-10",
+  },
+];
+
+<Table
+  headers={["Без чанкинга", "С чанкингом"]}
+  data={phone}
+  keys={["without", "with"]}
+/>
+
+### Номер банковской карточки
+
+export const card = [
+  {
+    without: "1234567890123456",
+    with: "1234 5678 9012 3456",
+  },
+];
+
+<Table
+  headers={["Без чанкинга", "С чанкингом"]}
+  data={card}
+  keys={["without", "with"]}
+/>
 
 Деление или группировка контента на группы по смыслу называется чанкингом. Принцип чанкинга снижает визуальную перегрузку и обеспечивает более эффективную организацию информации.
 

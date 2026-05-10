@@ -19,6 +19,8 @@ import twitterCards from "/public/images/blog/seo-for-developers/twitter-cards.p
 import searchConsole from "/public/images/blog/seo-for-developers/search-console.png";
 import webmaster from "/public/images/blog/seo-for-developers/webmaster.png";
 
+import Table from "@components/Markdown/Table.astro";
+
 {/* Consts */}
 export const quality = "high";
 export const format = "webp";
@@ -160,13 +162,30 @@ Google, так же как и 63.41% пользователей интернет
 
 ### Основные мета-теги
 
-| Мета-тег                                                                | Описание                                                                                                                          |
-| ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `<meta charset='UTF-8'>`                                                | указывает кодировку символов страницы. Наиболее распространенные значения: UTF-8 для Unicode и ISO-8859-1 для латинского алфавита |
-| `<meta name='robots' content='index,follow'>`                           | сообщает поисковым системам, какие страницы индексировать и связывать ли ваш сайт со ссылками указанными на нем.                  |
-| `<title>Название</title>`                                               | указывает поисковику на название страницы                                                                                         |
-| `<meta name="description" content="Описание">`                          | используется для краткого описания страницы, отображается в результатах поиска                                                    |
-| `<meta name='viewport' content='width=device-width, initialscale=1.0'>` | отвечает за правильное отображение страницы на мобильных устройствах                                                              |
+export const meta = [
+  {
+    tag: "<meta charset='UTF-8'>",
+    desc: "Указывает кодировку символов страницы. Наиболее распространенные значения: UTF-8 для Unicode и ISO-8859-1 для латинского алфавита",
+  },
+  {
+    tag: "<meta name='robots' content='index,follow'>",
+    desc: "Сообщает поисковым системам, какие страницы индексировать и связывать ли ваш сайт со ссылками указанными на нем.",
+  },
+  {
+    tag: "<title>Название</title>",
+    desc: "Указывает поисковику на название страницы",
+  },
+  {
+    tag: "<meta name='description' content='Описание'>",
+    desc: "Используется для краткого описания страницы, отображается в результатах поиска",
+  },
+  {
+    tag: "<meta name='viewport' content='width=device-width, initialscale=1.0'>",
+    desc: "Отвечает за правильное отображение страницы на мобильных устройствах",
+  },
+];
+
+<Table headers={["Мета-тег", "Описание"]} data={meta} keys={["tag", "desc"]} />
 
 ## Структура сайта
 

@@ -124,3 +124,7 @@ td > code,
 th > code {
   white-space: nowrap;
 }
+
+.float-tooltip-kap {
+  text-align: center;
+}

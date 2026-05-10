@@ -11,6 +11,7 @@ import rehypeCallouts from "rehype-callouts";
 import playformCompress from "@playform/compress";
 
 import reactI18next from "astro-react-i18next";
+import remarkWikiLinks from "./src/lib/wikiLinks";
 
 const locales = ["ru", "en", "az"];
 
@@ -70,6 +71,7 @@ export default defineConfig({
       [rehypePrettyCode, prettyCodeOptions],
       [rehypeCallouts, calloutOptions],
     ],
+    remarkPlugins: [[remarkWikiLinks, { debug: false }]],
   },
   i18n: {
     locales: locales,

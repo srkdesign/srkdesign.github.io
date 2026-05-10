@@ -19,6 +19,8 @@ import attributes from "/public/images/blog/import-woocommerce-products-from-csv
 import description from "/public/images/blog/import-woocommerce-products-from-csv/description.png";
 import sample_products from "/public/images/blog/import-woocommerce-products-from-csv/sample-products.png";
 
+import Table from "@components/Markdown/Table.astro";
+
 export const quality = "mid";
 export const format = "webp";
 
@@ -52,22 +54,71 @@ export const format = "webp";
 
 Под "правильными заголовками" подразумеваются те заголовки, которые WooCommerce может распознать самостоятельно. Все заголовки были взяты из официальной документации WooCommerce или выявлены самостоятельно при импорте товаров.
 
-| Заголовок              | Значение                                                           |
-| ---------------------- | ------------------------------------------------------------------ |
-| `sku`                  | Артикул (для вариативных товаров)                                  |
-| `title`, `name`        | Название                                                           |
-| `categories`           | Категория (-и)                                                     |
-| `images`               | Галерея изображений товара (где 1-ое значение — миниатюра товара)  |
-| `type`                 | Тип товара (может быть 3 типов: `simple`, `variable`, `variation`) |
-| `id`                   | Цифровое значение (номер) товара                                   |
-| `description`          | Длинное описание                                                   |
-| `short_description`    | Короткое описание                                                  |
-| `In Stock?`            | Наличие товара                                                     |
-| `regular_price`        | Стоимость товара                                                   |
-| `parent`               | Родительский товар (для вариативных товаров)                       |
-| `Attribute 1 name`     | Название атрибута (где 1 — это порядковый номер атрибута)          |
-| `Attribute 1 global`   | Является ли атрибут глобальным? (для фильтрации товаров)           |
-| `Attribute 1 value(s)` | Значение (-я) атрибута                                             |
+export const items = [
+  {
+    type: "sku",
+    meaning: "Артикул (для вариативных товаров)",
+  },
+  {
+    type: "title, name",
+    meaning: "Название",
+  },
+  {
+    type: "categories",
+    meaning: "Категория (-и)",
+  },
+  {
+    type: "images",
+    meaning:
+      "Галерея изображений товара (где 1-ое значение — миниатюра товара)",
+  },
+  {
+    type: "type",
+    meaning: "Тип товара (может быть: simple, variable, variation)",
+  },
+  {
+    type: "id",
+    meaning: "Цифровое значение (номер) товара",
+  },
+  {
+    type: "description",
+    meaning: "Длинное описание",
+  },
+  {
+    type: "short_description",
+    meaning: "Короткое описание",
+  },
+  {
+    type: "In Stock?",
+    meaning: "Наличие товара",
+  },
+  {
+    type: "regular_price",
+    meaning: "Стоимость товара",
+  },
+  {
+    type: "parent",
+    meaning: "Родительский товар (для вариативных товаров)",
+  },
+  {
+    type: "Attribute 1 name",
+    meaning: "Название атрибута (где 1 — это порядковый номер атрибута)",
+  },
+  {
+    type: "Attribute 1 global",
+    meaning: "Является ли атрибут глобальным? (для фильтрации товаров)",
+  },
+  {
+    type: "Attribute 1 value(s)",
+    meaning: "Значение (-я) атрибута",
+  },
+];
+
+<Table
+  headers={["Заголовок", "Значение"]}
+  data={items}
+  keys={["type", "meaning"]}
+/>
 
 > [!tip] Можно ли прописать заголовки без подчеркиваний вместо пробелов?
 > Да, можно, но это рабоатет далеко не со всеми значениями (например, с наличием или атрибутами). В документации Woocommerce и файлах с тестовыми данными для импорта используются как версии с подчеркиваниями, так и версии с заглавными буквами и пробелами.

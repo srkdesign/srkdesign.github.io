@@ -16,6 +16,9 @@ import TableOfContents from "../components/Post/TableOfContents.jsx";
 import FormatDate from "../utils/FormatDate";
 import AnimatedLayout from "./AnimatedLayout";
 import type { HeadingProps } from "../types";
+import LocalGraph from "@/components/Post/LocalGraph.jsx";
+import { buildGraph } from "@/lib/buildGraph";
+import { getLocalGraph } from "@/lib/getLocalGraph.js";
 const {
   title,
   description,
@@ -29,6 +32,19 @@ const {
 const filteredHeadings = headings.filter(
   (heading: HeadingProps) => heading.depth < 3,
 );
+
+import path from "path";
+import CenteredSidebar from "@/components/Post/CenteredSidebar.jsx";
+
+const graph = buildGraph(
+  path.join(process.cwd(), `src/content/blog/${locale}`),
+);
+
+const currentSlug = Astro.params.slug ?? "";
+
+const graphData = getLocalGraph(graph, currentSlug);
+
+// console.log(graphData);
 ---
 
 <Layout title={title} description={description} locale={locale}>
@@ -53,41 +69,51 @@ const filteredHeadings = headings.filter(
         class="w-full h-auto"
       />
     </section>
-    <section
-      class="relative flex flex-col md:gap-24 gap-8 px-8 lg:px-24 items-start max-w-full lg:grid grid-cols-[minmax(auto,19%)_1fr_minmax(auto,19%)] justify-center"
-    >
-      <div class="order-2 md:order-none lg:sticky top-32 left-0">
-        <!-- <TableOfContents headings={headings} /> -->
-        <TableOfContents headings={filteredHeadings} client:only="react" />
-      </div>
-      <div
-        class="order-3 md:order-none prose prose-neutral prose-invert prose-xl prose-medium prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg prose-img:w-full prose-table:block prose-table:overflow-x-auto max-w-none w-full"
-      >
-        <slot />
-      </div>
 
-      <ul
-        class="order-1 md:order-none list-none m-0 p-0 flex flex-col gap-2 text-neutral-400 text-xl md:text-base"
-      >
-        <li class="p-0 m-0">
-          <p class="p-0 m-0">
-            {i18n.t("blog.published")}: {FormatDate(pubDate, i18n.language)}
-          </p>
-        </li>
-        {
-          updatedDate ? (
-            <li class="p-0 m-0">
-              <p class="p-0 m-0">
-                {i18n.t("blog.updated")}:{" "}
-                {FormatDate(updatedDate, i18n.language)}
-              </p>
-            </li>
-          ) : (
-            ""
-          )
-        }
-      </ul>
+    <section
+      class="flex flex-col md:grid grid-cols-[minmax(0,12rem)_1fr_minmax(0,12rem)] px-8 lg:px-24"
+    >
+      <aside></aside>
+      <article class="order-3 sm:order-2 md:mx-auto">
+        <div class="2xl:max-w-[81ch] lg:max-w-[61ch]">
+          <div
+            class="prose prose-neutral prose-invert prose-xl prose-medium prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg prose-img:w-full prose-table:block prose-table:overflow-x-auto"
+          >
+            <slot />
+            <ul
+              class="list-none m-0 p-0 flex flex-col gap-2 text-neutral-400 pt-16"
+            >
+              <li class="p-0 m-0">
+                <p class="p-0 m-0">
+                  {i18n.t("blog.published")}: {
+                    FormatDate(pubDate, i18n.language)
+                  }
+                </p>
+              </li>
+              {
+                updatedDate ? (
+                  <li class="p-0 m-0">
+                    <p class="p-0 m-0">
+                      {i18n.t("blog.updated")}:{" "}
+                      {FormatDate(updatedDate, i18n.language)}
+                    </p>
+                  </li>
+                ) : (
+                  ""
+                )
+              }
+            </ul>
+          </div>
+        </div>
+      </article>
+      <CenteredSidebar client:only="react">
+        <LocalGraph
+          graphData={graphData}
+          currentId={currentSlug}
+          client:only="react"
+        />
+        <TableOfContents headings={filteredHeadings} client:only="react" />
+      </CenteredSidebar>
     </section>
   </AnimatedLayout>
 </Layout>
-ß

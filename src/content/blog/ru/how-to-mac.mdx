@@ -19,6 +19,8 @@ import apps_1 from "/public/images/blog/how-to-mac/apps-1.png";
 import safari_1 from "/public/images/blog/how-to-mac/safari-1.png";
 import safari_2 from "/public/images/blog/how-to-mac/safari-2.png";
 
+import Table from "@components/Markdown/Table.astro";
+
 export const quality = "mid";
 export const format = "webp";
 
@@ -36,10 +38,24 @@ export const format = "webp";
 
 Поэтому, большинство сочетаний клавиш работавшее в Windows на маках не работает. Например:
 
-|                           | Windows                           | MacOS                                   |
-| ------------------------- | --------------------------------- | --------------------------------------- |
-| Скопировать               | <kbd>Ctrl</kbd> + <kbd>C</kbd>    | <kbd>⌘ Command</kbd> + <kbd>С</kbd>     |
-| Переключится между окнами | <kbd>Alt</kbd> + <kbd>⇥ Tab</kbd> | <kbd>⌘ Command</kbd> + <kbd>⇥ Tab</kbd> |
+export const hotkeys = [
+  {
+    type: "Скопировать",
+    windows: "Ctrl + C",
+    macos: "⌘ Command + С",
+  },
+  {
+    type: "Переключится между окнами",
+    windows: "Alt + ⇥ Tab",
+    macos: "⌘ Command + ⇥ Tab",
+  },
+];
+
+<Table
+  headers={["", "Windows", "MacOS"]}
+  data={hotkeys}
+  keys={["type", "windows", "macos"]}
+/>
 
 ### Как отключить подсветку клавиатуры на макбуке
 

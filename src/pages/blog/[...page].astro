@@ -72,7 +72,7 @@ if (!page) throw new Error("Pagination data is missing");
       </h1>
       <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
     </div>
-    <ul class="group border-b border-white/20">
+    <ul class="group border-b border-white/10">
       {
         page.data.map((post) => (
           <PostLink

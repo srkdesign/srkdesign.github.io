@@ -6,7 +6,7 @@ const PostLink = ({ id, title, category, date, image }) => {
   const [locale, slug] = id.split("/");
   return (
     <motion.li
-      className="border-t border-white/20 relative lg:px-24 px-8 group-hover:opacity-50 hover:!opacity-100 hover:border-b duration-300 ease-in-out"
+      className="border-t border-white/10 relative lg:px-24 px-8 group-hover:opacity-50 hover:!opacity-100 hover:border-b duration-300 ease-in-out"
       initial="initial"
       whileHover="whileHover"
       key={id}

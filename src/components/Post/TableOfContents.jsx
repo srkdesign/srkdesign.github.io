@@ -3,11 +3,31 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const VISIBLE_AT_ONCE = 5;
 
+const useIsDesktop = () => {
+  const [isDesktop, setIsDesktop] = useState(
+    () => window.matchMedia("(min-width: 768px)").matches,
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(mq.matches);
+
+    const handler = (e) => setIsDesktop(e.matches);
+
+    mq.addEventListener("change", handler);
+
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  return isDesktop;
+};
+
 const TableOfContents = ({ headings }) => {
   const [activeSlug, setActiveSlug] = useState(null);
   const listRef = useRef(null);
   const viewportRef = useRef(null);
   const itemHeight = useRef(0);
+  const isDesktop = useIsDesktop();
 
   const measureItemHeight = useCallback(() => {
     const items = listRef.current?.querySelectorAll("li");
@@ -22,15 +42,22 @@ const TableOfContents = ({ headings }) => {
     if (viewportRef.current) {
       viewportRef.current.style.height = `${VISIBLE_AT_ONCE * avg}px`;
     }
-  }, []);
+  }, [isDesktop]);
 
   useEffect(() => {
+    if (!isDesktop) {
+      if (viewportRef.current) viewportRef.current.style.height = "auto";
+      if (listRef.current) listRef.current.style.transform = "none";
+      if (listRef.current) listRef.current.style.height = "auto";
+      return;
+    }
+
     measureItemHeight();
     const ro = new ResizeObserver(measureItemHeight);
     const firstItem = listRef.current?.querySelector("li");
     if (firstItem) ro.observe(firstItem);
     return () => ro.disconnect();
-  }, [measureItemHeight]);
+  }, [isDesktop, measureItemHeight]);
 
   useEffect(() => {
     const content = document.querySelectorAll(".prose h2");
@@ -52,6 +79,8 @@ const TableOfContents = ({ headings }) => {
   }, [headings]);
 
   useEffect(() => {
+    if (!isDesktop) return;
+
     const h = itemHeight.current;
     if (!h || !listRef.current) return;
     const activeIdx = headings.findIndex((h) => h.slug === activeSlug);
@@ -60,18 +89,22 @@ const TableOfContents = ({ headings }) => {
     let offset = activeIdx - Math.floor(VISIBLE_AT_ONCE / 2);
     offset = Math.max(0, Math.min(offset, maxOffset));
     listRef.current.style.transform = `translateY(${-offset * h}px)`;
-  }, [activeSlug, headings]);
+  }, [activeSlug, headings, isDesktop]);
   return (
     <div
       ref={viewportRef}
-      className="relative overflow-hidden after:content-['']  after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-b after:from-transparent after:via-transparent after:to-zinc-950 after:pointer-events-none"
+      className="relative md:overflow-hidden after:content-['']  after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-b after:from-transparent after:via-transparent after:to-zinc-950 after:pointer-events-none md:after:opacity-100 after:opacity-0"
     >
-      <ul ref={listRef} className="flex flex-col gap-2 ease-in-out " data-toc>
+      <ul
+        ref={listRef}
+        className="flex flex-col gap-2 ease-in-out mb-16 md:mb-0"
+        data-toc
+      >
         {headings?.map((heading, idx) => (
           <li key={idx}>
             <a
               href={`#${heading.slug}`}
-              className={`flex md:text-base text-xl toc-link transition-colors duration-500 ease-in-out leading-[0.25] ${activeSlug === heading.slug ? "text-zinc-50" : "text-neutral-400"}`}
+              className={`flex md:text-base text-xl toc-link transition-colors duration-500 ease-in-out ${activeSlug === heading.slug ? "text-zinc-50" : "text-neutral-400"}`}
             >
               {heading.text}
             </a>

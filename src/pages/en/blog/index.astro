@@ -28,7 +28,7 @@ const localizedPosts = posts.filter((p) => p.id.startsWith(`${pLocale}/`));
 const filteredPosts = localizedPosts
   .filter((p) => p.id.startsWith(`${pLocale}/`))
   .filter(({ data }: CollectionEntry<"blog">) =>
-    isProd ? !data.isDraft : true
+    isProd ? !data.isDraft : true,
   )
   .sort((a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) => {
     const getDate = (post: CollectionEntry<"blog">) =>
@@ -52,7 +52,7 @@ filteredPosts.map((p) => {
     >
       <h1 class="whitespace-nowrap">{i18n.t("blog.title")}</h1>
     </div>
-    <ul>
+    <ul class="group border-b border-b-white/10">
       {
         filteredPosts.map((post) => (
           <PostLink

@@ -204,7 +204,7 @@ export default function LocalGraph({ graphData, currentId }) {
   return (
     <section
       ref={wrapperRef}
-      className="w-full h-full overflow-hidden rounded-2xl mb-6 border border-white/20"
+      className="w-full h-full overflow-hidden rounded-2xl mb-6 border border-white/20 order-2"
     >
       <div ref={graphRef} className="w-full h-full" />
     </section>

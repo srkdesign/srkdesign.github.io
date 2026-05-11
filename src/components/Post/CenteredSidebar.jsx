@@ -20,14 +20,11 @@ const CenteredSidebar = ({ children }) => {
   }, []);
 
   return (
-    <aside
-      ref={sidebarRef}
-      className="order-1 sm:order-3 md:max-h-screen md:sticky top-0 left-0"
-    >
+    <aside ref={sidebarRef} className="md:max-h-screen md:sticky top-0 left-0">
       <div
         className={`flex flex-col items-center justify-center h-full transition-opacity duration-500 ease-in-out ${isVisible ? "opacity-100" : "sm:opacity-0"}`}
       >
-        <div className="pt-32 w-full h-min">{children}</div>
+        <div className="md:pt-32 w-full h-min">{children}</div>
       </div>
     </aside>
   );

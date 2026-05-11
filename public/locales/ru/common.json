@@ -69,6 +69,25 @@
       "backend": "Бэкенд",
       "other": "Другое",
       "personal": "Личный опыт"
+    },
+    "tags": {
+      "design": "дизайн",
+      "development": "разработка",
+      "opinion": "мнение",
+      "frontend": "фронтенд",
+      "safari": "safari",
+      "astro": "astro",
+      "case": "кейс",
+      "study": "исследование",
+      "backend": "бэкенд",
+      "django": "django",
+      "digest": "дайджест",
+      "tutorial": "туториал",
+      "wordpress": "wordpress",
+      "woocommerce": "woocommerce",
+      "guide": "руководство",
+      "experience": "личный опыт",
+      "productivity": "продуктивность"
     }
   }
 }

@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useMemo } from "react";
 
 import { useTranslation } from "react-i18next";

@@ -1,39 +1,48 @@
 ---
 import i18n from "i18next";
-import { SITE_TITLE } from "../consts";
+import { SITE_TITLE } from "../../consts";
 
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import { getCollection, type CollectionEntry } from "astro:content";
 
-const { title, description, locale } = Astro.props;
+import BaseHead from "../../components/BaseHead.astro";
+import Desktop from "@/components/Apps/Desktop";
+import Header from "@/components/Header";
+
 const isBlogPage = Astro.url.pathname.includes("blog");
 const postImage = `/images${Astro.url.pathname}hero.png`;
+
+const apps = await getCollection("apps");
+const isProd = import.meta.env.PROD;
+
+const filteredApps = apps.filter(({ data }: CollectionEntry<"apps">) =>
+  isProd ? !data.isDraft : true,
+);
+
+// console.log(apps);
 ---
 
-<html lang={locale || i18n.language} class="text-base">
+<html lang="ru" class="text-base">
   <head>
     <BaseHead
-      title={title || SITE_TITLE}
-      description={description || i18n.t("site.description")}
+      title={SITE_TITLE}
+      description={i18n.t("site.description")}
       image={isBlogPage && Astro.url.pathname != "/blog/"
         ? postImage
         : `/image.png`}
     />
   </head>
-  <body class="dark text-zinc-50 bg-zinc-950">
+  <body class="text-zinc-50 bg-zinc-950">
     <!-- Loader -->
     <div id="page-loader">
       <div class="loader-content"></div>
     </div>
+    <div class="absolute top-0 left-0 w-full">
+      <Header client:only="react" />
+    </div>
+
     <!-- Content -->
     <div id="page">
-      <Header client:only="react" />
-      <main class="pt-28">
-        <slot />
-      </main>
-      <Footer client:only="react" />
-      <!-- {!isBlogPage ? <DiscussProject client:only="react" /> : ""} -->
+      <Desktop apps={filteredApps} client:only="react" />
     </div>
   </body>
 </html>

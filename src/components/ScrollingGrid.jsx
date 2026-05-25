@@ -10,7 +10,7 @@ const images = [
   "/images/projects/bezpart/hero_final.png",
   "/images/projects/solidt/page.png",
   "/images/projects/bezpart/shirt.png",
-  "/images/projects/belarus-remont/hero.png",
+  "/images/projects/apple-rem/hero.png",
   "/images/projects/cristal-print/hero_updated.png",
   "/images/projects/project-svs/hero.png",
 ];

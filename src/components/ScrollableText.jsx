@@ -6,7 +6,7 @@ const ScrollableText = ({
   from = "0%",
   to = "-50%",
   style = "*:text-5xl lg:*:text-9xl",
-  padding,
+  padding = "8",
   heading,
   subheading,
 }) => {

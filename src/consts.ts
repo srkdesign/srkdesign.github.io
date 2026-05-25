@@ -7,15 +7,15 @@ export const SITE_DESCRIPTION =
 export const SITE_URL = "srkdesign.pro";
 
 export const MENU_LINKS = [
-  {
-    label: "nav.links.webdesign",
-    href: "/web-design",
-    image: "/images/menu/webdesign",
-  },
+  // {
+  //   label: "nav.links.webdesign",
+  //   href: "/web-design",
+  //   image: "/images/menu/webdesign",
+  // },
   {
     label: "nav.links.blog",
     href: "/blog",
-    image: "/images/menu/blog",
+    image: "/images/menu/webdesign",
   },
   {
     label: "nav.links.apps",
@@ -30,10 +30,10 @@ export const MENU_LINKS = [
 ];
 
 export const MEDIA_LINKS = [
-  { label: "Medium", href: "https://medium.com/@srkdesignpro" },
-  { label: "Youtube", href: "https://www.youtube.com/@srkdesignpro" },
   { label: "Дизайнерс", href: "https://dsgners.ru/srkdesignpro" },
-  { label: "Telegram", href: "https://t.me/srkdesignpro" },
+  // { label: "Medium", href: "https://medium.com/@srkdesignpro" },
+  { label: "Youtube", href: "https://www.youtube.com/@srkdesignpro" },
+  // { label: "Telegram", href: "https://t.me/srkdesignpro" },
 ];
 
 export const EASE = [0.33, 1, 0.68, 1];

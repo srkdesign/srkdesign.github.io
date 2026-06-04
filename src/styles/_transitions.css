@@ -49,3 +49,28 @@
 .reveal-image.visible img {
   transform: scale(1);
 }
+
+.dotmatrix {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+}
+.dm-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.15;
+  animation: dmpulse 1.4s ease-in-out infinite;
+}
+@keyframes dmpulse {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

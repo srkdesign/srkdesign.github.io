@@ -27,7 +27,7 @@ const postImage = `/images${Astro.url.pathname}hero.png`;
     <!-- Loader -->
     <div id="page-loader">
       <div class="loader-content">
-        <DotmSquare11 size={32} dotSize={4} speed={1.2} />
+        <div class="dotmatrix" id="dm-loader"></div>
       </div>
     </div>
     <!-- Content -->
@@ -45,6 +45,18 @@ const postImage = `/images${Astro.url.pathname}hero.png`;
 <script>
   const loader = document.querySelector("#page-loader") as HTMLElement;
   const page = document.querySelector("#page");
+
+  const delays = [
+    0.6, 0.4, 0.2, 0.4, 0.6, 0.4, 0.2, 0.0, 0.2, 0.4, 0.2, 0.0, 0.6, 0.0, 0.2,
+    0.4, 0.2, 0.0, 0.2, 0.4, 0.6, 0.4, 0.2, 0.4, 0.6,
+  ];
+  const grid = document.getElementById("dm-loader");
+  delays.forEach((d) => {
+    const dot = document.createElement("div");
+    dot.className = "dm-dot";
+    dot.style.animationDelay = d + "s";
+    grid?.appendChild(dot);
+  });
 
   // Wait for assets to load first
   async function waitForPageLoad() {

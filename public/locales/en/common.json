@@ -11,7 +11,8 @@
     },
     "btn": {
       "default": "Menu",
-      "close": "Close"
+      "close": "Close",
+      "write": "Contact"
     },
     "links": {
       "webdesign": "Web design",
@@ -19,8 +20,9 @@
       "apps": "Apps",
       "resources": "Resources"
     },
-    "useful": "Will be useful",
-    "other": "Other links",
+    "useful": "Useful",
+    "other": "Other",
+    "work": "Order",
     "copyright": "All right reserved.",
     "acknowledgements": "Special thanks to osk."
   },

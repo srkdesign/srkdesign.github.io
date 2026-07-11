@@ -89,8 +89,8 @@ const Header = () => {
           <Phrase></Phrase>
         </div> */}
       </div>
-      <div className="hidden md:flex gap-10 items-center">
-        <div className="flex gap-10 opacity-90">
+      <div className="flex gap-10 items-center">
+        <div className="hidden md:flex gap-10 opacity-90">
           {Object.entries(WORK_LINKS).map(([key, { label, href }]) => (
             <motion.a
               key={href}
@@ -231,7 +231,7 @@ const Header = () => {
             )}
           </AnimatePresence>
           <a href="mailto:hello@srkdesign.pro" target="_blank">
-            <Button label="Написать" isPrimary></Button>
+            <Button label={t("nav.btn.write")} isPrimary></Button>
           </a>
         </div>
       </div>

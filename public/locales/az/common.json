@@ -11,7 +11,8 @@
     },
     "btn": {
       "default": "Menyu",
-      "close": "Bağla"
+      "close": "Bağla",
+      "write": "Yazmaq"
     },
     "links": {
       "webdesign": "Veb dizayn",
@@ -19,8 +20,9 @@
       "apps": "Proqramlar",
       "resources": "Resurslar"
     },
-    "useful": "Faydalı olacaq",
-    "other": "Digər linklər",
+    "useful": "Faydalı",
+    "other": "Digər",
+    "work": "Sifariş",
     "copyright": "Bütün hüquqlar qorunur.",
     "acknowledgements": "osk-a xüsusi təşəkkürlər."
   },

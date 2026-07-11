@@ -31,9 +31,16 @@ export const MENU_LINKS = [
 
 export const MEDIA_LINKS = [
   { label: "Дизайнерс", href: "https://dsgners.ru/srkdesignpro" },
-  // { label: "Medium", href: "https://medium.com/@srkdesignpro" },
+  { label: "Medium", href: "https://medium.com/@srkdesignpro" },
   { label: "Youtube", href: "https://www.youtube.com/@srkdesignpro" },
   // { label: "Telegram", href: "https://t.me/srkdesignpro" },
+];
+
+export const WORK_LINKS = [
+  { label: "Kwork", href: "https://kwork.com/user/srkdesign" },
+  { label: "Fiverr", href: "https://www.fiverr.com/s/BR5x3ld" },
+  { label: "Boosty", href: "https://boosty.to/srkdesign" },
+  { label: "Gumroad", href: "https://srkdesign.gumroad.com" },
 ];
 
 export const EASE = [0.33, 1, 0.68, 1];

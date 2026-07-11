@@ -24,7 +24,7 @@ const HeadingAnimation = () => {
 
   return (
     <motion.div
-      className="relative block overflow-hidden whitespace-nowrap font-extralight text-lg lg:text-xl w-56"
+      className="relative block overflow-hidden whitespace-nowrap font-extralight text-lg w-56"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       initial="initial"

@@ -4,9 +4,6 @@ import Link from "./Link.jsx";
 import Navigation from "./Navigation.jsx";
 import About from "./About.jsx";
 
-import { MENU_LINKS } from "../../consts.js";
-import { MEDIA_LINKS } from "../../consts.js";
-
 const Footer = () => {
   return (
     <footer className="lg:px-24 px-8 lg:py-24 py-8 md:grid md:grid-cols-2">

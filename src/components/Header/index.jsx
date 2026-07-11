@@ -5,8 +5,8 @@ import Image from "./Image.jsx";
 import Link from "./Link.jsx";
 import Navigation from "./Navigation.jsx";
 import { useEffect, useState } from "react";
-import { EASE } from "../../consts.js";
-import { useTranslation } from "react-i18next";
+import { EASE, WORK_LINKS } from "../../consts.js";
+import { useTranslation, Trans } from "react-i18next";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import FormatLocale from "../../utils/FormatLocale.js";
 
@@ -55,7 +55,7 @@ const Header = () => {
 
   return (
     <header
-      className={`lg:px-24 px-8 py-6 flex justify-between items-center sticky top-0 left-0 z-[999] ${
+      className={`lg:px-24 px-8 py-6 flex justify-between items-center sticky top-0 left-0 z-[999] lg:mb-8 ${
         menuOpen || langOpen ? "" : "mix-blend-difference"
       }`}
     >
@@ -65,6 +65,16 @@ const Header = () => {
       >
         <motion.a
           href={getRelativeLocaleUrl(i18n.language, "")}
+          className="max-w-8"
+          onClick={closeMenu}
+        >
+          <img src="/logo.svg" alt="Logo in a circle" />
+        </motion.a>
+        <div className="hidden md:block">
+          <Phrase></Phrase>
+        </div>
+        {/* <motion.a
+          href={getRelativeLocaleUrl(i18n.language, "")}
           className=""
           whileHover={{ opacity: 0.6 }}
           onClick={closeMenu}
@@ -72,129 +82,158 @@ const Header = () => {
           <img
             src="/logo.svg"
             alt="Logo"
-            className="mix-blend-difference w-9 h-auto md:w-full min-w-10"
+            className="mix-blend-difference max-w-1 h-auto md:w-full min-w-10"
           />
         </motion.a>
         <div className="hidden md:block">
           <Phrase></Phrase>
-        </div>
+        </div> */}
       </div>
-      <div className="flex items-center">
-        {/* <LanguagePicker></LanguagePicker> */}
-        <Button
-          label={FormatLocale(i18n.language)}
-          isMaxWidth={true}
-          isActive={langOpen}
-          setIsActive={toggleLangOpen}
-        ></Button>
-        <AnimatePresence>
-          {langOpen && (
-            <motion.div
-              className="fixed top-0 left-0 w-screen h-screen bg-zinc-950 z-[500] origin-top"
-              initial={{ x: "100%", opacity: 0 }}
-              animate={{ x: "0%", opacity: 1 }}
+      <div className="hidden md:flex gap-10 items-center">
+        <div className="flex gap-10 opacity-90">
+          {Object.entries(WORK_LINKS).map(([key, { label, href }]) => (
+            <motion.a
+              key={href}
+              href={href}
+              target="_blank"
+              data-soup
+              className="uppercase font-medium w-fit group transition-transform cursor-pointer zinc-100 text-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               exit={{
-                x: "100%",
                 opacity: 0,
               }}
-              transition={{
-                type: "spring",
-                stiffness: 90,
-                damping: 20,
-                mass: 0.8,
-                ease: EASE,
-                duration: 0.3,
-              }}
+              transition={{ duration: 0.3, ease: EASE }}
             >
-              <motion.div className="flex flex-col w-full h-full justify-start sm:justify-end gap-6 lg:px-24 px-8 lg:py-24 py-8 pt-36">
-                <motion.a
-                  href={getRelativeLocaleUrl("ru", "")}
-                  data-soup
-                  rel="alternate"
-                  hrefLang="ru"
-                  className="md:text-5xl text-3xl w-fit group transition-transform cursor-pointer"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{
-                    opacity: 0,
-                  }}
-                  transition={{ duration: 0.3, ease: EASE }}
-                  onClick={() => changeLanguage("ru")}
-                >
-                  <Link label="Русский"></Link>
-                  {/* {link.label} */}
-                </motion.a>
-                <motion.a
-                  href={getRelativeLocaleUrl("en", "")}
-                  data-soup
-                  rel="alternate"
-                  hrefLang="en"
-                  className="md:text-5xl text-3xl w-fit group transition-transform cursor-pointer"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{
-                    opacity: 0,
-                  }}
-                  transition={{ duration: 0.3, ease: EASE }}
-                  onClick={() => changeLanguage("en")}
-                >
-                  <Link label="English"></Link>
-                  {/* {link.label} */}
-                </motion.a>
-                <motion.a
-                  href={getRelativeLocaleUrl("az", "")}
-                  data-soup
-                  rel="alternate"
-                  hrefLang="az"
-                  className="md:text-5xl text-3xl w-fit group transition-transform cursor-pointer"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{
-                    opacity: 0,
-                  }}
-                  transition={{ duration: 0.3, ease: EASE }}
-                  onClick={() => changeLanguage("az")}
-                >
-                  <Link label="Azerbaycan dili"></Link>
-                </motion.a>
+              <Link label={label} openInNewTab={true}>
+                {label}
+              </Link>
+            </motion.a>
+          ))}
+        </div>
+        <div className="flex items-center">
+          {/* <LanguagePicker></LanguagePicker> */}
+          <Button
+            label={FormatLocale(i18n.language).slice(0, 2)}
+            isMaxWidth={true}
+            isActive={langOpen}
+            setIsActive={toggleLangOpen}
+          ></Button>
+          <AnimatePresence>
+            {langOpen && (
+              <motion.div
+                className="fixed top-0 left-0 w-screen h-screen bg-zinc-950 z-[500] origin-top"
+                initial={{ x: "100%", opacity: 0 }}
+                animate={{ x: "0%", opacity: 1 }}
+                exit={{
+                  x: "100%",
+                  opacity: 0,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 90,
+                  damping: 20,
+                  mass: 0.8,
+                  ease: EASE,
+                  duration: 0.3,
+                }}
+              >
+                <motion.div className="flex flex-col w-full h-full justify-start sm:justify-end gap-6 lg:px-24 px-8 lg:py-24 py-8 pt-36">
+                  <motion.a
+                    href={getRelativeLocaleUrl("ru", "")}
+                    data-soup
+                    rel="alternate"
+                    hrefLang="ru"
+                    className="md:text-5xl text-3xl w-fit group transition-transform cursor-pointer"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{
+                      opacity: 0,
+                    }}
+                    transition={{ duration: 0.3, ease: EASE }}
+                    onClick={() => changeLanguage("ru")}
+                  >
+                    <Link label="Русский"></Link>
+                    {/* {link.label} */}
+                  </motion.a>
+                  <motion.a
+                    href={getRelativeLocaleUrl("en", "")}
+                    data-soup
+                    rel="alternate"
+                    hrefLang="en"
+                    className="md:text-5xl text-3xl w-fit group transition-transform cursor-pointer"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{
+                      opacity: 0,
+                    }}
+                    transition={{ duration: 0.3, ease: EASE }}
+                    onClick={() => changeLanguage("en")}
+                  >
+                    <Link label="English"></Link>
+                    {/* {link.label} */}
+                  </motion.a>
+                  <motion.a
+                    href={getRelativeLocaleUrl("az", "")}
+                    data-soup
+                    rel="alternate"
+                    hrefLang="az"
+                    className="md:text-5xl text-3xl w-fit group transition-transform cursor-pointer"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{
+                      opacity: 0,
+                    }}
+                    transition={{ duration: 0.3, ease: EASE }}
+                    onClick={() => changeLanguage("az")}
+                  >
+                    <Link label="Azerbaycan dili"></Link>
+                  </motion.a>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-        <Button
-          label={t("nav.btn.default")}
-          isActive={menuOpen}
-          setIsActive={toggleMenuOpen}
-        ></Button>
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              className="fixed top-0 left-0 w-screen h-screen bg-zinc-950 z-[500] origin-top"
-              initial={{ x: "100%", opacity: 0 }}
-              animate={{ x: "0%", opacity: 1 }}
-              exit={{
-                x: "100%",
-                opacity: 0,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 90,
-                damping: 20,
-                mass: 0.8,
-                ease: EASE,
-                duration: 0.3,
-              }}
-            >
-              <motion.div className="md:grid flex flex-col justify-between w-full h-full grid-cols-2 grid-flow-col [grid-template-rows:auto]">
-                {/* md:grid-cols-2 grid-cols-1 md:grid-flow-col
+            )}
+          </AnimatePresence>
+          <Button
+            label={t("nav.btn.default")}
+            isActive={menuOpen}
+            setIsActive={toggleMenuOpen}
+          ></Button>
+          <AnimatePresence>
+            {menuOpen && (
+              <motion.div
+                className="fixed top-0 left-0 w-screen h-screen bg-zinc-950 z-[500] origin-top"
+                initial={{ x: "100%", opacity: 0 }}
+                animate={{ x: "0%", opacity: 1 }}
+                exit={{
+                  x: "100%",
+                  opacity: 0,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 90,
+                  damping: 20,
+                  mass: 0.8,
+                  ease: EASE,
+                  duration: 0.3,
+                }}
+              >
+                <motion.div className="md:grid flex flex-col justify-between w-full h-full grid-cols-2 grid-flow-col [grid-template-rows:auto]">
+                  {/* md:grid-cols-2 grid-cols-1 md:grid-flow-col
               md:[&>*:nth-child(-n+4)]:col-start-1
               md:[&>*:nth-child(n+5)]:col-start-2 */}
-                <Navigation onHover={setSelectedLink} onNavigate={closeMenu} />
-                <Image hovered={selectedLink} />
+                  <Navigation
+                    onHover={setSelectedLink}
+                    onNavigate={closeMenu}
+                  />
+                  <Image hovered={selectedLink} />
+                </motion.div>
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            )}
+          </AnimatePresence>
+          <a href="mailto:hello@srkdesign.pro" target="_blank">
+            <Button label="Написать" isPrimary></Button>
+          </a>
+        </div>
       </div>
     </header>
   );

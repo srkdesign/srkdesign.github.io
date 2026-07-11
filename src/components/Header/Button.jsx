@@ -3,11 +3,11 @@ import { easeInOut, motion } from "motion/react";
 import Link from "./Link";
 import { useTranslation } from "react-i18next";
 
-const Button = ({ label, isMaxWidth, isActive, setIsActive }) => {
+const Button = ({ label, isMaxWidth, isActive, setIsActive, isPrimary }) => {
   const { t } = useTranslation();
   return (
     <div
-      className={`cursor-pointer  text-zinc-300  uppercase text-sm font-medium overflow-hidden w-fit h-9 select-none rounded-full border border-white/20 mix-blend-difference z-[999] relative`}
+      className={`cursor-pointer  text-zinc-300  uppercase text-sm font-medium overflow-hidden w-fit h-9 select-none rounded-full border border-white/20 mix-blend-difference z-[999] relative ${isPrimary ? "bg-zinc-100 text-zinc-800" : ""}`}
       onClick={() => setIsActive(!isActive)}
     >
       <motion.div

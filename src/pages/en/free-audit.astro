@@ -1,10 +1,10 @@
 ---
 import i18n from "i18next";
-import { SITE_TITLE } from "../consts";
+import { SITE_TITLE } from "../../consts";
 
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 const { title, description, locale } = Astro.props;
 const isBlogPage = Astro.url.pathname.includes("blog");
@@ -21,7 +21,7 @@ const postImage = `/images${Astro.url.pathname}hero.png`;
         : `/image.png`}
     />
   </head>
-  <body class="dark text-zinc-50 bg-zinc-950">
+  <body class="dark text-zinc-50 bg-white">
     <!-- Loader -->
     <div id="page-loader">
       <div class="loader-content">
@@ -32,9 +32,23 @@ const postImage = `/images${Astro.url.pathname}hero.png`;
     <div id="page">
       <Header client:only="react" />
       <main class="pt-28">
-        <slot />
+        <iframe
+          class="w-full
+          h-[2000px]
+          md:h-[1660px]
+          border-0"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfkvlmfw-RGWcYO_v1LfNiMhCmH2Wruff4ll5oQA8rCpmgQbA/viewform?embedded=true"
+          scrolling="no"
+          allowfullscreen="true"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0">Loading…</iframe
+        >
       </main>
-      <Footer client:only="react" />
+      <div class="text-zinc-950">
+        <Footer client:only="react" />
+      </div>
+
       <!-- {!isBlogPage ? <DiscussProject client:only="react" /> : ""} -->
     </div>
   </body>

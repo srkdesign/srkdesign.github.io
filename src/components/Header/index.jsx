@@ -14,6 +14,7 @@ const Header = () => {
   const { i18n, t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const [selectedLink, setSelectedLink] = useState(null);
 
   useEffect(() => {
@@ -23,6 +24,7 @@ const Header = () => {
   const closeMenu = () => {
     setMenuOpen(false);
     setLangOpen(false);
+    setContactOpen(false);
   };
 
   const changeLanguage = (lang) => {
@@ -33,14 +35,30 @@ const Header = () => {
 
   const toggleLangOpen = () => {
     setLangOpen((prev) => {
-      if (!prev) setMenuOpen(false);
+      if (!prev) {
+        setMenuOpen(false);
+        setContactOpen(false);
+      }
       return !prev;
     });
   };
 
   const toggleMenuOpen = () => {
     setMenuOpen((prev) => {
-      if (!prev) setLangOpen(false);
+      if (!prev) {
+        setLangOpen(false);
+        setContactOpen(false);
+      }
+      return !prev;
+    });
+  };
+
+  const toggleContactOpen = () => {
+    setContactOpen((prev) => {
+      if (!prev) {
+        setMenuOpen(false);
+        setLangOpen(false);
+      }
       return !prev;
     });
   };
@@ -56,7 +74,7 @@ const Header = () => {
   return (
     <header
       className={`lg:px-24 px-8 py-6 flex justify-between items-center sticky top-0 left-0 z-[999] lg:mb-8 ${
-        menuOpen || langOpen ? "" : "mix-blend-difference"
+        menuOpen || langOpen || contactOpen ? "" : "mix-blend-difference"
       }`}
     >
       <div
@@ -230,9 +248,69 @@ const Header = () => {
               </motion.div>
             )}
           </AnimatePresence>
-          <a href="mailto:hello@srkdesign.pro" target="_blank">
+          {/* <a href="mailto:hello@srkdesign.pro" target="_blank">
             <Button label={t("nav.btn.write")} isPrimary></Button>
-          </a>
+          </a> */}
+          <Button
+            label={t("nav.btn.write")}
+            isActive={contactOpen}
+            setIsActive={toggleContactOpen}
+            isPrimary
+          ></Button>
+          <AnimatePresence>
+            {contactOpen && (
+              <motion.div
+                className="fixed top-0 left-0 w-screen h-screen bg-zinc-950 z-[500] origin-top"
+                initial={{ x: "100%", opacity: 0 }}
+                animate={{ x: "0%", opacity: 1 }}
+                exit={{
+                  x: "100%",
+                  opacity: 0,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 90,
+                  damping: 20,
+                  mass: 0.8,
+                  ease: EASE,
+                  duration: 0.3,
+                }}
+              >
+                <motion.div className="flex flex-col w-full h-full justify-start sm:justify-end gap-6 lg:px-24 px-8 lg:py-24 py-8 pt-36">
+                  <motion.a
+                    href="mailto:hello@srkdesign.pro"
+                    target="_blank"
+                    data-soup
+                    rel="alternate"
+                    className="md:text-5xl text-3xl w-fit group transition-transform cursor-pointer"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{
+                      opacity: 0,
+                    }}
+                    transition={{ duration: 0.3, ease: EASE }}
+                  >
+                    <Link label="hello@srkdesign.pro"></Link>
+                  </motion.a>
+                  <motion.a
+                    href="https://t.me/srkdsgn"
+                    target="_blank"
+                    data-soup
+                    rel="alternate"
+                    className="md:text-5xl text-3xl w-fit group transition-transform cursor-pointer"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{
+                      opacity: 0,
+                    }}
+                    transition={{ duration: 0.3, ease: EASE }}
+                  >
+                    <Link label="Telegram"></Link>
+                  </motion.a>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </header>

@@ -53,7 +53,7 @@ const graphData = getLocalGraph(graph, currentSlug);
     <section class="lg:mb-24 mb-10">
       <div class="lg:px-24 px-8 lg:mb-16 mb-10">
         <a
-          href="/blog/"
+          href={`${locale != "ru" ? `/${locale}/blog/` : "/blog/"}`}
           class="no-underline font-normal flex mb-8 opacity-80 w-fit text-lg"
           >← {i18n.t("blog.go_back")}</a
         >

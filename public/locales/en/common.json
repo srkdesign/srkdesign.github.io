@@ -72,6 +72,26 @@
       "other": "Other",
       "personal": "Personal",
       "woocommerce": "Woocommerce"
+    },
+    "tags": {
+      "design": "design",
+      "development": "development",
+      "opinion": "opinion",
+      "frontend": "front-end",
+      "safari": "safari",
+      "astro": "astro",
+      "case": "case",
+      "study": "study",
+      "backend": "backend",
+      "django": "django",
+      "digest": "digest",
+      "tutorial": "tutorial",
+      "wordpress": "wordpress",
+      "woocommerce": "woocommerce",
+      "guide": "guide",
+      "experience": "experience",
+      "productivity": "productivity",
+      "business": "business"
     }
   }
 }

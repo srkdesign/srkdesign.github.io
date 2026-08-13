@@ -1,0 +1,88 @@
+---
+import PostLink from "@/components/PostLink";
+import AnimatedLayout from "@/layouts/AnimatedLayout";
+import Layout from "@/layouts/Layout.astro";
+import FormatDate from "@/utils/FormatDate";
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { getLocaleByPath, getRelativeLocaleUrl } from "astro:i18n";
+import i18n from "i18next";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const pLocale = "en";
+
+  const posts = await getCollection("blog");
+  const isProd = import.meta.env.PROD;
+
+  const localizedPosts = posts.filter((p) => p.id.startsWith(`${pLocale}/`));
+  const filteredPosts = localizedPosts
+    .filter((p) => p.id.startsWith(`${pLocale}/`))
+    .filter(({ data }: CollectionEntry<"blog">) =>
+      isProd ? !data.isDraft : true,
+    )
+    .sort((a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) => {
+      const getDate = (post: CollectionEntry<"blog">) =>
+        post.data.updatedDate?.valueOf?.() ?? post.data.pubDate.valueOf();
+
+      return getDate(b) - getDate(a);
+    });
+
+  const uniqueTags = [
+    ...new Set(
+      filteredPosts.flatMap((post) => post.data.tags ?? []).filter(Boolean),
+    ),
+  ];
+
+  return uniqueTags.map((tag) => {
+    const taggedPosts = filteredPosts.filter((post) =>
+      post.data.tags?.includes(tag),
+    );
+    return {
+      params: { tag },
+      props: { posts: taggedPosts },
+    };
+  });
+};
+
+const { tag } = Astro.params;
+
+type PostProps = {
+  posts: CollectionEntry<"blog">[];
+};
+
+const { posts } = Astro.props as PostProps;
+---
+
+<Layout
+  title={`Blog / Posts with ${tag} tag`}
+  description="Блог о веб-дизайне и фронтэнд-разработке: статьи, советы и лучшие практики по UX/UI, адаптивному дизайну, HTML, CSS, JavaScript и SEO. Всё, что нужно для создания эффективных сайтов!"
+>
+  <AnimatedLayout client:only="react">
+    <div class="flex justify-between items-center mb-8 md:mb-24 lg:px-24 px-8">
+      <h1
+        class="whitespace-nowrap capitalize text-[clamp(2rem,0.8rem+6vw,6rem)]"
+      >
+        {i18n.t(`blog.tags.${tag}`)}
+      </h1>
+    </div>
+    <ul class="group border-b border-white/10">
+      {
+        posts.map((post) => (
+          <PostLink
+            id={post.id}
+            title={post.data.title}
+            category={post.data.category}
+            date={
+              post.data.updatedDate
+                ? FormatDate(post.data.updatedDate, "ru")
+                : FormatDate(post.data.pubDate, "ru")
+            }
+            image={post.data.heroImage}
+            tags={post.data.tags}
+            client:only="react"
+          />
+        ))
+      }
+    </ul>
+  </AnimatedLayout>
+</Layout>

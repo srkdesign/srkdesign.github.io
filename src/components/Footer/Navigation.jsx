@@ -4,8 +4,10 @@ import Link from "./Link.jsx";
 import { MENU_LINKS, WORK_LINKS } from "../../consts.js";
 import { MEDIA_LINKS } from "../../consts.js";
 import { useTranslation } from "react-i18next";
+
 const Navigation = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language;
   return (
     <div className="grid md:grid-cols-3 grid-cols-1 gap-8 text-xl [&>*>p]:opacity-75 mb-8">
       <div className="grid grid-cols-2 gap-4">
@@ -13,7 +15,7 @@ const Navigation = () => {
         <ul className="flex flex-col gap-1">
           {Object.entries(MENU_LINKS).map(([key, { label, href }]) => (
             <li key={key}>
-              <Link href={href} openInNewTab={false}>
+              <Link href={`/${locale}${href}`} openInNewTab={false}>
                 {t(label)}
               </Link>
             </li>

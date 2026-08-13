@@ -17,7 +17,7 @@ const Accordion = ({ title, description }) => {
         className="flex justify-between items-start gap-8 py-4 w-full cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h3 className="text-xl text-left">{title}</h3>
+        <h3 className="text-xl text-left m-0">{title}</h3>
         <div className="relative flex mt-1 min-w-4 h-4">
           <motion.span className="absolute right-0 block w-full md:h-[1px] h-px bg-zinc-50 bottom-[calc(50%-1px)]"></motion.span>
           <motion.span

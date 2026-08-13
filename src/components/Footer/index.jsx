@@ -3,6 +3,7 @@ import GetYear from "../../utils/GetYear.js";
 import Link from "./Link.jsx";
 import Navigation from "./Navigation.jsx";
 import About from "./About.jsx";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
   return (

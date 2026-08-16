@@ -29,7 +29,7 @@ const HorizontalScroll = ({ elements, locale }) => {
   const x = useTransform(scrollYProgress, [0, 1], [0, -scrollRange]);
 
   return (
-    <main
+    <section
       ref={sectionWrapper}
       className="relative min-h-screen bg-zinc-950"
       style={{
@@ -53,7 +53,7 @@ const HorizontalScroll = ({ elements, locale }) => {
           </motion.div>
         </div>
       </section>
-    </main>
+    </section>
   );
 };
 

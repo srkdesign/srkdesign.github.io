@@ -4,6 +4,7 @@ import Link from "./Link.jsx";
 import { MENU_LINKS, WORK_LINKS } from "../../consts.js";
 import { MEDIA_LINKS } from "../../consts.js";
 import { useTranslation } from "react-i18next";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 const Navigation = () => {
   const { t, i18n } = useTranslation();
@@ -16,11 +17,7 @@ const Navigation = () => {
           {Object.entries(MENU_LINKS).map(([key, { label, href }]) => (
             <li key={key}>
               <Link
-                href={
-                  locale != "ru"
-                    ? `/${locale}${href}`
-                    : `${window.location.origin}${href}`
-                }
+                href={getRelativeLocaleUrl(locale, href)}
                 openInNewTab={false}
               >
                 {t(label)}

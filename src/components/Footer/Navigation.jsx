@@ -15,7 +15,14 @@ const Navigation = () => {
         <ul className="flex flex-col gap-1">
           {Object.entries(MENU_LINKS).map(([key, { label, href }]) => (
             <li key={key}>
-              <Link href={`/${locale}${href}`} openInNewTab={false}>
+              <Link
+                href={
+                  locale != "ru"
+                    ? `/${locale}${href}`
+                    : `${window.location.origin}${href}`
+                }
+                openInNewTab={false}
+              >
                 {t(label)}
               </Link>
             </li>

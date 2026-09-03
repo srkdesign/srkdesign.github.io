@@ -8,17 +8,19 @@ const About = () => {
   return (
     <div className="flex flex-col h-full max-w-fit xl:justify-self-end">
       <div className="text-lg flex gap-4 items-center">
-        <img src="/logo_alt.svg" alt="" className="hidden lg:block size-12" />
-        <p id="footer-copyright" className="md:flex flex-col">
+        <img
+          src="/logo_alt.svg"
+          alt=""
+          className="hidden lg:inline-block size-12"
+        />
+        <p id="footer-copyright" className="md:flex">
           <span>
-            © {GetYear()} {SITE_URL}. {t("nav.copyright")}
+            © {GetYear()} {SITE_URL}. {t("nav.copyright")}{" "}
+            {t("nav.acknowledgements")}
           </span>
           {/* <span id="footer-disclaimer">
             На сайте используются реферальные ссылки.
           </span> */}
-          <span id="footer-acknowledgements" className="pl-1 sm:pl-0">
-            {t("nav.acknowledgements")}
-          </span>
         </p>
         {/* <ul className="flex gap-4 *:size-6">
           <li>

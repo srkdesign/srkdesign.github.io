@@ -6,7 +6,7 @@
   },
   "nav": {
     "phrase": {
-      "default": "<1><2>qrafik</2> dizayner</1><3>və <4>front-end</4> proqramçı</3></0>",
+      "default": "<1><2>veb</2> dizayner</1><3>və <4>front-end</4> proqramçı</3></0>",
       "hover": "<1>İntuitiv dizayn</1><2> və full-stack saytlar</2></0>"
     },
     "btn": {
@@ -29,7 +29,7 @@
   "home": {
     "about": {
       "heading": {
-        "designer": "Qrafik dizayner,",
+        "designer": "Veb dizayner,",
         "developer": "front-end proqramçı,",
         "author": "və kontent müəllifi"
       },

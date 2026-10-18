@@ -87,14 +87,38 @@ export function OrbitIcon({ children, strokeWidth = 0.9 }) {
 
 // Placeholder content: eight icon circles, each with its own text.
 const CONTENT = [
-  ["Шаг 1", "Понимаем задачу", <Target strokeWidth={1} />],
-  ["Шаг 2", "Исследуем контекст", <Search strokeWidth={1} />],
-  ["Шаг 3", "Формулируем идею", <Lightbulb strokeWidth={1} />],
-  ["Шаг 4", "Рисуем прототип", <Pencil strokeWidth={1} />],
-  ["Шаг 5", "Проверяем гипотезы", <FlaskRound strokeWidth={1} />],
-  ["Шаг 6", "Собираем решение", <Layers strokeWidth={1} />],
-  ["Шаг 7", "Запускаем и замеряем", <Rocket strokeWidth={1} />],
-  ["Шаг 8", "Улучшаем снова", <RefreshCcw strokeWidth={1} />],
+  ["Шаг 1", "Понимаем задачу", <Target className="stroke-[1.5] sm:stroke-1" />],
+  [
+    "Шаг 2",
+    "Исследуем контекст",
+    <Search className="stroke-[1.5] sm:stroke-1" />,
+  ],
+  [
+    "Шаг 3",
+    "Формулируем идею",
+    <Lightbulb className="stroke-[1.5] sm:stroke-1" />,
+  ],
+  ["Шаг 4", "Рисуем прототип", <Pencil className="stroke-[1.5] sm:stroke-1" />],
+  [
+    "Шаг 5",
+    "Проверяем гипотезы",
+    <FlaskRound className="stroke-[1.5] sm:stroke-1" />,
+  ],
+  [
+    "Шаг 6",
+    "Собираем решение",
+    <Layers className="stroke-[1.5] sm:stroke-1" />,
+  ],
+  [
+    "Шаг 7",
+    "Запускаем и замеряем",
+    <Rocket className="stroke-[1.5] sm:stroke-1" />,
+  ],
+  [
+    "Шаг 8",
+    "Улучшаем снова",
+    <RefreshCcw className="stroke-[1.5] sm:stroke-1" />,
+  ],
 ].map(([description, title, paths], i) => ({
   icon: <OrbitIcon>{paths}</OrbitIcon>,
   title,

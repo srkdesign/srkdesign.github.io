@@ -29,7 +29,7 @@ const BubbleText = ({ text }) => {
   };
 
   return (
-    <h2 className="font-serif [font-size:clamp(4rem,-0.4rem+22vw,26rem)] text-center leading-none firefox-leading -mb-[min(1.5rem,1.5%)] mix-blend-difference select-none text-zinc-50 relative z-[999999]">
+    <h2 className="font-serif [font-size:clamp(4rem,-0.4rem+22vw,26rem)] text-center leading-none firefox-leading -mb-[min(1.5%,1.5rem)] mix-blend-difference select-none text-zinc-50 relative z-[999999]">
       {text.split("").map((char, idx) => (
         <motion.span
           key={idx}

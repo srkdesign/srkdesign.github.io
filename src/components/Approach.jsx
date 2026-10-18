@@ -38,7 +38,7 @@ const Approach = () => (
       *:md:row-start-1 *:aspect-square *:md:[padding-inline:var(--ov)]
       [&>*>h3]:text-2xl [&>*>h3]:md:text-[length:clamp(1.25rem,2.9vw,3rem)] [&>*>h3]:font-medium
       [&>*>h3]:tracking-tight [&>*>h3]:leading-[1.05] [&>*>h3]:text-center
-      [&>*>h3]:whitespace-normal [&>*>h3]:md:mb-8 [&>*>h3]:mb-4 [&>*>p]:text-center [&>*>p]:text-xl [&>*>p]:max-w-[24ch]"
+      [&>*>h3]:whitespace-normal [&>*>h3]:md:mb-8 [&>*>h3]:mb-4 [&>*>p]:text-center [&>*>p]:max-w-[24ch]"
   >
     {CONTENT.map((item, i) => (
       <li

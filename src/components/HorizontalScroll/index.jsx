@@ -41,7 +41,7 @@ const HorizontalScroll = ({ elements, locale }) => {
 
         <div className="relative mb-1 sm:mb-4">
           <BubbleText text="srkdesign"></BubbleText>
-          <h1 className="hidden sm:grid absolute -bottom-1 w-full md:px-14 text-xl *:flex *:justify-between grid-cols-2 [&>*:not(:last-child)]:pr-16">
+          <h1 className="hidden sm:grid absolute xl:-bottom-[10px] 2xl:-bottom-[4px] w-full md:px-14 text-xl *:flex *:justify-between grid-cols-2 [&>*:not(:last-child)]:pr-16">
             <span>
               <span>Сайты под ключ, которые</span>
               <span>вызывают доверие,</span>

@@ -6,15 +6,15 @@ import { useTranslation } from "react-i18next";
 const About = () => {
   const { t } = useTranslation();
   return (
-    <div className="flex flex-col h-full max-w-fit xl:justify-self-end">
-      <div className="text-lg flex gap-4 items-center">
-        <img
+    <div className=" h-full w-full">
+      <div className="text-lg flex gap-4 justify-center opacity-50 col-span-2 col-start-3">
+        {/* <img
           src="/logo_alt.svg"
           alt=""
-          className="hidden lg:inline-block size-12"
-        />
-        <p id="footer-copyright" className="md:flex">
-          <span>
+          className="hidden lg:inline-block size-10"
+        /> */}
+        <p id="footer-copyright" className="md:flex text-center leading-tight">
+          <span className="text-base">
             © {GetYear()} {SITE_URL}. {t("nav.copyright")}{" "}
             {t("nav.acknowledgements")}
           </span>

@@ -33,7 +33,7 @@ const Accordion = ({ title, description }) => {
         animate={{ height: isOpen ? "auto" : 0 }}
         transition={{ duration: 0.5, ease: EASE }}
       >
-        <p className="leading-relaxed md:text-lg text-base overflow-hidden pb-7 opacity-75 font-normal">
+        <p className="leading-relaxed md:text-lg text-base overflow-hidden pb-7 opacity-75 font-normal max-w-[64ch]">
           {description}
         </p>
       </motion.div>

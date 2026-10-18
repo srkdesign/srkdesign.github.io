@@ -31,7 +31,7 @@ const postImage = `/images${Astro.url.pathname}hero.png`;
     <!-- Content -->
     <div id="page">
       <Header client:only="react" />
-      <main class="pt-28">
+      <main class="pt-12 md:pt-8">
         <slot />
       </main>
       <Footer client:only="react" />

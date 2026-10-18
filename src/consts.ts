@@ -37,10 +37,10 @@ export const MEDIA_LINKS = [
 ];
 
 export const WORK_LINKS = [
-  { label: "Kwork", href: "https://kwork.com/user/srkdesign" },
-  { label: "Fiverr", href: "https://www.fiverr.com/s/BR5x3ld" },
   { label: "Boosty", href: "https://boosty.to/srkdesign" },
   { label: "Gumroad", href: "https://srkdesign.gumroad.com" },
+  { label: "Kwork", href: "https://kwork.com/user/srkdesign" },
+  { label: "Fiverr", href: "https://www.fiverr.com/s/BR5x3ld" },
 ];
 
 export const EASE = [0.33, 1, 0.68, 1];

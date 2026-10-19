@@ -5,8 +5,8 @@ const isDisabled = (condition: any) =>
 ---
 
 <nav
-  class="flex items-center justify-between gap-8
-  text-[clamp(2.5rem,_1.5rem_+_3.25vw,_3.25rem)] lg:w-44 *:transition-opacity pr-1"
+  class="flex items-center justify-between
+  text-4xl lg:w-28 *:transition-opacity pr-1"
 >
   <a href={prevUrl} class={`${isDisabled(!prevUrl)}`}>←</a>
   <a href={nextUrl} class={`${isDisabled(!nextUrl)}`}>→</a>

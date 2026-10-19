@@ -58,7 +58,7 @@ const graphData = getLocalGraph(graph, currentSlug);
           >← {i18n.t("blog.go_back")}</a
         >
 
-        <h1 class="text-[clamp(2rem,0.8rem+6vw,8rem)] leading-none text-pretty">
+        <h1 class="text-4xl lg:text-7xl leading-none text-balance">
           {title}
         </h1>
       </div>
@@ -75,9 +75,9 @@ const graphData = getLocalGraph(graph, currentSlug);
     <section
       class="flex flex-col md:grid grid-cols-[minmax(0,12rem)_1fr_minmax(0,12rem)] px-8 lg:px-24"
     >
-      <aside></aside>
+      <aside class="hidden md:block"></aside>
       <article class="md:mx-auto mb-16 md:mb-0">
-        <div class="2xl:max-w-[81ch] lg:max-w-[61ch]">
+        <div class="2xl:max-w-[81ch] xl:max-w-[61ch]">
           <div class="flex flex-col gap-16">
             <div
               class="prose prose-neutral prose-invert prose-xl prose-medium prose-headings:font-medium prose-headings:text-pretty prose-strong:font-medium prose-blockquote:not-italic prose-blockquote:[quotes:none] prose-code:after:content-none prose-code:before:content-none prose-img:rounded-lg prose-img:w-full prose-table:block prose-table:overflow-x-auto"

@@ -29,3 +29,10 @@ pnpm-debug.log*
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# obsidian
+src/content/.obsidian/
+src/content/_templates/
+src/content/_scripts/
+src/content/.trash
+.DS_Store

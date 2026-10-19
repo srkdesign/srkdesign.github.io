@@ -24,7 +24,7 @@ const PostLink = ({
   const [locale, slug] = id.split("/");
   return (
     <motion.li
-      className="border-t border-t-white/10 border-b border-b-zinc-950 relative lg:px-24 px-8 group-hover:opacity-30 hover:!opacity-100 hover:!border-b-white/10 duration-300 ease-in-out"
+      className="border-t border-t-white/10 border-b border-b-zinc-950 relative lg:px-16 px-8 group-hover:opacity-30 hover:!opacity-100 hover:!border-b-white/10 duration-300 ease-in-out"
       initial="initial"
       whileHover="whileHover"
       key={id}

@@ -2,6 +2,32 @@ import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 import { CATEGORY_SLUGS } from "./categories";
 
+type ImageFn = () => z.ZodType;
+
+const heroImage = (image: ImageFn) =>
+  z
+    .preprocess(
+      // Unquoted `[[hero.png]]` in YAML parses as a nested array
+      (v) => (Array.isArray(v) ? v.flat(Infinity)[0] : v),
+      z.string(),
+    )
+    .transform((raw) => {
+      // Obsidian: [[x.png]], ![[x.png|400]], [[x.png#heading]] -> x.png
+      const link = raw.trim().match(/^!?\[\[([^|\]#]+)(?:[#|][^\]]*)?\]\]$/);
+      return (link ? link[1] : raw).trim();
+    })
+    .pipe(
+      z.union([
+        // Absolute paths (public/) and URLs: pass through untouched
+        z.string().regex(/^(\/|[a-z][a-z0-9+.-]*:\/\/)/i),
+        // Everything else: resolve relative to the post, or via an alias
+        z
+          .string()
+          .transform((p) => (/^(\.{1,2}\/|@\/|~\/)/.test(p) ? p : `./${p}`))
+          .pipe(image()),
+      ]),
+    );
+
 const projects = defineCollection({
   // Load Markdown and MDX files in the `src/content/blog/` directory.
   loader: glob({
@@ -28,17 +54,17 @@ const blog = defineCollection({
   // Load Markdown and MDX files in the `src/content/blog/` directory.
   loader: glob({ base: "./src/content/blog", pattern: "**/*.{md,mdx}" }),
   // Type-check frontmatter using a schema
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    category: z.enum(CATEGORY_SLUGS as [string, ...string[]]),
-    // Transform string to Date object
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
-    tags: z.array(z.string()).optional(),
-    isDraft: z.boolean().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      // category: z.enum(CATEGORY_SLUGS as [string, ...string[]]).optional(),
+      pubDate: z.coerce.date(),
+      updatedDate: z.coerce.date().optional(),
+      heroImage: heroImage(image).optional(),
+      tags: z.array(z.string()).optional(),
+      isDraft: z.boolean().optional(),
+    }),
 });
 
 const apps = defineCollection({
